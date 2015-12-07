@@ -1,5 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head>
+
   
   <meta content="text/html; charset=UTF-8" http-equiv="content-type">
 
@@ -7,16 +8,12 @@
   <meta charset="UTF-8">
 
   
-  <meta id="_moz_html_fragment">
-  <title>第九章 Struct&amp;Class</title>
-
-  
-</head><body>
+  <meta id="_moz_html_fragment"><title>第九章 Struct&amp;Class</title></head><body>
 <span style="color: rgb(0, 0, 0); font-family: Arial; font-size: 32px; font-style: normal; font-variant: normal; font-weight: bold; letter-spacing: normal; line-height: normal; text-align: start; text-indent: 0px; text-transform: none; widows: 1; word-spacing: 0px; display: inline ! important; float: none; background-color: rgb(255, 255, 255);">第
 九章</span><span style="color: rgb(0, 0, 0); font-family: Arial; font-size: 32px; font-style: normal; font-variant: normal; font-weight: bold; letter-spacing: normal; line-height: normal; text-align: start; text-indent: 0px; text-transform: none; widows: 1; word-spacing: 0px; display: inline ! important; float: none; background-color: rgb(255, 255, 255);">struct&amp;class<br>
 </span>
 <h2 dir="ltr" style="background: transparent url(https://ssl.gstatic.com/sites/p/e57d46/system/app/themes/crystalpanel/h2-border.gif) repeat-x scroll 0% 100%; font-style: normal; font-variant: normal; line-height: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; font-family: 'Trebuchet MS',arial,sans-serif; color: rgb(165, 164, 165); font-size: 2em; letter-spacing: 0.1em; font-weight: normal; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;"><span style="font-size: 18pt; font-family: Arial; color: rgb(0, 0, 0); font-weight: bold; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; background-color: transparent;">9.1
-自定義資料結構</span></h2>
+自定義資料型別</span></h2>
 
 <span style="color: rgb(0, 0, 0); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; text-align: start; text-indent: 0px; text-transform: none; widows: 1; word-spacing: 0px; font-size: 11pt; font-family: Arial; text-decoration: none; vertical-align: baseline; background-color: transparent;">假
 如今天給你A星的座標，給你其他星的座標，要你判斷之間距離，得出了以下變數<br>
@@ -26,7 +23,24 @@
 int</span> ax, ay, ox[100],
 oy[100];<br>
 <br>
-但今天你覺得<br>
+但今天你覺得不太雅觀或可讀性低，你可以自己定義一個結構<br>
+<img style="width: 257px; height: 205px;" alt="" src="picture/ch09-01.PNG"><br>
+<br style="color: rgb(204, 0, 0);">
+<span style="color: rgb(204, 0, 0);">(1)<span style="color: rgb(51, 153, 153);">star<span style="color: black;"> 自定義資料型別名稱<br>
+</span></span></span></span><span style="color: rgb(0, 0, 0); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; text-align: start; text-indent: 0px; text-transform: none; widows: 1; word-spacing: 0px; font-size: 11pt; font-family: Arial; text-decoration: none; vertical-align: baseline; background-color: transparent;"><span style="color: rgb(204, 0, 0);">(2)<span style="color: rgb(51, 153, 153);"> <span style="color: black;"><span style="color: rgb(0, 0, 204);">int</span> x,y; 自定義資料型別內的內容<br>
+</span></span></span></span><span style="color: rgb(0, 0, 0); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; text-align: start; text-indent: 0px; text-transform: none; widows: 1; word-spacing: 0px; font-size: 11pt; font-family: Arial; text-decoration: none; vertical-align: baseline; background-color: transparent;"><span style="color: rgb(204, 0, 0);">(3)<span style="color: rgb(51, 153, 153);"><span style="color: black;"> };&nbsp; }和<span style="font-weight: bold;">;</span>之間命名一個變數，也可以如</span></span></span></span><span style="color: rgb(0, 0, 0); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; text-align: start; text-indent: 0px; text-transform: none; widows: 1; word-spacing: 0px; font-size: 11pt; font-family: Arial; text-decoration: none; vertical-align: baseline; background-color: transparent;"><span style="color: rgb(204, 0, 0);">(4)<span style="color: black;">一樣另外新增變數。<br>
+(<span style="font-weight: bold;">注意!</span> </span></span></span><span style="color: rgb(0, 0, 0); font-style: normal; font-variant: normal; font-weight: bold; letter-spacing: normal; line-height: normal; text-align: start; text-indent: 0px; text-transform: none; widows: 1; word-spacing: 0px; font-size: 11pt; font-family: Arial; text-decoration: none; vertical-align: baseline; background-color: transparent;"><span style="color: rgb(204, 0, 0);"><span style="color: rgb(51, 153, 153);"><span style="color: black;">}後的;不可刪除</span></span></span></span><span style="color: rgb(0, 0, 0); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; text-align: start; text-indent: 0px; text-transform: none; widows: 1; word-spacing: 0px; font-size: 11pt; font-family: Arial; text-decoration: none; vertical-align: baseline; background-color: transparent;"><span style="color: rgb(204, 0, 0);"><span style="color: black;">)<br>
+這樣程式可讀性變高了!!!<br>
+<br>
+</span></span></span>
+<h2 dir="ltr" style="background: transparent url(https://ssl.gstatic.com/sites/p/e57d46/system/app/themes/crystalpanel/h2-border.gif) repeat-x scroll 0% 100%; font-style: normal; font-variant: normal; line-height: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; font-family: 'Trebuchet MS',arial,sans-serif; color: rgb(165, 164, 165); font-size: 2em; letter-spacing: 0.1em; font-weight: normal; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;"><span style="font-size: 18pt; font-family: Arial; color: rgb(0, 0, 0); font-weight: bold; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; background-color: transparent;">9.2 struct&amp;class的比較<br>
+</span></h2>
+除了struct，class也可以用來當自定義資料型別，但它們有什麼不同?<br>
+其實只有一個，就是當它們未說明裡面的內容是 <span style="color: rgb(0, 0, 204);">public</span>(所有區域都可以用)、<span style="color: rgb(0, 0, 204);">private<span style="color: black;">(只有在此區域內才可被使用/更改)<br>
+struct內都是</span></span> <span style="color: rgb(0, 0, 204);">public<span style="color: black;">，class</span></span>內都是<span style="color: rgb(0, 0, 204);">private<br>
+<span style="color: black;">要讓兩者相同</span><br>
+</span><span style="color: rgb(0, 0, 0); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; text-align: start; text-indent: 0px; text-transform: none; widows: 1; word-spacing: 0px; font-size: 11pt; font-family: Arial; text-decoration: none; vertical-align: baseline; background-color: transparent;"><span style="color: rgb(204, 0, 0);"><span style="color: black;"><br style="color: rgb(204, 0, 0);">
+</span></span></span><span style="color: rgb(0, 0, 0); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; text-align: start; text-indent: 0px; text-transform: none; widows: 1; word-spacing: 0px; font-size: 11pt; font-family: Arial; text-decoration: none; vertical-align: baseline; background-color: transparent;"><span style="color: rgb(204, 0, 0);"><span style="color: rgb(51, 153, 153);"><span style="color: black;"></span></span></span>
 <br>
 <br>
 </span><span style="color: rgb(0, 0, 0); font-family: Arial; font-size: 14.6667px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; text-align: start; text-indent: 0px; text-transform: none; widows: 1; word-spacing: 0px; display: inline ! important; float: none; background-color: rgb(255, 255, 255);"></span>
