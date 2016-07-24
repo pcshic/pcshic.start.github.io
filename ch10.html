@@ -1,13 +1,75 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html><head>
+<html>
+<head>
 
-  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-
-  <meta charset="UTF-8">
 
   
-  <meta id="_moz_html_fragment"><title>第十章 動態規劃&amp;STL</title></head><body>
-<span style="color: rgb(0, 0, 0); font-family: Arial; font-size: 32px; font-style: normal; font-variant: normal; font-weight: bold; letter-spacing: normal; line-height: normal; text-align: start; text-indent: 0px; text-transform: none; widows: 1; word-spacing: 0px; display: inline ! important; float: none; background-color: rgb(255, 255, 255);">第十章</span><span style="color: rgb(0, 0, 0); font-family: Arial; font-size: 32px; font-style: normal; font-variant: normal; font-weight: bold; letter-spacing: normal; line-height: normal; text-align: start; text-indent: 0px; text-transform: none; widows: 1; word-spacing: 0px; display: inline ! important; float: none; background-color: rgb(255, 255, 255);"> 動態規劃</span><span style="color: rgb(0, 0, 0); font-family: Arial; font-size: 32px; font-style: normal; font-variant: normal; font-weight: bold; letter-spacing: normal; line-height: normal; text-align: start; text-indent: 0px; text-transform: none; widows: 1; word-spacing: 0px; display: inline ! important; float: none; background-color: rgb(255, 255, 255);">&amp;</span><span style="color: rgb(0, 0, 0); font-family: Arial; font-size: 32px; font-style: normal; font-variant: normal; font-weight: bold; letter-spacing: normal; line-height: normal; text-align: start; text-indent: 0px; text-transform: none; widows: 1; word-spacing: 0px; display: inline ! important; float: none; background-color: rgb(255, 255, 255);">STL</span><br>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
 
+
+  
+  <meta charset="UTF-8">
+
+
+  
+  
+  <meta id="_moz_html_fragment">
+  <title>第十章 動態規劃&amp;STL</title>
+</head>
+
+<body>
+
+<span style="color: rgb(0, 0, 0); font-family: Arial; font-size: 32px; font-style: normal; font-variant: normal; font-weight: bold; letter-spacing: normal; line-height: normal; text-align: start; text-indent: 0px; text-transform: none; widows: 1; word-spacing: 0px; display: inline ! important; float: none; background-color: rgb(255, 255, 255);">第十章</span><span style="color: rgb(0, 0, 0); font-family: Arial; font-size: 32px; font-style: normal; font-variant: normal; font-weight: bold; letter-spacing: normal; line-height: normal; text-align: start; text-indent: 0px; text-transform: none; widows: 1; word-spacing: 0px; display: inline ! important; float: none; background-color: rgb(255, 255, 255);"> 動態規劃</span><span style="color: rgb(0, 0, 0); font-family: Arial; font-size: 32px; font-style: normal; font-variant: normal; font-weight: bold; letter-spacing: normal; line-height: normal; text-align: start; text-indent: 0px; text-transform: none; widows: 1; word-spacing: 0px; display: inline ! important; float: none; background-color: rgb(255, 255, 255);">&amp;</span><span style="color: rgb(0, 0, 0); font-family: Arial; font-size: 32px; font-style: normal; font-variant: normal; font-weight: bold; letter-spacing: normal; line-height: normal; text-align: start; text-indent: 0px; text-transform: none; widows: 1; word-spacing: 0px; display: inline ! important; float: none; background-color: rgb(255, 255, 255);">STL<br>
+</span>
+<h2 style="background: transparent url(https://ssl.gstatic.com/sites/p/e57d46/system/app/themes/crystalpanel/h2-border.gif) repeat-x scroll 0% 100%; -moz-background-clip: initial; -moz-background-origin: initial; -moz-background-inline-policy: initial; font-style: normal; font-variant: normal; line-height: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; font-family: 'Trebuchet MS',arial,sans-serif; color: rgb(165, 164, 165); font-size: 2em; letter-spacing: 0.1em; font-weight: normal;" dir="ltr"><span style="font-size: 18pt; font-family: Arial; color: rgb(0, 0, 0); font-weight: bold; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; background-color: transparent;">10.1 簡單動態規劃</span></h2>
+<a href="https://zerojudge.tw/ShowProblem?problemid=d212">d212.東東下階梯</a><br>
+我們來推導這個問題，第一階只由一種走法，第二階可以走兩個一步或一個兩步，是兩種走法。那第三階呢?我們先想想怎麼走到第三階，一種是從第一階走兩步，或著從第二階走一步，總共是(1+2)=3總走法。<br>
+公式:<br>
+f(0)=1,f(1)=1<br>
+f(n)=f(n-1)+f(n-2) (n&gt;=2)<br>
+其實<br>
 <br>
-</body></html>
+以下有兩種寫法<br>
+(1)直接用一個迴圈跑一次<br>
+(2)進入副程式計算<br>
+<table style="text-align: left; width: 482px; height: 352px;" border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td>#include &lt;iostream&gt;<br>
+using namespace std;<br>
+#define N 10000000<br>
+      <br>
+int main(){<br>
+&nbsp;&nbsp;&nbsp; int a[N];<br>
+&nbsp;&nbsp;&nbsp; a[0] = a[1] = 1;<br>
+&nbsp;&nbsp;&nbsp; for (int i = 2; i &lt; N; i++)<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; a[i] = a[i - 1] + a[i - 2];<br>
+&nbsp; &nbsp; &nbsp; int n; //第n階<br>
+&nbsp;&nbsp;&nbsp; while (cin &gt;&gt; n)<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; cout &lt;&lt; a[n] &lt;&lt; endl;<br>
+}</td>
+      <td>#include &lt;iostream&gt;<br>
+using namespace std;<br>
+#define N 10000000<br>
+      <br>
+int query(int i){<br>
+&nbsp;&nbsp;&nbsp; if (i &lt; 2)return 1;<br>
+&nbsp;&nbsp;&nbsp; return query(i - 1) + query(i - 2);<br>
+}<br>
+      <br>
+int main(){<br>
+&nbsp;&nbsp;&nbsp; int n; //第n階<br>
+&nbsp;&nbsp;&nbsp; while (cin &gt;&gt; n)<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; cout &lt;&lt; query(n) &lt;&lt; endl;<br>
+}</td>
+    </tr>
+  </tbody>
+</table>
+這兩種寫法答案都是可行的，接下來要考慮效率<br>
+首先第一種是先把答案儲存在陣列內，當他問你時立即輸出答案，時間複雜度是(1)<br>
+第二種是當他問你時，在去算答案，我們輸入測資試試看，發現到40開始就跑很慢，為什麼?<br>
+當你要找 query(40)時要先找 query(39)和 query(38)，要找 query(39)時要先找 query(38)和 query(37)，以此類推.....<br>
+<span style="color: rgb(0, 0, 204);">note :如果答案(會用到的值)可以先求，先儲存，提高程式效率</span><font size="-1"><small><small><span style="font-family: 微軟正黑體,'Microsoft JhengHei',Tahoma,arial,PMingLiU,新細明體,微軟雅黑體,sans-serif; font-size: 24px; font-style: normal; font-variant: normal; letter-spacing: normal; line-height: normal; text-align: center; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; display: inline ! important; float: none; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);"></span></small></small></font><a style="color: rgb(0, 0, 204);" href="http://zerojudge.tw/ShowProblem?problemid=b138" rel="nofollow"></a><span id="problem_title" style="color: rgb(102, 102, 102); font-family: 微軟正黑體,'Microsoft JhengHei',Tahoma,arial,PMingLiU,新細明體,微軟雅黑體,sans-serif; font-size: 24px; font-style: normal; font-variant: normal; font-weight: bold; letter-spacing: normal; line-height: normal; text-align: center; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);"></span><br>
+
+</body>
+</html>
