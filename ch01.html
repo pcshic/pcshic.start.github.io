@@ -13,130 +13,73 @@
 
 <body style="background-image: url(picture/background.png);">
 
-<big><big><big><big>第一章 立刻動手<br>
+<h1>第一章 立刻動手</h1>
 
-</big></big></big></big><br>
+<h2>1.1 第一個程式</h2>
 
-<big><big><big>1.1 第一個程式</big></big><br>
+<h3>Visual C++</h3>
 
-<big>Visual C++</big><br>
-
-要學習程式設計，第一件事就是要有一個編譯器。不管你學的是什麼程式語言，你所寫的程式都是文字檔，(如果你要的話，你甚至可以用記事本來編輯這些程式
+<p>要學習程式設計，第一件事就是要有一個編譯器。不管你學的是什麼程式語言，你所寫的程式都是文字檔，(如果你要的話，你甚至可以用記事
+本來編輯這些程式
 碼)，這些文字檔需要翻譯成機器碼才能交給電腦來執行。翻譯的方式有「組譯 (Assembly)」、「編譯 (Compile)」、及「直譯
 (Interpret)」，這三種方式有什麼差別，對現階段的你來說並不重要，你只要知道 C++ 這個語言所採用的方式為編譯。因此負責幫你把
-C++ 程式從文字檔翻譯成電腦可以執行的機器碼的那個程式我們稱為「編譯器 (Compiler)」。<br>
+C++ 程式從文字檔翻譯成電腦可以執行的機器碼的那個程式我們稱為「編譯器 (Compiler)」。</p>
 
-<br>
-
-在網路上有很多免費的 C++ 編譯器，其中最有名的一個應該是 Dev C++。微軟公司在推出 Visual Studio 2005
+<p>在網路上有很多免費的 C++ 編譯器，其中最有名的一個應該是 Dev C++。微軟公司在推出 Visual Studio
+2005
 時，也推出了免費的版本，稱為 Visual Studio 2005 Express 版，其中包含了四個程式語言：C++、C#、Visual
-BASIC、與 J#。目前最新的版本為 Visual Studio 2015，你可以在官方網站<br>
-
-<br>
-
+BASIC、與 J#。目前最新的版本為 Visual Studio 2015，你可以在官方網站
 http://msdn.com/express
 找到並下載安裝 Express 2015 for Windows Desktop 版 ( for Windows 10/8.1/8 / 7 /
-XP ...等 )。<br>
+XP ...等 )。</p>
 
-<br>
+<h3>建立專案與檔案</h3>
 
-<big>建立專案與檔案</big><br>
-
+<p>
 安裝完畢後，就可以在「開始功能表」的所有程式中找到 VB
-2015。啟動後，看到的是「啟始頁」。要寫程式之前，要先建立一個「專案」。要建立一個新專案有好幾個方法：<br>
+2015。啟動後，看到的是「啟始頁」。要寫程式之前，要先建立一個「專案」。要建立一個新專案有好幾個方法：</p>
 
-</big>
 <ul>
 
-  <li><big>主功能表 / 檔案 / 新增 / 專案</big></li>
+  <li>主功能表 / 檔案 / 新增 / 專案 </li>
 
-  <li><big>標準工具列 / 新增專案</big></li>
+  <li>標準工具列 / 新增專案</li>
 
-  <li><big>啟始頁 / 最近使用的專案 / 建立：專案</big></li>
+  <li>啟始頁 / 最近使用的專案 / 建立：專案 </li>
 
 </ul>
 
-<big>​之後你會看到一個對話方塊，讓你選擇所要建立的專案類型。請選擇 Visual C++ / 一般 /
+<p>​之後你會看到一個對話方塊，讓你選擇所要建立的專案類型。請選擇 Visual C++ / 一般 /
 空專案，並在名稱那一欄打上專案名稱 (為了方便說明，請用 CPPs
 作為專案名稱)，在位置那一欄選擇專案要儲存的位置，(如果你會在不同的電腦上寫程式，你可能會想把專案存在隨身碟上)。<br>
 
 這時候所建立的專案還真的是「空專案」，從左方的「專案總管」中有三個資料夾，但是其下你看不到任何的項目。你需要在專案中加入一個檔案。加入新檔案也有
-好幾個方法：<br>
+好幾個方法：</p>
 
-</big>
 <ul>
 
-  <li><big>主功能表 / 檔案 / 新增 / 檔案，在對話方塊中選 Visual C++ / C++ 檔
+  <li>主功能表 / 檔案 / 新增 / 檔案，在對話方塊中選 Visual C++ / C++ 檔
 (.cpp)
 並按「開啟」，這個動作會在中間的編輯視窗產生一個 Source1.cpp 檔案，但是要注意，這個檔案尚加入專案之中，你需要再選 主功能表 /
 檔案 / 將 Source1.cpp 移入 / 專案名稱，這時候會請你指定一個檔名 (請用 Hello
-作為檔名)，按「儲存」後就可以看到這個檔案出現在方案總管視窗中「原始程式檔」的資料夾之中了。</big></li>
+作為檔名)，按「儲存」後就可以看到這個檔案出現在方案總管視窗中「原始程式檔」的資料夾之中了。 </li>
 
-  <li><big>你也可以點 標準工具列 / 加入新項目，在對話方塊中選 Visual C++ / 程式碼 /
-C++ 檔 (.cpp)，在名稱那一欄打上檔名並按「加入」。用這種方式所開的檔案會直接加入方案的「原始程式檔」的資料夾裡。</big></li>
+  <li>你也可以點 標準工具列 / 加入新項目，在對話方塊中選 Visual C++ / 程式碼 /
+C++ 檔 (.cpp)，在名稱那一欄打上檔名並按「加入」。用這種方式所開的檔案會直接加入方案的「原始程式檔」的資料夾裡。 </li>
 
 </ul>
 
-<big><br>
+<h3>第一個 C++ 程式</h3>
 
-</big><br>
+<p>終於可以開始寫程式了。每個 C++ 的程式都有一個相同的「殼」，我們先練習把這個「殼」打到編輯視窗裡吧。</p>
 
-<big><big>第一個 C++ 程式</big><br>
+<script src="https://gist.github.com/allem40306/5796733dd1362840da8f3e689005c9f6.js?file=ch01-01.cpp"></script>
+<p>雖說它只是每個程式都有的「殼」，但是它的每一行都有它的意義，也都不可以打錯任何一個字。以後我們會解釋這些程式的意義，現在你只要
+照著打就行了。</p>
 
-終於可以開始寫程式了。每個 C++ 的程式都有一個相同的「殼」，我們先練習把這個「殼」打到編輯視窗裡吧。<br>
+<p>上面的程式只是一個「殼」，你自己的程式碼要寫在兩個大括號 { } 中間。請在這個位置輸入以下陳述式：</p>
 
-<script src="https://gist.github.com/allem40306/5796733dd1362840da8f3e689005c9f6.js?flies=ch01-01.cpp"></script><br>
-
-</big>
-<table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
-
-  <tbody>
-
-    <tr>
-
-      <td style="vertical-align: top;"><big><span style="color: rgb(0, 0, 204);">#include</span> <span style="color: rgb(204, 0, 0);">&lt;iostream&gt;</span><br>
-
-      <span style="color: rgb(0, 0, 204);">using namespace</span>
-std;<br>
-
-&nbsp;<br>
-
-      <span style="color: rgb(0, 0, 204);">int</span>
-main () {<br>
-
-&nbsp;<br>
-
-}</big></td>
-
-    </tr>
-
-  </tbody>
-</table>
-
-<big><br>
-
-雖說它只是每個程式都有的「殼」，但是它的每一行都有它的意義，也都不可以打錯任何一個字。以後我們會解釋這些程式的意義，現在你只要照著打就行了。<br>
-
-<br>
-
-上面的程式只是一個「殼」，你自己的程式碼要寫在兩個大括號 { } 中間。請在這個位置輸入以下陳述式：<br>
-
-</big>
-<table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
-
-  <tbody>
-
-    <tr>
-
-      <td style="vertical-align: top;"><big>cout
-&lt;&lt; <span style="color: rgb(255, 102, 102);">"Hello,
-World!"</span>;</big></td>
-
-    </tr>
-
-  </tbody>
-</table>
-
+<script src="https://gist.github.com/allem40306/5796733dd1362840da8f3e689005c9f6.js?file=ch01-02.cpp"></script>
 <big><br>
 
 雖然是很簡單的一行指令，但是其中有很多東西是我們要搞懂的。首先，&lt;&lt; 是 C++&nbsp;
@@ -213,9 +156,8 @@ main 之間的空白如果省略了，兩個字就會連在一起變成 intmain�
 
 </ul>
 
-<big><big><big>1.2 程式的執行<br>
+<h2>1.2 程式的執行</h2>
 
-</big></big></big>
 <ul>
 
   <li><big><big><big><small><small>按
