@@ -3,10 +3,11 @@
 
 
 
+
   <meta charset="UTF-8">
 
   
-  <meta content="text/html; charset=UTF-8" http-equiv="content-type"><title>第一章 立刻動手</title></head><body><big><big><big><big>第一章 立刻動手<br>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"><title>第一章 立刻動手</title></head><body style="background-image: url(picture/background.png);"><big><big><big><big>第一章 立刻動手<br>
 </big></big></big></big><br>
 <big><big><big>1.1 第一個程式</big></big><br>
 <big>Visual C++</big><br>
@@ -38,7 +39,9 @@ XP ...等 )。<br>
 檔案 / 將 Source1.cpp 移入 / 專案名稱，這時候會請你指定一個檔名 (請用 Hello
 作為檔名)，按「儲存」後就可以看到這個檔案出現在方案總管視窗中「原始程式檔」的資料夾之中了。</big></li>
   <li><big>你也可以點 標準工具列 / 加入新項目，在對話方塊中選 Visual C++ / 程式碼 / C++ 檔 (.cpp)，在名稱那一欄打上檔名並按「加入」。用這種方式所開的檔案會直接加入方案的「原始程式檔」的資料夾裡。</big></li>
-</ul>
+</ul><big><br>
+</big><br>
+
 <big><big>第一個 C++ 程式</big><br>
 終於可以開始寫程式了。每個 C++ 的程式都有一個相同的「殼」，我們先練習把這個「殼」打到編輯視窗裡吧。<br>
 </big>
@@ -115,16 +118,118 @@ main 之間的空白如果省略了，兩個字就會連在一起變成 intmain�
   <li><big><big><big><small><small>按 「F5」鍵。</small></small></big></big></big></li>
 </ul>
 <big><big><big><big><small><small><small>你可能會納悶，為什麼這個選項不叫「執行」而叫「偵錯」呢？難不成它像防毒程式一樣，會自動幫你找出程式中的錯誤來嗎？</small><br>
-<big><small>延伸閱讀</small></big></small></small></big></big></big><br>
-</big><big>程式的錯誤分兩種，一種是語法錯誤，當你的程式有語法錯誤時，編譯器會因為看不懂你的程式而無法編譯，這時候它的確立刻會告訴你哪
+<big><small><br>
+進階閱讀<br>
+</small></big></small></small></big></big></big></big>
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;"><big>程式的錯誤分兩種，一種是語法錯誤，當你的程式有語法錯誤時，編譯器會因為看不懂你的程式而無法編譯，這時候它的確立刻會告訴你哪
 裡它看不懂；另一種比較麻 煩的是邏輯錯誤，程式雖然可以很順利地編譯並開始執行，但是執行的結果並不是我們所預期的，這種錯誤就比較難找到了。這時候
 Visual C++
 提供了一些偵錯功能，例如下面所介紹的「中斷點」，可以讓程式在指定的地方停下來，讓程式設計者可以檢視各個變數的值，看看有沒有問題，協助你找到問題的
-所在，所以這個選項才會叫做「偵錯」。<br>
-VC++ 會先「編譯」及「連結」並產生 .exe 可執行檔，在這個過程中，視窗下方的「輸出」視窗會很快地閃出以下文字：<big><br>
+所在，所以這個選項才會叫做「偵錯」。<br></big></td>
+    </tr>
+  </tbody>
+</table>
+<big><br>
+VC++ 會先「編譯」及「連結」並產生 .exe 可執行檔，在這個過程中，視窗下方的「輸出」視窗會很快地閃出以下文字：</big><br>
+<big><big>
 <img style="width: 419px; height: 157px;" alt="" src="picture/ch01-01.PNG"><br>
 <small>這表示可執行檔 CPPs.exe 已經建立完畢，(你可以在 &lt;專案目錄&gt;/Debug 找到這個檔案)。<br>
 VC++ 會自地去執行這個程式，這時候螢幕會出現一個黑底的 DOS 視窗，但是你根本還沒看到畫面所顯示的內容之前，這個視窗就自動關閉了。<br>
 為了看到程式的內容，我們可以在程式最後一行的「}」之前加上一個中斷點，讓程式停下來。要在某一行程式之前加上中斷點，你只要用滑鼠在編輯區左緣的灰色 區域點一下，就會出現一個紅球，那就是中斷點了<br>
 <img style="width: 200px; height: 150px;" alt="" src="picture/ch01-02.PNG"><img style="width: 200px; height: 150px;" alt="" src="picture/ch01-03.PNG"><img style="width: 229px; height: 135px;" alt="" src="picture/ch01-04.PNG"><br>
-</small></big></big></body></html>
+</small>進階閱讀<br>
+</big></big>
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;"><big>有很多的書上會教你在程式的最後加上 system ("PAUSE"); 指令，而不是加上中斷點，在此我們並不建議你這麼做。<br>
+&nbsp;<br>
+system 指令可以用來執行一個系統的命令，system ("pause"); 的意思就是要執行系統的「pause」命令。Windows
+有一個 pause 指令，如果你打開「命令提示字元」，輸入「pause」之後按 Enter，你就會看到「請按任意鍵繼續 . .
+.」，系統便停在那兒等你輸入，按一下鍵盤，才會出現下一個命令提示。<br>
+要結束程式的執行，你可以：<br>
+      </big>
+      <ul>
+<li><big>按主功能表「偵錯 / 停止偵錯」<img style="width: 461px; height: 215px;" alt="" src="picture/ch01-05.PNG" align="right"></big></li><li><big>按工具列上按「Shift-F5」。</big></li>
+      </ul>
+
+      <big>要避免直接關掉那個黑底的 DOS 視窗，因為這樣的做法很容易讓 VC++ 當掉。</big></td>
+    </tr>
+  </tbody>
+</table>
+<big><big><br>
+</big></big><small><small><small><small><small><small><span style="color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;,sans-serif; font-size: 21px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 27.3px; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; display: inline ! important; float: none; background-color: rgb(255, 255, 255);"></span></small></small></small></small></small></small><span style="color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;,sans-serif; font-size: 21px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 27.3px; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; display: inline ! important; float: none; background-color: rgb(255, 255, 255);"></span><big><br>
+<big>修改程式<br>
+</big>由於 C++ 程式必須符合 C++ 語言的語法，所以不能隨便亂改。不過 cout &lt;&lt; "Hello, World!"; 指令中兩個「"」之間的文字你倒是可以改成你想輸出的文字。你改成什麼，程式就輸出什麼。比如說，你可以把程式改成這樣：<br>
+</big>
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;"><big><span style="color: rgb(0, 0, 204);">#include</span> <span style="color: rgb(204, 0, 0);">&lt;iostream&gt;</span><br>
+using namespace std;<br>
+&nbsp;<br>
+int main () {<br>
+&nbsp;&nbsp;&nbsp; cout <span style="color: rgb(255, 102, 102);">&lt;&lt; "I hate my computer teacher!"</span>;<br>
+}</big><br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<big>只是千萬別讓你的電腦老師看到了。<br>
+程式修改過以後再執行時會出現這個對話框：<br>
+<img style="width: 300px; height: 260px;" alt="" src="picture/ch01-06.PNG"><br>
+修改程式<br>
+程式修改過以後再執行時會出現這個對話框：<br>
+程式又不是食物，又如何會過期呢？其實這句話有點詞不達義。我們藉此機會把編譯過程的一些細節弄清楚一下。<br>
+程式在執行之前要先編譯成可執行檔才能交給 CPU 來執行。打開 &lt;專案目錄&gt;/Debug 資料夾，你可以在裡面找到一個名為
+CPPs.exe
+的檔案，這就是可執行檔。在這個檔案上點兩下，程式就會開始執行。但是它會像我們第一次執行程式時一樣，黑底視窗閃一下就不見了，可是在執行一個
+.exe 可執行檔時我們既不能幫它加中斷點，也無法再在程式中加 system ("PAUSE");
+指令。為了讓你看清楚它的執行結果，請先打開附屬應用程式中的「命令提示字元」，然後把 CPPs.exe
+這個檔案從它的資料夾拉到「命令提示字元」的視窗中，再按「enter」。<br>
+這時候你就可以看到程式執行的輸出為「Hello, World!」。原來每次我們執行程式的時候，其實就是在執行這個 CPPs.exe
+檔案，當我們的原始程式修改過以後，這個 CPPs.exe
+也要重新產生才能反映程式所做的變更。對話方塊中「這個專案組態已過期」的意思是原始碼已經改過了，但是 CPPs.exe
+卻仍是舊的，問你要不要重新「建置」新的 CPPs.exe
+可執行檔。這時候當然要選「是」才能看到修改後的執行結果。如果你嫌每次修改後都要回答這個問題太煩了，也可以先勾選「不要再顯示此對話方塊」再按
+「是」，那麼以後它就不會再問你了。<br>
+<big><big>1.3 常見的錯誤<br>
+<small><small>如果你的程式沒有錯誤，你倒是可以先跳過這一節，日後碰到問題再回來閱讀。但是如果你的程式執行的結果並不如我們所預期的，那麼就得研究一下你的程式到底出了什麼問題了。<br>
+</small></small></big></big></big>
+<ul>
+  <li><big><big><big><big><small><small><small>開的專案不是「空專案」</small></small></small></big></big></big></big></li>
+  <li><big><big><big><big><small><small><small>.cpp 檔未加入專案</small></small></small></big></big></big></big></li>
+  <li><big><big><big><big><small><small><small>專 案中含有兩個 cpp 程式</small></small></small></big></big></big></big></li>
+  <li><big><big><big><big><small><small><small>陳 述式的最後未加「;」</small></small></small></big></big></big></big></li>
+  <li><big><big><big><big><small><small><small>字 串未加「"」</small></small></small></big></big></big></big></li>
+  <li><big><big><big><big><small><small><small>「= =」和「=」</small></small></small></big></big></big></big></li>
+</ul>
+<big><big><big><small><small><small><big><big><big>1.4 第一個題目<br>
+<small><small>筆者在大學時期和同學們一起學程式設計。每當寫好一個程式以後，一定會先拿給要好的同學來看，一來炫耀一下自己的成就，二來
+也讓對方看看自己的程式有沒有什
+麼缺失、有沒有一些情況沒有考慮到。我們常常會在別人寫好的程式上輸入不同的資料，找出這個程式在什麼情況下會出錯，再讓它回去修改他的程式。<br>
+<br>
+現在在網路上有很多的網站可以幫你達到上面的目的，我們稱這些網站為「線上裁判」(online
+judge)。這題網站上有很多的題目，你必須寫程式來解這些題目，完成之後把你的程式碼上傳到網站，它會用很多的測試資料來測試你的程式的正確性，並把
+驗證的結果累計在你個人的統計表上，統計表通常會顯示你嘗試或通過了哪些題目。<br>
+<br>
+在這些網站中，最平易近人的要算是高師大附中所開發的 <a style="color: rgb(204, 102, 0);" href="http://zerojudge.tw/" target="_blank">Zerojudge</a> 網站了。題目多以中文呈現，驗證的標準也較為寬鬆，甚至將討論區整合在題庫之中，非常適合初學者使用。因此，我們將以在 Zerojudge 網站上解題作為本課程的主軸，讓初學者透過解題，由淺入深，循序漸進地學好程式設計。<br>
+Zerojudge 的網址很好記，你只要在網址列輸入「zerojudge.tw」便可以到它的首頁 (不要自己加上
+www)。要使用這個網站，當然免不了要先開個帳號囉。Zerojudge
+每一個頁面的上面都有一個「註冊」的連結，點進去以後填好相關的資料並送出，便完成了申請的程序。你也可以用 guest 帳號 (密碼也是
+guest)，但是這樣就沒有辦法「炫耀」或是與他人交流。<br>
+註 冊完成後請按「登入」連結登入網站。<br>
+<br>
+在這個網站上已經累積了一千多題的題目，這些題目並沒有按難易程度來排列，所以千萬不要試圖從第一題開始一題一題往下做，請依本課程的引導來選擇適合的題 目。即然我們剛剛寫了「Hello, World!」的程式，那麼我們就先來做這題。請依以下程序找到這個題目：<br>
+在頁面上方可以找到「分類題庫」的連結，點一下你就可以看到題目的表列。你可以:<br>
+</small></small></big></big></big></small></small></small></big></big></big>
+<ul>
+  <li><big><big><big><small><small><small><big><big><big><small><small>在「題號：」的欄位輸入「d483」，按 Enter 後就會進入這個題目</small></small></big></big></big></small></small></small></big></big></big></li>
+  <li><big><big><big><small><small><small><big><big><big><small><small>在「搜尋：」的欄位輸入「hello world」來作關鍵字搜尋，如果搜尋的結果只找到一題，便會直接進入題目；如果有很多題，就從列出的題目中找到你要的題目「hello, world」並點進去。</small></small></big></big></big></small></small></small></big></big></big></li>
+  <li><big><big><big><small><small><small><big><big><big><small><small><br>
+    </small></small></big></big></big></small></small></small></big></big></big></li>
+</ul>
+</body></html>
