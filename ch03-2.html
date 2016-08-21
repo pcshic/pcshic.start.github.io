@@ -109,117 +109,65 @@ table, th, td {
 <p>
 在上一節談到「比較運算子」時，我們的練習題似乎都好難。其實「比較運算子」的運算結果應該是「true」或「false」，只是在 C++ 中以 1
 來代表「true」、0 來代表「false」，而這些「true」或「false」(1 或 0) 原本的設計是要給 if 及 while
-陳述式作為條件判斷之用的，而不是直接當作數值來運算。上一節這樣的安排只是為了讓你更清楚比較運算子的運作方式。<p>
-<p>
+陳述式作為條件判斷之用的，而不是直接當作數值來運算。上一節這樣的安排只是為了讓你更清楚比較運算子的運作方式。</p>
 以上一節留給你當作業的「d068. 該減肥了！」為例，你的答案很可能會像下面這個程式：<p>
-&nbsp;<p>
-//d068: 該減肥了！ by Snail<p>
-#include &lt;iostream&gt;<p>
-using namespace std;<p>
+<script src="https://gist.github.com/allem40306/3fb9e4fb6df5ac631df057c3e5f47797.js?file=ch03-10.cpp"></script>
+
+<p>但是這個並不是一般程式師最直覺的反應，因為他們知道有另一個更強大更好用的指令來處理這一類的問題，那就是 if 陳述式。</p>
+
+<p>if 陳述式的語法如下：</p>
+
+<p>if ( E )</p>
+<li>E: 運算式 (Expression)</li>
+<li>S: 陳述式 (Statement)</li>
+
+<p>if 陳述式的流程圖如下：<p>
 <p>
-int main() {<p>
-&nbsp;&nbsp;&nbsp; int w;<p>
-&nbsp;&nbsp;&nbsp; cin &gt;&gt; w;<p>
-&nbsp;&nbsp;&nbsp; cout &lt;&lt; w - (w &gt; 50);<p>
-}<p>
-&nbsp;<p>
-但是這個並不是一般程式師最直覺的反應，因為他們知道有另一個更強大更好用的指令來處理這一類的問題，那就是 if 陳述式。<p>
-&nbsp;<p>
-if 陳述式的語法如下：<p>
-&nbsp;<p>
-if ( E )
-S&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-E: 運算式 (Expression)<p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; S: 陳述式 (Statement)<p>
-&nbsp;<p>
-if 陳述式的流程圖如下：<p>
-<p>
-&nbsp;<p>
-當 ( ) 中的運算式 E 的回傳值不為 0 時，程式就會去執行陳述式 S，否則 (E 的回傳值為 0 時) 就跳過陳述式 S。注意，這裡的
-( ) 是 if 陳述式的語法的一部分，在 if 之後一定要有一對 ( )，它不是用來改變優先順序的括號，不可以省略。<p>
-&nbsp;<p>
-//d068: 該減肥了！ by Snail<p>
-#include &lt;iostream&gt;<p>
-using namespace std;<p>
-<p>
-int main() {<p>
-&nbsp;&nbsp;&nbsp; int w;<p>
-&nbsp;&nbsp;&nbsp; cin &gt;&gt; w;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //輸入體重<p>
-&nbsp;&nbsp;&nbsp; if (w &gt; 50)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //如果體重 &gt; 50<p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; w -= 1;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //體重減1<p>
-&nbsp;&nbsp;&nbsp; cout &lt;&lt; w;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //輸出體重<p>
-}<p>
-&nbsp;<p>
+<p>當 ( ) 中的運算式 E 的回傳值不為 0 時，程式就會去執行陳述式 S，否則 (E 的回傳值為 0 時) 就跳過陳述式 S。注意，這裡的
+( ) 是 if 陳述式的語法的一部分，在 if 之後一定要有一對 ( )，它不是用來改變優先順序的括號，不可以省略。</p>
+<script src="https://gist.github.com/allem40306/3fb9e4fb6df5ac631df057c3e5f47797.js?file=ch03-11.cpp"></script>
+
+
 還記前面提過，空白和換行都是「白空白」，對 C++ 程式來說意義是一樣的。因此上面這個程式中的 if 陳述式寫成<p>
-&nbsp;<p>
-&nbsp;&nbsp;&nbsp; if (w &gt; 50) w -= 1;<p>
-&nbsp;<p>
+<script src="https://gist.github.com/allem40306/3fb9e4fb6df5ac631df057c3e5f47797.js?file=ch03-12.cpp"></script>
+
 和寫成<p>
-<p>
-&nbsp;&nbsp;&nbsp;&nbsp; if (w &gt; 50)<p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; w -= 1;<p>
-&nbsp;<p>
-意義是完全相同的。但是我們會讓 w -= 1; 這一行比 if (w &gt; 50) 縮進去 4 格，這樣我們可以很容易看得出來 w -= 1; 是屬於 if (w &gt; 50) 的一部份，而不是獨立於 if 之外的陳述式。<p>
-<p>
-如果所輸入的體重大於 50 時，w &gt; 50 就會回傳 1。而根據 if 陳述式的定義，如果 ( ) 中的回傳值不為
+<script src="https://gist.github.com/allem40306/3fb9e4fb6df5ac631df057c3e5f47797.js?file=ch03-13.cpp"></script>
+
+<p>意義是完全相同的。但是我們會讓 w -= 1; 這一行比 if (w &gt; 50) 縮進去 4 格，這樣我們可以很容易看得出來 w -= 1; 是屬於 if (w &gt; 50) 的一部份，而不是獨立於 if 之外的陳述式。</p>
+
+<p>如果所輸入的體重大於 50 時，w &gt; 50 就會回傳 1。而根據 if 陳述式的定義，如果 ( ) 中的回傳值不為
 0，程式就會去執行其後的陳述式 w -= 1;，把體重減 1。可是如果輸入的體重小於等於 50 時，w &gt; 50 就會回傳
-0，這時候程式就會跳過陳述式 w -= 1;，體重就不會改變。<p>
-<p>
-執行完這個 if 陳述式後，w 裡就會有離開中心時的體重，再用 cout &lt;&lt; 把 w 輸出就可以了。<p>
-<p>
-d460. 山六九之旅<p>
-<p>
-運用 if 陳述式與上面所提的技巧，也可以很容易的解出這題。<p>
-<p>
-//d460: 山六九之旅 by Kenrayth<p>
-#include &lt;iostream&gt;<p>
-using namespace std;<p>
-<p>
-int main() {<p>
-&nbsp;&nbsp;&nbsp; int a;<p>
-&nbsp;&nbsp;&nbsp; cin &gt;&gt; a;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //輸入遊客年齡<p>
-&nbsp;&nbsp;&nbsp; if (a &lt;
-6)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-//不滿6歲&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0元<p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; 0; <p>
-&nbsp;&nbsp;&nbsp; if (6 &lt;= a &lt; 12)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //6歲以上不滿12&nbsp;&nbsp; 590元<p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; 590; <p>
-&nbsp;&nbsp;&nbsp; if (12 &lt;= a &lt; 18)&nbsp;&nbsp;&nbsp;&nbsp; //12歲以上不滿18&nbsp; 790元<p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; 790;<p>
-&nbsp;&nbsp;&nbsp; if (18 &lt;= a &lt; 60)&nbsp;&nbsp;&nbsp;&nbsp; //18歲以上不滿60&nbsp; 890元<p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; 890;<p>
-&nbsp;&nbsp;&nbsp; if (60 &lt;=
-a)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-//60歲以上&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 399元<p>
-&nbsp;cout &lt;&lt; 399;<p>
-}<p>
-<p>
-這樣寫是否有問題？<p>
-<p>
-在第2的 if 陳述式中，執行到 6 &lt;= a 時不論a為任何數值，運算出來的結果不是 1 (true) 就是 0
-(false)，再執行 &lt; 12 時結果恆為 1，一樣會輸出 590。同理，第3及第4的 if 陳述式，一樣會輸出 790 及 890。<p>
-<p>
-那要怎麼寫才正確呢？請先看 3.7 邏輯運算子 內容中的 &amp;&amp; 運算子陳述；內容如下：<p>
-<p>
-在討論「d460. 山六九之旅」的問題規則如下：<p>
-<p>
-&nbsp;&nbsp;&nbsp; 1. 0~5歲兒童免票<p>
-&nbsp;&nbsp;&nbsp; 2. 兒童票 ( 6~11 歲)：590元<p>
-&nbsp;&nbsp;&nbsp; 3. 青少年票 ( 12~17 歲)：790元<p>
-&nbsp;&nbsp;&nbsp; 4. 成人票 (18~59 歲)：890元<p>
-&nbsp;&nbsp;&nbsp; 5. 敬老票 ( 60歲以上)：399元<p>
-<p>
-其實我們也可以直接把上面五條規則直接翻譯成五個獨立的 if 陳述式。第一個規則很簡單，只要寫成這樣就可以了：<p>
-&nbsp;<p>
-&nbsp;&nbsp;&nbsp; if (a &lt; 6)<p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; 0;<p>
-&nbsp;<p>
-第二條規則就比較麻煩一點，6 &lt;= a &lt; 12，在邏輯上沒有問題，但在程式執行上就會遇到困難，因為需同時判斷年齡大於等於6歲(
-6 &lt;= a )，而且年齡小於12歲 ( a &lt; 12 )，而 if 陳述式的 ()
-內判斷的值只有一個，這時就需要用一個運算子把這兩個條件的回傳值先「合併」起來。要做這種「合併條件」工作的運算子一共有兩個，它們分別是
-&amp;&amp; (and) 及|| (or, 在鍵盤上和 \ 同一個鍵，搭配 Shift 使用)，稱為「邏輯運算子」。<p>
-<p>
-&amp;&amp; 是「而且」的意思。參考下表，只有當 E1 及 E2 都不為 0 時，E1 &amp;&amp; E2 的回傳值才會是 1；當 E1 及 E2 之中只要有一個為 0 時，E1 &amp;&amp; E2 的回傳值就會是 0。<p>
+0，這時候程式就會跳過陳述式 w -= 1;，體重就不會改變。</p>
+
+<p>執行完這個 if 陳述式後，w 裡就會有離開中心時的體重，再用 cout &lt;&lt; 把 w 輸出就可以了。</p>
+
+<li><a style="color: rgb(204, 102, 0);" href="https://zerojudge.tw/ShowProblem?problemid=d460">d460. </a></li>
+
+<p>運用 if 陳述式與上面所提的技巧，也可以很容易的解出這題。</p>
+<script src="https://gist.github.com/allem40306/3fb9e4fb6df5ac631df057c3e5f47797.js?file=ch03-14.cpp"></script>
+
+<p>這樣寫是否有問題？</p>
+
+<p>在第2的 if 陳述式中，執行到 6 &lt;= a 時不論a為任何數值，運算出來的結果不是 1 (true) 就是 0
+(false)，再執行 &lt; 12 時結果恆為 1，一樣會輸出 590。同理，第3及第4的 if 陳述式，一樣會輸出 790 及 890。</p>
+
+<p>那要怎麼寫才正確呢？請先看 3.7 邏輯運算子 內容中的 &amp;&amp; 運算子陳述；內容如下：</p>
+
+<p>在討論「d460. 山六九之旅」的問題規則如下：</p>
+
+<li>0~5歲兒童免票</li>
+<li>兒童票 ( 6~11 歲)：590元</li>
+<li>青少年票 ( 12~17 歲)：790元</li>
+<li>成人票 (18~59 歲)：890元</li>
+<li>敬老票 ( 60歲以上)：399元</li>
+
+<p>其實我們也可以直接把上面五條規則直接翻譯成五個獨立的 if 陳述式。第一個規則很簡單，只要寫成這樣就可以了：</p>
+<script src="https://gist.github.com/allem40306/3fb9e4fb6df5ac631df057c3e5f47797.js?file=ch03-15.cpp"></script>
+
+<p>第二條規則就比較麻煩一點，6 &lt;= a &lt; 12，在邏輯上沒有問題，但在程式執行上就會遇到困難，因為需同時判斷年齡大於等於6歲(6 &lt;= a )，而且年齡小於12歲 ( a &lt; 12 )，而 if 陳述式的 ()內判斷的值只有一個，這時就需要用一個運算子把這兩個條件的回傳值先「合併」起來。要做這種「合併條件」工作的運算子一共有兩個，它們分別是&amp;&amp; (and) 及|| (or, 在鍵盤上和 \ 同一個鍵，搭配 Shift 使用)，稱為「邏輯運算子」。</p>
+
+<p>&amp;&amp; 是「而且」的意思。參考下表，只有當 E1 及 E2 都不為 0 時，E1 &amp;&amp; E2 的回傳值才會是 1；當 E1 及 E2 之中只要有一個為 0 時，E1 &amp;&amp; E2 的回傳值就會是 0。</p>
 <p>
 E1 &amp;&amp; E2<p>
 E2<p>
