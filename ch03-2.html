@@ -18,7 +18,7 @@ table, th, td {
 /=, %=)。</p>
 <p>在這些運算子當中，除了回傳值以外，沒有任何「副作用」的就只有這 5 個算術運算子了，它們單純地將前後的兩個「運算元」拿來運算，並回傳運算的結果。</p>
 <p>除了這些算術運算子以外，C++ 也定義了 6 個沒有任何「副作用」的「比較運算子」：</p>
-<table style="width:100%">
+<table>
 	<tr>
 	<th>&nbsp;&gt;&nbsp;&nbsp; &nbsp;</th>
 	<th> 大於</th>
@@ -63,7 +63,7 @@ table, th, td {
 
 <p>利用比較運算子會回傳 0 或 1 的特性，我們可以試著去解之前做過的一些題目：</p>
 
-<li><a style="color: rgb(204, 102, 0);" href="https://zerojudge.tw/ShowProblem?problemid=d073">d073. 分組報告</a></li>
+<li><a style="color: rgb(204, 102, 0);" href="https://zerojudge.tw/ShowProblem?problemid=d07">d073. 分組報告</a></li>
 
 <p>之前說過，這題就是要求 n % 3 的商，無條件進位。但是「/」運算子是「小三除法」，所得的商為「無條件捨去」。我們可以用 n / 3 求商，但是結果不能整除時，也就是「餘數不等於 0」時，所得的結果要再加 1。以下的運算式：</p>
 <script src="https://gist.github.com/allem40306/3fb9e4fb6df5ac631df057c3e5f47797.js?file=ch03-05.cpp"></script>
@@ -122,7 +122,7 @@ table, th, td {
 <li>S: 陳述式 (Statement)</li>
 
 <p>if 陳述式的流程圖如下：<p>
-<p>
+<img style="width: 199px; height: 289px;" alt src="picture/ch03-01.PNG">
 <p>當 ( ) 中的運算式 E 的回傳值不為 0 時，程式就會去執行陳述式 S，否則 (E 的回傳值為 0 時) 就跳過陳述式 S。注意，這裡的
 ( ) 是 if 陳述式的語法的一部分，在 if 之後一定要有一對 ( )，它不是用來改變優先順序的括號，不可以省略。</p>
 <script src="https://gist.github.com/allem40306/3fb9e4fb6df5ac631df057c3e5f47797.js?file=ch03-11.cpp"></script>
@@ -156,11 +156,13 @@ table, th, td {
 
 <p>在討論「d460. 山六九之旅」的問題規則如下：</p>
 
+<ol>
 <li>0~5歲兒童免票</li>
 <li>兒童票 ( 6~11 歲)：590元</li>
 <li>青少年票 ( 12~17 歲)：790元</li>
 <li>成人票 (18~59 歲)：890元</li>
 <li>敬老票 ( 60歲以上)：399元</li>
+</ol>
 
 <p>其實我們也可以直接把上面五條規則直接翻譯成五個獨立的 if 陳述式。第一個規則很簡單，只要寫成這樣就可以了：</p>
 <script src="https://gist.github.com/allem40306/3fb9e4fb6df5ac631df057c3e5f47797.js?file=ch03-15.cpp"></script>
@@ -168,213 +170,112 @@ table, th, td {
 <p>第二條規則就比較麻煩一點，6 &lt;= a &lt; 12，在邏輯上沒有問題，但在程式執行上就會遇到困難，因為需同時判斷年齡大於等於6歲(6 &lt;= a )，而且年齡小於12歲 ( a &lt; 12 )，而 if 陳述式的 ()內判斷的值只有一個，這時就需要用一個運算子把這兩個條件的回傳值先「合併」起來。要做這種「合併條件」工作的運算子一共有兩個，它們分別是&amp;&amp; (and) 及|| (or, 在鍵盤上和 \ 同一個鍵，搭配 Shift 使用)，稱為「邏輯運算子」。</p>
 
 <p>&amp;&amp; 是「而且」的意思。參考下表，只有當 E1 及 E2 都不為 0 時，E1 &amp;&amp; E2 的回傳值才會是 1；當 E1 及 E2 之中只要有一個為 0 時，E1 &amp;&amp; E2 的回傳值就會是 0。</p>
-<p>
-E1 &amp;&amp; E2<p>
-E2<p>
-= 0<p>
-≠ 0<p>
-E1<p>
-= 0<p>
-0<p>
-0<p>
-≠ 0<p>
-0<p>
-1<p>
-<p>
+<table>
+    <tr>
+      <th rowspan="2" colspan="2">E1 &amp;&amp; E2</th>
+      <th colspan="2">E2</th>      
+    </tr>
+    <tr>
+      <td>=0</td><td>=1</td>
+    </tr>
+   <tr>
+     <th rowspan="2">E1</th>
+     <td>=0</td>
+     <td>0</td>
+     <td>0</td>
+   </tr>
+    <tr>
+      <td>=1</td>
+      <td>0</td>
+      <td>1</td>
+      </tr>
+  </table>
 || 是「或者」的意思。參考下表，當 E1 及 E2 之中只要有一個不為 0 時，E1 || E2 的回傳值就會是 1；只有當 E1 及 E2 都為 0 時，E1 || E2 的回傳值才會是 0。<p>
-<p>
-&nbsp;<p>
-E1 || E2<p>
-E2<p>
-= 0<p>
-≠ 0<p>
-E1<p>
-= 0<p>
-0<p>
-1<p>
-≠ 0<p>
-1<p>
-1<p>
-<p>
-於是第二條的規則「如果 年齡大於等於6歲，但不滿12歲，付590元」便可以寫成：<p>
-&nbsp;<p>
-&nbsp;&nbsp;&nbsp; if (6&lt;=a &amp;&amp; a&lt;12)<p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; 590;<p>
-&nbsp;<p>
+  <table>
+    <tr>
+      <th rowspan="2" colspan="2">E1 || E2</th>
+      <th colspan="2">E2</th>      
+    </tr>
+    <tr>
+      <td>=0</td><td>=1</td>
+    </tr>
+   <tr>
+     <th rowspan="2">E1</th>
+     <td>=0</td>
+     <td>0</td>
+     <td>1</td>
+   </tr>
+    <tr>
+      <td>=1</td>
+      <td>1</td>
+      <td>1</td>
+      </tr>
+  </table>
+
+<p>於是第二條的規則「如果 年齡大於等於6歲，但不滿12歲，付590元」便可以寫成：</p>
+<script src="https://gist.github.com/allem40306/3fb9e4fb6df5ac631df057c3e5f47797.js?file=ch03-16.cpp"></script>
+
 如果 a 等於 7，那麼 a&lt;=6 &amp;&amp; a&lt;12 的求值過程如下：<p>
-&nbsp;<p>
-6&lt;=a &amp;&amp; a&lt;12&nbsp;&nbsp; &nbsp;先算 &lt;= &lt;<p>
-→ 1 &amp;&amp; 1&nbsp;&nbsp; &nbsp;再算 &amp;&amp;。E1 和 E2 皆不為 0，所以回傳 1<p>
-→ 1&nbsp;&nbsp; &nbsp;<p>
+<table>
+  <tr>
+    <td>6<=a &amp;&amp; a<12</td>
+    <td>先算 <= <</td>
+  </tr>
+  <tr>
+    <td>→ 1 &amp;&amp; 1<12</td>
+    <td>再算 &amp;&amp;。E1 和 E2 皆不為 0，所以回傳 1先算 <= <</td>
+  </tr>
+  <tr>
+    <td>→ 1</td>
+    <td></td>
+  </tr>
+ </table>
+
+<p>因此這一題的正解：</p>
+<script src="https://gist.github.com/allem40306/3fb9e4fb6df5ac631df057c3e5f47797.js?file=ch03-17.cpp"></script>
+
+<li><a style="color: rgb(204, 102, 0);" href="https://zerojudge.tw/ShowProblem?problemid=d065">d065. 三人行必有我師</a></li>
+
+<p>運用 if 陳述式與上面所提的技巧，你也可以很容易地就解出這題了。</p>
+<script src="https://gist.github.com/allem40306/3fb9e4fb6df5ac631df057c3e5f47797.js?file=ch03-18.cpp"></script>
+
 <p>
-<p>
-<p>
-因此這一題的正解：<p>
-<p>
-//d460: 山六九之旅 by Kenrayth<p>
-#include &lt;iostream&gt;<p>
-using namespace std;<p>
-<p>
-int main() {<p>
-&nbsp;&nbsp;&nbsp; int a;<p>
-&nbsp;&nbsp;&nbsp; cin &gt;&gt;
-a;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-//輸入遊客年齡<p>
-&nbsp;&nbsp;&nbsp; if (a &lt;
-6)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-//不滿6歲&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-0元<p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; 0; <p>
-&nbsp;&nbsp;&nbsp; if (6 &lt;= a &amp;&amp; a &lt;
-12)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-//6歲以上不滿12&nbsp;&nbsp;&nbsp;&nbsp; 590元<p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; 590; <p>
-&nbsp;&nbsp;&nbsp; if (12 &lt;= a &amp;&amp; a &lt; 18)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //12歲以上不滿18&nbsp;&nbsp;&nbsp; 790元<p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; 790;<p>
-&nbsp;&nbsp;&nbsp; if (18 &lt;= a &amp;&amp; a &lt; 60)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //18歲以上不滿60&nbsp;&nbsp;&nbsp; 890元<p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; 890;<p>
-&nbsp;&nbsp;&nbsp; if (60 &lt;=
-a)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-//60歲以上&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 399元<p>
-&nbsp;cout &lt;&lt; 399;<p>
-}<p>
-&nbsp;<p>
-d065. 三人行必有我師<p>
-&nbsp;<p>
-運用 if 陳述式與上面所提的技巧，你也可以很容易地就解出這題了。<p>
-<p>
-//d065: 三人行必有我師 by Kenrayth<p>
-#include &lt;iostream&gt;<p>
-using namespace std;<p>
-<p>
-int main() {<p>
-&nbsp;&nbsp;&nbsp; int a, b, c;<p>
-&nbsp;&nbsp;&nbsp; cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //輸入題數<p>
-&nbsp;&nbsp;&nbsp; if (a &gt; b &amp;&amp; a &gt; c)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //a題數比b多 且 a題數比c多<p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; a; <p>
-&nbsp;&nbsp;&nbsp; if (b &gt; a &amp;&amp; b &gt; c)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //b題數比a多 且 b題數比c多<p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; b; <p>
-&nbsp;&nbsp;&nbsp; if (c &gt; a &amp;&amp; c &gt; b)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //c題數比a多 且 c題數比b多<p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; c; <p>
-}<p>
-<p>
-這樣是否正確？當 a 與 b 題數相等( 其中有兩個或三個題數相等 )時會有什麼結果？發現沒有任何輸出！<p>
-<p>
-那換成這樣寫呢？在 &gt; 的部分都變成 &gt;=<p>
-<p>
-//d065: 三人行必有我師 by Kenrayth<p>
-#include &lt;iostream&gt;<p>
-using namespace std;<p>
-<p>
-int main() {<p>
-&nbsp;&nbsp;&nbsp; int a, b, c;<p>
-&nbsp;&nbsp;&nbsp; cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;<p>
-&nbsp;&nbsp;&nbsp; if (a &gt;= b &amp;&amp; a &gt;= c)<p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; a; <p>
-&nbsp;&nbsp;&nbsp; if (b &gt;= a &amp;&amp; b &gt;= c)<p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; b; <p>
-&nbsp;&nbsp;&nbsp; if (c &gt;= a &amp;&amp; c &gt;= b)<p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; c; <p>
-}<p>
+這樣是否正確？當 a 與 b 題數相等( 其中有兩個或三個題數相等 )時會有什麼結果？發現沒有任何輸出！</p>
+<p>那換成這樣寫呢？在 &gt; 的部分都變成 &gt;=<p>
+
+<script src="https://gist.github.com/allem40306/3fb9e4fb6df5ac631df057c3e5f47797.js?file=ch03-19.cpp"></script>
+
 <p>
 又有什麼問題呢？當 a 與 b 題數相等( 其中有兩個或三個題數相等 )時，結果是？發現至少 2 ~ 3 個輸出！<p>
 <p>
 <p>
 正確的寫法：<p>
-<p>
-<p>
-//d065: 三人行必有我師 by Kenrayth<p>
-#include &lt;iostream&gt;<p>
-using namespace std;<p>
-<p>
-int main() {<p>
-&nbsp;&nbsp;&nbsp; int a, b, c;<p>
-&nbsp;&nbsp;&nbsp; cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //輸入題數<p>
-&nbsp;&nbsp;&nbsp; if (a &gt;= b &amp;&amp; a &gt;= c)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //a題數比b或c多 也包含 a跟b或c題數一樣多 跟 三個題數一樣<p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; a; <p>
-&nbsp;&nbsp;&nbsp; if (a &lt; b &amp;&amp; b &gt;= c)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //b題數比a或c多 包含 b跟c題數一樣多<p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; b; <p>
-&nbsp;&nbsp;&nbsp; if (a &lt; c &amp;&amp; b &lt; c)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //c題數比a或b多<p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; c; <p>
-}<p>
+<script src="https://gist.github.com/allem40306/3fb9e4fb6df5ac631df057c3e5f47797.js?file=ch03-20.cpp"></script>
+
 <p>
 有沒有發現善用 = ，可以解決此題多重判斷的問題！<p>
 <p>
 這題又可以這樣解，這次我們把這題改成填空題好了。<p>
-&nbsp;<p>
-//d065: 三人行必有我師 by Snail<p>
-#include &lt;iostream&gt;<p>
-using namespace std;<p>
-<p>
-int main() {<p>
-&nbsp;&nbsp;&nbsp; int a, b, c, teacher;<p>
-&nbsp;&nbsp;&nbsp; cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //輸入題數<p>
-&nbsp;&nbsp;&nbsp; teacher = a;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //先假設老師解 a 題<p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-//如果 b 的題數比老師多<p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-//老師的題數改成 b 題<p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-//如果 c 的題數比老師多<p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-//老師的題數改成 c 題<p>
-&nbsp;&nbsp;&nbsp; cout &lt;&lt; teacher;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //輸出老師的題數<p>
-}<p>
-&nbsp;<p>
-上面的程式少了兩個 if 陳述式，你能正確地填入並 AC 這題嗎？<p>
-<p>
-3.2.1 max函數<p>
-<p>
-<p>
-C++ 提供了一個「樣板函數」max ()，使用時你必須在 () 中放兩個相同型態的值，中間以逗號隔開。它會回傳這兩個值中較大的那一個。以下面這個程式片段為例：<p>
-&nbsp;<p>
-int a, b, c;<p>
-a = 3;<p>
-b = 5;<p>
-c = max (a, b);<p>
+<script src="https://gist.github.com/allem40306/3fb9e4fb6df5ac631df057c3e5f47797.js?file=ch03-21.cpp"></script>
+
+<p>上面的程式少了兩個 if 陳述式，你能正確地填入並 AC 這題嗎？<p>
+
+<h3>3.2.1 max函數</h3>
+
+<p>C++ 提供了一個「樣板函數」max ()，使用時你必須在 () 中放兩個相同型態的值，中間以逗號隔開。它會回傳這兩個值中較大的那一個。以下面這個程式片段為例：</p>
+<script src="https://gist.github.com/allem40306/3fb9e4fb6df5ac631df057c3e5f47797.js?file=ch03-22.cpp"></script>
+
 <p>
 上面的程式片段執行完時，c 的值就會等於 5。思考一下，這個「樣版函數」max () 樣版函數能不能用來取代「d065. 三人行必有我師」的程式碼中的 if 陳述式呢？<p>
-&nbsp;<p>
-//d065: 三人行必有我師 by Snail<p>
-#include &lt;iostream&gt;<p>
-using namespace std;<p>
-<p>
-int main() {<p>
-&nbsp;&nbsp;&nbsp; int a, b, c, teacher;<p>
-&nbsp;&nbsp;&nbsp; cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //輸入題數<p>
-&nbsp;&nbsp;&nbsp; teacher = max (a, b);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //先取 a, b 中較大者<p>
-&nbsp;&nbsp;&nbsp; teacher = max (teacher, c);//如果 c 更大就換成 c<p>
-&nbsp;&nbsp;&nbsp; cout &lt;&lt; teacher;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //輸出老師的題數<p>
-}<p>
-&nbsp;<p>
-你也可以把第 8 行的運算式直接代入第 9 行，程式就變成了：<p>
-&nbsp;<p>
-//d065: 三人行必有我師 by Snail<p>
-#include &lt;iostream&gt;<p>
-using namespace std;<p>
-<p>
-int main() {<p>
-&nbsp;&nbsp;&nbsp; int a, b, c, teacher;<p>
-&nbsp;&nbsp;&nbsp; cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //輸入題數<p>
-&nbsp;&nbsp;&nbsp; teacher = max (max (a, b), c);//取 a, b, c 中最大者<p>
-&nbsp;&nbsp;&nbsp; cout &lt;&lt;
-teacher;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-//輸出老師的題數<p>
-}<p>
-&nbsp;<p>
-即然一個式子就可求出來了，那麼 teacher 這個變數也不需要了：<p>
-&nbsp;<p>
-//d065: 三人行必有我師 by Snail<p>
-#include &lt;iostream&gt;<p>
-using namespace std;<p>
-<p>
-int main() {<p>
-&nbsp;&nbsp;&nbsp; int a, b, c;<p>
-&nbsp;&nbsp;&nbsp; cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //輸入題數<p>
-&nbsp;&nbsp;&nbsp; cout &lt;&lt; max (max (a, b), c);&nbsp; //輸出老師的題數<p>
-}<p>
-<p>
-3.4 複合陳述式 (swap 函數)<p>
+<script src="https://gist.github.com/allem40306/3fb9e4fb6df5ac631df057c3e5f47797.js?file=ch03-23.cpp"></script>
+
+<p>你也可以把第 8 行的運算式直接代入第 9 行，程式就變成了：<p>
+<script src="https://gist.github.com/allem40306/3fb9e4fb6df5ac631df057c3e5f47797.js?file=ch03-24.cpp"></script>
+
+<p>即然一個式子就可求出來了，那麼 teacher 這個變數也不需要了：<p>
+<script src="https://gist.github.com/allem40306/3fb9e4fb6df5ac631df057c3e5f47797.js?file=ch03-25.cpp"></script>
+
+<h2>3.4 複合陳述式 (swap 函數)</h2>
 <p>
 d491. 我也愛偶數 (swap 版)<p>
 &nbsp;<p>
