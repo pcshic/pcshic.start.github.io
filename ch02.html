@@ -16,7 +16,7 @@
 <p>前面已經做了兩個題目，都是輸出一個固定的字串。但是這樣的程式好像沒有太大的用處，現實生活中，大部份的程式都需要輸入一些資料，再根據所輸入的資料來
 做一些處理然後再輸出所得到的資訊。接下來我們就來看第一個需要輸入資料的題目：</p>
 
-<p><a href="https://zerojudge.tw/ShowProblem?problemid=d049">d049. 中華民國萬歲！</a></p>
+<li><a href="https://zerojudge.tw/ShowProblem?problemid=d049">d049. 中華民國萬歲！</a></li>
 
 <p>這個題目要求我們輸入一個西元年份，把它轉成民國年份後輸出。這題很簡單，因為大家都知道只要把西元年份減掉 1911 就會變成民國年份了。問題是在
 C++ 的程式中要如何去輸入呢？</p>
@@ -93,7 +93,7 @@ year，那麼每個人都可以知道這個變數就是用來儲存年份的。<
 定義一個變數 y，接下來才會有一個變數 y 可以讓 cin &gt;&gt; y; 來輸入資料；一定要先輸入一個西元年份 y，才能根據 y
 來計算民國年份。</p>
 
-<p>程式寫好了，按 F5 開始執行。這時候出現了一個黑底的 DOS 視窗，但視窗上卻沒有任何的顯示。這時候請按一下工具列的</p><img style="width: 27px; height: 27px;" alt src="picture/ch02-01.PNG">
+<p>程式寫好了，按 F5 開始執行。這時候出現了一個黑底的 DOS 視窗，但視窗上卻沒有任何的顯示。這時候請按一下工具列的<img style="width: 27px; height: 27px;" alt src="picture/ch02-01.PNG"></p>
 <img style="width: 200px; height: 170px;" alt src="picture/ch02-02.PNG">
 <p>通常使用者在執行程式時，如果看到一個黑色的畫面卻沒有任何的顯示，由於他們不知道程式正在等他們輸入，所以他們很可能會以為程式當掉了。為了避免這樣的
 誤會，一般的程式設計書籍會建議在讓使用者輸入資料前，先輸出一些提示，如下：</p>
@@ -107,14 +107,14 @@ WA。因此，在寫解題用的程式時，除了在「輸出說明」所要求
 
 <p>現在你知道如何輸入一個值到變數裡，然後再利用那個變數去計算題目所要求的結果了。現在讓我們來看看這一題：</p>
 
-<p><a href="https://zerojudge.tw/ShowProblem?problemid=d461">d461. 班際籃球賽</a></p>
+<li><a href="https://zerojudge.tw/ShowProblem?problemid=d461">d461. 班際籃球賽</a></li>
 
 <p>這個題目看起來很複雜，其實它非常簡單。不管賽程如何安排，每一場比賽都會淘汰一個隊伍，所以如果有 n 個隊伍，那麼就要舉行 n - 1
 場比賽才能產生最後的冠軍。簡單嗎？趕快去增加你的 AC 題數吧！</p>
 
 <p>再練習一題：</p>
 
-<p><a href="https://zerojudge.tw/ShowProblem?problemid=d063">d063. 0 與 1</a></p>
+<li><a href="https://zerojudge.tw/ShowProblem?problemid=d063">d063. 0 與 1</a></li>
 
 <p>題目大意：輸入的值只有兩種可能：0 與 1，請你輸出與輸入「相反」的數字，也就是輸入如果是 0，請你輸出 1；輸入如果是 1，請你輸出 0。</p>
 
@@ -144,7 +144,7 @@ WA。因此，在寫解題用的程式時，除了在「輸出說明」所要求
 
 <p>會顯示 3。</p>
 
-<p><a href="https://zerojudge.tw/ShowProblem?problemid=d063">d063. 0 與 1</a></p>
+<li><a href="https://zerojudge.tw/ShowProblem?problemid=d063">d063. 0 與 1</a></li>
 
 <p>在上一節中，我們用減法很簡單地就解決了問題。但是那並不是唯一的解法，你也可以用餘數來解這一題：</p>
 
@@ -155,7 +155,7 @@ WA。因此，在寫解題用的程式時，除了在「輸出說明」所要求
 
 <p>那如果你同時需要商及餘數時怎麼辦？這時候你只能用「/」及「%」各算一次了。下面這題便是一個例子：</p>
 
-<p><a href="https://zerojudge.tw/ShowProblem?problemid=d827">d827. 買鉛筆</a></p>
+<li><a href="https://zerojudge.tw/ShowProblem?problemid=d827">d827. 買鉛筆</a></li>
 
 <p>題目大意：一支鉛筆 5 元，一打鉛筆 50 元。n 支鉛筆多少錢？</p>
 
@@ -166,7 +166,7 @@ WA。因此，在寫解題用的程式時，除了在「輸出說明」所要求
 
 <p>由於「/」只算到整數位，之後的便捨去不再計算，因此，這樣的商可以視為是「無條件捨去」之後的結果。可是如果要「無條件進位」時怎麼辦？</p>
 
-<p><a href="https://zerojudge.tw/ShowProblem?problemid=d073">d073. 分組報告</a></p>
+<li><a href="https://zerojudge.tw/ShowProblem?problemid=d073">d073. 分組報告</a></li>
 
 <p>題目大意：從 1 號開始，每 3 個人分成一組。給你某人的編號 n，請問他編在第幾組？</p>
 
@@ -473,10 +473,13 @@ a1 變數。於是這個陳述式就變成了：</p>
 
 <p>因此我們不建議使用多行的註解，(可憐的 C 程式師只有多行註解可用)。</p>
 
-<p>其實現的編譯器提供的很強大的編輯功能。以 C++ 為例，如果你要把一大段的程式碼註解掉，你只要把那段程式碼反白，再按工具列上的</p>
+<p>其實現的編譯器提供的很強大的編輯功能。以 C++ 為例，如果你要把一大段的程式碼註解掉，你只要把那段程式碼反白，再按工具列上的<img style="width: 25px; height: 25px;" alt="" src="picture/ch02-03.PNG">
+<img style="width: 25px; height: 25px;" alt="" src="picture/ch02-04.PNG"></p>
  </td>
     </tr>
   </tbody>
 </table>
+
+<br><br><br>
 
 </body></html>
