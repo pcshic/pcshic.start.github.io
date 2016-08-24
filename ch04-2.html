@@ -270,7 +270,7 @@ while (n) ...。省略了 != 0 以後的迴圈如下：</p>
 <script src="https://gist.github.com/allem40306/d07dc7ddb88641b56228852a7104640a.js?file=ch04-14.cpp"></script>
 
 <p>如果把這行程式刪掉，執行的時候會出現如下的警告：</p>
-<img style="width: 444px; height: 191px;" alt src="picture/ch04-05.PNG">
+<br>
 
 <p>如果你按「繼續」繼續執行下去，會得到不可預期的結果：</p>
 <img style="width: 317px; height: 231px;" alt src="picture/ch04-06.PNG">
@@ -326,9 +326,7 @@ maximum)。一開始時先把它設為一個很小的值，小到我們要處理
 
 <p>範例輸入 ：</p>
 
-<table>
-	4<br>1992<br>1993<br>1900<br>2000
-</table>
+<p>4<br>1992<br>1993<br>1900<br>2000</p>
 
 <p>之前的題目都有很多個「測資點」，意思是它會把你上傳的程式執行很多次，每次都輸入不一樣的值，以驗證你的程式是否正確。但是這個題目卻只有 1
 個測資點，也就是它只執行你的程式一次，但是這一次就會輸入很多筆的「測試資料」，你的程式必須一一將這些資料讀入，逐一算出答案並輸出。</p>
@@ -351,768 +349,247 @@ AC。</p>
 <p>執行程式時，如果你懶得逐一輸入題目上的範例輸入，你可以把它複製下來，再貼到程式執行的畫面。只是因為它是 DOS 的畫面，貼的時候不能用鍵盤的
 Ctrl-V，而是要按視窗的左上角的圖示，然後選「編輯 /
 貼上」，但是要記得在程式的尾端加上中斷點，以免程式執行完畢後螢幕直接關閉而看不到結果。</p>
+<img style="width: 403px; height: 343px;" alt src="picture/ch04-07.PNG">
 
-&nbsp;<p>
+<p>它的執行結果如下：</p>
 
-&nbsp;<p>
+<p>4<br>1992<br>a leap year<br>1993<br>a normal year<br>1900<br>a normal year<br>2000<br>a leap year</p>
 
-它的執行結果如下：<p>
+<p>如果你沒有看到最後一行的「a leap year」，可能是因為你複製時沒有複製到最後一個換行，只要在鍵盤上補按一個「Enter」鍵即可。</p>
 
-<p>
+<p>你很可能會發現，這樣的結果和題目上所要求的結果不一樣：題目上的輸入資料和輸出資料是分開的，可是我們這個程式的輸入資料和輸出資料卻是交錯的，這個程
+式上傳以後會 AC 嗎？</p>
 
-4<p>
-
-1992<p>
-
-a leap year<p>
-
-1993<p>
-
-a normal year<p>
-
-1900<p>
-
-a normal year<p>
-
-2000<p>
-
-a leap year<p>
-
-<p>
-
-<p>
-
-如果你沒有看到最後一行的「a leap year」，可能是因為你複製時沒有複製到最後一個換行，只要在鍵盤上補按一個「Enter」鍵即可。<p>
-
-&nbsp;<p>
-
-你很可能會發現，這樣的結果和題目上所要求的結果不一樣：題目上的輸入資料和輸出資料是分開的，可是我們這個程式的輸入資料和輸出資料卻是交錯的，這個程
-式上傳以後會 AC 嗎？<p>
-
-<p>
-
-其實你不用太擔心。你應該猜得到，當你上傳一個程式到線上裁判時，線上裁判那端並不會有一個人坐在電腦前面幫你執行並用鍵盤輸入測試資料－－這些動作是由
+<p>其實你不用太擔心。你應該猜得到，當你上傳一個程式到線上裁判時，線上裁判那端並不會有一個人坐在電腦前面幫你執行並用鍵盤輸入測試資料－－這些動作是由
 電腦自動完成的。但是電腦如何幫你輸入測試資料呢？開外掛嗎？當然不是，它是用輸出入重導向的方式來完成的。<p>
 
-&nbsp;<p>
+<p>事實上，出題者把要輸入的資料存在一個檔案中並上傳到 Zerojudge，Zerojudge 在執行你的程式時再把它「導入」你的程式中作為
+cin 的輸入。我們現在就來模擬這樣的過程。</p>
 
-事實上，出題者把要輸入的資料存在一個檔案中並上傳到 Zerojudge，Zerojudge 在執行你的程式時再把它「導入」你的程式中作為
-cin 的輸入。我們現在就來模擬這樣的過程。<p>
+<p>WINDOWS XP:</p>
+<ol>	
+	<li>打開「命令提示字元」。</li>
+	<li>輸入以下指令並按 Enter。</li>
+	<li>copy con in.txt</li>
+	<li>用剛才所教的方法把題目的「範例輸入」內容貼上。貼上後如果游標沒有換到下一行，則補按一個 Enter。</li>
+	<li>在鍵盤上按 Ctrl-Z 及 Enter。</li>
+	<li>這時候你已經在這個位置準備好了一個「輸入檔」，檔名是「in.txt」如果你要驗證這個檔案，可以輸入「notepad
+in.txt」來查看，看完後關閉記事本並回到「命令提示字元」視窗。</li>
+	<li>打開「&lt;專案目錄&gt; / Debug」資料夾，在裡面找到一個 .exe
+檔，把它用滑鼠拖到「命令提示字元」視窗裡，它會在「命令提示字元」加上程式的路徑名稱。</li>
+	<li>在名稱的後面加上「&lt; in.txt」並按 Enter。</li>
+	<img style="width: 669px; height: 438px;" alt src="picture/ch04-08.PNG">
+</ol>
 
-<p>
+<p>WINDOWS VISTA or 7:<p>
+<img style="width: 312px; height: 184px;" alt src="picture/ch04-09.PNG">
 
-WINDOWS XP:<p>
+<ol>
+	<li>先在桌面建立一個文字文件，把「範例輸入」放進那個文件檔裡。</li>
+	<img style="width: 676px; height: 514px;" alt src="picture/ch04-10.PNG">
+	<li>打開你專案的資料夾，debug裡有一個exe檔，那就是你寫的程式，把它複製到桌面。</li>
+	<li>在桌面「shift+右鍵」點「在此處開啟命令視窗」。</li>
+	<li>輸入以下指令並按下 Enter。</li>
+</ol>
 
-打開「命令提示字元」。<p>
-
-輸入以下指令並按 Enter。<p>
-
-copy con in.txt<p>
-
-用剛才所教的方法把題目的「範例輸入」內容貼上。貼上後如果游標沒有換到下一行，則補按一個 Enter。<p>
-
-在鍵盤上按 Ctrl-Z 及 Enter。<p>
-
-這時候你已經在這個位置準備好了一個「輸入檔」，檔名是「in.txt」如果你要驗證這個檔案，可以輸入「notepad
-in.txt」來查看，看完後關閉記事本並回到「命令提示字元」視窗。<p>
-
-打開「&lt;專案目錄&gt; / Debug」資料夾，在裡面找到一個 .exe
-檔，把它用滑鼠拖到「命令提示字元」視窗裡，它會在「命令提示字元」加上程式的路徑名稱。<p>
-
-在名稱的後面加上「&lt; in.txt」並按 Enter。<p>
-
-WINDOWS VISTA or 7:<p>
-
-先在桌面建立一個文字文件，把「範例輸入」放進那個文件檔裡。<p>
-
-打開你專案的資料夾，debug裡有一個exe檔，那就是你寫的程式，把它複製到桌面。<p>
-
-在桌面「shift+右鍵」點「在此處開啟命令視窗」。<p>
-
-輸入以下指令並按下 Enter。<p>
-
-<p>
-
-<p>
-
-<p>
-
-這時候程式會用 in.txt 檔案的內容來作為 cin
+<p>這時候程式會用 in.txt 檔案的內容來作為 cin
 的輸入，畫面上看不到這些輸入的內容，但是卻可以看到輸出的內容和題目的範例輸出一模一樣了。因此每當你寫完一個程式以後，用鍵盤來驗證你的程式的正確性
-時，不用擔心輸入的字元會干擾輸出的正確性，因為 Zerojudge 會把輸入與輸出分開來處理的。<p>
+時，不用擔心輸入的字元會干擾輸出的正確性，因為 Zerojudge 會把輸入與輸出分開來處理的。</p>
 
-&nbsp;<p>
+<p>正式上路了</p>
 
-<p>
+<p>學會了用迴圈來重複地讀入並處理測試資料以後，我們就可以來試試幾題「真正」的比賽的題目了。下面三個題目不是筆者為了讓你練習而加到
+Zerojudge 的「教學題」，而是真正曾經出現在比賽裡的題目。這幾題的測試資料都是用「n 行版」的形式給的。</p>
 
-正式上路了<p>
+<li><a href="https://zerojudge.tw/ShowProblem?problemid=b029">b209. B. 幼稚國王去旅行</a></li>
 
-&nbsp;<p>
+<p>題目大意：不管有幾個人，永遠都是第一個人做總理，所以輸出 1。</p>
 
-學會了用迴圈來重複地讀入並處理測試資料以後，我們就可以來試試幾題「真正」的比賽的題目了。下面三個題目不是筆者為了讓你練習而加到
-Zerojudge 的「教學題」，而是真正曾經出現在比賽裡的題目。這三題的測試資料都是用「n 行版」的形式給的。<p>
+<p>這題比較特別的地方是，它的輸出和輸入是沒有關係的，所以除了第一行的 k 以外，接下來的數字不去讀它也沒有關係。</p>
 
-<p>
+<li><a href="https://zerojudge.tw/ShowProblem?problemid=d039">d039. 11044 - Searching for Nessy </a></li>
 
-b209. B. 幼稚國王去旅行<p>
+<p>題目大意：每個聲納可以涵蓋它本身及其週圍一共九個格子，給你一個 n×m 的矩陣，求出需要幾個聲納才能涵蓋不含邊緣的所有區域。</p>
 
-<p>
-
-題目大意：不管有幾個人，永遠都是第一個人做總理，所以輸出 1。<p>
-
-<p>
-
-這題比較特別的地方是，它的輸出和輸入是沒有關係的，所以除了第一行的 k 以外，接下來的數字不去讀它也沒有關係。<p>
-
-&nbsp;<p>
-
-d039. 11044 - Searching for Nessy <p>
-
-&nbsp;<p>
-
-題目大意：每個聲納可以涵蓋它本身及其週圍一共九個格子，給你一個 n×m 的矩陣，求出需要幾個聲納才能涵蓋不含邊緣的所有區域。<p>
-
-&nbsp;<p>
-
-你只要把長寬各除以
+<p>你只要把長寬各除以
 3，就可以得到長寬各需要幾個聲納，相乘就可以得到結果。由於可以不用涵蓋邊緣，所以所得的商要無條件捨去，用整數的除法剛好可以達到這個效果。要注意的
-是一定要先除再乘，要善用括號。每輸出一個結果之後，要再輸出一個換行 "\n"。<p>
+是一定要先除再乘，要善用括號。每輸出一個結果之後，要再輸出一個換行 "\n"。</p>
 
-&nbsp;<p>
+<li><a href="https://zerojudge.tw/ShowProblem?problemid=d143">d143. Q11172: Relational Operators </a></li>
 
-d143. Q11172: Relational Operators <p>
+<p>題目大意：比較兩個數字的關係，相等輸出 =，左大右小輸出 &gt;，左小右大輸出 &lt;。</p>
 
-&nbsp;<p>
+<p>題目很簡單，記得要輸出換行。</p>
 
-題目大意：比較兩個數字的關係，相等輸出 =，左大右小輸出 &gt;，左小右大輸出 &lt;。<p>
+<li><a href="https://zerojudge.tw/ShowProblem?problemid=c004">c004. Beat the Spread! </a></li>
 
-&nbsp;<p>
+<p>題目大意：給你兩個非負整數的和與差，求這兩個非負整數，大的在前，如果無解輸出「impossible」。</p>
 
-題目很簡單，記得要輸出換行。<p>
+<p>簡單的數學題。記得有可能其中一隊或兩隊都得 0 分哦！</p>
 
-&nbsp;<p>
+<h2>4.3 eof 版</h2>
 
-c004. Beat the Spread! <p>
+<li><a href="https://zerojudge.tw/ShowProblem?problemid=d071">d071. 文文的求婚--續集 (EOF 版)</a></li>
 
-&nbsp;<p>
-
-題目大意：給你兩個非負整數的和與差，求這兩個非負整數，大的在前，如果無解輸出「impossible」。<p>
-
-&nbsp;<p>
-
-簡單的數學題。記得有可能其中一隊或兩隊都得 0 分哦！<p>
-
-<p>
-
-&nbsp;&nbsp;&nbsp; <p>
-
-4.3 eof 版<p>
-
-<p>
-
-d071. 文文的求婚--續集 (EOF 版)<p>
-
-&nbsp;<p>
-
-並不是所有的題目都會在輸入資料一開始的時候就告訴你一共有幾筆的測試資料。可是如果它不告訴我們有幾筆資料，那我們的程式要如何知道迴圈倒底要執行幾次
+<p>並不是所有的題目都會在輸入資料一開始的時候就告訴你一共有幾筆的測試資料。可是如果它不告訴我們有幾筆資料，那我們的程式要如何知道迴圈倒底要執行幾次
 呢？還記得上一節我們提到，線上裁判通常都是將 cin 重導向到檔案來取代鍵盤輸入。因此像這樣的問題，我們可以一直讀到檔案結束 (EOF,
-End of File) 為止。<p>
+End of File) 為止。</p>
 
-cin.eof()<p>
+<h3>cin.eof()</h3>
 
-問題是我們要如何知道檔案已經結束了呢？cin 有一個「成員函式」叫 eof()，它可以用來判斷檔案是否已經結束。在 C++
+<p>問題是我們要如何知道檔案已經結束了呢？cin 有一個「成員函式」叫 eof()，它可以用來判斷檔案是否已經結束。在 C++
 的語法中，要使用某「物件」的「成員函式」時，只要在「物件」和「成員函式」之間加一個點就行了，例如：cin.eof()。當檔案遇到檔尾時，
-cin.eof() 會回傳 1，否則會回傳 0。我們可以利用這個函數來完成這個程式如下：<p>
+cin.eof() 會回傳 1，否則會回傳 0。我們可以利用這個函數來完成這個程式如下：</p>
+<script src="https://gist.github.com/allem40306/d07dc7ddb88641b56228852a7104640a.js?file=ch04-23.cpp"></script>
 
-&nbsp;<p>
+<p>打好這個程式，準備要執行時，突然有一個問題：線上裁判是用檔案做輸入的，所以會有檔尾，可是在 VC++
+上執行時，我們是用鍵盤輸入的，鍵盤有檔尾嗎？</p>
 
-//d071. 文文的求婚--續集(EOF 版) by Snail<p>
+<p>鍵盤原本是沒有檔尾的，但有了重導向的功能以後，系統也為鍵盤提供了模擬「檔尾」的功能。在 Windows 的系統中，換行以後的第一個字元如果是
+Ctrl-Z，就會被視為是檔尾。(但是在 Unix 及 Linux 中則是用 Ctrl-D 哦！)</p>
 
-#include &lt;iostream&gt;<p>
+<p>現在我們開始測試這個程式：</p>
+<ol>
+	<li>在最後一個大括號之前加上一個「中斷點」。</li>
+	<li>按<img style="width: 19px; height: 20px;" alt src="picture/ch04-12.PNG"></li>
+	<li>複製題目上的範例輸入。</li>
+	<li>在執行程式的視窗上選「編輯 / 貼上」。如果沒有換到下一行的話在鍵盤卡補按一個「Enter」</li>
+	<li>按 Ctrl-Z，Enter。</li>
 
-using namespace std;<p>
+</ol>
 
-<p>
+<p>這時候程式會結束，停在最後的中斷點，它的畫面如下：
+</p>
 
-int main () {<p>
+<p>1992<br>a leap year<br>1993<br>a normal year<br>1900<br>a normal year<br>2000&nbsp;&nbsp; ←必要時補一個 Enter<br>a leap year<br>^Z<br>a leap year&nbsp; ←多輸出了這一行</p>
 
-&nbsp;&nbsp;&nbsp; int y;<p>
+<p>我們發現程式的確在遇到檔尾時跳出迴圈了，不過，在 ^Z (按 Ctrl-Z 時畫面會出現 ^Z) 的下面卻又多出了一行「a leap
+year」。如果你把這個程式上傳，你會得到 OLE (Output Limit Exceeded, 超出輸出限制) 以及下面的說明：</p>
 
-&nbsp;&nbsp;&nbsp; while (!cin.eof())
-{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-//當未遇到檔尾時<p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cin &gt;&gt;
-y;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-//讀入年份<p>
+<p>您的輸出超過測資的輸出!!(line:381)<br>您額外輸出了: a leap year<br>可能的原因為<br>* 累贅的輸出，請勿輸出題目未要求的文字</p>
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (y%4 == 0 &amp;&amp;
-y%100 != 0 || y%400 == 0)<p>
+<p>這題的輸入測試檔中含有 380 筆測試資料，正確的輸出也應該只有 380 行，但是你的程式卻輸出了 381 行。為什麼會這樣呢？</p>
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout
-&lt;&lt; "a leap year\n";&nbsp;&nbsp;&nbsp; //閏年<p>
+<p>以題目的範例輸入檔案為例：</p>
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else<p>
+<table>
+	<tr>
+		<td>1</td><td>9</td><td>9</td><td>2</td><td>\n</td><td>1</td><td>9</td><td>9</td><td>3</td><td>\n</td><td>1</td><td>9</td><td>0</td><td>0</td><td>\n</td><td>2</td><td>0</td><td>0</td><td>0</td><td>\n</td><td>檔尾</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;<td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>⇧</td><td>&nbsp;</td>
+	</tr>
+</table>
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout
-&lt;&lt; "a normal year\n";&nbsp; //平年<p>
-
-&nbsp;&nbsp;&nbsp; }<p>
-
-}<p>
-
-&nbsp;<p>
-
-打好這個程式，準備要執行時，突然有一個問題：線上裁判是用檔案做輸入的，所以會有檔尾，可是在 VC++
-上執行時，我們是用鍵盤輸入的，鍵盤有檔尾嗎？<p>
-
-&nbsp;<p>
-
-鍵盤原本是沒有檔尾的，但有了重導向的功能以後，系統也為鍵盤提供了模擬「檔尾」的功能。在 Windows 的系統中，換行以後的第一個字元如果是
-Ctrl-Z，就會被視為是檔尾。(但是在 Unix 及 Linux 中則是用 Ctrl-D 哦！)<p>
-
-&nbsp;<p>
-
-現在我們開始測試這個程式：<p>
-
-在最後一個大括號之前加上一個「中斷點」。 <p>
-
-按<p>
-
-複製題目上的範例輸入。 <p>
-
-在執行程式的視窗上選「編輯 / 貼上」。如果沒有換到下一行的話在鍵盤卡補按一個「Enter」 <p>
-
-按 Ctrl-Z，Enter。<p>
-
-<p>
-
-<p>
-
-這時候程式會結束，停在最後的中斷點，它的畫面如下：<p>
-
-&nbsp;<p>
-
-1992<p>
-
-a leap year<p>
-
-1993<p>
-
-a normal year<p>
-
-1900<p>
-
-a normal year<p>
-
-2000&nbsp;&nbsp; ←必要時補一個 Enter<p>
-
-a leap year<p>
-
-^Z<p>
-
-a leap year&nbsp; ←多輸出了這一行<p>
-
-<p>
-
-&nbsp;<p>
-
-我們發現程式的確在遇到檔尾時跳出迴圈了，不過，在 ^Z (按 Ctrl-Z 時畫面會出現 ^Z) 的下面卻又多出了一行「a leap
-year」。如果你把這個程式上傳，你會得到 OLE (Output Limit Exceeded, 超出輸出限制) 以及下面的說明：<p>
-
-您的輸出超過測資的輸出!!(line:381)<p>
-
-您額外輸出了: a leap year<p>
-
-可能的原因為<p>
-
-* 累贅的輸出，請勿輸出題目未要求的文字<p>
-
-<p>
-
-<p>
-
-這題的輸入測試檔中含有 380 筆測試資料，正確的輸出也應該只有 380 行，但是你的程式卻輸出了 381 行。為什麼會這樣呢？<p>
-
-&nbsp;<p>
-
-以題目的範例輸入檔案為例：<p>
-
-&nbsp;<p>
-
-1<p>
-
-9<p>
-
-9<p>
-
-2<p>
-
-\n<p>
-
-1<p>
-
-9<p>
-
-9<p>
-
-3<p>
-
-\n<p>
-
-1<p>
-
-9<p>
-
-0<p>
-
-0<p>
-
-\n<p>
-
-2<p>
-
-0<p>
-
-0<p>
-
-0<p>
-
-\n<p>
-
-檔尾<p>
-
-&nbsp;<p>
-
-&nbsp;<p>
-
-&nbsp;<p>
-
-&nbsp;<p>
-
-&nbsp;<p>
-
-&nbsp;<p>
-
-&nbsp;<p>
-
-&nbsp;<p>
-
-&nbsp;<p>
-
-&nbsp;<p>
-
-&nbsp;<p>
-
-&nbsp;<p>
-
-&nbsp;<p>
-
-&nbsp;<p>
-
-&nbsp;<p>
-
-&nbsp;<p>
-
-&nbsp;<p>
-
-&nbsp;<p>
-
-&nbsp;<p>
-
-⇧<p>
-
-&nbsp;<p>
-
-<p>
-
-&nbsp;<p>
-
-當我們的迴圈執行完第四次之後，會回頭以 cin.eof() 來判斷是否到了檔尾，可是在讀完了第四次的 y，也就是 2000
+<p>當我們的迴圈執行完第四次之後，會回頭以 cin.eof() 來判斷是否到了檔尾，可是在讀完了第四次的 y，也就是 2000
 之後，檔案的指標是停留在 2000 之後的那個換行字元，還沒有真正到達檔尾，這時候 cin.eof() 仍然會回傳
 0，導致迴圈會再執行第五次，這次的 cin &gt;&gt; y; 就真的碰到檔尾了，但是由於沒有資料給它讀，這次的讀取是失敗的，y
-的值不會被改變，仍然保持原來的 2000，接下來的 if 判斷就會為它多輸出一次「a leap year」。<p>
+的值不會被改變，仍然保持原來的 2000，接下來的 if 判斷就會為它多輸出一次「a leap year」。</p>
 
-<p>
+<h3>break</h3>
 
-break<p>
+<p>C++ 有一個 break 指令，用以跳出當時所在的迴圈。我們可以在發現到讀不到資料時，立刻以 break
+跳出迴圈，不要讓它執行迴圈中剩下的陳述式。</p>
+<script src="https://gist.github.com/allem40306/d07dc7ddb88641b56228852a7104640a.js?file=ch04-24.cpp"></script>
 
-<p>
+<p>while (1) ... 代表要一直重覆地執行這個迴圈，跳出迴圈的判斷則交給迴圈中的 if 陳述式來完成。</p>
 
-C++ 有一個 break 指令，用以跳出當時所在的迴圈。我們可以在發現到讀不到資料時，立刻以 break
-跳出迴圈，不要讓它執行迴圈中剩下的陳述式。<p>
+<p>上面的程式上傳是可以 AC 的，但是我們還要再研究一個很有趣的現象。</p>
 
-&nbsp;<p>
+<p>觀察以下的程式片段：<p>
+<script src="https://gist.github.com/allem40306/d07dc7ddb88641b56228852a7104640a.js?file=ch04-25.cpp"></script>
 
-//d071. 文文的求婚--續集(EOF 版) by Snail<p>
-
-#include &lt;iostream&gt;<p>
-
-using namespace std;<p>
-
-<p>
-
-int main () {<p>
-
-&nbsp;&nbsp;&nbsp; int y;<p>
-&nbsp;&nbsp;&nbsp; while (1)
-{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-//重複執行迴圈中的陳述式<p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cin &gt;&gt;
-y;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-//讀入年份<p>
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (cin.eof())
-break;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-//遇到檔尾則立刻跳出<p>
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (y%4 == 0 &amp;&amp;
-y%100 != 0 || y%400 == 0)<p>
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout
-&lt;&lt; "a leap year\n"; //閏年<p>
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else<p>
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout
-&lt;&lt; "a normal year\n";&nbsp; //平年<p>
-
-&nbsp;&nbsp;&nbsp; }<p>
-
-}<p>
-
-&nbsp;<p>
-
-while (1) ... 代表要一直重覆地執行這個迴圈，跳出迴圈的判斷則交給迴圈中的 if 陳述式來完成。<p>
-
-&nbsp;<p>
-
-上面的程式上傳是可以 AC 的，但是我們還要再研究一個很有趣的現象。<p>
-
-&nbsp;<p>
-
-觀察以下的程式片段：<p>
-
-&nbsp;<p>
-
-&nbsp;&nbsp;&nbsp;&nbsp; int x;<p>
-
-&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; bool (cin) &lt;&lt; "\n";<p>
-
-&nbsp;&nbsp;&nbsp;&nbsp; cin &gt;&gt; x;<p>
-
-&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; bool (cin) &lt;&lt; "\n";<p>
-
-&nbsp;&nbsp;&nbsp;&nbsp; cin &gt;&gt; x;<p>
-
-&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; bool (cin) &lt;&lt; "\n";<p>
-
-&nbsp;<p>
-
-cin 是我們的輸入物件，在 C++ 中可以把它轉成 bool 的型態。有關 bool 型態及型態轉換，在後面的章節會再詳述，現在你只要知道
+<p>cin 是我們的輸入物件，在 C++ 中可以把它轉成 bool 的型態。有關 bool 型態及型態轉換，在後面的章節會再詳述，現在你只要知道
 bool 型態就是邏輯上的「真」(true) 與「假」(false)，在 C++ 中我們常用 1 來代表真，用 0 來代表假。而 bool
 (cin) 就是要把 cin 這個物件轉為 1 (true) 或 0 (false)。至於什麼時候會轉成 1，什麼時候會轉成
 0？我們把上面的程式片段加上「殼」以後執行，第一行隨便輸入一個整數 (如 1992)，第二行輸入 Ctrl-Z，我們會得到以下的執行結果： <p>
 
-1<p>
+1<br>1992<br>1<br>^Z<br>0<br>
 
-1992<p>
-
-1<p>
-
-^Z<p>
-
-0<p>
-
-<p>
-
-<p>
-
-從程式的輸出結果中我們可以看出，前兩次的 bool (cin) 都得到了 1，但是由於第二個 cin &gt;&gt; x;
+<p>從程式的輸出結果中我們可以看出，前兩次的 bool (cin) 都得到了 1，但是由於第二個 cin &gt;&gt; x;
 的讀取動作遇到了檔尾 (Ctrl-Z)，沒有讀成功，接下來的 bool (cin) 就轉成 0 了。由此可知，我們可以用 bool (cin)
-來得知前一次的讀取是否成功。那麼之前的程式就可以改成：<p>
+來得知前一次的讀取是否成功。那麼之前的程式就可以改成：</p>
+<script src="https://gist.github.com/allem40306/d07dc7ddb88641b56228852a7104640a.js?file=ch04-26.cpp"></script>
 
-&nbsp;<p>
+<p>由於放在 if 或 while 後面的 ( ) 內的運算式最後都是會轉成 bool，所以 bool 的型態轉換就可以省下來了，因此</p>
+<script src="https://gist.github.com/allem40306/d07dc7ddb88641b56228852a7104640a.js?file=ch04-27.cpp"></script>
 
-//d071. 文文的求婚--續集(EOF 版) by Snail<p>
+<p>可以寫成</p>
+<script src="https://gist.github.com/allem40306/d07dc7ddb88641b56228852a7104640a.js?file=ch04-28.cpp"></script>
 
-#include &lt;iostream&gt;<p>
+<p>還記得 cin &gt;&gt; y 的回傳值就是 cin 嗎？因此，我們也可以直接把 cin &gt;&gt; y 直接代入 if
+陳述式之中了：</p>
+<script src="https://gist.github.com/allem40306/d07dc7ddb88641b56228852a7104640a.js?file=ch04-29.cpp"></script>
 
-using namespace std;<p>
+<p>可以寫成</p>
+<script src="https://gist.github.com/allem40306/d07dc7ddb88641b56228852a7104640a.js?file=ch04-30.cpp"></script>
 
-<p>
+<p>整個程式就變成了：</p>
+<script src="https://gist.github.com/allem40306/d07dc7ddb88641b56228852a7104640a.js?file=ch04-31.cpp"></script>
 
-int main () {<p>
+<p>即然在進入迴圈後的第一個指令就是 if (!(cin &gt;&gt; y)) break;，我們大可以把這個判斷就放在 while 的 (
+) 裡了。而且現在在迴圈裡的只有一個 if 陳述式，所以大括號也可以省了。以下是這題的「終極版」程式碼：</p>
+<script src="https://gist.github.com/allem40306/d07dc7ddb88641b56228852a7104640a.js?file=ch04-32.cpp"></script>
 
-&nbsp;&nbsp;&nbsp; int y;<p>
-&nbsp;&nbsp;&nbsp; while (1)
-{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-//重複執行迴圈<p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cin &gt;&gt;
-y;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-//輸入西元年份<p>
+<p>比較一下上面這個「eof 版」的程式和下面這個「一行版」的程式有什麼不同？</p>
+<script src="https://gist.github.com/allem40306/d07dc7ddb88641b56228852a7104640a.js?file=ch04-33.cpp"></script>
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (!bool (cin))
-break;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //輸入不成功則跳出迴圈<p>
+<h3>辨識 eof 版的題目</h3>
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (y%4 == 0 &amp;&amp;
-y%100 != 0 || y%400 == 0)<p>
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout
-&lt;&lt; "a leap year\n";&nbsp;&nbsp;&nbsp; //閏年<p>
-
-&nbsp;&nbsp;&nbsp;&nbsp; else<p>
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout
-&lt;&lt; "a normal year\n";&nbsp; //平年<p>
-
-&nbsp;&nbsp;&nbsp; }<p>
-
-}<p>
-
-&nbsp;<p>
-
-由於放在 if 或 while 後面的 ( ) 內的運算式最後都是會轉成 bool，所以 bool 的型態轉換就可以省下來了，因此<p>
-
-&nbsp;<p>
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (!bool (cin))
-break;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //輸入不成功則跳出迴圈<p>
-
-&nbsp;<p>
-
-可以寫成<p>
-
-&nbsp;<p>
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (!cin)
-break;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-//輸入不成功則跳出迴圈<p>
-
-&nbsp;<p>
-
-還記得 cin &gt;&gt; y 的回傳值就是 cin 嗎？因此，我們也可以直接把 cin &gt;&gt; y 直接代入 if
-陳述式之中了：<p>
-
-&nbsp;<p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cin &gt;&gt;
-y;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-//輸入西元年份<p>
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (!cin)
-break;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-//輸入不成功則跳出迴圈<p>
-
-&nbsp;<p>
-
-可以寫成<p>
-
-&nbsp;<p>
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (!(cin &gt;&gt; y))
-break;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //輸入不成功則跳出迴圈<p>
-
-&nbsp;<p>
-
-整個程式就變成了：<p>
-
-&nbsp;<p>
-
-//d071. 文文的求婚--續集(EOF 版) by Snail<p>
-
-#include &lt;iostream&gt;<p>
-
-using namespace std;<p>
-
-<p>
-
-int main () {<p>
-
-&nbsp;&nbsp;&nbsp; int y;<p>
-&nbsp;&nbsp;&nbsp; while (1)
-{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-//重複執行迴圈<p>
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (!(cin &gt;&gt; y))
-break;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //輸入不成功則跳出迴圈<p>
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (y%4 == 0 &amp;&amp;
-y%100 != 0 || y%400 == 0)<p>
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout
-&lt;&lt; "a leap year\n";&nbsp;&nbsp;&nbsp; //閏年<p>
-
-&nbsp;&nbsp;&nbsp;&nbsp; else<p>
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout
-&lt;&lt; "a normal year\n";&nbsp; //平年<p>
-
-&nbsp;&nbsp;&nbsp; }<p>
-
-}<p>
-
-&nbsp;<p>
-
-即然在進入迴圈後的第一個指令就是 if (!(cin &gt;&gt; y)) break;，我們大可以把這個判斷就放在 while 的 (
-) 裡了。而且現在在迴圈裡的只有一個 if 陳述式，所以大括號也可以省了。以下是這題的「終極版」程式碼：<p>
-
-&nbsp;<p>
-
-//d071. 文文的求婚--續集(EOF 版) by Snail<p>
-
-#include &lt;iostream&gt;<p>
-
-using namespace std;<p>
-
-<p>
-
-int main () {<p>
-
-&nbsp;&nbsp;&nbsp; int y;<p>
-
-&nbsp;&nbsp;&nbsp; while (cin &gt;&gt;
-y)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-//輸入成功時<p>
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (y%4 == 0 &amp;&amp;
-y%100 != 0 || y%400 == 0)<p>
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout
-&lt;&lt; "a leap year\n";&nbsp;&nbsp;&nbsp; //閏年<p>
-
-&nbsp;&nbsp;&nbsp;&nbsp; else<p>
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout
-&lt;&lt; "a normal year\n";&nbsp; //平年<p>
-
-}<p>
-
-&nbsp;<p>
-
-比較一下上面這個「eof 版」的程式和下面這個「一行版」的程式有什麼不同？<p>
-
-&nbsp;<p>
-
-//d067. 文文的求婚--續集(1 行版) by Snail<p>
-
-#include &lt;iostream&gt;<p>
-
-using namespace std;<p>
-
-<p>
-
-int main () {<p>
-
-&nbsp;&nbsp;&nbsp; int y;<p>
-
-&nbsp;&nbsp;&nbsp; cin &gt;&gt;
-y;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-//輸入西元年份<p>
-
-&nbsp;&nbsp;&nbsp; if (y%4 == 0 &amp;&amp; y%100 != 0 || y%400 == 0)<p>
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; "a leap
-year\n";&nbsp;&nbsp;&nbsp; //閏年<p>
-
-&nbsp;&nbsp;&nbsp; else<p>
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; "a normal
-year\n";&nbsp; //平年<p>
-
-}<p>
-
-<p>
-
-辨識 eof 版的題目<p>
-
-<p>
-
-在所有的測試資料輸入模式中，「EOF
+<p>在所有的測試資料輸入模式中，「EOF
 版」算是用得最多的了。有的時候題目對此也交待得不是很清楚，常常以「輸入含有多筆測資」就帶過了。因此如果輸入說明中，沒有清楚地交待一共有幾筆測試資
 料 (n 行版)，或是測試資料以特殊的結作為結束 (下一節的 0 尾版)，那麼這題就應該以「EOF 版」來處理了。學會了「EOF
 版」的處理方式之後，現在你能做的題目就多很多了。事實上，所有由 Zerojudge 的站長 Jiangsir 所出的基礎題，全部都是「EOF
-版」的。同學們，殺啊！<p>
-
+版」的。同學們，殺啊！</p>
+/
 &nbsp;<p>
 
-a004. 文文的求婚<p>
+<li><a href="https://zerojudge.tw/ShowProblem?problemid=a00
+">a004. 文文的求婚</a></li>
 
-&nbsp;<p>
+<p>這題算是這一系列劇情的「首部曲」了。題目的要求和「d071. 文文的求婚--續集 (EOF
+版)」其實是一模一樣的，差別只是這題用中文的「閏年」及「平年」作為輸出。同學們，再 AC 一題吧！</p>
 
-這題算是這一系列劇情的「首部曲」了。題目的要求和「d071. 文文的求婚--續集 (EOF
-版)」其實是一模一樣的，差別只是這題用中文的「閏年」及「平年」作為輸出。同學們，再 AC 一題吧！<p>
+<li><a href="https://zerojudge.tw/ShowProblem?problemid=a002">a002. 簡易加法</a></li>
 
-&nbsp;<p>
+<p>題目大意：這樣的題目還要大意啊？自己看吧！超級秒殺題。</p>
 
-a002. 簡易加法<p>
+<p>在 while 的 ( ) 也可以輸入兩個變數，如 while (cin &gt;&gt; a &gt;&gt; b) ...，反正最後傳回的
+cin 轉成 bool 都會是 0 (false)。</p>
 
-&nbsp;<p>
+<li><a href="https://zerojudge.tw/ShowProblem?problemid=a003">a003. 兩光法師占卜術</a></li>
 
-題目大意：這樣的題目還要大意啊？自己看吧！超級秒殺題。<p>
+<p>這題再寫不出來，你也很兩光哦！</p>
 
-<p>
+<p>更多「EOF 版」的題目：</p>
 
-在 while 的 ( ) 也可以輸入兩個變數，如 while (cin &gt;&gt; a &gt;&gt; b) ...，反正最後傳回的
-cin 轉成 bool 都會是 0 (false)。<p>
+<li><a href="https://zerojudge.tw/ShowProblem?problemid=d053">d053 10970 - Big Chocolate</a></li>
 
-&nbsp;<p>
+<p>題目大意：給你一塊長寬為 m 與 n 的巧克力，至少要切幾刀才能把它切成 m×n 塊。</p>
 
-a003. 兩光法師占卜術<p>
+<p>根據題意，你不可以把好幾塊併在一起或疊在一起切，一次只能切一塊。那麼這題就和「d461. 班際籃球賽」很像了，每切一刀就會多一塊，那麼要切成
+n 塊就得切 n - 1 刀了。</p>
 
-&nbsp;<p>
+<li><a href="https://zerojudge.tw/ShowProblem?problemid=d126">d126. 一、牧场围栏</a></li>
 
-這題再寫不出來，你也很兩光哦！<p>
-
-&nbsp;<p>
-
-&nbsp;更多「EOF 版」的題目：<p>
-
-&nbsp;<p>
-
-d053 10970 - Big Chocolate<p>
-
-<p>
-
-題目大意：給你一塊長寬為 m 與 n 的巧克力，至少要切幾刀才能把它切成 m×n 塊。<p>
-
-<p>
-
-根據題意，你不可以把好幾塊併在一起或疊在一起切，一次只能切一塊。那麼這題就和「d461. 班際籃球賽」很像了，每切一刀就會多一塊，那麼要切成
-n 塊就得切 n - 1 刀了。<p>
-
-<p>
-
-d126. 一、牧场围栏<p>
-
-<p>
-
-這題是大陸的題目，所以是簡體字。有兩個原因讓 Zerojudge 也很受大陸同胞的歡迎。首先，它提供用 Pascal
+<p>這題是大陸的題目，所以是簡體字。有兩個原因讓 Zerojudge 也很受大陸同胞的歡迎。首先，它提供用 Pascal
 語言解題。在大陸的中學生當中，Pascal 是很受歡迎的電腦語言。再者，這個網站提供了簡繁轉換的功能。台灣同胞要看大陸的題目，只要在「内容
-：」右邊的「简体-&gt;正體 」上點兩次，它就會變成繁體的了。<p>
+：」右邊的「简体-&gt;正體 」上點兩次，它就會變成繁體的了。</p>
 
-<p>
+<p>題目大意：給你矩形的長寬，求周長。</p>
 
-題目大意：給你矩形的長寬，求周長。<p>
+<h2>4.4 0 尾版</h2>
 
-<p>
+<li><a href="https://zerojudge.tw/ShowProblem?problemid=d070">d070. 文文的求婚--續集 (0 尾版)</a></li>
 
-4.4 0 尾版<p>
-
-<p>
-
-d070. 文文的求婚--續集 (0 尾版)<p>
-
-<p>
-
-講完了「n 行版」和「EOF&nbsp; 版」，現在我們來看看第三種給測資的方式——「0 尾版」。這題的題目內容「
+<p>講完了「n 行版」和「EOF&nbsp; 版」，現在我們來看看第三種給測資的方式——「0 尾版」。這題的題目內容「
 文文的求婚--續集」系列一模一樣，差別只在於給資料的方式。「n 行版」是一開始就告訴你底下會有多少筆的資料，「EOF
 版」則是跟本不告訴你有幾筆資料，你自己讀到沒有資料為止。而在處理「0 尾版」的題目感覺上像「EOF 版」，只是它不是以 eof
 作為結束，而是在資料的最後加上一筆不可能的資料來作為結束的記號。以這題的範例輸入來說，前四行是你要處理的資料，而最後一行的 0
 則是結束的記號。這個結束的記號必須是不可能出現在測試資料之中的，以免造成混淆。題目中已經說明西元年份 y 為一個「正整數」，所以可以用 0
 來做為資料的結束。<p>
 
-&nbsp;<p>
-
-我們直接用「EOF 版」的程式加上一個 if ... break; 述敘就可以 AC 這題了：<p>
+<p>我們直接用「EOF 版」的程式加上一個 if ... break; 述敘就可以 AC 這題了：<p>
 
 <p>
 
