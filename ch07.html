@@ -1,321 +1,104 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html><head>
-
-  <meta charset="UTF-8">
-
-  
-  <meta content="text/html; charset=UTF-8" http-equiv="content-type"><title>第七章 陣列</title></head><body>
-<h3 id="sites-page-title-header" style="margin: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 50%; font-size: 1.8em; font-weight: bold; padding-left: 10px; padding-right: 10px; font-family: 'Trebuchet MS',arial,sans-serif; color: black; padding-bottom: 5px; font-style: normal; font-variant: normal; line-height: normal; letter-spacing: normal; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;" align="left"><span id="sites-page-title" dir="ltr" tabindex="-1" style="outline-color: invert; outline-style: none; outline-width: medium;">第
-七章 陣列</span></h3>
-
-<div id="sites-canvas-main" class="sites-canvas-main" style="overflow: hidden; padding-top: 15px; min-height: 150px; padding-bottom: 5px; color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);">
-<div id="sites-canvas-main-content">
-<table class="sites-layout-name-one-column sites-layout-hbox" style="margin: 0px; width: 1371px; table-layout: fixed; height: 3153px;" cellspacing="0">
-  <tbody>
-    <tr>
-      <td class="sites-layout-tile sites-tile-name-content-1" style="padding: 10px; vertical-align: top;">
-      <div dir="ltr">
-      <p>b138.<span class="Apple-converted-space">&nbsp;</span><a href="http://zerojudge.tw/ShowProblem?problemid=b138" rel="nofollow" style="color: rgb(0, 0, 204);">NOIP2005 1.陶陶摘苹果</a></p>
-      <p>題目大意：先給你 10 顆蘋果的高度，再給你陶陶伸手能及的高度，問陶陶踩在 30 公分高的凳子上可以採到幾顆蘋果？</p>
-      <p>說明：</p>
-      <p>這題的測資很討厭，如果他先給你陶陶能及的高度，再給你 10 個蘋果的高度的話，那麼我們只要一個很簡單的迴圈就可以完成了：</p>
-      <p><span style="font-size: 9.5pt; font-family: 'Courier New';" lang="EN-US">&nbsp; &nbsp;&nbsp;<span style="color: blue;">int</span><span class="Apple-converted-space">&nbsp;</span>a, h, c=0, i;<br>
-&nbsp;&nbsp;&nbsp; cin &gt;&gt; h;<br>
-&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span><span style="color: blue;">for</span><span class="Apple-converted-space">&nbsp;</span>(i=1;
-i&lt;=10; i++) {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cin &gt;&gt; a;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c += (a &lt;= h + 30);<br>
-&nbsp;&nbsp;&nbsp; }<br>
-&nbsp;&nbsp;&nbsp; cout &lt;&lt; c &lt;&lt; endl;<br>
-      </span></p>
-      <p>但是它卻先給你蘋果的高度，你得先把蘋果的高度全部輸入完後才能讀到陶陶的高度。當然你也可以很暴力地宣告 11
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title>第七章 陣列</title>
+<style>
+table, th, td {
+    border: 1px solid black;
+}
+</style>   
+</head><body style="background-image: url(picture/background.png);">
+<h1>第七章 陣列</h1>
+<li><a href="https://zerojudge.tw/ShowProblem?problemid=b138">b138. NOIP2005 1.陶陶摘苹果</a></li>
+<p>題目大意：先給你 10 顆蘋果的高度，再給你陶陶伸手能及的高度，問陶陶踩在 30 公分高的凳子上可以採到幾顆蘋果？</p>
+<p>說明：</p>
+<p>這題的測資很討厭，如果他先給你陶陶能及的高度，再給你 10 個蘋果的高度的話，那麼我們只要一個很簡單的迴圈就可以完成了：</p>
+<script src="https://gist.github.com/allem40306/a64ebcc859bd6557a01bb8557bb469f4.js?file=ch07-01.cpp"></script>
+<p>但是它卻先給你蘋果的高度，你得先把蘋果的高度全部輸入完後才能讀到陶陶的高度。當然你也可以很暴力地宣告 11
 個變數把所給的數字全部輸入然後再算出可以摘到幾顆蘋果，如下：</p>
-      <p><span style="font-size: 9.5pt; font-family: 'Courier New';" lang="EN-US">&nbsp; &nbsp;&nbsp;<span style="color: blue;">int</span><span class="Apple-converted-space">&nbsp;</span>a1, a2, a3, a4, a5, a6, a7,
-a8, a9, a10, h, c;<br>
-&nbsp;&nbsp;&nbsp; cin &gt;&gt; a1 &gt;&gt; a2 &gt;&gt; a3 &gt;&gt; a4
-&gt;&gt; a5 &gt;&gt; a6 &gt;&gt; a7 &gt;&gt; a8 &gt;&gt; a9 &gt;&gt;
-a10;<br>
-&nbsp;&nbsp;&nbsp; cin &gt;&gt; h;<br>
-&nbsp;&nbsp;&nbsp; h += 30;<br>
-&nbsp;&nbsp;&nbsp; c = (a1&lt;=h) + (a2&lt;=h) + (a3&lt;=h) +
-(a4&lt;=h) + (a5&lt;=h) +<span class="Apple-converted-space">&nbsp;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (a6&lt;=h) + (a7&lt;=h) +
-(a8&lt;=h) + (a9&lt;=h) + (a10&lt;=h);<br>
-&nbsp;&nbsp;&nbsp; cout &lt;&lt; c &lt;&lt; endl;<br>
-      <br>
-      </span>但是萬一題目是 100 個蘋果呢？甚至是 n 個蘋果呢？總得有個比較好的解決方式吧？</p>
-      <h4 style="font-family: 'Trebuchet MS',arial,sans-serif; font-size: 1.2em; color: rgb(165, 164, 165);"><a name="TOC-7.1-" style="color: rgb(69, 22, 112);"></a><span style="color: black;">7.1 陣列</span></h4>
-      <p>當我們用 int a; 宣告一個變數 a 時，這個變數同時只能儲存一個 32 位元的整數，當我們設定一個新的值給 a
-時，原先在變數 a 內的值就會被覆蓋。但是如果我們的程式需要處理數以萬計的數字時，總不能定義幾萬個變數名稱來使用吧！為了這個目的，C++
+<script src="https://gist.github.com/allem40306/a64ebcc859bd6557a01bb8557bb469f4.js?file=ch07-02.cpp"></script>
+<p>但是萬一題目是 100 個蘋果呢？甚至是 n 個蘋果呢？總得有個比較好的解決方式吧？</p>
+<h2>7.1 陣列</h2>
+<p>當我們用 int a; 宣告一個變數 a 時，這個變數同時只能儲存一個 32 位元的整數，當我們設定一個新的值給 a 時，原先在變數 a
+內的值就會被覆蓋。但是如果我們的程式需要處理數以萬計的數字時，總不能定義幾萬個變數名稱來使用吧！為了這個目的，C++
 提供了「陣列」這個資料型態。</p>
-      <p>在 C++ 中，下列的程式碼代表我們宣告了一個可以儲存 10 個整數的陣列 a。</p>
-      <p><span style="font-size: 9.5pt; font-family: 'Courier New'; color: black;" lang="EN-US">&nbsp; &nbsp;&nbsp;</span><span style="font-size: 9.5pt; font-family: 'Courier New'; color: blue;" lang="EN-US">int</span><span style="font-size: 9.5pt; font-family: 'Courier New'; color: black;" lang="EN-US"><span class="Apple-converted-space">&nbsp;</span>a[10];<br>
-      </span></p>
-      <p>在這個陣列中，我們可以同時儲存 10 個整數，我們可以把 a 視為 10 個 int 的集合。為了方便存取這集合中的個別
-int，C++ 將這 10 個整數依序編號為 0 到 9。當程式中要使用其中個別的 int 整數時，就必須要用「下標」運算子 [ ]
+<p>在 C++ 中，下列的程式碼代表我們宣告了一個可以儲存 10 個整數的陣列 a。</p>
+<script src="https://gist.github.com/allem40306/a64ebcc859bd6557a01bb8557bb469f4.js?file=ch07-03.cpp"></script>
+<p>在這個陣列中，我們可以同時儲存 10 個整數，我們可以把 a 視為 10 個 int 的集合。為了方便存取這集合中的個別 int，C++ 將這
+10 個整數依序編號為 0 到 9。當程式中要使用其中個別的 int 整數時，就必須要用「下標」運算子 [ ]
 來指定它的編號。例如，我們要依序輸入 10 個蘋果的高度，我們可以這樣寫：</p>
-      <p><span style="font-size: 9.5pt; font-family: 'Courier New'; color: black;" lang="EN-US">&nbsp; &nbsp;&nbsp;cin &gt;&gt; a[0]&gt;&gt; a[1]
-&gt;&gt; a[2] &gt;&gt; a[3] &gt;&gt; a[4] &gt;&gt; a[5] &gt;&gt; a[6]
-&gt;&gt; a[7] &gt;&gt; a[8] &gt;&gt; a[9];</span><span style="font-size: 9.5pt; font-family: MingLiU; color: black;" lang="EN-US"><br>
-      </span></p>
-      <p>也就是說，我們可以宣告一個 10 個 int 的陣列 a，然後用 a[0] 來代替原來的 a1、用 a[1] 代替原來的
+<script src="https://gist.github.com/allem40306/a64ebcc859bd6557a01bb8557bb469f4.js?file=ch07-04.cpp"></script>
+<p>也就是說，我們可以宣告一個 10 個 int 的陣列 a，然後用 a[0] 來代替原來的 a1、用 a[1] 代替原來的
 a2、....。但是如果只是這樣替換而已反而會使程式碼變得更長，沒有任何好處。陣列的下標和字串的下標一樣，可以用變數來代入，如此一來，我們就可以
-用迴圈來簡化程式 了。</p>
-      <p><br>
-      <span style="font-size: 9.5pt; font-family: 'Courier New'; color: black;" lang="EN-US">&nbsp; &nbsp;&nbsp;</span><span style="font-size: 9.5pt; font-family: 'Courier New'; color: blue;" lang="EN-US">int</span><span style="font-size: 9.5pt; font-family: 'Courier New'; color: black;" lang="EN-US"><span class="Apple-converted-space">&nbsp;</span>a[10],
-h, c=0, i;<br>
-&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="font-size: 9.5pt; font-family: 'Courier New'; color: blue;" lang="EN-US">for</span><span style="font-size: 9.5pt; font-family: 'Courier New'; color: black;" lang="EN-US"><span class="Apple-converted-space">&nbsp;</span>(i=0;
-i&lt;10;
-i++)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="font-size: 9.5pt; font-family: 'Courier New'; color: green;" lang="EN-US">//</span><span style="font-size: 9.5pt; font-family: 新細明體,serif; color: green;">將
-蘋果高度輸入陣列</span><span style="font-size: 9.5pt; font-family: 'Courier New'; color: black;" lang="EN-US"><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cin &gt;&gt; a[i];<br>
-&nbsp;&nbsp;&nbsp; cin &gt;&gt;
-h;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="font-size: 9.5pt; font-family: 'Courier New'; color: green;" lang="EN-US">//</span><span style="font-size: 9.5pt; font-family: 新細明體,serif; color: green;">輸
-入陶陶高度</span><span style="font-size: 9.5pt; font-family: 'Courier New'; color: black;" lang="EN-US"><br>
-&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="font-size: 9.5pt; font-family: 'Courier New'; color: blue;" lang="EN-US">for</span><span style="font-size: 9.5pt; font-family: 'Courier New'; color: black;" lang="EN-US"><span class="Apple-converted-space">&nbsp;</span>(i=0;
-i&lt;10;
-i++)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="font-size: 9.5pt; font-family: 'Courier New'; color: green;" lang="EN-US">//</span><span style="font-size: 9.5pt; font-family: 新細明體,serif; color: green;">計
-算採得到幾顆蘋果</span><span style="font-size: 9.5pt; font-family: 'Courier New'; color: black;" lang="EN-US"><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c += (a[i] &lt;= h +
-30);&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="font-size: 9.5pt; font-family: 'Courier New'; color: green;" lang="EN-US">//c(ount)--</span><span style="font-size: 9.5pt; font-family: 新細明體,serif; color: green;">計 數</span><span style="font-size: 9.5pt; font-family: 'Courier New'; color: black;" lang="EN-US"><br>
-&nbsp;&nbsp;&nbsp; cout &lt;&lt; c &lt;&lt; endl;</span></p>
-      <p>你可能會覺得這個版本並沒有比之前「暴力版」短多少，那麼看看下面這題，暴力法就完全行不通了。<br>
-      <br>
-c067.<span class="Apple-converted-space">&nbsp;</span><a href="http://zerojudge.tw/ShowProblem?problemid=c067" rel="nofollow" style="color: rgb(0, 0, 204);">Box of Bricks</a></p>
-      <p>題目大意：給你&nbsp;<i><span style="font-size: 10pt; font-family: 'Times New Roman',serif;" lang="EN-US">n</span></i>&nbsp;疊立方塊的高度&nbsp;<i><span style="font-size: 10pt; font-family: 'Times New Roman',serif;" lang="EN-US">h<sub>i</sub></span></i>，問最少要移動幾塊立方塊才能讓每疊都 一樣高。</p>
-      <p>說明：</p>
-      <p>這題要先求出每疊立方塊的平均高度，然後把所有超出平均高度的部份加總就是答案了。</p>
-      <p>在求平均高度前，要先輸入每一疊的高度並加總。求出平均高度之後，又得回頭去和每疊的高度作比較。因此，這也是典型的陣列應用
---我們得先把所有的高度輸入、加總，並存入陣列之中。求出平均高度之後，再回頭和陣列中所儲存的每疊高度一一作比較並把超出的 部份加總。</p>
-      <p>這其中有一個問題：測試資料中會有幾疊立方塊得等程式開始執行並輸入&nbsp;<i style="line-height: 1.5; font-size: 10pt;"><span style="font-size: 10pt; font-family: 'Times New Roman',serif;" lang="EN-US">n</span></i><span style="line-height: 1.5; font-size: 10pt;">&nbsp;
-之後才會知道，那麼我們解題時到底要開多大的陣列呢？開太大會浪費記憶體，開太小程式會爆掉。還好，像這一類的題目通常會明 確指定&nbsp;</span><i style="line-height: 1.5; font-size: 10pt;"><span style="font-size: 10pt; font-family: 'Times New Roman',serif;" lang="EN-US">n</span></i><span style="line-height: 1.5; font-size: 10pt;">&nbsp;
-的範圍，我們程式中的陣列大小必須能處理範圍內所有的可能狀況。以本題來說，題目在輸入說明中明確地說明&nbsp;</span><span style="line-height: 1.5; font-size: 10pt; font-family: 'Times New Roman',serif; color: rgb(102, 102, 102);" lang="EN-US">1</span><span style="line-height: 1.5; font-size: 10pt; font-family: 'Times New Roman',serif; color: black;" lang="EN-US"><span class="Apple-converted-space">&nbsp;</span>≤</span><span style="line-height: 1.5; font-size: 10pt; font-family: 'Times New Roman',serif; color: rgb(102, 102, 102);" lang="EN-US"><span class="Apple-converted-space">&nbsp;</span><i>n</i></span><span style="line-height: 1.5; font-size: 10pt; font-family: 'Times New Roman',serif; color: black;" lang="EN-US"><span class="Apple-converted-space">&nbsp;</span>≤</span><span style="line-height: 1.5; font-size: 10pt; font-family: 'Times New Roman',serif; color: rgb(102, 102, 102);" lang="EN-US"><span class="Apple-converted-space">&nbsp;</span>50</span><span style="font-size: 10pt; line-height: 1.5;">，因此我們的陣列至少必需可以 儲存 50 個整數。</span></p>
-      <p><span style="font-size: 9.5pt; font-family: 'Courier New'; color: green;" lang="EN-US">//591 - Box of Bricks (by Snail)</span><span style="font-size: 9.5pt;" lang="EN-US"><br>
-      <span style="font-family: 'Courier New'; color: blue;">#include</span><span class="Apple-converted-space">&nbsp;</span><span style="font-family: 'Courier New'; color: rgb(163, 21, 21);">&lt;iostream&gt;</span><br>
-      <span style="font-family: 'Courier New'; color: blue;">using</span><span class="Apple-converted-space">&nbsp;</span><span style="font-family: 'Courier New'; color: blue;">namespace</span><font face="Courier New"><span class="Apple-converted-space">&nbsp;</span>std;</font><br>
-      <br>
-      <span style="font-family: 'Courier New'; color: blue;">int</span><font face="Courier New"><span class="Apple-converted-space">&nbsp;</span>main
-() {</font><br>
-      <font face="Courier New">&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></font><span style="font-family: 'Courier New'; color: blue;">int</span><font face="Courier New"><span class="Apple-converted-space">&nbsp;</span>n,
-i, h[50], a, m, tc=1;</font><span style="font-size: 9.5pt;" lang="EN-US"><font face="Courier New">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-&nbsp;&nbsp;</font><span style="color: green;"><font face="Courier New">//</font><font face="新細明體, serif">陣列 h 要有 50 個元素</font></span></span><br>
-      <font face="Courier New">&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></font><span style="font-family: 'Courier New'; color: blue;">while</span><font face="Courier New"><span class="Apple-converted-space">&nbsp;</span>(cin
-&gt;&gt; n, n) {</font><br>
-      <font face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-a = 0;</font><br>
-      <font face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></font><span style="font-family: 'Courier New'; color: blue;">for</span><font face="Courier New"><span class="Apple-converted-space">&nbsp;</span>(i=0;
-i&lt;n; i++) {</font><br>
-      <font face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-cin &gt;&gt;
-h[i];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></font><span style="font-family: 'Courier New'; color: green;">//</span></span><span style="font-size: 9.5pt; font-family: 新細明體,serif; color: green;">輸 入高度</span><span style="font-size: 9.5pt; font-family: 'Courier New';" lang="EN-US"><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a +=
-h[i];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span><span style="color: green;">//</span></span><span style="font-size: 9.5pt; font-family: 新細明體,serif; color: green;">並 加總</span><span style="font-size: 9.5pt; font-family: 'Courier New';" lang="EN-US"><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a /=
-n;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span><span style="color: green;">//</span></span><span style="font-size: 9.5pt; font-family: 新細明體,serif; color: green;">求 平均高度</span><span style="font-size: 9.5pt; font-family: 'Courier New';" lang="EN-US"><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; m =
-0;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span><span style="color: green;">//m(oves)--</span></span><span style="font-size: 9.5pt; font-family: 新細明體,serif; color: green;">移 動個數</span><span style="font-size: 9.5pt; font-family: 'Courier New';" lang="EN-US"><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span><span style="color: blue;">for</span><span class="Apple-converted-space">&nbsp;</span>(i=0; i&lt;n; i++)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; m +=
-max (0, h[i] -
-a);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span><span style="color: green;">//</span></span><span style="font-size: 9.5pt; font-family: 新細明體,serif; color: green;">超
-出平均高度的個數</span><span style="font-size: 9.5pt; font-family: 'Courier New';" lang="EN-US"><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt;<span class="Apple-converted-space">&nbsp;</span><span style="color: rgb(163, 21, 21);">"Set #"</span><span class="Apple-converted-space">&nbsp;</span>&lt;&lt; tc++ &lt;&lt; endl;<span style="font-size: 9.5pt;" lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: green;">//</span></span><span style="font-size: 9.5pt; font-family: 新細明體,serif; color: green;">依
-題意要求輸出</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt;<span class="Apple-converted-space">&nbsp;</span><span style="color: rgb(163, 21, 21);">"The minimum number of moves is "</span><span class="Apple-converted-space">&nbsp;</span>&lt;&lt; m &lt;&lt;<span class="Apple-converted-space">&nbsp;</span><span style="color: rgb(163, 21, 21);">".\n\n"</span>;<br>
-&nbsp;&nbsp;&nbsp; }<br>
-}<br>
-      </span></p>
-      <div style="margin: 0px; color: rgb(0, 0, 0); line-height: normal; font-family: arial,sans-serif;">
-      <div style="margin: 0px;">b078.&nbsp;<font style="color: rgb(0, 0, 204);" color="#0066cc"><a href="http://zerojudge.tw/ShowProblem?problemid=b078" rel="nofollow">E.
-白飯</a></font></div>
-      </div>
-      <div style="margin: 0px;"><br>
-題目大意：給你&nbsp;<i style="line-height: 1.5; font-size: 10pt;"><span style="font-size: 10pt; font-family: 'Times New Roman',serif;" lang="EN-US">n</span></i><span style="line-height: 1.5; font-size: 10pt;">&nbsp; 個整數，問其中有幾個數小於平均值。</span></div>
-      <div style="margin: 0px;"><br>
-說明：上一題的類題，就自已試一下吧！<br>
-      <br>
-      <div style="margin: 0px; color: rgb(0, 0, 0); line-height: normal; font-family: arial,sans-serif;"><span style="font-size: 10pt;">b026.&nbsp;</span><font style="font-size: 10pt; color: rgb(0, 0, 204);" color="#0066cc"><a href="http://zerojudge.tw/ShowProblem?problemid=b026" rel="nofollow" style="font-size: 10pt;">H. PS3</a></font></div>
-      <div><br>
-      </div>
-題目大意：給定&nbsp;<i style="line-height: 1.5; font-size: 10pt;"><span style="font-size: 10pt; font-family: 'Times New Roman',serif;" lang="EN-US">n</span></i><span style="line-height: 1.5; font-size: 10pt;">&nbsp; 個點的&nbsp;</span><i style="line-height: 1.5; font-size: 10pt;"><span style="font-size: 10pt; font-family: 'Times New Roman',serif;" lang="EN-US">x</span></i><span style="line-height: 1.5; font-size: 10pt; font-family: 'Times New Roman',serif;" lang="EN-US">,<span class="Apple-converted-space">&nbsp;</span><i>y</i></span><span style="font-size: 10pt; line-height: 1.5;">&nbsp;座標，問哪兩點之 間的距離最長。</span></div>
-      <div style="margin: 0px;"><span style="font-size: 10pt; line-height: 1.5;"><br>
-      </span></div>
-      <div style="margin: 0px;">說明：<span style="line-height: 1.5; font-size: 10pt;">這 題需要開兩個陣列，一個陣列用來存&nbsp;</span><i style="line-height: 1.5; font-size: 10pt;"><span style="font-size: 10pt; font-family: 'Times New Roman',serif;" lang="EN-US">x</span></i><span style="line-height: 1.5; font-size: 10pt;">&nbsp; 座標，另一個陣列用來存&nbsp;</span><i style="line-height: 1.5; font-size: 10pt;"><span style="font-size: 10pt; font-family: 'Times New Roman',serif;" lang="EN-US">y</span></i><span style="line-height: 1.5; font-size: 10pt;">&nbsp; 座標。</span></div>
-      <div style="margin: 0px;"><span style="line-height: 1.5; font-size: 10pt;"><br>
-      </span></div>
-      <div style="margin: 0px;"><span style="font-size: 9.5pt; font-family: 'Courier New';" lang="EN-US">&nbsp;
-&nbsp;&nbsp;<span style="color: blue;">int</span><span class="Apple-converted-space">&nbsp;</span>x[3000], y[3000];</span></div>
-      <div style="margin: 0px;"><span style="line-height: 1.5; font-size: 10pt;"><br>
-      </span></div>
-      <div style="margin: 0px;">接下來輸入&nbsp;<i style="line-height: 1.5; font-size: 10pt;"><span style="font-size: 10pt; font-family: 'Times New Roman',serif;" lang="EN-US">n</span></i><span style="line-height: 1.5; font-size: 10pt;">&nbsp; 個點的座標。</span></div>
-      <div style="margin: 0px;"><span style="line-height: 1.5; font-size: 10pt;"><br>
-      </span></div>
-      <div style="margin: 0px;"><span style="font-size: 9.5pt; font-family: 'Courier New';" lang="EN-US">&nbsp;
-&nbsp; &nbsp; &nbsp;&nbsp;<span style="color: blue;">for</span><span class="Apple-converted-space">&nbsp;</span>(i=0; i&lt;n; i++)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cin
-&gt;&gt; x[i] &gt;&gt; y[i];</span></div>
-      <div style="margin: 0px;"><span style="line-height: 1.5; font-size: 10pt;"><br>
-      </span></div>
-      <div style="margin: 0px;"><span style="line-height: 1.5; font-size: 10pt;">由
-於它只是要求出點的編號，所以只要算出兩點之間距離平方就可以比大小，並不需要去開根號。</span></div>
-      <div style="margin: 0px;"><span style="line-height: 1.5; font-size: 10pt;"><br>
-      </span></div>
-      <div style="margin: 0px;"><span style="font-size: 9.5pt; font-family: 'Courier New';" lang="EN-US">&nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;d2 =
-(x[i]-x[j])*(x[i]-x[j]) + (y[i]-y[j])*(y[i]-y[j]);</span></div>
-      <div style="margin: 0px;"><br>
-      </div>
-      <div style="margin: 0px;">其中的 i 和 j 各需要一層的迴圈來處理。</div>
-      <div style="margin: 0px;"><br>
-      <div style="margin: 0px; color: rgb(0, 0, 0); line-height: normal; font-family: arial,sans-serif;">b082<span style="color: rgb(0, 0, 204);">.&nbsp;</span><font style="color: rgb(0, 0, 204);" color="#0066cc"><a href="http://zerojudge.tw/ShowProblem?problemid=b082" rel="nofollow">C.
-國家寶藏</a></font></div>
-      <div><br>
-      </div>
-題目大意：給定&nbsp;<i style="line-height: 1.5; font-size: 10pt;"><span style="font-size: 10pt; font-family: 'Times New Roman',serif;" lang="EN-US">m</span></i><span style="line-height: 1.5; font-size: 10pt;">&nbsp;
-張骨牌，每張骨牌包含了這張骨牌的編號、所代表的字母、及下一張骨牌的編號，問所串連起來的骨牌所代表的文字。</span></div>
-      <div style="margin: 0px;"><span style="line-height: 1.5; font-size: 10pt;"><br>
-      </span></div>
-      <div style="margin: 0px;"><span style="line-height: 1.5; font-size: 10pt;">說 明：這題需要開兩個陣列，第一個陣列
-(儲存每張骨牌所代表的字母，另一個陣列儲存下一張骨牌的編號。</span></div>
-      <div style="margin: 0px;"><br>
-      <span style="font-size: 10pt; color: rgb(0, 0, 0); font-family: arial,sans-serif; line-height: normal;">b101.&nbsp;</span><font style="font-size: 10pt; color: rgb(0, 0, 204); font-family: arial,sans-serif; line-height: normal;" color="#0066cc"><a href="http://zerojudge.tw/ShowProblem?problemid=b101" rel="nofollow">A.
-收集凱蒂貓</a></font></div>
-      <br>
-題目大意：<br>
-      <br>
-      <br>
-      <br>
-      <span style="color: rgb(102, 102, 102); font-family: 微軟正黑體,'Microsoft JhengHei',Tahoma,arial,PMingLiU,新細明體,微軟雅黑體,sans-serif; font-size: 16px; line-height: normal;">b127.&nbsp;</span><a href="http://zerojudge.tw/ShowProblem?problemid=b127" rel="nofollow" style="color: rgb(0, 0, 204); font-size: 1em; font-family: 微軟正黑體,'Microsoft JhengHei',Tahoma,arial,PMingLiU,新細明體,微軟雅黑體,sans-serif; line-height: normal; text-decoration: none;">會
-議中心（Room）</a>
-      <p>費氏數列</p>
-      <p><span style="color: rgb(102, 102, 102); font-family: 微軟正黑體,'Microsoft JhengHei',Tahoma,arial,PMingLiU,新細明體,微軟雅黑體,sans-serif; font-size: 16px; line-height: normal;"><br>
-      </span></p>
-      <p><font color="#666666" face="微軟正黑體, 'Microsoft JhengHei', Tahoma, arial, PMingLiU, 新細明體, 微軟雅黑體, sans-serif" size="3"><span style="line-height: normal;"><br>
-      </span></font></p>
-      <h3 style="background: transparent url(https://ssl.gstatic.com/sites/p/e57d46/system/app/themes/crystalpanel/h3-border.gif) repeat-x scroll 0% 100%; font-family: 'Trebuchet MS',arial,sans-serif; color: rgb(98, 61, 132); font-size: 1.4em; font-weight: normal; padding-bottom: 5px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;"><a name="TOC--" style="color: rgb(69, 22, 112);"></a><span style="color: rgb(102, 102, 102); font-family: 微軟正黑體,'Microsoft JhengHei',Tahoma,arial,PMingLiU,新細明體,微軟雅黑體,sans-serif; line-height: normal;"><font size="4">排列</font></span></h3>
-      <p><span style="color: rgb(102, 102, 102); font-family: 微軟正黑體,'Microsoft JhengHei',Tahoma,arial,PMingLiU,新細明體,微軟雅黑體,sans-serif; font-size: 16px; line-height: normal;">d829.&nbsp;<a href="http://zerojudge.tw/ShowProblem?problemid=d829" rel="nofollow" style="color: rgb(0, 0, 204); font-size: 1em; text-decoration: none;">146
-- ID Codes</a></span></p>
-      <p>next_permutation</p>
-      <p><br>
-      </p>
-      <h3 style="background: transparent url(https://ssl.gstatic.com/sites/p/e57d46/system/app/themes/crystalpanel/h3-border.gif) repeat-x scroll 0% 100%; font-family: 'Trebuchet MS',arial,sans-serif; color: rgb(98, 61, 132); font-size: 1.4em; font-weight: normal; padding-bottom: 5px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;"><a name="TOC--1" style="color: rgb(69, 22, 112);"></a><span style="color: rgb(0, 0, 204);">二維陣列</span></h3>
-      <p style="margin: 0cm 0cm 0pt 24pt;"><font color="#000000" face="'Courier New'" size="3"><span style="line-height: 24px;">int
-a[3][3];</span></font></p>
-      <table style="border: medium none ; margin: 0px; border-collapse: collapse;" border="1" cellpadding="0" cellspacing="0">
-        <tbody>
-          <tr>
-            <td style="border: 1pt solid windowtext; padding: 0cm 5.4pt; vertical-align: top; width: 143.75pt; background-color: transparent;" valign="top" width="192">
-            <p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span lang="EN-US"><font color="#000000" face="Times New Roman" size="3">a[0]</font></span></p>
-            <table style="border: medium none ; margin: 0px; border-collapse: collapse;" border="1" cellpadding="0" cellspacing="0">
-              <tbody>
-                <tr>
-                  <td style="border: 1pt solid windowtext; padding: 0cm 5.4pt; vertical-align: top; width: 42.6pt; background-color: transparent;" valign="top" width="57">
-                  <p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span lang="EN-US"><font color="#000000" face="Times New Roman" size="3">a[0][0]</font></span></p>
-                  </td>
-                  <td style="border-color: windowtext windowtext windowtext rgb(240, 240, 240); border-top: 1pt solid windowtext; border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; padding: 0cm 5.4pt; vertical-align: top; width: 42.6pt; background-color: transparent;" valign="top" width="57">
-                  <p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span lang="EN-US"><font color="#000000" face="Times New Roman" size="3">a[0][1]</font></span></p>
-                  </td>
-                  <td style="border-color: windowtext windowtext windowtext rgb(240, 240, 240); border-top: 1pt solid windowtext; border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; padding: 0cm 5.4pt; vertical-align: top; width: 42.6pt; background-color: transparent;" valign="top" width="57">
-                  <p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span lang="EN-US"><font color="#000000" face="Times New Roman" size="3">a[0][2]</font></span></p>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            </td>
-            <td style="border-color: windowtext windowtext windowtext rgb(240, 240, 240); border-top: 1pt solid windowtext; border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; padding: 0cm 5.4pt; vertical-align: top; width: 143.75pt; background-color: transparent;" valign="top" width="192">
-            <p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span lang="EN-US"><font color="#000000" face="Times New Roman" size="3">a[1]</font></span></p>
-            <table style="border: medium none ; margin: 0px; border-collapse: collapse;" border="1" cellpadding="0" cellspacing="0">
-              <tbody>
-                <tr>
-                  <td style="border: 1pt solid windowtext; padding: 0cm 5.4pt; vertical-align: top; width: 42.6pt; background-color: transparent;" valign="top" width="57">
-                  <p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span lang="EN-US"><font size="3"><font color="#000000"><font face="Times New Roman">a[1][0]</font></font></font></span></p>
-                  </td>
-                  <td style="border-color: windowtext windowtext windowtext rgb(240, 240, 240); border-top: 1pt solid windowtext; border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; padding: 0cm 5.4pt; vertical-align: top; width: 42.6pt; background-color: transparent;" valign="top" width="57">
-                  <p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span lang="EN-US"><font size="3"><font color="#000000"><font face="Times New Roman">a[1][1]</font></font></font></span></p>
-                  </td>
-                  <td style="border-color: windowtext windowtext windowtext rgb(240, 240, 240); border-top: 1pt solid windowtext; border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; padding: 0cm 5.4pt; vertical-align: top; width: 42.6pt; background-color: transparent;" valign="top" width="57">
-                  <p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span lang="EN-US"><font size="3"><font color="#000000"><font face="Times New Roman">a[1][2]</font></font></font></span></p>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            </td>
-            <td style="border-color: windowtext windowtext windowtext rgb(240, 240, 240); border-top: 1pt solid windowtext; border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; padding: 0cm 5.4pt; vertical-align: top; width: 143.75pt; background-color: transparent;" valign="top" width="192">
-            <p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span lang="EN-US"><font color="#000000" face="Times New Roman" size="3">a[2]</font></span></p>
-            <table style="border: medium none ; margin: 0px; border-collapse: collapse;" border="1" cellpadding="0" cellspacing="0">
-              <tbody>
-                <tr>
-                  <td style="border: 1pt solid windowtext; padding: 0cm 5.4pt; vertical-align: top; width: 42.45pt; background-color: transparent;" valign="top" width="57">
-                  <p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span lang="EN-US"><font size="3"><font color="#000000"><font face="Times New Roman">a[2][0]</font></font></font></span></p>
-                  </td>
-                  <td style="border-color: windowtext windowtext windowtext rgb(240, 240, 240); border-top: 1pt solid windowtext; border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; padding: 0cm 5.4pt; vertical-align: top; width: 42.4pt; background-color: transparent;" valign="top" width="57">
-                  <p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span lang="EN-US"><font size="3"><font color="#000000"><font face="Times New Roman">a[2][1]</font></font></font></span></p>
-                  </td>
-                  <td style="border-color: windowtext windowtext windowtext rgb(240, 240, 240); border-top: 1pt solid windowtext; border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; padding: 0cm 5.4pt; vertical-align: top; width: 42.45pt; background-color: transparent;" valign="top" width="57">
-                  <p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span lang="EN-US"><font size="3"><font color="#000000"><font face="Times New Roman">a[2][2]</font></font></font></span></p>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <p style="margin: 0cm 0cm 0pt;"><span lang="EN-US"><font color="#000000" face="Times New Roman" size="3">&nbsp;</font></span></p>
-      <table style="border: medium none ; margin: 0px; border-collapse: collapse;" border="1" cellpadding="0" cellspacing="0">
-        <tbody>
-          <tr>
-            <td style="border-color: rgb(240, 240, 240) windowtext rgb(240, 240, 240) rgb(240, 240, 240); border-right: 1pt solid windowtext; padding: 0cm 5.4pt; vertical-align: top; width: 44.15pt; background-color: transparent;" valign="top" width="59">
-            <p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span lang="EN-US"><font color="#000000" face="Times New Roman" size="3">a[0]</font></span></p>
-            </td>
-            <td style="border-color: windowtext windowtext windowtext rgb(240, 240, 240); border-top: 1pt solid windowtext; border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; padding: 0cm 5.4pt; vertical-align: top; width: 44.15pt; background-color: transparent;" valign="top" width="59">
-            <p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span lang="EN-US"><font size="3"><font color="#000000"><font face="Times New Roman">a[0][0]</font></font></font></span></p>
-            </td>
-            <td style="border-color: windowtext windowtext windowtext rgb(240, 240, 240); border-top: 1pt solid windowtext; border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; padding: 0cm 5.4pt; vertical-align: top; width: 44.15pt; background-color: transparent;" valign="top" width="59">
-            <p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span lang="EN-US"><font size="3"><font color="#000000"><font face="Times New Roman">a[0][1]</font></font></font></span></p>
-            </td>
-            <td style="border-color: windowtext windowtext windowtext rgb(240, 240, 240); border-top: 1pt solid windowtext; border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; padding: 0cm 5.4pt; vertical-align: top; width: 44.15pt; background-color: transparent;" valign="top" width="59">
-            <p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span lang="EN-US"><font size="3"><font color="#000000"><font face="Times New Roman">a[0][2]</font></font></font></span></p>
-            </td>
-          </tr>
-          <tr>
-            <td style="border-color: rgb(240, 240, 240) windowtext rgb(240, 240, 240) rgb(240, 240, 240); border-right: 1pt solid windowtext; padding: 0cm 5.4pt; vertical-align: top; width: 44.15pt; background-color: transparent;" valign="top" width="59">
-            <p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span lang="EN-US"><font color="#000000" face="Times New Roman" size="3">a[1]</font></span></p>
-            </td>
-            <td style="border-color: rgb(240, 240, 240) windowtext windowtext rgb(240, 240, 240); border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; padding: 0cm 5.4pt; vertical-align: top; width: 44.15pt; background-color: transparent;" valign="top" width="59">
-            <p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span lang="EN-US"><font size="3"><font color="#000000"><font face="Times New Roman">a[1][0]</font></font></font></span></p>
-            </td>
-            <td style="border-color: rgb(240, 240, 240) windowtext windowtext rgb(240, 240, 240); border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; padding: 0cm 5.4pt; vertical-align: top; width: 44.15pt; background-color: transparent;" valign="top" width="59">
-            <p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span lang="EN-US"><font size="3"><font color="#000000"><font face="Times New Roman">a[1][1]</font></font></font></span></p>
-            </td>
-            <td style="border-color: rgb(240, 240, 240) windowtext windowtext rgb(240, 240, 240); border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; padding: 0cm 5.4pt; vertical-align: top; width: 44.15pt; background-color: transparent;" valign="top" width="59">
-            <p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span lang="EN-US"><font size="3"><font color="#000000"><font face="Times New Roman">a[1][2]</font></font></font></span></p>
-            </td>
-          </tr>
-          <tr>
-            <td style="border-color: rgb(240, 240, 240) windowtext rgb(240, 240, 240) rgb(240, 240, 240); border-right: 1pt solid windowtext; padding: 0cm 5.4pt; vertical-align: top; width: 44.15pt; background-color: transparent;" valign="top" width="59">
-            <p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span lang="EN-US"><font color="#000000" face="Times New Roman" size="3">a[2]</font></span></p>
-            </td>
-            <td style="border-color: rgb(240, 240, 240) windowtext windowtext rgb(240, 240, 240); border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; padding: 0cm 5.4pt; vertical-align: top; width: 44.15pt; background-color: transparent;" valign="top" width="59">
-            <p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span lang="EN-US"><font size="3"><font color="#000000"><font face="Times New Roman">a[2][0]</font></font></font></span></p>
-            </td>
-            <td style="border-color: rgb(240, 240, 240) windowtext windowtext rgb(240, 240, 240); border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; padding: 0cm 5.4pt; vertical-align: top; width: 44.15pt; background-color: transparent;" valign="top" width="59">
-            <p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span lang="EN-US"><font size="3"><font color="#000000"><font face="Times New Roman">a[2][1]</font></font></font></span></p>
-            </td>
-            <td style="border-color: rgb(240, 240, 240) windowtext windowtext rgb(240, 240, 240); border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; padding: 0cm 5.4pt; vertical-align: top; width: 44.15pt; background-color: transparent;" valign="top" width="59">
-            <p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span lang="EN-US"><font size="3"><font color="#000000"><font face="Times New Roman">a[2][2]</font></font></font></span></p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      </div>
-      </td>
-    </tr>
-  </tbody>
+用迴圈來簡化程式了。</p>
+<script src="https://gist.github.com/allem40306/a64ebcc859bd6557a01bb8557bb469f4.js?file=ch07-05.cpp"></script>
+<p>你可能會覺得這個版本並沒有比之前「暴力版」短多少，那麼看看下面這題，暴力法就完全行不通了。</p>
+<p>c067. Box of Bricks</p>
+<p>題目大意：給你 n 疊立方塊的高度 hi，問最少要移動幾塊立方塊才能讓每疊都一樣高。</p>
+<p>說明：</p>
+<p>這題要先求出每疊立方塊的平均高度，然後把所有超出平均高度的部份加總就是答案了。</p>
+<p>在求平均高度前，要先輸入每一疊的高度並加總。求出平均高度之後，又得回頭去和每疊的高度作比較。因此，這也是典型的陣列應用--我們得先把所有的高度輸
+入、加總，並存入陣列之中。求出平均高度之後，再回頭和陣列中所儲存的每疊高度一一作比較並把超出的部份加總。</p>
+<p>這其中有一個問題：測試資料中會有幾疊立方塊得等程式開始執行並輸入 n
+之後才會知道，那麼我們解題時到底要開多大的陣列呢？開太大會浪費記憶體，開太小程式會爆掉。還好，像這一類的題目通常會明確指定 n
+的範圍，我們程式中的陣列大小必須能處理範圍內所有的可能狀況。以本題來說，題目在輸入說明中明確地說明 1 ≤ n ≤
+50，因此我們的陣列至少必需可以儲存 50 個整數。</p>
+<script src="https://gist.github.com/allem40306/a64ebcc859bd6557a01bb8557bb469f4.js?file=ch07-06.cpp"></script>
+<li><a href="http://contest.cc.ntu.edu.tw/npsc2007/2007jun.doc">2007 NPSC 國中組初賽 b078. E. 白飯</a></li>
+<p>題目大意：給你 n 個整數，問其中有幾個數小於平均值。</p>
+<p>說明：上一題的類題，就自已試一下吧！</p>
+<li><a href="http://contest.cc.ntu.edu.tw/npsc2006/2006senfinal.doc">2008 NPSC 高中組決賽H. PS3</a>
+<p>題目大意：給定 n 個點的 x, y 座標，問哪兩點之間的距離最長。</p>
+<p>說明：這題需要開兩個陣列，一個陣列用來存 x 座標，另一個陣列用來存 y 座標。</p>
+<script src="https://gist.github.com/allem40306/a64ebcc859bd6557a01bb8557bb469f4.js?file=ch07-07.cpp"></script>
+<p>接下來輸入 n 個點的座標。</p>
+<script src="https://gist.github.com/allem40306/a64ebcc859bd6557a01bb8557bb469f4.js?file=ch07-08.cpp"></script>
+<p>由於它只是要求出點的編號，所以只要算出兩點之間距離平方就可以比大小，並不需要去開根號。</p>
+<script src="https://gist.github.com/allem40306/a64ebcc859bd6557a01bb8557bb469f4.js?file=ch07-09.cpp"></script>
+<p>其中的 i 和 j 各需要一層的迴圈來處理。</p>
+<li><a href="http://contest.cc.ntu.edu.tw/npsc2007/doc/2007junfinal.doc">b082. C. 國家寶藏</a></li>
+<p>題目大意：給定 m 張骨牌，每張骨牌包含了這張骨牌的編號、所代表的字母、及下一張骨牌的編號，問所串連起來的骨牌所代表的文字。</p>
+<p>說明：這題需要開兩個陣列，第一個陣列 (儲存每張骨牌所代表的字母，另一個陣列儲存下一張骨牌的編號。</p>
+<li><a href="http://contest.cc.ntu.edu.tw/npsc2005/problem/2005jFinal.doc">2005 NPSC 國中組決賽 A. 收集凱蒂貓</a></li>
+<h3>費氏數列</h3>
+<li><a href="https://zerojudge.tw/ShowProblem?problemid=b127">b127. 會議中心（Room）</a></li>
+<h3>排列(next_permutation)</h3>
+<li><a href="https://zerojudge.tw/ShowProblem?problemid=d829">d829. 146 - ID Codes</a></li>
+<h2>二維陣列</h2>
+<p>int a[3][3];</p>
+<table>
+	<tr>
+		<td align="center">
+		a[0]<br><table>
+			<tr><td>a[0][0]</td><td>a[0][1]</td><td>a[0][2]</td></tr>
+		</table>
+		</td>
+		<td align="center">
+		a[1]<br><table>
+			<tr><td>a[1][0]</td><td>a[1][1]</td><td>a[1][2]</td></tr>
+		</table>
+		</td>
+		<td align="center">
+		a[2]<br><table>
+			<tr><td>a[2][0]</td><td>a[2][1]</td><td>a[2][2]</td></tr>
+		</table>
+		</td>
+	</tr>
 </table>
-</div>
-</div>
-
-</body></html>
+<br><br>
+<table>
+	<tr>
+		<td></td><th>0</th><th>1</th><th>2</th>
+	</tr>
+	<tr>
+		<th>0</th><td>a[0][0]</td><td>a[0][1]</td><td>a[0][2]</td>
+	</tr>
+	<tr>
+		<th>1</th><td>a[1][0]</td><td>a[1][1]</td><td>a[1][2]</td>
+	</tr>
+	<tr>
+		<th>2</th><td>a[2][0]</td><td>a[2][1]</td><td>a[2][2]</td>
+	</tr>
+</table>
+	<br><br><br>
+<p></body></html>

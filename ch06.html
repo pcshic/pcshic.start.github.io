@@ -1,584 +1,143 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html><head>
-
-
-  <meta charset="UTF-8">
+  
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title>第六章 字元與字串</title>
 
   
-  <meta content="text/html; charset=UTF-8" http-equiv="content-type"><title>第六章 字元與字串</title></head><body>
-<h3 id="sites-page-title-header" style="margin: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 50%; font-size: 1.8em; font-weight: bold; padding-left: 10px; padding-right: 10px; font-family: 'Trebuchet MS',arial,sans-serif; color: black; padding-bottom: 5px; font-style: normal; font-variant: normal; line-height: normal; letter-spacing: normal; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;" align="left"><span id="sites-page-title" dir="ltr" tabindex="-1" style="outline-color: invert; outline-style: none; outline-width: medium;">第
-六章 字元與字串</span></h3>
-
-<div id="sites-canvas-main" class="sites-canvas-main" style="overflow: hidden; padding-top: 15px; min-height: 150px; padding-bottom: 5px; color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);">
-<div id="sites-canvas-main-content">
-<table class="sites-layout-name-one-column sites-layout-hbox" style="margin: 0px; width: 1370px; table-layout: fixed; height: 8618px;" cellspacing="0">
-  <tbody>
-    <tr>
-      <td class="sites-layout-tile sites-tile-name-content-1" style="padding: 10px; vertical-align: top;">
-      <div dir="ltr">
-      <div class="sites-embed-align-left-wrapping-off" style="margin: 5px auto 5px 0px; display: block; clear: both; text-align: left; color: black;">
-      <div class="sites-embed-border-off sites-embed" style="border-style: solid; border-color: rgb(221, 221, 221) rgb(187, 187, 187) rgb(187, 187, 187) rgb(221, 221, 221); border-width: 1px; margin: 0px auto 5px 0px; background: transparent none repeat scroll 0% 50%; font-size: 12px; width: 250px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;">
-      <div class="sites-embed-content sites-embed-type-toc" style="overflow: visible; text-align: left;">
-      <div class="goog-toc sites-embed-toc-maxdepth-6" style="border: 1px solid rgb(197, 197, 197); background: rgb(239, 239, 239) none repeat scroll 0% 50%; overflow: hidden; text-align: left; line-height: 1.5em; list-style-type: none; list-style-image: none; list-style-position: outside; margin-bottom: 5px; width: auto; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;">
-      <p style="margin: 0px; padding: 3px 5px 0px; font-weight: bold; font-style: normal; font-variant: normal; font-size: 1.2em; line-height: normal; font-family: 'Trebuchet MS',arial,sans-serif;">內
-容</p>
-      <ol class="goog-toc" style="list-style-type: none; list-style-image: none; list-style-position: outside; text-align: left; line-height: 1.5em; margin-left: 10px; padding-left: 0px;">
-        <li class="goog-toc" style="text-align: left; line-height: 1.5em; list-style-type: none; list-style-image: none; list-style-position: outside;"><a href="#start6.1" style="text-decoration: none; border-bottom-style: none; background-color: transparent;"><strong><span class="Apple-converted-space"></span></strong>6.1 字元型別</a>
-          <ol class="goog-toc" style="list-style-type: none; list-style-image: none; list-style-position: outside; text-align: left; line-height: 1.5em; margin-left: 10px; padding-left: 0px;">
-            <li class="goog-toc" style="text-align: left; line-height: 1.5em; list-style-type: none; list-style-image: none; list-style-position: outside;"><a href="#start6.1.1" style="text-decoration: none; border-bottom-style: none; background-color: transparent;"><strong>6.1.1<span class="Apple-converted-space"> </span></strong>字 元型別 (char)</a></li>
-            <li class="goog-toc" style="text-align: left; line-height: 1.5em; list-style-type: none; list-style-image: none; list-style-position: outside;"><a href="#start6.1.2" style="text-decoration: none; border-bottom-style: none; background-color: transparent;"><strong>6.1.2<span class="Apple-converted-space"></span></strong>取 得白空白</a></li>
-          </ol>
-        </li>
-        <li class="goog-toc" style="text-align: left; line-height: 1.5em; list-style-type: none; list-style-image: none; list-style-position: outside;"><a href="#start6.2" style="text-decoration: none; border-bottom-style: none; background-color: transparent;"><strong><span class="Apple-converted-space"></span></strong>6.2 字串</a>
-          <ol class="goog-toc" style="list-style-type: none; list-style-image: none; list-style-position: outside; text-align: left; line-height: 1.5em; margin-left: 10px; padding-left: 0px;">
-            <li class="goog-toc" style="text-align: left; line-height: 1.5em; list-style-type: none; list-style-image: none; list-style-position: outside;"><a href="#start6.2.1" style="text-decoration: none; border-bottom-style: none; background-color: transparent;"><strong>6.2.1<span class="Apple-converted-space">&nbsp;</span></strong>&lt;ccytpe&gt;</a>
-              <ol class="goog-toc" style="list-style-type: none; list-style-image: none; list-style-position: outside; text-align: left; line-height: 1.5em; margin-left: 10px; padding-left: 0px;">
-                <li class="goog-toc" style="text-align: left; line-height: 1.5em; list-style-type: none; list-style-image: none; list-style-position: outside;"><a href="#start6.2.1.1" style="text-decoration: none; border-bottom-style: none; background-color: transparent;"><strong>6.2.1.1<span class="Apple-converted-space">&nbsp;</span></strong>string.find()</a></li>
-              </ol>
-            </li>
-          </ol>
-        </li>
-      </ol>
-      </div>
-      </div>
-      </div>
-      </div>
-      <h2 style="background: transparent url(https://ssl.gstatic.com/sites/p/e57d46/system/app/themes/crystalpanel/h2-border.gif) repeat-x scroll 0% 100%; font-family: 'Trebuchet MS',arial,sans-serif; color: black; font-size: 2em; letter-spacing: 0.1em; font-weight: normal; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;"><a name="start6.1"></a>6.1 字元型別</h2>
-      <div style="color: black;"><span style="line-height: normal; font-size: 16px;">npsc2008國中組決賽</span><span style="line-height: normal; font-size: 16px;">&nbsp; <a href="http://contest.cc.ntu.edu.tw/npsc2008/2008jun_final.pdf" rel="nofollow" style="font-size: 1em; text-decoration: none;">A. 犯人的編號</a></span></div>
-      <div style="color: black;"><br>
-      </div>
-      <div style="color: black;"><font size="3">題目大意：這題就是我們常玩的 xAxB
-猜數字遊戲。答案及猜測均是不重覆的四位數字，若兩者含有相同的數字且位置相同者為 A，含有相同的數字但位置不同者為 B，判斷所給的每個猜測為幾
-A 幾 B。</font></div>
-      <div style="color: black;"><font size="3"><br>
-      </font></div>
-      <div style="color: black;"><font size="3">要算出幾 A 幾
-B，我們必須將這個四位數字拆開來，再一一地去比對每一位數是否相同。我們可以用數字的方式輸入，再以 % 10
-的運算一位數一位數地取出來。然後依題意算出幾 A 幾 B。</font></div>
-      <div style="color: black;"><font size="3"><br>
-      </font></div>
-      <div style="color: black;"><span style="line-height: 15px;">
-      <p><span lang="EN-US"><font face="'courier new', monospace" size="2">//b222: A.<span class="Apple-converted-space">&nbsp;</span>犯人的
-編號&nbsp;<span lang="EN-US">by Snail (2008 NPSC<span class="Apple-converted-space">&nbsp;</span></span>國 中組決賽<span lang="EN-US">)<br>
-      </span>#include<span lang="EN-US"><span class="Apple-converted-space">&nbsp;</span>&lt;iostream&gt;<br>
-using<span class="Apple-converted-space">&nbsp;</span>namespace<span class="Apple-converted-space">&nbsp;</span>std;<br>
-      <br>
-int<span class="Apple-converted-space">&nbsp;</span>main () {<br>
-      <span>&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span>int<span class="Apple-converted-space">&nbsp;</span>a1, a2, a3, a4, g1, g2, g3,
-g4;<br>
-      <span>&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span>int<span class="Apple-converted-space">&nbsp;</span>n, A, B;<br>
-      <span>&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span>cin
-&gt;&gt; a4;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span>//</span>輸 入 4 位數整數<span lang="EN-US"><br>
-      </span><span lang="EN-US"><span>&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span>a1 = a4 / 1000;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span>//</span>取 千位數<span lang="EN-US"><br>
-      </span><span lang="EN-US"><span>&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span>a2 = a4 / 100 % 10;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span>//</span>取 百位數<span lang="EN-US"><br>
-      </span><span lang="EN-US"><span>&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span>a3 = a4 / 10 % 10;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span>//</span>取 十位數<span lang="EN-US"><br>
-      </span><span lang="EN-US"><span>&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span>a4 %= 10;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span>//</span>取 個位數<span lang="EN-US"><br>
-      </span><span lang="EN-US"><span>&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span>cin &gt;&gt; n;<br>
-      <span>&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span>while<span class="Apple-converted-space">&nbsp;</span>(n--) {<br>
-      <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span>cin &gt;&gt; g4;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span>//</span>輸 入 4 位數整數<span lang="EN-US"><br>
-      </span><span lang="EN-US"><span>&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span>&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span>g1 = g4 / 1000;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span>//</span>取 千位數<span lang="EN-US"><br>
-      </span><span lang="EN-US"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span>g2 = g4 / 100 % 10;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span>//</span>取 百位數<span lang="EN-US"><br>
-      </span><span lang="EN-US"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span>g3 = g4 / 10 % 10;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span>//</span>取 十位數<span lang="EN-US"><br>
-      </span><span lang="EN-US"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span>g4 %= 10;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span>//</span>取 個位數<span lang="EN-US"><br>
-      </span><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-A = (a1 == g1) + (a2 == g2) + (a3 == g3) + (a4 == g4);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B = (a1 == g2) + (a1 == g3)
-+ (a1 == g4) +<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (a2
-== g1) + (a2 == g3) + (a2 == g4) +<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (a3
-== g1) + (a3 == g2) + (a3 == g4) +<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (a4
-== g1) + (a4 == g2) + (a4 == g3);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; A &lt;&lt;<span class="Apple-converted-space">&nbsp;</span>"A"<span class="Apple-converted-space">&nbsp;</span>&lt;&lt; B &lt;&lt;<span class="Apple-converted-space">&nbsp;</span>"B\n";<br>
-&nbsp;&nbsp;&nbsp; }<br>
-}</span></font></span></p>
-      <h3 style="background: transparent url(https://ssl.gstatic.com/sites/p/e57d46/system/app/themes/crystalpanel/h3-border.gif) repeat-x scroll 0% 100%; font-family: 'Trebuchet MS',arial,sans-serif; font-size: 1.4em; font-weight: normal; padding-bottom: 5px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;"><a name="start6.1.1"></a><font face="'Courier New'">6.1.1字元型別 (char)</font></h3>
-      </span>
-      <div style="font-size: medium;"><span style="line-height: 1.5;">基
-本上，char 也是一個整數型態，它的長度只有一個 byte，範圍則是從 -128 到 127。它和其它整數型態 (int, short,
-long long 等) 不同的是，它在輸入或輸出時會以字元的型式來進行。</span></div>
-      <div style="font-size: medium;"><br>
-      </div>
-      <div><span lang="EN-US"><font face="'courier new', monospace" size="2">&nbsp; &nbsp;&nbsp;char<span class="Apple-converted-space">&nbsp;</span>ch;<br>
-&nbsp;&nbsp;&nbsp; ch = 13;<br>
-&nbsp;&nbsp;&nbsp; ch *= 5;<br>
-&nbsp;&nbsp;&nbsp; cout &lt;&lt; ch;</font></span><span lang="EN-US"><font face="'courier new', monospace" size="2"><br>
-      </font><br>
-      </span></div>
-      </div>
-      <div style="color: black;"><font size="3"><span style="line-height: 24px;">從上面的程式碼 片段中我們可以看得出來，char
+</head><body style="background-image: url(picture/background.png);">
+<h1>第六章 字元與字串</h1>
+<h2>6.1 字元型別</h2>
+<li><a href="http://contest.cc.ntu.edu.tw/npsc2008/2008jun_final.pdf">2008 NPSC 國中組決賽 A. 犯人的編號</a></li>
+<p>題目大意：這題就是我們常玩的 xAxB 猜數字遊戲。答案及猜測均是不重覆的四位數字，若兩者含有相同的數字且位置相同者為
+A，含有相同的數字但位置不同者為 B，判斷所給的每個猜測為幾 A 幾 B。</p>
+<p>要算出幾 A 幾 B，我們必須將這個四位數字拆開來，再一一地去比對每一位數是否相同。我們可以用數字的方式輸入，再以 % 10
+的運算一位數一位數地取出來。然後依題意算出幾 A 幾 B。</p>
+<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-01.cpp""></script>
+<h2>字元型別 (char)</h2>
+<p>基本上，char 也是一個整數型態，它的長度只有一個 byte，範圍則是從 -128 到 127。它和其它整數型態 (int, short,
+long long 等) 不同的是，它在輸入或輸出時會以字元的型式來進行。</p>
+<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-02.cpp""></script>
+<p>從上面的程式碼片段中我們可以看得出來，char
 的變數的確可以當作整數來使用，只是它的範圍比較小，要小心溢位。但是在輸出的時候，它就不是輸出整數值了哦！以上面的程式來說，變數 ch 的值是
-65，但是輸出時會輸出<span class="Apple-converted-space">&nbsp;</span><a href="http://pcshic.github.io/start/appendix.html#start.appendixC" target="_blank">ASCII</a><span class="Apple-converted-space">&nbsp;</span>碼
-為 65 的字元，也就是 A。</span></font></div>
-      <div style="color: black;"><font size="3"><span style="line-height: 24px;"><br>
-      </span></font></div>
-      <div style="color: black;"><font size="3"><span style="line-height: 24px;">char 在輸入時也有別於其他整數，它會一次輸入一個字元，並儲存該字元的<span class="Apple-converted-space">&nbsp;</span><a href="https://sites.google.com/site/pcshic/cppzero/fu-lu-e-ascii-zi-ma-biao" target="_blank">ASCII</a><span class="Apple-converted-space">&nbsp;</span>碼。</span></font></div>
-      <div style="color: black;"><font size="3"><span style="line-height: 24px;"><br>
-      </span></font></div>
-      <span style="color: black;" lang="EN-US"><font face="'courier new', monospace" size="2">&nbsp; &nbsp;&nbsp;char<span class="Apple-converted-space">&nbsp;</span>ch;<br>
-&nbsp;&nbsp;&nbsp; cin &gt;&gt; ch;<br>
-&nbsp;&nbsp;&nbsp; cout &lt;&lt; (int)ch;</font><font face="'courier new', monospace" size="2"><br>
-      </font><br>
-      </span>
-      <div style="color: black;"><font size="3">這段程式碼可以輸入一個字元，並輸出它的<span class="Apple-converted-space">&nbsp;</span>ASCII<span class="Apple-converted-space">&nbsp;</span>碼。由於字元變數在輸入
-時，一次只輸入一個字元，我們就可以把「</font><span style="line-height: normal; font-size: 16px;"><a href="http://zerojudge.tw/ShowProblem?problemid=b222" rel="nofollow" style="font-size: 1em; text-decoration: none;">犯人的編號</a></span><span style="line-height: 24px; font-size: medium;">」 程式改寫如下：</span></div>
-      <div style="color: black;"><span style="line-height: 24px; font-size: medium;"><br>
-      </span></div>
-      <div style="color: black;"><span style="line-height: 24px; font-size: medium;"><span style="line-height: 15px; font-family: 'courier new',monospace; font-size: small;">//b222:
-A.&nbsp;犯人的編號&nbsp;<span lang="EN-US">by Snail (2008 NPSC&nbsp;</span>國中
-組決賽<span lang="EN-US">)<br>
-      </span>#include<span lang="EN-US">&nbsp;&lt;iostream&gt;<br>
-using&nbsp;namespace&nbsp;std;<br>
-      <br>
-int&nbsp;main () {<br>
-      <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>char&nbsp;a1, a2, a3, a4,
-g1, g2, g3, g4;<br>
-      <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>int&nbsp;n, A, B;<br>
-      <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>cin&nbsp;&gt;&gt; a1</span></span></span><span style="line-height: 15px; font-family: 'courier new',monospace; font-size: small;">&nbsp;&gt;&gt;
-a2</span><span style="line-height: 15px; font-family: 'courier new',monospace; font-size: small;">&nbsp;&gt;&gt;
-a3</span><span style="line-height: 15px; font-family: 'courier new',monospace; font-size: small;">&nbsp;&gt;&gt;
-a4</span><span style="line-height: 15px; font-family: 'courier new',monospace; font-size: small;"><span lang="EN-US">;<span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-&nbsp;&nbsp;</span>//</span>輸入 4 個字元</span></div>
-      <div style="color: black;"><span style="line-height: 24px; font-size: medium;"><span style="line-height: 15px; font-family: 'courier new',monospace; font-size: small;"><span lang="EN-US"><span>&nbsp; &nbsp;&nbsp;</span>cin &gt;&gt; n;<br>
-      <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>while&nbsp;(n--) {<br>
-      <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>cin&nbsp;&gt;&gt;
-g1</span></span></span><span style="line-height: 15px; font-family: 'courier new',monospace; font-size: small;">&nbsp;&gt;&gt;
-g2</span><span style="line-height: 15px; font-family: 'courier new',monospace; font-size: small;">&nbsp;&gt;&gt;
-g3</span><span style="line-height: 15px; font-family: 'courier new',monospace; font-size: small;">&nbsp;&gt;&gt;
-g4</span><span style="line-height: 15px; font-family: 'courier new',monospace; font-size: small;"><span lang="EN-US">;<span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span>//</span>輸
-入 4 個字元</span></div>
-      <div style="color: black;"><span style="line-height: 24px; font-size: medium;"><span style="line-height: 15px; font-family: 'courier new',monospace; font-size: small;"><span lang="EN-US">&nbsp; &nbsp; &nbsp; &nbsp; A = (a1 == g1) + (a2 == g2) +
-(a3 == g3) + (a4 == g4);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B = (a1 == g2) + (a1 == g3)
-+ (a1 == g4) +<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (a2
-== g1) + (a2 == g3) + (a2 == g4) +<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (a3
-== g1) + (a3 == g2) + (a3 == g4) +<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (a4
-== g1) + (a4 == g2) + (a4 == g3);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; A
-&lt;&lt;&nbsp;"A"&nbsp;&lt;&lt; B &lt;&lt;&nbsp;"B\n";<br>
-&nbsp;&nbsp;&nbsp; }<br>
-}</span></span></span></div>
-      <div style="color: black;"><span style="line-height: 24px; font-size: medium;"><br>
-      </span></div>
-      <div style="color: black;"><font size="3"><span style="line-height: 24px;">在這個版本 中，a1
-只會輸入一個字元，也就是千位數，剩下的百位、十位、個位數則分別輸入到 a2, a3, 及 a4 了。不像 int
-會輸入整個整數，之後還得把它拆開來，輸入字元時，每個字元都會分開存在不同的變數裡，不需要再去拆了。</span></font></div>
-      <div style="color: black;"><span style="line-height: 24px; font-size: medium;"><br>
-      </span></div>
-      <h3 style="background: transparent url(https://ssl.gstatic.com/sites/p/e57d46/system/app/themes/crystalpanel/h3-border.gif) repeat-x scroll 0% 100%; font-family: 'Trebuchet MS',arial,sans-serif; color: black; font-size: 1.4em; font-weight: normal; padding-bottom: 5px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;"><a name="start6.1.2"></a><big><big><big><big><big><span style="line-height: 24px; font-size: medium;">6.1.2取得白空白</span></big></big></big></big></big></h3>
-      <div style="color: black;"><span style="line-height: 24px; font-size: medium;"><span>c007.&nbsp;<a href="http://zerojudge.tw/ShowProblem?problemid=c007" rel="nofollow" style="font-size: 1em; text-decoration: none;">TeX Quotes</a></span></span></div>
-      <div style="color: black;"><font size="3"><span style="line-height: 24px;"><br>
-      </span></font></div>
-      <div style="color: black;"><font size="3"><span style="line-height: 24px;">題意：照樣輸出 所輸入的每個字元，但是第奇數個雙引號「<span style="line-height: normal; font-family: monospace; white-space: pre; font-size: 16px;">"</span></span></font><font size="3"><span style="line-height: 24px;">」要改成兩個左單引號「</span></font><span style="line-height: normal; font-family: monospace; white-space: pre; font-size: 16px;">``」，<br>
-而第偶數個雙引號要改成兩個右單引號「</span><span style="line-height: normal; font-family: monospace; white-space: pre; font-size: 16px;">''</span><span style="line-height: normal; font-family: monospace; white-space: pre; font-size: 16px;">」。</span></div>
-      <div style="color: black;"><span style="line-height: normal; font-family: monospace; white-space: pre; font-size: 16px;"><br><br>
-      </span></div>
-      <div style="color: black;"><span style="line-height: normal; font-family: monospace; white-space: pre; font-size: 16px;">如果我們只是要把輸入的內容一模一樣地輸出，我們可以試試下面的小程式：<br>
-      <br>
-</span></div>
-      
-      
-      <div style="color: black;"><span style="line-height: normal; font-family: monospace; white-space: pre; font-size: 16px;"></span><font face="monospace" size="3"><span style="line-height: normal; white-space: pre;"><div class="sites-codeblock sites-codesnippet-block" style="border: 1px solid rgb(211, 211, 211); padding: 0.5em 0px 0.5em 1em; display: block; line-height: 1; background-color: rgb(239, 239, 239);"><code>int<br>
-main() { char ch; while (cin &gt;&gt; ch) cout &lt;&lt; ch; }</code></div></span></font><span style="line-height: normal; font-family: monospace; white-space: pre; font-size: 16px;"></span></div>
-      <div style="color: black;"><span style="line-height: 24px; font-size: medium;">執行上面的程式，輸入題目所給的範例測資：</span></div>
-      <div style="color: black;"><font size="3"><span>
-      <pre><div class="sites-codeblock sites-codesnippet-block" style="border: 1px solid rgb(211, 211, 211); padding: 0.5em 0px 0.5em 1em; display: block; line-height: 1; background-color: rgb(239, 239, 239);"><code>"To be or not to be," quoth the Bard, "that<br>is the question".<br>The programming contestant replied: "I must disagree.<br>To `C' or not to `C', that is The Question!"</code></div></pre>
-      </span></font></div>
-      <div style="color: black;"><font size="3">你卻得到以下的結果：</font></div>
-      <div style="color: black;"><font size="3"><br>
-      </font></div>
-      <div style="color: black;">
-      <div class="sites-codeblock sites-codesnippet-block" style="border: 1px solid rgb(211, 211, 211); padding: 0.5em 0px 0.5em 1em; display: block; line-height: 1; background-color: rgb(239, 239, 239);">
-      <div><font size="3"><span style="line-height: 16px; font-family: monospace;">"Tobeornottobe,"quoththeBard,"that</span><span style="line-height: 16px; font-family: monospace;">isthequestion".</span><span style="line-height: 16px; font-family: monospace;">Theprogrammingcontestantreplied:"</span></font><font size="3"><span style="line-height: 16px; font-family: monospace;">Imustdisagree.</span><span style="line-height: 16px; font-family: monospace;">To`C'orno</span></font></div>
-      <div><font size="3"><span style="line-height: 16px; font-family: monospace;">tt</span></font><font size="3"><span style="line-height: 16px; font-family: monospace;">o`C',thatisTheQuestion!"</span></font></div>
-      </div>
-      </div>
-      <div style="color: black;"><font size="3"><br>
-      </font></div>
-      <div style="color: black;"><font size="3">也就是所有的「白空白」，包括空白與換行，統統不見
-了！當我們用 &gt;&gt;
+65，但是輸出時會輸出 ASCII 碼為 65 的字元，也就是 A。</p>
+<p>char 在輸入時也有別於其他整數，它會一次輸入一個字元，並儲存該字元的 ASCII 碼。</p>
+<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-03.cpp""></script>
+<p>這段程式碼可以輸入一個字元，並輸出它的 ASCII 碼。由於字元變數在輸入時，一次只輸入一個字元，我們就可以把「犯人的編號」程式改寫如下：<p>
+<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-04.cpp""></script>
+<p>在這個版本中，a1 只會輸入一個字元，也就是千位數，剩下的百位、十位、個位數則分別輸入到 a2, a3, 及 a4 了。不像 int
+會輸入整個整數，之後還得把它拆開來，輸入字元時，每個字元都會分開存在不同的變數裡，不需要再去拆了。</p>
+<h3>取得白空白</h3>
+<li><a href="https://zerojudge.tw/ShowProblem?problemid=c007">c007. TeX Quotes</a></li>
+<p>題意：照樣輸出所輸入的每個字元，但是第奇數個雙引號「"」要改成兩個左單引號「``」，而第偶數個雙引號要改成兩個右單引號「''」。</p>
+<p>如果我們只是要把輸入的內容一模一樣地輸出，我們可以試試下面的小程式：<p>
+<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-05-1.cpp""></script>
+<p>執行上面的程式，輸入題目所給的範例測資：</p>
+<p>"To be or not to be," quoth the Bard, "that<br>is the question".<br>The programming contestant replied: "I must disagree.<br>To `C' or not to `C', that is The Question!"</p>
+<p>你卻得到以下的結果：<p>
+<p>"Tobeornottobe,"quoththeBard,"thatisthequestion".Theprogrammingcontestantreplied:"Imustdisagree.To`C'orno<br>tto`C',thatisTheQuestion!"</p>
+<p>也就是所有的「白空白」，包括空白與換行，統統不見了！當我們用 &gt;&gt;
 運算子來作輸入時，它會自動跳過白空白，以致於我們無法取得輸入的白空白。如果程式中要取得輸入的白空白，我們就必須用 cin 的成員函數
-get()。</font></div>
-      <div style="color: black;"><font size="3"><br>
-      </font></div>
-      <div style="color: black;"><font size="3"><span style="line-height: 24px;">要用 get() 來輸入一個字元到字元變數 ch 中有兩種用法：</span></font></div>
-      <div style="color: black;"><font size="3"><br>
-      </font></div>
-      <div style="color: black;"><font size="3"><span style="line-height: 24px;">ch = cin.get()&nbsp;或&nbsp;</span></font><span style="line-height: 24px; font-size: medium;">cin.get(ch)</span></div>
-      <div style="color: black;"><font size="3"><span style="line-height: 24px;"><br>
-      </span></font></div>
-      <div style="color: black;"><font size="3"><span style="line-height: 24px;">cin.get()
-的括號中若沒有任何參數，那麼它會回傳它所讀到的字元，我們再用指定運算子「=」把回傳的值設定給 ch。</span></font></div>
-      <div style="color: black;"><font size="3"><br>
-      </font></div>
-      <div style="color: black;"><font style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; background-color: rgb(255, 255, 255);" size="2"><span style="font-family: 'Courier New'; color: green;" lang="EN-US">//272 - TeX Quotes (by Snail)</span><span style="font-family: 'Courier New';" lang="EN-US"><br><span style="color: blue;">#include</span><span class="Apple-converted-space">&nbsp;</span><span style="color: rgb(163, 21, 21);">&lt;iostream&gt;</span><br><span style="color: blue;">using</span><span class="Apple-converted-space">&nbsp;</span><span style="color: blue;">namespace</span><span class="Apple-converted-space">&nbsp;</span>std;<br><br><span style="color: blue;">int</span><span class="Apple-converted-space">&nbsp;</span>main () {<br>&nbsp; &nbsp;&nbsp;<span style="color: blue;">char</span><span class="Apple-converted-space">&nbsp;</span>ch;<br>&nbsp; &nbsp;&nbsp;<span style="color: blue;">int</span><span class="Apple-converted-space">&nbsp;</span>n = 1;<br>&nbsp; &nbsp;&nbsp;<span style="color: blue;">while</span><span class="Apple-converted-space">&nbsp;</span>(cin.get(ch)) {<br>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<span style="color: blue;">if</span><span class="Apple-converted-space">&nbsp;</span>(ch ==<span class="Apple-converted-space">&nbsp;</span><span style="color: rgb(163, 21, 21);">'"'</span>)<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<span style="color: blue;">if</span><span class="Apple-converted-space">&nbsp;</span>(n++ % 2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span><span style="color: green;">//</span></span><span style="font-family: 新細明體,serif; color: green;">第奇數個雙引號</span></font><span style="color: rgb(86, 85, 85); font-size: 13.3333px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; font-family: 'Courier New'; background-color: rgb(255, 255, 255);" lang="EN-US"><font size="2"><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;cout &lt;&lt;<span class="Apple-converted-space">&nbsp;</span><span style="color: rgb(163, 21, 21);">"``"</span>;<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<span style="color: blue;">else</span><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;cout &lt;&lt;<span class="Apple-converted-space">&nbsp;</span><span style="color: rgb(163, 21, 21);">"''"</span>;<br>&nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-converted-space">&nbsp;</span><span style="color: blue;">else</span><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;cout &lt;&lt; ch;<br>&nbsp;&nbsp; }<br>}</font></span><span style="font-family: 'Courier New';" lang="EN-US"><font size="2">
-      </font><br>
-      </span></div>
-      <div style="color: black;"><font size="3"><br>
-      </font></div>
-      <div><span style="color: rgb(102, 102, 102); font-size: 16px; line-height: normal;"><span style="color: black;">d103.</span>&nbsp;</span><a href="http://zerojudge.tw/ShowProblem?problemid=d103" rel="nofollow" style="color: rgb(0, 0, 204); line-height: normal; text-decoration: none;"><font size="3">NOIP 2008 1.ISBN號碼</font></a><br>
-      </div>
-      <div><span lang="EN-US">題目大意：判斷所輸入的 ISBN 號碼是否正確。<br>
-      <br>
-因為輸入進來的"數字"其實c1,c2......存的是代表該"數字"的ASCII碼，例如c1=字元「0」， c1 存的其實是 48 ，
-所以要做計算的時候必須先減掉48(0的ASCII碼) !<br>
-      <br>
-      <font color="#008000" face="Courier New"><span style="font-size: 9.5pt;"></span></font></span><span style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13.3333px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; background-color: rgb(255, 255, 255);" lang="EN-US"><font color="#008000" face="Courier New"><span style="font-size: 9.5pt;">//d103. NOIP 2008 1.ISBN</span></font></span><span style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; font-size: 9.5pt; font-family: 新細明體,serif; color: green; background-color: rgb(255, 255, 255);">號碼</span><span style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; font-size: 9.5pt; font-family: 'Courier New'; color: green; background-color: rgb(255, 255, 255);" lang="EN-US"><span class="Apple-converted-space">&nbsp;</span>by Snail</span><span style="color: rgb(86, 85, 85); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; font-size: 9.5pt; font-family: 'Courier New'; background-color: rgb(255, 255, 255);" lang="EN-US"><br><span style="color: blue;">#include</span><span class="Apple-converted-space">&nbsp;</span><span style="color: rgb(163, 21, 21);">&lt;iostream&gt;</span><br><span style="color: blue;">#include</span><span class="Apple-converted-space">&nbsp;</span><span style="color: rgb(163, 21, 21);">&lt;string&gt;</span><br><span style="color: blue;">using</span><span class="Apple-converted-space">&nbsp;</span><span style="color: blue;">namespace</span><span class="Apple-converted-space">&nbsp;</span>std;<br><br><span style="color: blue;">int</span><span class="Apple-converted-space">&nbsp;</span>main () {<br>&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span><span style="color: blue;">char</span><span class="Apple-converted-space">&nbsp;</span>d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,cs,ch;&nbsp;<span class="Apple-converted-space">&nbsp;</span><span style="color: green;">//cs (checksum)--</span></span><span style="font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; font-size: 9.5pt; font-family: 新細明體,serif; color: green; background-color: rgb(255, 255, 255);">檢查碼</span><span style="color: rgb(86, 85, 85); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; font-size: 9.5pt; font-family: 'Courier New'; background-color: rgb(255, 255, 255);" lang="EN-US"><br>&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span><span style="color: blue;">while</span><span class="Apple-converted-space">&nbsp;</span>(cin
-&gt;&gt; d1 &gt;&gt; ch &gt;&gt; d2 &gt;&gt; d3 &gt;&gt; d4 &gt;&gt; ch
-&gt;&gt; d5 &gt;&gt; d6 &gt;&gt; d7 &gt;&gt; d8 &gt;&gt; d9 &gt;&gt; ch
-&gt;&gt; d10) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cs = (d1*1 + d2*2 + d3*3 + d4*4 + d5*5 + d6*6 + d7*7 + d8*8 + d9*9 -<span class="Apple-converted-space">&nbsp;</span><span style="color: rgb(163, 21, 21);">'0'</span>*45) % 11 +<span class="Apple-converted-space">&nbsp;</span><span style="color: rgb(163, 21, 21);">'0'</span>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span><span style="color: blue;">if</span><span class="Apple-converted-space">&nbsp;</span>(cs &gt;<span class="Apple-converted-space">&nbsp;</span><span style="color: rgb(163, 21, 21);">'9'</span>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cs =<span class="Apple-converted-space">&nbsp;</span><span style="color: rgb(163, 21, 21);">'X'</span>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span><span style="color: blue;">if</span><span class="Apple-converted-space">&nbsp;</span>(cs == d10)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt;<span class="Apple-converted-space">&nbsp;</span><span style="color: rgb(163, 21, 21);">"Right\n"</span>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span><span style="color: blue;">else</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-cout &lt;&lt; d1 &lt;&lt; ch &lt;&lt; d2 &lt;&lt; d3 &lt;&lt; d4
-&lt;&lt; ch &lt;&lt; d5 &lt;&lt; d6 &lt;&lt; d7 &lt;&lt; d8 &lt;&lt; d9
-&lt;&lt; ch &lt;&lt; cs &lt;&lt; endl;<br>&nbsp;&nbsp;&nbsp; }<br>}</span><span style="font-size: 9.5pt; font-family: 'Courier New';" lang="EN-US">
-      </span></div>
-      <div><font size="3">a065.<span class="Apple-converted-space">&nbsp;</span><font style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 204);" color="#000000" face="arial, sans-serif"><a href="http://zerojudge.tw/ShowProblem?problemid=a065" target="_blank" rel="nofollow">提款卡密碼</a></font></font></div>
-      <div><span style="font-size: medium; line-height: 1.5;">a001.<span class="Apple-converted-space">&nbsp;</span></span><a href="http://zerojudge.tw/ShowProblem?problemid=a001" target="_blank" rel="nofollow" style="color: rgb(0, 0, 204); font-size: medium; line-height: 1.5;">哈囉</a></div>
-      <div><font size="3">&nbsp;</font></div>
-      <h2 style="background: transparent url(https://ssl.gstatic.com/sites/p/e57d46/system/app/themes/crystalpanel/h2-border.gif) repeat-x scroll 0% 100%; font-family: 'Trebuchet MS',arial,sans-serif; color: black; font-size: 2em; letter-spacing: 0.1em; font-weight: normal; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;"><a name="start6.2"></a><span style="line-height: 24px;"><font size="5">6.2
-字串</font></span></h2>
-      <div><font size="3">b076.<span class="Apple-converted-space">&nbsp;</span><a href="http://zerojudge.tw/ShowProblem?problemid=b076" target="_blank" rel="nofollow" style="color: rgb(0, 0, 204);">B. 黑澀會美眉</a></font></div>
-      <div><font size="3">d095.<span class="Apple-converted-space">&nbsp;</span><a href="http://zerojudge.tw/ShowProblem?problemid=d095" target="_blank" rel="nofollow" style="color: rgb(0, 0, 204);">579 - ClockHands</a></font><br><font style="color: black;" size="3"><span class="Apple-converted-space"></span>D. 打不倒的空氣人 (封存)</font></div>
-      <div><font size="3"><br>
-      </font></div>
-      <div><font size="3">題目大意：給定 n 個英文單字，m 個整數。將 n
-個英文單字全部接在一起成為一個字串，然後依 m 個整數所指定的位置取出 m 個字母輸出即可。</font></div>
-      <div><font size="3"><br>
-      </font></div>
-      <div><font size="3">說明：</font></div>
-      <div><font size="3"><br>
-      </font></div>
-      <div><font size="3">如果要把兩個字串變數接在一起，可以直接用「+」運算子來連接它們。例如下列的程式便會輸出
-「ABCDEF」。</font></div>
-      <div><br>
-      </div>
-      <div><span style="font-size: 9.5pt; font-family: 'Courier New'; color: black;" lang="EN-US">&nbsp; &nbsp;&nbsp;string s1 =<span class="Apple-converted-space">&nbsp;</span></span><span style="font-size: 9.5pt; font-family: 'Courier New'; color: rgb(163, 21, 21);" lang="EN-US">"ABC"</span><span style="font-size: 9.5pt; font-family: 'Courier New'; color: black;" lang="EN-US">, s2 =<span class="Apple-converted-space">&nbsp;</span></span><span style="font-size: 9.5pt; font-family: 'Courier New'; color: rgb(163, 21, 21);" lang="EN-US">"DEF"</span><span style="font-size: 9.5pt; font-family: 'Courier New'; color: black;" lang="EN-US">;<br>
-&nbsp;&nbsp;&nbsp; cout &lt;&lt; s1 + s2 &lt;&lt; endl;</span></div>
-      <div><font size="3"><br>
-下面的程式碼可以用來輸入 n 個字串，並把它們接在一起。<br>
-      <br>
-      </font><span style="font-family: 'Courier New'; font-size: 10pt;">&nbsp;
-&nbsp; &nbsp; &nbsp; s =<span class="Apple-converted-space">&nbsp;</span></span><span style="font-family: 'Courier New'; font-size: 10pt; color: rgb(163, 21, 21);">""</span><span style="font-family: 'Courier New'; font-size: 10pt;">;</span></div>
-      <div>
-      <div><span style="font-size: 10pt; font-family: 'Courier New';" lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span><span style="color: blue;">while</span><span class="Apple-converted-space">&nbsp;</span>(n--) {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cin
-&gt;&gt; w;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; s =
-s&nbsp;</span><span style="font-family: 'Courier New';">+</span><span style="font-family: 'Courier New'; font-size: 10pt;">&nbsp;w;</span></div>
-      <div><span style="font-size: 10pt; font-family: 'Courier New';" lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
-      <br>
-      </span></div>
-      </div>
-      <div><br>
-      <br>
-      <span style="font-family: 微軟正黑體,'Microsoft JhengHei',Tahoma,arial,PMingLiU,新細明體,微軟雅黑體,sans-serif; font-weight: bold; line-height: normal; text-align: center;"><font style="color: rgb(102, 102, 102);" size="3">a022.<span style="color: rgb(0, 0, 204);">&nbsp;</span></font><a href="http://zerojudge.tw/ShowProblem?problemid=a022" target="_blank" rel="nofollow" style="color: rgb(0, 0, 204); font-size: medium;">a022:
-迴文</a><br>
-      </span><br>
-要判斷一個字串是否為迴文，依序比對第一個字元和最後一個字元、第二個字元和倒數第二個字元、......是否一樣，如果比到中間還是一樣，那麼這個字串</div>
-      <div><br>
-      </div>
-      <div><br>
-      </div>
-      <div><span style="font-family: 微軟正黑體,'Microsoft JhengHei',Tahoma,arial,PMingLiU,新細明體,微軟雅黑體,sans-serif; font-weight: bold; line-height: normal; text-align: center;"><font size="2"><font color="#666666">幾個有關迴文的觀念:<br>
-(1迴文左右對稱所以由左而右讀及由右而左讀都會是一樣的<br>
-(2)同種文字出現的個數中,只有一種會出現奇數次<br>
-例如:<br>
-aaabbccddeeee<br>
-      <br>
-a共3個 , b共2個 , c共2個 , d共2個 , e共4個<br>
-將多出來的a擺中間即可排成左右對稱的<br>
-b a c e d e a e d e c a b<br>
-      <br>
-      </font></font></span></div>
-      <div>可想而知若其中有兩種以上的文字出現個數為奇數個<br>
-則多出的文字沒地方可以擺而排不出合法的字串<br>
-      <br>
-(3)若題目只問排列的方法數,因為其左右對稱的特性<br>
-左半邊若被決定了,右半邊就一定只能是相對應的<br>
-所以只要排出半邊的方法數就好,可以節省時間<br>
-      <br>
-      <font color="#38761d">//a022 迴文</font><br>
-      <div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13.3333px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; background-color: rgb(255, 255, 255);"><font color="#990000">#include &lt;iostream&gt;</font></div>
-      <div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13.3333px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; background-color: rgb(255, 255, 255);"><font color="#990000">#include &lt;string&gt;</font></div>
-      <div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13.3333px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; background-color: rgb(255, 255, 255);"><font color="#990000">#include &lt;algorithm&gt;</font></div>
-
-      <div>using namespace std;</div>
-      <div>int main(){</div>
-      <div><br>
-      </div>
-      <div><span style="white-space: pre;"> </span>string i,ii;</div>
-      <div>int a;</div>
-      <div><span style="white-space: pre;"> </span>while(cin&gt;&gt;i){</div>
-      <div><span style="white-space: pre;"> </span>a=i.size();</div>
-      <div><span style="white-space: pre;"> </span>if(a%2) &nbsp;
-&nbsp;<span class="Apple-converted-space">&nbsp;</span><font color="#38761d">//若字串長度為奇數</font></div>
-      <div><span style="white-space: pre;"> </span>i.erase(a/2,1);<span style="line-height: 1.5; font-size: 10pt; white-space: pre;"> </span><font color="#38761d">//將中間字元消除 ( 其實在這題中消掉中間字元沒多大意義 =="" )</font></div>
-      <div>ii=i;</div>
-      <div>reverse(i.begin(), i.end()); &nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-converted-space">&nbsp;</span><font color="#38761d">//將字串倒
-過來排</font></div>
-      <div><span style="white-space: pre;"> </span></div>
-      <div><span style="white-space: pre;"> </span>if(i==ii) &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="Apple-converted-space">&nbsp;</span><font color="#38761d">//如果倒過
-來後字串與原自串相同</font></div>
-      <div><span style="white-space: pre;"> </span>cout&lt;&lt;"yes"&lt;<endl;></endl;></div>
-      <div><span style="white-space: pre;"> </span>else</div>
-      <div><span style="white-space: pre;"> </span>cout&lt;&lt;"no"&lt;<endl;></endl;></div>
-      <div><span style="white-space: pre;"> </span>}</div>
-      <div>}</div>
-      <div><br>
-      </div>
-      <div><font color="#38761d">//reverse用法<br>
-&nbsp;需#include <algorithm><br>
-&nbsp;設字串 a;</algorithm></font></div>
-      <div><font color="#38761d">reverse( 從字串中第s個記憶體位置 , 到字串中第d個記憶體位置
-&nbsp;)<br>
-則 從 a[s] 至 a[d]會倒過來排<br>
-      </font></div>
-      <br>
-      <font size="3">d086: <a href="http://zerojudge.tw/ShowProblem?problemid=d086" rel="nofollow" style="color: rgb(54, 8, 96);"><span class="Apple-converted-space"></span><span style="color: rgb(0, 0, 204);">態度之重要的證明</span></a><br>
-      </font><br>
-題目大意：輸入一個字串，將其中字母所代表的數字加總輸出，A 或 a 代表 1、B 或 b 代表
-2、.....，如果字串中有任何非字母的字元，請輸出 "<span style="color: rgb(102, 102, 102); font-size: 16px; line-height: normal;">Fail"。</span><br>
-      <br>
-說明：</div>
-      <div><br>
-      </div>
-      <div>雖然這題看起來是「0尾版」，但是我們是用字串來輸入那個 0，所以「!= "0"」不可以省略，因為 "0" 不是真的
-0。你也不可以把 s != "0" 寫成 s != '0'，因為後者是拿一個字串來和字元相比，這是不允許的。</div>
-      <div><br>
-      </div>
-      <div><span style="line-height: 1.5; font-size: 9.5pt; font-family: 'Courier New';" lang="EN-US">&nbsp; &nbsp;&nbsp;<span style="color: blue;">while</span><span class="Apple-converted-space">&nbsp;</span>(cin &gt;&gt; s, s !=<span class="Apple-converted-space">&nbsp;</span><span style="color: rgb(163, 21, 21);">"0"</span>)</span></div>
-      <div><span lang="EN-US"><font face="Courier New"><span style="font-size: 9.5pt;"><br>
-      </span></font></span></div>
-      <div>要判斷一個字元是不是字母，我們可以從它的編碼去處理，如果它不是介於 'A' 和 'Z' 之間，也不是介於 'a' 和
-'z' 之間，那麼它就不是字母。如果它不是字母，你就讓它立刻&nbsp;<span style="color: rgb(0, 0, 255); font-family: 'Courier New'; line-height: 1.5; font-size: 10pt;">break</span><span style="line-height: 1.5; font-size: 10pt;">&nbsp;跳出迴圈，如果程式沒有跳出去，就代表這個字元
-是個字母。這時候，我們還得判斷它是大寫還是小寫字母，因為要減的數字不同。程式如下：</span></div>
-      <div><span style="line-height: 1.5; font-size: 10pt;"><br>
-      </span></div>
-      <div><font style="line-height: 1.5; font-size: 10pt;" face="Courier New"><span style="font-size: 9.5pt;">&nbsp; &nbsp;
-&nbsp; &nbsp; sum = 0;</span></font></div>
-      <div><span lang="EN-US"><font face="Courier New"><span style="font-size: 9.5pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span></font><span style="font-family: 'Courier New'; font-size: 9.5pt; color: blue;">for</span><font face="Courier New"><span style="font-size: 9.5pt;">(i=0; i!=s.size();
-i++) {</span></font><br>
-      <font face="Courier New"><span style="font-size: 9.5pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span></font><span style="font-family: 'Courier New'; font-size: 9.5pt; color: blue;">if</span><font face="Courier New"><span style="font-size: 9.5pt;"><span class="Apple-converted-space">&nbsp;</span>(s[i]&lt;</span></font><span style="font-family: 'Courier New'; font-size: 9.5pt; color: rgb(163, 21, 21);">'A'</span><font face="Courier New"><span style="font-size: 9.5pt;"><span class="Apple-converted-space">&nbsp;</span>|| s[i]&gt;</span></font><span style="font-family: 'Courier New'; font-size: 9.5pt; color: rgb(163, 21, 21);">'Z'</span><font face="Courier New"><span style="font-size: 9.5pt;"><span class="Apple-converted-space">&nbsp;</span>&amp;&amp; s[i]&lt;</span></font><span style="font-family: 'Courier New'; font-size: 9.5pt; color: rgb(163, 21, 21);">'a'</span><font face="Courier New"><span style="font-size: 9.5pt;"><span class="Apple-converted-space">&nbsp;</span>|| s[i]&gt;</span></font><span style="font-family: 'Courier New'; font-size: 9.5pt; color: rgb(163, 21, 21);">'z'</span><font face="Courier New"><span style="font-size: 9.5pt;">)</span></font><br>
-      <font face="Courier New"><span style="font-size: 9.5pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span></font><span style="font-family: 'Courier New'; font-size: 9.5pt; color: blue;">break</span><font face="Courier New"><span style="font-size: 9.5pt;">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span></font><span style="font-family: 'Courier New'; font-size: 9.5pt; color: green;">//</span></span><span style="font-size: 9.5pt; font-family: 新細明體,serif; color: green;">遇到非字母字
-元則跳出迴圈</span><span style="font-size: 9.5pt; font-family: 'Courier New';" lang="EN-US"><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span><span style="color: blue;">if</span><span class="Apple-converted-space">&nbsp;</span>(s[i] &gt;=<span class="Apple-converted-space">&nbsp;</span><span style="color: rgb(163, 21, 21);">'a'</span>)<span style="font-size: 9.5pt;" lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: green;">//</span></span><span style="font-size: 9.5pt; font-family: 新細明體,serif; color: green;">若是小寫字母</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-sum += s[i] -<span class="Apple-converted-space">&nbsp;</span><span style="color: rgb(163, 21, 21);">'a'</span><span class="Apple-converted-space">&nbsp;</span>+ 1;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span><span style="color: blue;">else</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-sum += s[i] -<span class="Apple-converted-space">&nbsp;</span><span style="color: rgb(163, 21, 21);">'A'</span><span class="Apple-converted-space">&nbsp;</span>+ 1;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
-      <br>
-      </span></div>
-      <div>當迴圈結束後，我們可以用 i 的值來判斷剛才的迴圈是否遇到了非字母字元。如果迴圈結束後的 i ==
+get()。</p>
+<p>要用 get() 來輸入一個字元到字元變數 ch 中有兩種用法：</p>
+<p>ch = cin.get() 或 cin.get(ch)</p>
+<p>cin.get() 的括號中若沒有任何參數，那麼它會回傳它所讀到的字元，我們再用指定運算子「=」把回傳的值設定給 ch。</p>
+<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-05-2.cpp""></script>
+<li><a href="https://zerojudge.tw/ShowProblem?problemid=d103">d103. NOIP 2008 1.ISBN號碼</a></li>
+<p>題目大意：判斷所輸入的 ISBN 號碼是否正確。</p>
+<p>因為輸入進來的"數字"其實c1,c2......存的是代表該"數字"的ASCII碼，例如c1=字元「0」， c1 存的其實是 48 ，
+所以要做計算的時候必須先減掉48(0的ASCII碼) !</p>
+<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-06.cpp""></script>
+<li><a href="https://zerojudge.tw/ShowProblem?problemid=a065">a065. 提款卡密碼</a></li>
+<li><a href="https://zerojudge.tw/ShowProblem?problemid=a001">a001. 哈囉</a></li>
+<h1>6.2 字串</h1>
+<li><a href="https://view.officeapps.live.com/op/view.aspx?src=http://contest.cc.ntu.edu.tw/npsc2007/2007jun.doc">2007 NPSC 國中組初賽 B. 黑澀會美眉</a></li>
+<li><a href="https://zerojudge.tw/ShowProblem?problemid=d095">d095. 579 - ClockHands</a></li>
+<li><a href="https://view.officeapps.live.com/op/view.aspx?src=http://contest.cc.ntu.edu.tw/npsc2007/2007jun.doc">2007 NPSC 國中組初賽 D. 打不倒的空氣人</a></li>
+<p>題目大意：給定 n 個英文單字，m 個整數。將 n 個英文單字全部接在一起成為一個字串，然後依 m 個整數所指定的位置取出 m 個字母輸出即可。</p>
+<p>說明：</p>
+<p>如果要把兩個字串變數接在一起，可以直接用「+」運算子來連接它們。例如下列的程式便會輸出「ABCDEF」。</p>
+<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-07.cpp""></script>
+<p>下面的程式碼可以用來輸入 n 個字串，並把它們接在一起。</p>
+<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-08.cpp""></script>
+<li><a href="https://zerojudge.tw/ShowProblem?problemid=a022">a022: 迴文</a></li>
+<p>要判斷一個字串是否為迴文，依序比對第一個字元和最後一個字元、第二個字元和倒數第二個字元、......是否一樣，如果比到中間還是一樣，那麼這個字串</p>
+<p>幾個有關迴文的觀念:</p>
+<p>(1)迴文左右對稱所以由左而右讀及由右而左讀都會是一樣的</p>
+<p>(2)同種文字出現的個數中,只有一種會出現奇數次<br>>如:<br>aaabbccddeeee</p>
+<p>a共3個 , b共2個 , c共2個 , d共2個 , e共4個<br>將多出來的a擺中間即可排成左右對稱的<br>b a c e d e a e d e c a b</p>
+<p>可想而知若其中有兩種以上的文字出現個數為奇數個<br>則多出的文字沒地方可以擺而排不出合法的字串</p>
+<p>(3)若題目只問排列的方法數,因為其左右對稱的特性<br>左半邊若被決定了,右半邊就一定只能是相對應的<br>所以只要排出半邊的方法數就好,可以節省時間<p>
+<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-09.cpp""></script>
+<h3>reverse用法</h3>
+<p>&nbsp;需#include &lt;algorithm&gt;<br>&nbsp;設字串 a;<br>reverse( 從字串中第s個記憶體位置 , 到字串中第d個記憶體位置&nbsp; )<br>則 從 a[s] 至 a[d]會倒過來排</p>
+<li><a href="https://zerojudge.tw/ShowProblem?problemid=d086">d086:&nbsp; 態度之重要的證明</a></li>
+<p>題目大意：輸入一個字串，將其中字母所代表的數字加總輸出，A 或 a 代表 1、B 或 b 代表
+2、.....，如果字串中有任何非字母的字元，請輸出 "Fail"。</p>
+<p>說明：</p>
+<p>雖然這題看起來是「0尾版」，但是我們是用字串來輸入那個 0，所以「!= "0"」不可以省略，因為 "0" 不是真的 0。你也不可以把 s !=
+"0" 寫成 s != '0'，因為後者是拿一個字串來和字元相比，這是不允許的。</p>
+<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-10.cpp""></script>
+<p>要判斷一個字元是不是字母，我們可以從它的編碼去處理，如果它不是介於 'A' 和 'Z' 之間，也不是介於 'a' 和 'z'
+之間，那麼它就不是字母。如果它不是字母，你就讓它立刻 break
+跳出迴圈，如果程式沒有跳出去，就代表這個字元是個字母。這時候，我們還得判斷它是大寫還是小寫字母，因為要減的數字不同。程式如下：</p>
+<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-11.cpp""></script>
+<p>
+當迴圈結束後，我們可以用 i 的值來判斷剛才的迴圈是否遇到了非字母字元。如果迴圈結束後的 i ==
 s.size()，那就代表迴圈是「壽終正寢」地掃瞄完了整個字串，如果 i &lt;
-s.size()，就代表迴圈是在字串還沒完全掃瞄完畢整個字串就遇到了非字母字元而&nbsp;<span style="color: rgb(0, 0, 255); font-family: 'Courier New'; line-height: 1.5; font-size: 10pt;">break</span><span style="line-height: 1.5; font-size: 10pt;">&nbsp;出來了。我們可以據此判斷字串中是否含有非字母
-字元以作出適當的輸出。</span></div>
-      <div><br>
-      </div>
-      <div><span style="font-size: 9.5pt;" lang="EN-US"><span style="font-family: 'Courier New'; line-height: 1.5; font-size: 10pt;">&nbsp;
-&nbsp; &nbsp; &nbsp;</span><span style="font-family: 'Courier New'; line-height: 1.5; font-size: 10pt;">&nbsp;</span><span style="font-family: 'Courier New'; color: blue;">if</span><font face="Courier New"><span class="Apple-converted-space">&nbsp;</span>(i==s.size())&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></font><span style="font-family: 'Courier New'; color: green;">//</span></span><span style="font-size: 9.5pt; font-family: 新細明體,serif; color: green;">沒有非字母字
-元</span><span style="font-size: 9.5pt; font-family: 'Courier New';" lang="EN-US"><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout
-&lt;&lt; sum &lt;&lt; endl;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span><span style="color: blue;">else</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout
-&lt;&lt;<span class="Apple-converted-space">&nbsp;</span><span style="color: rgb(163, 21, 21);">"Fail\n"</span>;<br>
-      </span><br>
-      <h4 style="font-family: 'Trebuchet MS',arial,sans-serif; font-size: 1.2em; color: rgb(165, 164, 165);"><a name="start6.2.1" style="color: rgb(69, 22, 112);"></a><span style="color: black;">6.2.1&lt; cctype&gt;</span><ccytpe></ccytpe></h4>
-      </div>
-      <div><br>
-      </div>
-      <div>在 <cctype> 標頭檔中，定義了一些字元的函數，我們可以用它們來簡化我們的程式。其中 isalpha(ch)
-便可以幫你判斷 ch 是不是字母，如果是字母，它會回傳一個非 0 的字，如果 ch 是字母，那麼它就會回傳 0。</cctype></div>
-      <div><br>
-      </div>
-      <div>另外還有一個函數 toupper(ch)，如果 ch 是小寫字母，它會回傳 ch 的大寫字母。如果 ch
-不是小寫字母，它就直接回傳 ch。簡化之後的程式如下：</div>
-      <div><br>
-      </div>
-      <div><span style="font-size: 9.5pt; font-family: 'Courier New';" lang="EN-US">&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;sum = 0;</span><span style="font-size: 9.5pt; font-family: 'Courier New';" lang="EN-US"><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span><span style="color: blue;">for</span>(i=0;
-i!=s.size(); i++) {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span><span style="color: blue;">if</span><span class="Apple-converted-space">&nbsp;</span>(!isalpha(s[i]))<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span><span style="color: blue;">break</span>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span><span style="color: green;">//</span></span><span style="font-size: 9.5pt; font-family: 新細明體,serif; color: green;">遇到非字母字
-元則跳出迴圈</span><span style="font-size: 9.5pt; font-family: 'Courier New';" lang="EN-US"><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sum
-+= toupper(s[i]) -<span class="Apple-converted-space">&nbsp;</span><span style="color: rgb(163, 21, 21);">'A'</span><span class="Apple-converted-space">&nbsp;</span>+ 1;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
-      <br>
-      </span></div>
-      <div><cctype> 中常用的函數表列<a href="http://pcshic.github.io/start/appendix.html#start.appendixE">附錄E</a>於<span style="color: rgb(54, 8, 96);"> <cctype></cctype></span>中。
-即然這些函數是定義在 <cctype> 中，理論上用到這些函數時要先 include <cctype>，但實測發現，不管是 Visual
-C++ 或是 Zerojudge，不用 include <cctype> 也一樣能編譯成功。可以是其他的標頭檔把它 include 進來了。</cctype></cctype></cctype></cctype></div>
-      <div><br>
-      </div>
-      <div><br>
-      <font size="3"><span style="color: rgb(102, 102, 102); font-family: 微軟正黑體,'Microsoft JhengHei',Tahoma,arial,PMingLiU,新細明體,微軟雅黑體,sans-serif; font-weight: bold; line-height: normal; text-align: center;">b223:
-&nbsp;<a href="http://zerojudge.tw/ShowProblem?problemid=b223" target="_blank" rel="nofollow" style="color: rgb(0, 0, 204);">B. 外星人的訊息</a></span></font><br>
-      <br>
-      <br>
-c054.<span class="Apple-converted-space">&nbsp;</span><a href="http://zerojudge.tw/ShowProblem?problemid=c054" rel="nofollow" style="color: rgb(0, 0, 204);">WERTYU</a><br>
-      <br>
-題目大意：輸入一行文字，將其中每個非空白的字元以鍵盤上在它左邊的字元取代並輸出。例如 S 以 A 取代，[ 以 P 取代....。</div>
-      <div><br>
-      </div>
-      <div>說明：<br>
-      <br>
-這題以一行為一筆測資，且其中含有空白，所以不能用 cin &gt;&gt; s 來輸入，因為用 &gt;&gt;
-輸入時，遇到白空白就會停下來。例如以下程式：</div>
-      <div><br>
-      </div>
-      <div><span style="font-size: 9.5pt; font-family: 'Courier New';" lang="EN-US">&nbsp; &nbsp;&nbsp;<span style="color: blue;">while</span><span class="Apple-converted-space">&nbsp;</span>(cin &gt;&gt; s)<span class="Apple-converted-space">&nbsp;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt;<span class="Apple-converted-space">&nbsp;</span><span style="color: rgb(163, 21, 21);">'['</span><span class="Apple-converted-space">&nbsp;</span>&lt;&lt; s &lt;&lt;<span class="Apple-converted-space">&nbsp;</span><span style="color: rgb(163, 21, 21);">']'</span><span class="Apple-converted-space">&nbsp;</span>&lt;&lt; endl;</span></div>
-      <div><br>
-      </div>
-      <div>如果你輸入「This is a book.」，你不會得到：</div>
-      <div><br>
-      </div>
-      <div><span style="font-size: 10pt; font-family: 'Courier New';" lang="EN-US">[This is a book.]</span><br>
-      <br>
-而是得到：</div>
-      <div><br>
-      </div>
-      <div><span style="font-size: 10pt; font-family: 'Courier New';" lang="EN-US">[This]<br>
-[is]<br>
-[a]<br>
-[book.]</span></div>
-      <div><br>
-      </div>
-      <div>如果你要一次輸入一整行，不管有沒有空白在裡面，那麼就需要用到 getline() 函數了。常見的用法如下：</div>
-      <div><br>
-      </div>
-      <div><span style="font-family: 'Courier New';">&nbsp; &nbsp;</span><span style="font-family: 'Courier New';">&nbsp;</span><span style="font-family: 'Courier New';">getline(cin,s)</span></div>
-      <div><br>
-      </div>
-      <div>這個函數和 cin &gt;&gt; s 一樣，會從 cin 輸入一個字串到 s 變數之中。它的回傳值也是
-cin，所以同樣可以直接放在 while 迴圈的小括號中來讀取 EOF 版的測資。</div>
-      <div><br>
-      </div>
-      <div><span style="font-family: 'Courier New';">&nbsp; &nbsp;&nbsp;</span><span style="font-family: 'Courier New'; color: blue;">while</span><span style="font-family: 'Courier New';">&nbsp;(getline(cin,s))</span></div>
-      <div><br>
-      </div>
-      <div>如果你要的話，這題也可以用 43 個 if 硬暴：</div>
-      <div><br>
-      </div>
-      <div><span style="font-size: 9.5pt; font-family: 'Courier New'; color: black;" lang="EN-US">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span><span style="font-size: 9.5pt; font-family: 'Courier New'; color: blue;" lang="EN-US">if</span><span style="font-size: 9.5pt; font-family: 'Courier New'; color: black;" lang="EN-US"><span class="Apple-converted-space">&nbsp;</span>(s[i]==</span><span style="font-size: 9.5pt; font-family: 'Courier New'; color: rgb(163, 21, 21);" lang="EN-US">'W'</span><span style="font-size: 9.5pt; font-family: 'Courier New'; color: black;" lang="EN-US">)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-cout &lt;&lt;<span class="Apple-converted-space">&nbsp;</span></span><span style="font-size: 9.5pt; font-family: 'Courier New'; color: rgb(163, 21, 21);" lang="EN-US">'Q'</span><span style="font-size: 9.5pt; font-family: 'Courier New'; color: black;" lang="EN-US">;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="font-size: 9.5pt; font-family: 'Courier New'; color: blue;" lang="EN-US">if</span><span style="font-size: 9.5pt; font-family: 'Courier New'; color: black;" lang="EN-US"><span class="Apple-converted-space">&nbsp;</span>(s[i]==</span><span style="font-size: 9.5pt; font-family: 'Courier New'; color: rgb(163, 21, 21);" lang="EN-US">'E'</span><span style="font-size: 9.5pt; font-family: 'Courier New'; color: black;" lang="EN-US">)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-cout &lt;&lt;<span class="Apple-converted-space">&nbsp;</span></span><span style="font-size: 9.5pt; font-family: 'Courier New'; color: rgb(163, 21, 21);" lang="EN-US">'W'</span><span style="font-size: 9.5pt; font-family: 'Courier New'; color: black;" lang="EN-US">;</span></div>
-      <div><span style="font-size: 9.5pt; font-family: 'Courier New'; color: black;" lang="EN-US"><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp;
-&nbsp;<span>&nbsp;&nbsp; &nbsp;<span>&nbsp; &nbsp; :</span></span></span></span></span><br>
-      </span></div>
-      <div><span style="font-size: 9.5pt; font-family: 'Courier New'; color: black;" lang="EN-US"><span><span><span><span><span><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp;
-&nbsp;<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;
-&nbsp; :</span></span></span></span></span><br>
-      </span></span></span></span></span></span></div>
-      <div><br>
-      </div>
-      <div>但這樣一來程式就變得很冗長，即使 '2' 到 '9' 等 8 個數字可以合併成一個 if 陳述式，</div>
-      <div><br>
-      </div>
-      <div><span style="font-size: 9.5pt; font-family: 'Courier New'; color: black;" lang="EN-US">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span><span style="font-size: 9.5pt; font-family: 'Courier New'; color: blue;" lang="EN-US">if</span><span style="font-size: 9.5pt; font-family: 'Courier New'; color: black;" lang="EN-US"><span class="Apple-converted-space">&nbsp;</span>(s[i]&gt;=</span><span style="font-size: 9.5pt; font-family: 'Courier New'; color: rgb(163, 21, 21);" lang="EN-US">'2'</span><span style="font-size: 9.5pt; font-family: 'Courier New'; color: black;" lang="EN-US"><span class="Apple-converted-space">&nbsp;</span>&amp;&amp;
-s[i]&lt;=</span><span style="font-size: 9.5pt; font-family: 'Courier New'; color: rgb(163, 21, 21);" lang="EN-US">'9'</span><span style="font-size: 9.5pt; font-family: 'Courier New'; color: black;" lang="EN-US">)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-cout &lt;&lt;<span class="Apple-converted-space">&nbsp;</span></span><span style="font-size: 9.5pt; font-family: 'Courier New'; color: blue;" lang="EN-US">char</span><span style="font-size: 9.5pt; font-family: 'Courier New'; color: black;" lang="EN-US">(s[i]-1);<br>
-      <br>
-      </span></div>
-      <div>這樣也還有 36 個 if 陳述式。有沒有比較簡潔的方法呢？</div>
-      <div><br>
-      </div>
-      <div>我們可以把題目中鍵盤的配置儲存在一個字串 k 中：</div>
-      <div><br>
-      </div>
-      <div><span style="font-family: 'Courier New';">&nbsp; &nbsp;
-string k=</span><span style="font-family: 'Courier New'; color: rgb(163, 21, 21);">"&nbsp;
-`1234567890-=QWERTYUIOP[]\\ASDFGHJKL;'ZXCVBNM,./"</span><span style="font-family: 'Courier New';">;</span></div>
-      <div><br>
-      </div>
-      <div>要提醒您注意的是，字串中的倒斜線「\」必須用逸出字元「\\」來表示。然後我們就可以在字串 k 中尋找 s
-字串中所出現的字元 s[i]，然後再以它在字串 k 中左邊的字元輸出。</div>
-      <div><br>
-      </div>
-      <div><span style="font-size: 9.5pt; font-family: 'Courier New';" lang="EN-US">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<span style="color: blue;">for</span>&nbsp;(j=1; k[j]!=s[i];
-j++);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: green;">//</span></span><span style="font-size: 9.5pt; font-family: 新細明體,serif; color: green;">找</span><span style="font-size: 9.5pt; font-family: 'Courier New'; color: green;" lang="EN-US">&nbsp;s[i]&nbsp;</span><span style="font-size: 9.5pt; font-family: 新細明體,serif; color: green;">出現在</span><span style="font-size: 9.5pt; font-family: 'Courier New'; color: green;" lang="EN-US">&nbsp;k&nbsp;</span><span style="font-size: 9.5pt; font-family: 新細明體,serif; color: green;">中的位置</span><span style="font-size: 9.5pt; font-family: 'Courier New';" lang="EN-US"><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout
-&lt;&lt; k[j-1];</span><span style="font-family: 'Courier New';">&nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span><span style="font-family: 'Courier New';">&nbsp;</span><span style="font-family: 'Courier New'; color: green;">//以它左邊的字元輸出</span></div>
-      <div><br>
-      </div>
-      <div>要注意的是字串 k 的最前面我們擺了兩個空白字元，然後 j 是從 1 而不是從 0 開始找，如此一來，如果 s[i]
-是空白的話，它會找到右邊的那個空白，然後輸出左邊的那個空白。</div>
-      <h4 style="font-family: 'Trebuchet MS',arial,sans-serif; font-size: 1.2em; color: black;"><a name="start6.2.1.1"></a>6.2.1.1 string.find()</h4>
-      <div>其實在 string 類別中本來就定義了一個在字串中尋找某個字元的成員函數
-find()。例如，我們要在字串&nbsp;s 中尋找字元 ch 出現的位置的話，可以寫成 s.find(ch)。找到時，它會回傳 ch 在
-s 中第一次出現的位置，如果找不到，它會回傳 string::npos，也就是 -1。你也可以在 find()
-函數中提供第二個參數以指定開始尋找的位置，例如以下的程式就可以找到並輸出字串 s 中所有 ch 的位置並輸出：</div>
-      <div><br>
-      </div>
-      <div><span style="font-size: 9.5pt; font-family: 'Courier New'; color: black;" lang="EN-US">&nbsp; &nbsp;&nbsp;</span><span style="font-size: 9.5pt; font-family: 'Courier New'; color: blue;" lang="EN-US">for</span><span style="font-size: 9.5pt; font-family: 'Courier New'; color: black;" lang="EN-US"><span class="Apple-converted-space">&nbsp;</span>(j=s.find(ch);
-j!=-1; j=s.find(ch,j+1))<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; j &lt;&lt;
-endl;</span></div>
-      <div><br>
-      </div>
-      <div>有了這個函數以後，剛剛那題在 k 中找 s[i] 的 for 迴圈就可以改成用 find() 來做了。</div>
-      <div><br>
-      </div>
-      <div>
-      <div><span style="font-size: 9.5pt; font-family: 'Courier New';" lang="EN-US">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;j =
-k.find(s[i],1);&nbsp;<span>&nbsp;&nbsp;<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span></span></span>&nbsp;
-&nbsp; &nbsp; &nbsp;<span style="color: green;">//</span></span><span style="font-size: 9.5pt; font-family: 新細明體,serif; color: green;">找</span><span style="font-size: 9.5pt; font-family: 'Courier New'; color: green;" lang="EN-US">&nbsp;s[i]&nbsp;</span><span style="font-size: 9.5pt; font-family: 新細明體,serif; color: green;">出現在</span><span style="font-size: 9.5pt; font-family: 'Courier New'; color: green;" lang="EN-US">&nbsp;k&nbsp;</span><span style="font-size: 9.5pt; font-family: 新細明體,serif; color: green;">中的位置</span><span style="font-size: 9.5pt; font-family: 'Courier New';" lang="EN-US"><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout
-&lt;&lt; k[j-1];</span><span style="font-family: 'Courier New';">&nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span><span style="font-family: 'Courier New';">&nbsp;</span><span style="font-family: 'Courier New'; color: green;">//以它左邊的字元輸出</span></div>
-      </div>
-      <div><span style="font-family: 'Courier New'; color: green;"><br>
-      </span></div>
-      <div>甚至可以直接把第一行的 find() 代入第二行的 j，如下：</div>
-      <div><br>
-      </div>
-      <div><span style="font-family: 'Courier New';">&nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp; cout &lt;&lt; k[k.find(s[i],1)-1];</span></div>
-      <div><br>
-      </div>
-      <div>整個程式就變成了：</div>
-      <div><br>
-      </div>
-      <div>
-      <div><span style="font-family: 'Courier New'; font-size: 12.6667px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 19px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; color: green; background-color: rgb(255, 255, 255);">//10082 - WERTYU (by Snail)</span><br style="color: rgb(86, 85, 85); font-family: 'Courier New'; font-size: 12.6667px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 19px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; background-color: rgb(255, 255, 255);">
-      <span style="font-family: 'Courier New'; font-size: 12.6667px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 19px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; color: blue; background-color: rgb(255, 255, 255);">#include</span><span style="color: rgb(86, 85, 85); font-family: 'Courier New'; font-size: 12.6667px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 19px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; display: inline ! important; float: none; background-color: rgb(255, 255, 255);">&nbsp;</span><span style="font-family: 'Courier New'; font-size: 12.6667px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 19px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; color: rgb(163, 21, 21); background-color: rgb(255, 255, 255);">&lt;iostream&gt;</span><br style="color: rgb(86, 85, 85); font-family: 'Courier New'; font-size: 12.6667px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 19px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; background-color: rgb(255, 255, 255);">
-      <span style="font-family: 'Courier New'; font-size: 12.6667px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 19px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; color: blue; background-color: rgb(255, 255, 255);">#include</span><span style="color: rgb(86, 85, 85); font-family: 'Courier New'; font-size: 12.6667px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 19px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; display: inline ! important; float: none; background-color: rgb(255, 255, 255);">&nbsp;</span><span style="font-family: 'Courier New'; font-size: 12.6667px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 19px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; color: rgb(163, 21, 21); background-color: rgb(255, 255, 255);">&lt;string&gt;</span><br style="color: rgb(86, 85, 85); font-family: 'Courier New'; font-size: 12.6667px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 19px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; background-color: rgb(255, 255, 255);">
-      <span style="font-family: 'Courier New'; font-size: 12.6667px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 19px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; color: blue; background-color: rgb(255, 255, 255);">using</span><span style="color: rgb(86, 85, 85); font-family: 'Courier New'; font-size: 12.6667px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 19px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; display: inline ! important; float: none; background-color: rgb(255, 255, 255);">&nbsp;</span><span style="font-family: 'Courier New'; font-size: 12.6667px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 19px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; color: blue; background-color: rgb(255, 255, 255);">namespace</span><span style="color: rgb(86, 85, 85); font-family: 'Courier New'; font-size: 12.6667px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 19px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; display: inline ! important; float: none; background-color: rgb(255, 255, 255);">&nbsp;std;</span><br style="color: rgb(86, 85, 85); font-family: 'Courier New'; font-size: 12.6667px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 19px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; background-color: rgb(255, 255, 255);">
-      <br style="color: rgb(86, 85, 85); font-family: 'Courier New'; font-size: 12.6667px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 19px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; background-color: rgb(255, 255, 255);">
-      <span style="font-family: 'Courier New'; font-size: 12.6667px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 19px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; color: blue; background-color: rgb(255, 255, 255);">int</span><span style="color: rgb(86, 85, 85); font-family: 'Courier New'; font-size: 12.6667px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 19px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; display: inline ! important; float: none; background-color: rgb(255, 255, 255);">&nbsp;main () {</span><br style="color: rgb(86, 85, 85); font-family: 'Courier New'; font-size: 12.6667px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 19px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; background-color: rgb(255, 255, 255);">
-      <span style="color: rgb(86, 85, 85); font-family: 'Courier New'; font-size: 12.6667px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 19px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; display: inline ! important; float: none; background-color: rgb(255, 255, 255);">&nbsp;&nbsp;&nbsp; string s, k=</span><span style="font-family: 'Courier New'; font-size: 12.6667px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 19px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; color: rgb(163, 21, 21); background-color: rgb(255, 255, 255);">"&nbsp; `1234567890-=QWERTYUIOP[]\\ASDFGHJKL;'ZXCVBNM,./"</span><span style="color: rgb(86, 85, 85); font-family: 'Courier New'; font-size: 12.6667px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 19px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; display: inline ! important; float: none; background-color: rgb(255, 255, 255);">;</span><br style="color: rgb(86, 85, 85); font-family: 'Courier New'; font-size: 12.6667px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 19px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; background-color: rgb(255, 255, 255);">
-      <span style="color: rgb(86, 85, 85); font-family: 'Courier New'; font-size: 12.6667px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 19px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; display: inline ! important; float: none; background-color: rgb(255, 255, 255);">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: 'Courier New'; font-size: 12.6667px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 19px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; color: blue; background-color: rgb(255, 255, 255);">int</span><span style="color: rgb(86, 85, 85); font-family: 'Courier New'; font-size: 12.6667px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 19px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; display: inline ! important; float: none; background-color: rgb(255, 255, 255);">&nbsp;i;</span><br style="color: rgb(86, 85, 85); font-family: 'Courier New'; font-size: 12.6667px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 19px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; background-color: rgb(255, 255, 255);">
-      <span style="color: rgb(86, 85, 85); font-family: 'Courier New'; font-size: 12.6667px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 19px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; display: inline ! important; float: none; background-color: rgb(255, 255, 255);">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: 'Courier New'; font-size: 12.6667px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 19px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; color: blue; background-color: rgb(255, 255, 255);">while</span><span style="color: rgb(86, 85, 85); font-family: 'Courier New'; font-size: 12.6667px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 19px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; display: inline ! important; float: none; background-color: rgb(255, 255, 255);">&nbsp;(getline(cin,s)) {</span><br style="color: rgb(86, 85, 85); font-family: 'Courier New'; font-size: 12.6667px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 19px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; background-color: rgb(255, 255, 255);">
-      <span style="color: rgb(86, 85, 85); font-family: 'Courier New'; font-size: 12.6667px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 19px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; display: inline ! important; float: none; background-color: rgb(255, 255, 255);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: 'Courier New'; font-size: 12.6667px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 19px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; color: blue; background-color: rgb(255, 255, 255);">for</span><span style="color: rgb(86, 85, 85); font-family: 'Courier New'; font-size: 12.6667px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 19px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; display: inline ! important; float: none; background-color: rgb(255, 255, 255);">&nbsp;(i=0; i!=s.size(); i++)</span><br style="color: rgb(86, 85, 85); font-family: 'Courier New'; font-size: 12.6667px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 19px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; background-color: rgb(255, 255, 255);">
-      <span style="color: rgb(86, 85, 85); font-family: 'Courier New'; font-size: 12.6667px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 19px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; display: inline ! important; float: none; background-color: rgb(255, 255, 255);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; k[k.find(s[i],1)-1];</span><br style="color: rgb(86, 85, 85); font-family: 'Courier New'; font-size: 12.6667px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 19px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; background-color: rgb(255, 255, 255);">
-      <span style="color: rgb(86, 85, 85); font-family: 'Courier New'; font-size: 12.6667px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 19px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; display: inline ! important; float: none; background-color: rgb(255, 255, 255);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; endl;</span><br style="color: rgb(86, 85, 85); font-family: 'Courier New'; font-size: 12.6667px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 19px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; background-color: rgb(255, 255, 255);">
-      <span style="color: rgb(86, 85, 85); font-family: 'Courier New'; font-size: 12.6667px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 19px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; display: inline ! important; float: none; background-color: rgb(255, 255, 255);">&nbsp;&nbsp;&nbsp; }</span><br style="color: rgb(86, 85, 85); font-family: 'Courier New'; font-size: 12.6667px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 19px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; background-color: rgb(255, 255, 255);">
-      <span style="color: rgb(86, 85, 85); font-family: 'Courier New'; font-size: 12.6667px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 19px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; display: inline ! important; float: none; background-color: rgb(255, 255, 255);">}</span></div>
-      </div>
-      <div><span style="font-size: 9.5pt; font-family: 'Courier New';" lang="EN-US"><br>
-      </span></div>
-      <div>相當簡潔，不是嗎？</div>
-      <div><br>
-      </div>
-      <div><span style="font-size: 10pt; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; font-family: 'Courier New'; color: blue; background-color: rgb(255, 255, 255);" lang="EN-US">#include</span><span style="font-size: 10pt; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; font-family: 'Courier New'; color: black; background-color: rgb(255, 255, 255);" lang="EN-US"><span class="Apple-converted-space">&nbsp;</span></span><span style="font-size: 10pt; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; font-family: 'Courier New'; color: rgb(163, 21, 21); background-color: rgb(255, 255, 255);" lang="EN-US">&lt;iostream&gt;</span><span style="font-size: 10pt; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; font-family: 'Courier New'; color: black; background-color: rgb(255, 255, 255);" lang="EN-US"><br></span><span style="font-size: 10pt; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; font-family: 'Courier New'; color: blue; background-color: rgb(255, 255, 255);" lang="EN-US">#include</span><span style="font-size: 10pt; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; font-family: 'Courier New'; color: black; background-color: rgb(255, 255, 255);" lang="EN-US"><span class="Apple-converted-space">&nbsp;</span></span><span style="font-size: 10pt; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; font-family: 'Courier New'; color: rgb(163, 21, 21); background-color: rgb(255, 255, 255);" lang="EN-US">&lt;string&gt;</span><span style="font-size: 10pt; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; font-family: 'Courier New'; color: black; background-color: rgb(255, 255, 255);" lang="EN-US"><br></span><span style="font-size: 10pt; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; font-family: 'Courier New'; color: blue; background-color: rgb(255, 255, 255);" lang="EN-US">using</span><span style="font-size: 10pt; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; font-family: 'Courier New'; color: black; background-color: rgb(255, 255, 255);" lang="EN-US"><span class="Apple-converted-space">&nbsp;</span></span><span style="font-size: 10pt; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; font-family: 'Courier New'; color: blue; background-color: rgb(255, 255, 255);" lang="EN-US">namespace</span><span style="font-size: 10pt; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; font-family: 'Courier New'; color: black; background-color: rgb(255, 255, 255);" lang="EN-US"><span class="Apple-converted-space">&nbsp;</span>std;<br><br></span><span style="font-size: 10pt; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; font-family: 'Courier New'; color: blue; background-color: rgb(255, 255, 255);" lang="EN-US">int</span><span style="font-size: 10pt; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; font-family: 'Courier New'; color: black; background-color: rgb(255, 255, 255);" lang="EN-US"><span class="Apple-converted-space">&nbsp;</span>main() {<br>&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="font-size: 10pt; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; font-family: 'Courier New'; color: rgb(43, 145, 175); background-color: rgb(255, 255, 255);" lang="EN-US">string</span><span style="font-size: 10pt; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; font-family: 'Courier New'; color: black; background-color: rgb(255, 255, 255);" lang="EN-US"><span class="Apple-converted-space">&nbsp;</span>s =<span class="Apple-converted-space">&nbsp;</span></span><span style="font-size: 10pt; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; font-family: 'Courier New'; color: rgb(163, 21, 21); background-color: rgb(255, 255, 255);" lang="EN-US">"\n\n&nbsp; `1234567890-=QWERTYUIOP[]\\ASDFGHJKL;'ZXCVBNM,./"</span><span style="font-size: 10pt; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; font-family: 'Courier New'; color: black; background-color: rgb(255, 255, 255);" lang="EN-US">;<br>&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="font-size: 10pt; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; font-family: 'Courier New'; color: blue; background-color: rgb(255, 255, 255);" lang="EN-US">char</span><span style="font-size: 10pt; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; font-family: 'Courier New'; color: black; background-color: rgb(255, 255, 255);" lang="EN-US"><span class="Apple-converted-space">&nbsp;</span>ch;<br>&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="font-size: 10pt; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; font-family: 'Courier New'; color: blue; background-color: rgb(255, 255, 255);" lang="EN-US">while</span><span style="font-size: 10pt; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; font-family: 'Courier New'; color: black; background-color: rgb(255, 255, 255);" lang="EN-US"><span class="Apple-converted-space">&nbsp;</span>(cin.get(ch))<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; s[s.rfind(ch, s.size() - 1) - 1];<br>}</span><span style="font-size: 10pt; font-family: 'Courier New'; color: black;" lang="EN-US"></span></div>
-      </div>
-      </td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
+s.size()，就代表迴圈是在字串還沒完全掃瞄完畢整個字串就遇到了非字母字元而 break
+出來了。我們可以據此判斷字串中是否含有非字母字元以作出適當的輸出。</p>
+<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-12.cpp""></script>
+<p>在 &lt;cctype&gt; 標頭檔中，定義了一些字元的函數，我們可以用它們來簡化我們的程式。其中 isalpha(ch) 便可以幫你判斷
+ch 是不是字母，如果是字母，它會回傳一個非 0 的字，如果 ch 是字母，那麼它就會回傳 0。</p>
+<p>另外還有一個函數 toupper(ch)，如果 ch 是小寫字母，它會回傳 ch 的大寫字母。如果 ch 不是小寫字母，它就直接回傳
+ch。簡化之後的程式如下：</p>
+<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-13.cpp""></script>
+<p>&lt;cctype&gt; 中常用的函數表列於附錄 G &lt;cctype&gt;中。即然這些函數是定義在 &lt;cctype&gt;
+中，理論上用到這些函數時要先 include &lt;cctype&gt;，但實測發現，不管是 Visual C++ 或是
+Zerojudge，不用 include &lt;cctype&gt; 也一樣能編譯成功。可以是其他的標頭檔把它 include 進來了。</p>
+<li><a href="http://contest.cc.ntu.edu.tw/npsc2008/2008jun_final.pdf">2008 NPSC 國中組決賽 B. 外星人的訊息</a></li>
+<h3>etline(cin,s)</h3>
+<li><a href="https://zerojudge.tw/ShowProblem?problemid=c054">c054. WERTYU</a></li>
+<p>題目大意：輸入一行文字，將其中每個非空白的字元以鍵盤上在它左邊的字元取代並輸出。例如 S 以 A 取代，[ 以 P 取代....。</p>
+<p>說明：</p>
+<p>這題以一行為一筆測資，且其中含有空白，所以不能用 cin &gt;&gt; s 來輸入，因為用 &gt;&gt;
+輸入時，遇到白空白就會停下來。例如以下程式：</p>
+<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-14.cpp""></script>
+<p>如果你輸入「This is a book.」，你不會得到：</p>
+<p>[This is a book.]</p>
+<p>而是得到：</p>
+[This]<br>[is]<br>[a]<br>[book.]</p>
+<p>如果你要一次輸入一整行，不管有沒有空白在裡面，那麼就需要用到 getline() 函數了。常見的用法如下：</p>
+<p>&nbsp;&nbsp;&nbsp; getline(cin,s)</p>
+<p>這個函數和 cin &gt;&gt; s 一樣，會從 cin 輸入一個字串到 s 變數之中。它的回傳值也是 cin，所以同樣可以直接放在
+while 迴圈的小括號中來讀取 EOF 版的測資。</p>
+<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-15.cpp""></script>
+<p>如果你要的話，這題也可以用 43 個 if 硬暴：</p>
+<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-16.cpp""></script>
+<p>但這樣一來程式就變得很冗長，即使 '2' 到 '9' 等 8 個數字可以合併成一個 if 陳述式，</p>
+<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-17.cpp""></script>
+<p>這樣也還有 36 個 if 陳述式。有沒有比較簡潔的方法呢？</p>
+<p>我們可以把題目中鍵盤的配置儲存在一個字串 k 中：</p>
+<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-18.cpp""></script>
+<p>要提醒您注意的是，字串中的倒斜線「\」必須用逸出字元「\\」來表示。然後我們就可以在字串 k 中尋找 s 字串中所出現的字元
+s[i]，然後再以它在字串 k 中左邊的字元輸出。</p>
+<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-19.cpp""></script>
+<p>要注意的是字串 k 的最前面我們擺了兩個空白字元，然後 j 是從 1 而不是從 0 開始找，如此一來，如果 s[i]
+是空白的話，它會找到右邊的那個空白，然後輸出左邊的那個空白。</p>
+<h3>string.find()</h3>
+<p>其實在 string 類別中本來就定義了一個在字串中尋找某個字元的成員函數 find()。例如，我們要在字串 s 中尋找字元 ch
+出現的位置的話，可以寫成 s.find(ch)。找到時，它會回傳 ch 在 s 中第一次出現的位置，如果找不到，它會回傳
+string::npos，也就是 -1。你也可以在 find() 函數中提供第二個參數以指定開始尋找的位置，例如以下的程式就可以找到並輸出字串
+s 中所有 ch 的位置並輸出：</p>
+<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-20.cpp""></script>
+<p>有了這個函數以後，剛剛那題在 k 中找 s[i] 的 for 迴圈就可以改成用 find() 來做了。</p>
+<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-21.cpp""></script>
+<p>甚至可以直接把第一行的 find() 代入第二行的 j，如下：</p>
+<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-22.cpp""></script>
+<p>整個程式就變成了：</p>
+<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-23.cpp""></script>
+<p>相當簡潔，不是嗎？</p>
+<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-24.cpp""></script>
+<br><br><br>
 </body></html>

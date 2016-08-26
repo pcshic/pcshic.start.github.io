@@ -1,630 +1,93 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html><head>
-  <meta charset="UTF-8">
-
-  
   <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-
   <title>第八章 函數</title>
-</head><body>
-<h2 style="background: rgb(255, 255, 255) url(https://ssl.gstatic.com/sites/p/e57d46/system/app/themes/crystalpanel/h2-border.gif) repeat-x scroll 0% 100%; font-family: 'Trebuchet MS',arial,sans-serif; color: rgb(165, 164, 165); font-size: 2em; letter-spacing: 0.1em; font-weight: normal; font-style: normal; font-variant: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;">8.1
-使用者自定義函數</h2>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);"><font size="3"><span>b081.&nbsp;<a href="http://zerojudge.tw/ShowProblem?problemid=b081" rel="nofollow" style="color: rgb(0, 0, 204); text-decoration: none;">B. 友好數</a></span><br>
-n 的真因數：除了 n 本身以外的所有因數，包含 1。</font></div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);"><font size="3">友好數：如果 n 真因數和為 m，m 的真因數和為 n，則 n、m 互為「友好數」。</font></div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);"><font size="3">題目：給定 n，求 n 的友好數。若 n 的友好數為 n 本身，請輸出「=n」，若 n 沒有友好數，請輸出「0」。</font></div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);">&nbsp;</div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);"><font size="3">這題可以用以下的程式碼來 AC。</font></div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);">&nbsp;</div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);">
-<p><font face="'courier new', monospace"><span style="color: green;" lang="EN-US">//2007jfB.<span class="Apple-converted-space">&nbsp;</span></span><span style="color: green;">友 好數&nbsp;<span lang="EN-US">by Snail<br>
-</span></span><span style="color: blue;" lang="EN-US">#include</span><span lang="EN-US"><span class="Apple-converted-space">&nbsp;</span><span style="color: rgb(163, 21, 21);">&lt;iostream&gt;<br>
-</span><span style="color: blue;">using</span><span class="Apple-converted-space">&nbsp;</span><span style="color: blue;">namespace</span><span class="Apple-converted-space">&nbsp;</span>std;<br>
-<br>
-<span style="color: blue;">int</span><span class="Apple-converted-space">&nbsp;</span>main
-() {<br>
-<span>&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: blue;">int</span><span class="Apple-converted-space">&nbsp;</span>n,
-n1, m, f;<br>
-<span>&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: blue;">while</span><span class="Apple-converted-space">&nbsp;</span>(cin
-&gt;&gt; n, n) {<br>
-<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span>m = 1;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: green;">//</span></span><span style="color: green;">加入因數
-&nbsp;<span lang="EN-US">1<br>
-</span></span><span lang="EN-US"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: blue;">for</span><span class="Apple-converted-space">&nbsp;</span>(f=2;
-f*f&lt;n; f++)<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: green;">//f(actor)--</span></span><span style="color: green;">因數<span lang="EN-US"><br>
-</span></span><span lang="EN-US"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: blue;">if</span><span class="Apple-converted-space">&nbsp;</span>(n
-% f == 0)<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: green;">//</span></span><span style="color: green;">若&nbsp;<span lang="EN-US">f<span class="Apple-converted-space">&nbsp;</span></span>為&nbsp;<span lang="EN-US">n<span class="Apple-converted-space">&nbsp;</span></span>的
-因數<span lang="EN-US"><br>
-</span></span><span lang="EN-US"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span>m += f + n/f;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: green;">//<span class="Apple-converted-space">&nbsp;</span></span></span><span style="color: green;">加入&nbsp;<span lang="EN-US">f<span class="Apple-converted-space">&nbsp;</span></span>及&nbsp;<span lang="EN-US">f/n<br>
-</span></span><span lang="EN-US"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: blue;">if</span><span class="Apple-converted-space">&nbsp;</span>(f*f
-== n)<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: green;">//</span></span><span style="color: green;">若&nbsp;<span lang="EN-US">n<span class="Apple-converted-space">&nbsp;</span></span>為
-完全平方數<span lang="EN-US"><br>
-</span></span><span lang="EN-US"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span>m += f;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: green;">//<span class="Apple-converted-space">&nbsp;</span></span></span><span style="color: green;">加入平方根<span lang="EN-US"><br>
-</span></span><span lang="EN-US"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: blue;">if</span><span class="Apple-converted-space">&nbsp;</span>(m
-== n)<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: green;">//</span></span><span style="color: green;">若&nbsp;<span lang="EN-US">n<span class="Apple-converted-space">&nbsp;</span></span>的
-友好數為自身<span lang="EN-US"><br>
-</span></span><span lang="EN-US"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span>cout &lt;&lt;<span class="Apple-converted-space">&nbsp;</span><span style="color: rgb(163, 21, 21);">'='</span><span class="Apple-converted-space">&nbsp;</span>&lt;&lt; m &lt;&lt; endl;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: green;">//<span class="Apple-converted-space">&nbsp;</span></span></span><span style="color: green;">加一個「<span lang="EN-US">=</span>」<span lang="EN-US"><br>
-</span></span><span lang="EN-US"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: blue;">else</span><span class="Apple-converted-space">&nbsp;</span>{<br>
-<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span>n1 = 1;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: green;">//</span></span><span style="color: green;">求&nbsp;<span lang="EN-US">m<span class="Apple-converted-space">&nbsp;</span></span>的
-真因數和&nbsp;<span lang="EN-US">n1<br>
-</span></span><span lang="EN-US"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: blue;">for</span><span class="Apple-converted-space">&nbsp;</span>(f=2;
-f*f&lt;m; f++)<br>
-<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: blue;">if</span><span class="Apple-converted-space">&nbsp;</span>(m
-% f == 0)<br>
-<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span>n1 += f + m/f;<br>
-<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: blue;">if</span><span class="Apple-converted-space">&nbsp;</span>(f*f
-== m)<br>
-<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span>n1 += f;<br>
-<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: blue;">if</span><span class="Apple-converted-space">&nbsp;</span>(n1
-== n)<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: green;">//</span></span><span style="color: green;">若&nbsp;<span lang="EN-US">m<span class="Apple-converted-space">&nbsp;</span></span>的
-真因數和為&nbsp;<span lang="EN-US">n<br>
-</span></span><span lang="EN-US"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span>cout &lt;&lt; m
-&lt;&lt; endl;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: green;">// m<span class="Apple-converted-space">&nbsp;</span></span></span><span style="color: green;">即是&nbsp;<span lang="EN-US">n<span class="Apple-converted-space">&nbsp;</span></span>的 友好數<span lang="EN-US"><br>
-</span></span><span lang="EN-US"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: blue;">else</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: green;">//</span></span><span style="color: green;">否則<span lang="EN-US"><br>
-</span></span><span lang="EN-US"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span>cout &lt;&lt;<span class="Apple-converted-space">&nbsp;</span><span style="color: rgb(163, 21, 21);">"0\n"</span>;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: green;">// n<span class="Apple-converted-space">&nbsp;</span></span></span><span style="color: green;">沒有友好數<span lang="EN-US"><br>
-</span></span><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-}<br>
-&nbsp;&nbsp;&nbsp; }<br>
-}</span></font><span lang="EN-US"><br>
-</span></p>
-</div>
-
-<br style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);">
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; font-size: medium; background-color: rgb(255, 255, 255);">從
-上面的程式中，我們先求 n 的真因數和 m，再求 m 的真因數和
+<style>
+table, th, td {
+    border: 1px solid black;
+}  
+</style>
+</head><body style="background-image: url(picture/background.png);">
+<h1>1第八章 函數</h1>
+<h2>8.1 使用者自定義函數</h2>
+<li><a href="http://contest.cc.ntu.edu.tw/npsc2007/doc/2007junfinal.doc">2007 NPSC 國中組決賽 B. 友好數</a></li>
+<p>n 的真因數：除了 n 本身以外的所有因數，包含 1。
+友好數：如果 n 真因數和為 m，m 的真因數和為 n，則 n、m 互為「友好數」。
+題目：給定 n，求 n 的友好數。若 n 的友好數為 n 本身，請輸出「=n」，若 n 沒有友好數，請輸出「0」。</p>
+<p>這題可以用以下的程式碼來 AC。</p>
+<script src="https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-01.cpp"></script>
+<p>從上面的程式中，我們先求 n 的真因數和 m，再求 m 的真因數和
 n1，求真因數和的動作做了兩次，相同的程式碼也寫了兩次。這樣的寫法除了浪費記憶體外，在軟體工程上也有它的問題，因為它會造成維護上的困擾。將來如果
-求真因數和的程式 需要修改，那麼我們得修改兩處，萬一其中一處遺漏了，就會造成程式的錯誤。</div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; font-size: medium; background-color: rgb(255, 255, 255);"><br>
-</div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; font-size: medium; background-color: rgb(255, 255, 255);">因
-此，像這樣重覆使用的程式碼，應讓有一個機制讓它只寫一次就好，這個機制叫作「函數」。我們把上面的程式碼用「函數」改寫如下：</div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; font-size: medium; background-color: rgb(255, 255, 255);"><br>
-</div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);">
-<div class="sites-codeblock sites-codesnippet-block" style="border: 1px solid rgb(211, 211, 211); padding: 0.5em 0px 0.5em 1em; display: block; line-height: 1; background-color: rgb(239, 239, 239);"><font size="2"><span lang="EN-US"><code style="color: rgb(0, 96, 0);">//2007jfB.<span class="Apple-converted-space">&nbsp;</span></code></span><span><code style="color: rgb(0, 96, 0);">友好數&nbsp;</code><span lang="EN-US"><code style="color: rgb(0, 96, 0);">by Snail</code><br>
-</span></span><span lang="EN-US"><code style="color: rgb(0, 96, 0);">#include</code></span><span lang="EN-US"><span class="Apple-converted-space">&nbsp;</span><span style="color: rgb(163, 21, 21);"><code style="color: rgb(0, 96, 0);">&lt;iostream&gt;</code><br>
-</span><span style="color: blue;"><code style="color: rgb(0, 96, 0);">using</code></span><span class="Apple-converted-space">&nbsp;</span><span style="color: blue;"><code style="color: rgb(0, 96, 0);">namespace</code></span><code style="color: rgb(0, 96, 0);"><span class="Apple-converted-space">&nbsp;</span>std;</code><br>
-<br>
-<span style="color: blue;"><code style="color: rgb(0, 96, 0);">void</code></span><code style="color: rgb(0, 96, 0);"><span class="Apple-converted-space">&nbsp;</span>sof
-() {</code><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></code></span><span style="color: green;"><code style="color: rgb(0, 96, 0);">//s(um) o(f)
-f(actors)</code><br>
-</span><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></code></span><code style="color: rgb(0, 96, 0);">m = 1;</code><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></code></span><span style="color: green;"><code style="color: rgb(0, 96, 0);">//</code></span></span><span><code style="color: rgb(0, 96, 0);">加入因數&nbsp;</code><span lang="EN-US"><code style="color: rgb(0, 96, 0);">1</code><br>
-</span></span><span lang="EN-US"><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></code></span><span style="color: blue;"><code style="color: rgb(0, 96, 0);">for</code></span><code style="color: rgb(0, 96, 0);"><span class="Apple-converted-space">&nbsp;</span>(f=2;
-f*f&lt;n; f++)</code><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></code></span><span style="color: green;"><code style="color: rgb(0, 96, 0);">//f(actor)--</code></span></span><span><code style="color: rgb(0, 96, 0);">因數</code><span lang="EN-US"><br>
-</span></span><span lang="EN-US"><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></code></span><span style="color: blue;"><code style="color: rgb(0, 96, 0);">if</code></span><code style="color: rgb(0, 96, 0);"><span class="Apple-converted-space">&nbsp;</span>(n
-% f == 0)</code><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></code></span><span style="color: green;"><code style="color: rgb(0, 96, 0);">//</code></span></span><span><code style="color: rgb(0, 96, 0);">若&nbsp;</code><span lang="EN-US"><code style="color: rgb(0, 96, 0);">f<span class="Apple-converted-space">&nbsp;</span></code></span><code style="color: rgb(0, 96, 0);">為&nbsp;</code><span lang="EN-US"><code style="color: rgb(0, 96, 0);">n<span class="Apple-converted-space">&nbsp;</span></code></span><code style="color: rgb(0, 96, 0);">的因數</code><span lang="EN-US"><br>
-</span></span><span lang="EN-US"><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></code></span><code style="color: rgb(0, 96, 0);">m += f + n/f;</code><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></code></span><span style="color: green;"><code style="color: rgb(0, 96, 0);">//<span class="Apple-converted-space">&nbsp;</span></code></span></span><span><code style="color: rgb(0, 96, 0);">加入</code><span lang="EN-US"><code style="color: rgb(0, 96, 0);">f<span class="Apple-converted-space">&nbsp;</span></code></span><code style="color: rgb(0, 96, 0);">及&nbsp;</code><span lang="EN-US"><code style="color: rgb(0, 96, 0);">f/n</code><br>
-</span></span><span lang="EN-US"><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></code></span><span style="color: blue;"><code style="color: rgb(0, 96, 0);">if</code></span><code style="color: rgb(0, 96, 0);"><span class="Apple-converted-space">&nbsp;</span>(f*f
-== n)</code><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></code></span><span style="color: green;"><code style="color: rgb(0, 96, 0);">//</code></span></span><span><code style="color: rgb(0, 96, 0);">若&nbsp;</code><span lang="EN-US"><code style="color: rgb(0, 96, 0);">n<span class="Apple-converted-space">&nbsp;</span></code></span><code style="color: rgb(0, 96, 0);">為完全平方數</code><span lang="EN-US"><br>
-</span></span><span lang="EN-US"><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></code></span><code style="color: rgb(0, 96, 0);">m += f;</code><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></code></span><span style="color: green;"><code style="color: rgb(0, 96, 0);">//<span class="Apple-converted-space">&nbsp;</span></code></span></span><span><code style="color: rgb(0, 96, 0);">加入平方根</code><span lang="EN-US"><br>
-</span></span><span lang="EN-US"><code style="color: rgb(0, 96, 0);">}</code><br>
-<br>
-<span style="color: blue;"><code style="color: rgb(0, 96, 0);">int</code></span><code style="color: rgb(0, 96, 0);"><span class="Apple-converted-space">&nbsp;</span>main
-() {</code><br>
-<span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></code></span><span style="color: blue;"><code style="color: rgb(0, 96, 0);">int</code></span><code style="color: rgb(0, 96, 0);"><span class="Apple-converted-space">&nbsp;</span>n,
-n1, m, f;</code><br>
-<span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></code></span><span style="color: blue;"><code style="color: rgb(0, 96, 0);">while</code></span><code style="color: rgb(0, 96, 0);"><span class="Apple-converted-space">&nbsp;</span>(cin
-&gt;&gt; n, n) {</code><br>
-<span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></code></span><code style="color: rgb(0, 96, 0);">sof();</code><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></code></span><span style="color: green;"><code style="color: rgb(0, 96, 0);">//</code></span></span><span><code style="color: rgb(0, 96, 0);">呼叫&nbsp;</code><span lang="EN-US"><code style="color: rgb(0, 96, 0);">sof<span class="Apple-converted-space">&nbsp;</span></code></span><code style="color: rgb(0, 96, 0);">函數</code><span lang="EN-US"><span><code style="color: rgb(0, 96, 0);">&nbsp;<span class="Apple-converted-space">&nbsp;</span></code></span><br>
-</span></span><span lang="EN-US"><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></code></span><span style="color: blue;"><code style="color: rgb(0, 96, 0);">if</code></span><code style="color: rgb(0, 96, 0);"><span class="Apple-converted-space">&nbsp;</span>(m
-== n)</code><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></code></span><span style="color: green;"><code style="color: rgb(0, 96, 0);">//</code></span></span><span><code style="color: rgb(0, 96, 0);">若</code><span lang="EN-US"><code style="color: rgb(0, 96, 0);">n<span class="Apple-converted-space">&nbsp;</span></code></span><code style="color: rgb(0, 96, 0);">的友好數為自身</code><span lang="EN-US"><br>
-</span></span><span lang="EN-US"><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></code></span><code style="color: rgb(0, 96, 0);">cout &lt;&lt;<span class="Apple-converted-space">&nbsp;</span></code><span style="color: rgb(163, 21, 21);"><code style="color: rgb(0, 96, 0);">'='</code></span><code style="color: rgb(0, 96, 0);"><span class="Apple-converted-space">&nbsp;</span>&lt;&lt;
-m &lt;&lt; endl;</code><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></code></span><span style="color: green;"><code style="color: rgb(0, 96, 0);">//<span class="Apple-converted-space">&nbsp;</span></code></span></span><span><code style="color: rgb(0, 96, 0);">加一個「</code><span lang="EN-US"><code style="color: rgb(0, 96, 0);">=</code></span><code style="color: rgb(0, 96, 0);">」</code><span lang="EN-US"><br>
-</span></span><span lang="EN-US"><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></code></span><span style="color: blue;"><code style="color: rgb(0, 96, 0);">else</code></span><code style="color: rgb(0, 96, 0);"><span class="Apple-converted-space">&nbsp;</span>{</code><br>
-<span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></code></span><code style="color: rgb(0, 96, 0);">n1 = 1;</code><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></code></span><span style="color: green;"><code style="color: rgb(0, 96, 0);">//</code></span></span><span><code style="color: rgb(0, 96, 0);">求</code><span lang="EN-US"><code style="color: rgb(0, 96, 0);">m<span class="Apple-converted-space">&nbsp;</span></code></span><code style="color: rgb(0, 96, 0);">的真因數和&nbsp;</code><span lang="EN-US"><code style="color: rgb(0, 96, 0);">n1</code><br>
-</span></span><span lang="EN-US"><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></code></span><span style="color: blue;"><code style="color: rgb(0, 96, 0);">for</code></span><code style="color: rgb(0, 96, 0);"><span class="Apple-converted-space">&nbsp;</span>(f=2;
-f*f&lt;m; f++)</code><br>
-<span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></code></span><span style="color: blue;"><code style="color: rgb(0, 96, 0);">if</code></span><code style="color: rgb(0, 96, 0);"><span class="Apple-converted-space">&nbsp;</span>(m
-% f == 0)</code><br>
-<span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></code></span><code style="color: rgb(0, 96, 0);">n1 += f + m/f;</code><br>
-<span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></code></span><span style="color: blue;"><code style="color: rgb(0, 96, 0);">if</code></span><code style="color: rgb(0, 96, 0);"><span class="Apple-converted-space">&nbsp;</span>(f*f
-== m)</code><br>
-<span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></code></span><code style="color: rgb(0, 96, 0);">n1 += f;</code><br>
-<span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></code></span><span style="color: blue;"><code style="color: rgb(0, 96, 0);">if</code></span><code style="color: rgb(0, 96, 0);"><span class="Apple-converted-space">&nbsp;</span>(n1
-== n)</code><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></code></span><span style="color: green;"><code style="color: rgb(0, 96, 0);">//</code></span></span><span><code style="color: rgb(0, 96, 0);">若</code><span lang="EN-US"><code style="color: rgb(0, 96, 0);">m<span class="Apple-converted-space">&nbsp;</span></code></span><code style="color: rgb(0, 96, 0);">的真因數和為&nbsp;</code><span lang="EN-US"><code style="color: rgb(0, 96, 0);">n</code><br>
-</span></span><span lang="EN-US"><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></code></span><code style="color: rgb(0, 96, 0);">cout &lt;&lt; m &lt;&lt; endl;</code><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></code></span><span style="color: green;"><code style="color: rgb(0, 96, 0);">// m<span class="Apple-converted-space">&nbsp;</span></code></span></span><span><code style="color: rgb(0, 96, 0);">即是&nbsp;</code><span lang="EN-US"><code style="color: rgb(0, 96, 0);">n<span class="Apple-converted-space">&nbsp;</span></code></span><code style="color: rgb(0, 96, 0);">的友好數</code><span lang="EN-US"><br>
-</span></span><span lang="EN-US"><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></code></span><span style="color: blue;"><code style="color: rgb(0, 96, 0);">else</code></span><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></code></span><span style="color: green;"><code style="color: rgb(0, 96, 0);">//</code></span></span><span><code style="color: rgb(0, 96, 0);">否則</code><span lang="EN-US"><br>
-</span></span><span lang="EN-US"><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></code></span><code style="color: rgb(0, 96, 0);">cout &lt;&lt;<span class="Apple-converted-space">&nbsp;</span></code><span style="color: rgb(163, 21, 21);"><code style="color: rgb(0, 96, 0);">"0\n"</code></span><code style="color: rgb(0, 96, 0);">;</code><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></code></span><span style="color: green;"><code style="color: rgb(0, 96, 0);">// n<span class="Apple-converted-space">&nbsp;</span></code></span></span><span><code style="color: rgb(0, 96, 0);">沒有友好數</code><span lang="EN-US"><br>
-</span></span><span lang="EN-US"><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-}</code><br>
-<code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp; }</code><br>
-<code style="color: rgb(0, 96, 0);">}</code></span></font></div>
-<span style="font-size: medium;" lang="EN-US"><br>
-</span></div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; font-size: medium; background-color: rgb(255, 255, 255);">在
-這個程式裡，一共有兩個「函數」(funtcion)：int main () 及 void sof ()。void
+求真因數和的程式需要修改，那麼我們得修改兩處，萬一其中一處遺漏了，就會造成程式的錯誤。</p>
+<p>因此，像這樣重覆使用的程式碼，應讓有一個機制讓它只寫一次就好，這個機制叫作「函數」。我們把上面的程式碼用「函數」改寫如下：</p>
+<script src="https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-02.cpp"></script>
+<p>在這個程式裡，一共有兩個「函數」(funtcion)：int main () 及 void sof ()。void
 所代表的意義我們待會再討論。int main ()
 是程式的「入口」，程式執行時，會先執行這個「函數」。至於其他的函數，只有在被「呼叫」(call)
 時才會執行。如果你寫了一個函數卻不去呼叫它，那麼它就不會被執行，等於是白寫。因此，在 int main () 中有一個呼叫 sof ()
-函數的陳述式：</div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; font-size: medium; background-color: rgb(255, 255, 255);"><br>
-</div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; font-size: medium; background-color: rgb(255, 255, 255);"><span style="line-height: 13px; font-size: small;"><span lang="EN-US"><span><code style="color: rgb(0, 96, 0);">&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</code></span><code style="color: rgb(0, 96, 0);">sof();</code><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></span><span style="color: green;"><code style="color: rgb(0, 96, 0);">//</code></span></span><span><code style="color: rgb(0, 96, 0);">呼叫&nbsp;</code><span lang="EN-US"><code style="color: rgb(0, 96, 0);">sof&nbsp;</code></span><code style="color: rgb(0, 96, 0);">函 數</code><span lang="EN-US"><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;</code></span><br>
-</span></span></span></div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; font-size: medium; background-color: rgb(255, 255, 255);"><br>
-</div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; font-size: medium; background-color: rgb(255, 255, 255);">執
-行到這行時，程式就會先跳到 void sof () 函數去，等 void sof () 裡的程式執行完後再跳回 int main ()。</div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; font-size: medium; background-color: rgb(255, 255, 255);"><br>
-</div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; font-size: medium; background-color: rgb(255, 255, 255);">不
-過，上面這個程式在編譯時得到以下的錯誤訊息：</div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; font-size: medium; background-color: rgb(255, 255, 255);"><br>
-</div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);">
-<div class="sites-codeblock sites-codesnippet-block" style="border: 1px solid rgb(211, 211, 211); padding: 0.5em 0px 0.5em 1em; display: block; line-height: 1; background-color: rgb(239, 239, 239);">
-<div><span style="color: rgb(0, 96, 0); font-family: monospace; line-height: 24px; font-size: small;">1&gt;d:\cpps\cpps\2007jfb.
-友好數a.cpp(6) : error C2065: 'm' : 未宣告的識別項</span></div>
-<div><span style="line-height: 24px;"><font size="2"><code style="color: rgb(0, 96, 0);">1&gt;d:\cpps\cpps\2007jfb. 友好數a.cpp(7) :
-error C2065: 'f' : 未宣告的識別項</code></font></span></div>
-<div><span style="color: rgb(0, 96, 0); font-family: monospace; line-height: 24px; font-size: small;">1&gt;d:\cpps\cpps\2007jfb.
-友好數a.cpp(7) : error C2065: 'n' : 未宣告的識別項</span></div>
-</div>
-<div><font size="3"><span style="line-height: 24px;"><br>
-</span></font></div>
-<div><font size="3"><span style="line-height: 24px;">在 int main ()
-的裡面我們定義了 4 個變數。</span></font></div>
-<div><font size="3"><span style="line-height: 24px;"><br>
-</span></font></div>
-<div><font size="3"><span style="line-height: 24px;"><span><span><code style="color: rgb(0, 96, 0);">&nbsp; &nbsp;&nbsp;</code></span><span style="color: blue;"><code style="color: rgb(0, 96, 0);">int</code></span><code style="color: rgb(0, 96, 0);">&nbsp;n, n1, m, f;</code><br>
-</span></span></font></div>
-<div><font size="3"><span style="line-height: 24px;"><br>
-</span></font></div>
-<div><font size="3"><span style="line-height: 24px;">這種定義在函數內部的變數我們稱之為「區
-域變數」，它的有效範圍僅限於該函數的內部。所以這 4 個變數是 int main () 自己的變數，void sof ()
-是存取不到的。因此當 void sof () 中使用到 n, m, f 等變數時，便會產生「未宣告的識別項」的錯誤。</span></font></div>
-<div><font size="3"><span style="line-height: 24px;"><br>
-</span></font></div>
-<div><font size="3"><span style="line-height: 24px;">你當然也可以在 void sof
-() 中自己定義這些變數：</span></font></div>
-<div><font size="3"><span style="line-height: 24px;"><br>
-</span></font></div>
-</div>
-
-<div class="sites-codeblock sites-codesnippet-block" style="border: 1px solid rgb(211, 211, 211); padding: 0.5em 0px 0.5em 1em; display: block; line-height: 1; color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(239, 239, 239);">
-<div><span style="line-height: 13px; font-size: small;"><span lang="EN-US"><span style="color: blue;"><code style="color: rgb(0, 96, 0);">void</code></span><code style="color: rgb(0, 96, 0);">&nbsp;</code><code style="color: rgb(0, 96, 0);">sof () {</code><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code style="color: rgb(0, 96, 0);">&nbsp;</code></span><span style="color: green;"><code style="color: rgb(0, 96, 0);">//s(um) o(f)
-f(actors)</code></span></span></span></div>
-<div><span style="line-height: 13px; font-size: small;"><span lang="EN-US"><font color="#006000" face="monospace"><span>&nbsp; &nbsp;<span class="Apple-converted-space">&nbsp;</span><span style="background-color: rgb(255, 255, 0);">int n, m, f;</span></span><br>
-</font><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;</code><code style="color: rgb(0, 96, 0);">&nbsp;</code></span><code style="color: rgb(0, 96, 0);">m = 1;</code><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code style="color: rgb(0, 96, 0);">&nbsp;</code></span><span><code style="color: rgb(0, 96, 0);">//</code></span></span><span><code style="color: rgb(0, 96, 0);">加入因數&nbsp;</code><span lang="EN-US"><code style="color: rgb(0, 96, 0);">1</code><br>
-</span></span><span lang="EN-US"><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;</code><code style="color: rgb(0, 96, 0);">&nbsp;</code></span><span style="color: blue;"><code style="color: rgb(0, 96, 0);">for</code></span><code style="color: rgb(0, 96, 0);">&nbsp;</code><code style="color: rgb(0, 96, 0);">(f=2; f*f&lt;n; f++)</code><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code style="color: rgb(0, 96, 0);">&nbsp;</code></span><span style="color: green;"><code style="color: rgb(0, 96, 0);">//f(actor)--</code></span></span><span><code style="color: rgb(0, 96, 0);">因數</code><span lang="EN-US"><br>
-</span></span><span lang="EN-US"><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code style="color: rgb(0, 96, 0);">&nbsp;</code></span><span style="color: blue;"><code style="color: rgb(0, 96, 0);">if</code></span><code style="color: rgb(0, 96, 0);">&nbsp;</code><code style="color: rgb(0, 96, 0);">(n % f == 0)</code><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code style="color: rgb(0, 96, 0);">&nbsp;</code></span><span style="color: green;"><code style="color: rgb(0, 96, 0);">//</code></span></span><span><code style="color: rgb(0, 96, 0);">若&nbsp;</code><span lang="EN-US"><code style="color: rgb(0, 96, 0);">f</code><code style="color: rgb(0, 96, 0);">&nbsp;</code></span><code style="color: rgb(0, 96, 0);">為&nbsp;</code><span lang="EN-US"><code style="color: rgb(0, 96, 0);">n</code><code style="color: rgb(0, 96, 0);">&nbsp;</code></span><code style="color: rgb(0, 96, 0);">的因數</code><span lang="EN-US"><br>
-</span></span><span lang="EN-US"><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code style="color: rgb(0, 96, 0);">&nbsp;</code></span><code style="color: rgb(0, 96, 0);">m += f + n/f;</code><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code style="color: rgb(0, 96, 0);">&nbsp;</code></span><span style="color: green;"><code style="color: rgb(0, 96, 0);">//</code><code style="color: rgb(0, 96, 0);">&nbsp;</code></span></span><span><code style="color: rgb(0, 96, 0);">加入</code><span lang="EN-US"><code style="color: rgb(0, 96, 0);">f</code><code style="color: rgb(0, 96, 0);">&nbsp;</code></span><code style="color: rgb(0, 96, 0);">及&nbsp;</code><span lang="EN-US"><code style="color: rgb(0, 96, 0);">f/n</code><br>
-</span></span><span lang="EN-US"><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;</code><code style="color: rgb(0, 96, 0);">&nbsp;</code></span><span style="color: blue;"><code style="color: rgb(0, 96, 0);">if</code></span><code style="color: rgb(0, 96, 0);">&nbsp;</code><code style="color: rgb(0, 96, 0);">(f*f == n)</code><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code style="color: rgb(0, 96, 0);">&nbsp;</code></span><span style="color: green;"><code style="color: rgb(0, 96, 0);">//</code></span></span><span><code style="color: rgb(0, 96, 0);">若&nbsp;</code><span lang="EN-US"><code style="color: rgb(0, 96, 0);">n</code><code style="color: rgb(0, 96, 0);">&nbsp;</code></span><code style="color: rgb(0, 96, 0);">為完全平方數</code><span lang="EN-US"><br>
-</span></span><span lang="EN-US"><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code style="color: rgb(0, 96, 0);">&nbsp;</code></span><code style="color: rgb(0, 96, 0);">m += f;</code><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code style="color: rgb(0, 96, 0);">&nbsp;</code></span><span style="color: green;"><code style="color: rgb(0, 96, 0);">//</code><code style="color: rgb(0, 96, 0);">&nbsp;</code></span></span><span><code style="color: rgb(0, 96, 0);">加入平方根</code><span lang="EN-US"><br>
-</span></span><span lang="EN-US"><code style="color: rgb(0, 96, 0);">}</code><br>
-</span></span></div>
-</div>
-
-<br style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);">
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; font-size: medium; background-color: rgb(255, 255, 255);">這
-樣程式雖然通過編譯並執行，但是卻產生的下列的「警告」：</div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; font-size: medium; background-color: rgb(255, 255, 255);"><br>
-</div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);">
-<div class="sites-codeblock sites-codesnippet-block" style="border: 1px solid rgb(211, 211, 211); padding: 0.5em 0px 0.5em 1em; display: block; line-height: 1; background-color: rgb(239, 239, 239);">
-<div><font size="3"><span style="line-height: 24px;"><code style="color: rgb(0, 96, 0);">1&gt;d:\cpps\cpps\2007jfb. 友好數a.cpp(8) :
-warning C4700: 使用了未初始化的區域變數 'n'</code></span></font></div>
-<div><font size="3"><span style="line-height: 24px;"><code style="color: rgb(0, 96, 0);">1&gt;d:\cpps\cpps\2007jfb. 友好數a.cpp(19)
-: warning C4700: 使用了未初始化的區域變數 'm'</code></span></font></div>
-</div>
-</div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; font-size: medium; background-color: rgb(255, 255, 255);">根
-據程式的邏輯，在 void sof () 所使用的 n 應該是在 int main () 所輸入的 n。我們另行在 void sof ()
+函數的陳述式：</p>
+<script src="https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-03.cpp"></script>
+<p>執行到這行時，程式就會先跳到 void sof () 函數去，等 void sof () 裡的程式執行完後再跳回 int main ()。</p>
+<p>不過，上面這個程式在編譯時得到以下的錯誤訊息：</p>
+<p>1&gt;d:\cpps\cpps\2007jfb. 友好數a.cpp(6) : error C2065: 'm' : 未宣告的識別項<br>1&gt;d:\cpps\cpps\2007jfb. 友好數a.cpp(7) : error C2065: 'f' : 未宣告的識別項<br>1&gt;d:\cpps\cpps\2007jfb. 友好數a.cpp(7) : error C2065: 'n' : 未宣告的識別項</p>
+<p>在 int main () 的裡面我們定義了 4 個變數。</p>
+<script src="https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-04.cpp"></script>
+<p>這種定義在函數內部的變數我們稱之為「區域變數」，它的有效範圍僅限於該函數的內部。所以這 4 個變數是 int main ()
+自己的變數，void sof () 是存取不到的。因此當 void sof () 中使用到 n, m, f
+等變數時，便會產生「未宣告的識別項」的錯誤。</p>
+<p>你當然也可以在 void sof () 中自己定義這些變數：</p>
+<script src="https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-05.cpp"></script>
+<p>這樣程式雖然通過編譯並執行，但是卻產生的下列的「警告」：</p>
+<p>1&gt;d:\cpps\cpps\2007jfb. 友好數a.cpp(8) : warning C4700: 使用了未初始化的區域變數 'n'<br>1&gt;d:\cpps\cpps\2007jfb. 友好數a.cpp(19) : warning C4700: 使用了未初始化的區域變數
+'m'</p>
+<p>根據程式的邏輯，在 void sof () 所使用的 n 應該是在 int main () 所輸入的 n。我們另行在 void sof ()
 所宣告的 n 卻是另一個 n，儘管兩個變數名稱都是 n，但是它們卻是不同的個體。你在 int main () 輸入了 n，但是 void
-sof () 的 n 卻沒有改變。</div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; font-size: medium; background-color: rgb(255, 255, 255);"><br>
-</div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; font-size: medium; background-color: rgb(255, 255, 255);">要
-讓 int main () 和 void sof () 共用一個 n，你需要把它定義為「全域變數」，方法是把這個 n 宣告在兩個函數的「外面」：</div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; font-size: medium; background-color: rgb(255, 255, 255);"><br>
-</div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; font-size: medium; background-color: rgb(255, 255, 255);"><span style="font-size: 13px; line-height: 19px;">
-<div class="sites-codeblock sites-codesnippet-block" style="border: 1px solid rgb(211, 211, 211); padding: 0.5em 0px 0.5em 1em; display: block; line-height: 1; background-color: rgb(239, 239, 239);"><font size="2"><span lang="EN-US"><code style="color: rgb(0, 96, 0);">//2007jfB.&nbsp;</code></span><span><code style="color: rgb(0, 96, 0);">友好數&nbsp;</code><span lang="EN-US"><code style="color: rgb(0, 96, 0);">by Snail</code><br>
-</span></span><span lang="EN-US"><code style="color: rgb(0, 96, 0);">#include</code></span><span lang="EN-US"><span style="background-color: rgb(239, 239, 239);">&nbsp;</span><span style="color: rgb(163, 21, 21); background-color: rgb(239, 239, 239);"><code style="color: rgb(0, 96, 0);">&lt;iostream&gt;</code><br>
-</span><span style="color: blue; background-color: rgb(239, 239, 239);"><code style="color: rgb(0, 96, 0);">using</code></span><span style="background-color: rgb(239, 239, 239);">&nbsp;</span><span style="color: blue; background-color: rgb(239, 239, 239);"><code style="color: rgb(0, 96, 0);">namespace</code></span><code style="color: rgb(0, 96, 0); background-color: rgb(239, 239, 239);">&nbsp;std;</code><br>
-<br>
-<span style="color: blue;"><code style="color: rgb(0, 96, 0);"><span style="background-color: rgb(255, 255, 0);">int n, m;</span><br>
-<br>
-<span style="background-color: rgb(239, 239, 239);">void</span></code></span><code style="color: rgb(0, 96, 0); background-color: rgb(239, 239, 239);">&nbsp;sof
-() {</code><span style="background-color: rgb(239, 239, 239);"><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></span><span style="color: green; background-color: rgb(239, 239, 239);"><code style="color: rgb(0, 96, 0);">//s(um) o(f) f(actors)</code><br>
-</span><code style="color: rgb(0, 96, 0);"><span style="background-color: rgb(239, 239, 239);">&nbsp; &nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="background-color: rgb(255, 255, 0);">int f;</span><br>
-<span style="background-color: rgb(239, 239, 239);">&nbsp; &nbsp;&nbsp;</span></code><code style="color: rgb(0, 96, 0); background-color: rgb(239, 239, 239);">m
-= 1;</code><span style="background-color: rgb(239, 239, 239);"><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></span><span style="color: green; background-color: rgb(239, 239, 239);"><code style="color: rgb(0, 96, 0);">//</code></span></span><span><code style="color: rgb(0, 96, 0);">加入因數&nbsp;</code><span lang="EN-US"><code style="color: rgb(0, 96, 0);">1</code><br>
-</span></span><span lang="EN-US"><span style="color: blue;"><code style="color: rgb(0, 96, 0);"><span>&nbsp; &nbsp;&nbsp;</span>for</code></span><code style="color: rgb(0, 96, 0);">&nbsp;(f=2; f*f&lt;n; f++)</code><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></span><span style="color: green;"><code style="color: rgb(0, 96, 0);">//f(actor)--</code></span></span><span><code style="color: rgb(0, 96, 0);">因數</code><span lang="EN-US"><br>
-</span></span><span lang="EN-US"><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></span><span style="color: blue;"><code style="color: rgb(0, 96, 0);">if</code></span><code style="color: rgb(0, 96, 0);">&nbsp;(n % f == 0)</code><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></span><span style="color: green;"><code style="color: rgb(0, 96, 0);">//</code></span></span><span><code style="color: rgb(0, 96, 0);">若&nbsp;</code><span lang="EN-US"><code style="color: rgb(0, 96, 0);">f&nbsp;</code></span><code style="color: rgb(0, 96, 0);">為&nbsp;</code><span lang="EN-US"><code style="color: rgb(0, 96, 0);">n&nbsp;</code></span><code style="color: rgb(0, 96, 0);">的因數</code><span lang="EN-US"><br>
-</span></span><span lang="EN-US"><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></span><code style="color: rgb(0, 96, 0);">m += f + n/f;</code><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></span><span style="color: green;"><code style="color: rgb(0, 96, 0);">//&nbsp;</code></span></span><span><code style="color: rgb(0, 96, 0);">加入</code><span lang="EN-US"><code style="color: rgb(0, 96, 0);">f&nbsp;</code></span><code style="color: rgb(0, 96, 0);">及&nbsp;</code><span lang="EN-US"><code style="color: rgb(0, 96, 0);">f/n</code><br>
-</span></span><span lang="EN-US"><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;</code></span><span style="color: blue;"><code style="color: rgb(0, 96, 0);">if</code></span><code style="color: rgb(0, 96, 0);">&nbsp;(f*f == n)</code><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></span><span style="color: green;"><code style="color: rgb(0, 96, 0);">//</code></span></span><span><code style="color: rgb(0, 96, 0);">若&nbsp;</code><span lang="EN-US"><code style="color: rgb(0, 96, 0);">n&nbsp;</code></span><code style="color: rgb(0, 96, 0);">為 完全平方數</code><span lang="EN-US"><br>
-</span></span><span lang="EN-US"><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></span><code style="color: rgb(0, 96, 0);">m += f;</code><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></span><span style="color: green;"><code style="color: rgb(0, 96, 0);">//&nbsp;</code></span></span><span><code style="color: rgb(0, 96, 0);">加入平方根</code><span lang="EN-US"><br>
-</span></span><span lang="EN-US"><code style="color: rgb(0, 96, 0); background-color: rgb(239, 239, 239);">}</code><br>
-<br>
-<span style="color: blue; background-color: rgb(239, 239, 239);"><code style="color: rgb(0, 96, 0);">int</code></span><code style="color: rgb(0, 96, 0); background-color: rgb(239, 239, 239);">&nbsp;main
-() {</code><br>
-<span style="background-color: rgb(239, 239, 239);"><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;</code></span><span style="background-color: rgb(255, 255, 0);"><span style="color: blue;"><code style="color: rgb(0, 96, 0);">int</code></span><code style="color: rgb(0, 96, 0);">&nbsp;n1, f;</code></span><br>
-<span style="background-color: rgb(239, 239, 239);"><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;</code></span><span style="color: blue; background-color: rgb(239, 239, 239);"><code style="color: rgb(0, 96, 0);">while</code></span><code style="color: rgb(0, 96, 0); background-color: rgb(239, 239, 239);">&nbsp;(cin
-&gt;&gt; n, n) {</code><br>
-<span style="background-color: rgb(239, 239, 239);"><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></span><code style="color: rgb(0, 96, 0); background-color: rgb(239, 239, 239);">sof();</code><span style="background-color: rgb(239, 239, 239);"><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></span><span style="color: green; background-color: rgb(239, 239, 239);"><code style="color: rgb(0, 96, 0);">//</code></span></span><span><code style="color: rgb(0, 96, 0);">呼叫&nbsp;</code><span lang="EN-US"><code style="color: rgb(0, 96, 0);">sof&nbsp;</code></span><code style="color: rgb(0, 96, 0);">函 數</code><span lang="EN-US"><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;</code></span><br>
-</span></span><span lang="EN-US"><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></span><span style="color: blue;"><code style="color: rgb(0, 96, 0);">if</code></span><code style="color: rgb(0, 96, 0);">&nbsp;(m == n)</code><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></span><span style="color: green;"><code style="color: rgb(0, 96, 0);">//</code></span></span><span><code style="color: rgb(0, 96, 0);">若</code><span lang="EN-US"><code style="color: rgb(0, 96, 0);">n&nbsp;</code></span><code style="color: rgb(0, 96, 0);">的 友好數為自身</code><span lang="EN-US"><br>
-</span></span><span lang="EN-US"><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></span><code style="color: rgb(0, 96, 0);">cout &lt;&lt;&nbsp;</code><span style="color: rgb(163, 21, 21);"><code style="color: rgb(0, 96, 0);">'='</code></span><code style="color: rgb(0, 96, 0);">&nbsp;&lt;&lt; m &lt;&lt; endl;</code><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></span><span style="color: green;"><code style="color: rgb(0, 96, 0);">//&nbsp;</code></span></span><span><code style="color: rgb(0, 96, 0);">加一個「</code><span lang="EN-US"><code style="color: rgb(0, 96, 0);">=</code></span><code style="color: rgb(0, 96, 0);">」</code><span lang="EN-US"><br>
-</span></span><span lang="EN-US"><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></span><span style="color: blue;"><code style="color: rgb(0, 96, 0);">else</code></span><code style="color: rgb(0, 96, 0);">&nbsp;{</code><br>
-<span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></span><code style="color: rgb(0, 96, 0);">n1 = 1;</code><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></span><span style="color: green;"><code style="color: rgb(0, 96, 0);">//</code></span></span><span><code style="color: rgb(0, 96, 0);">求</code><span lang="EN-US"><code style="color: rgb(0, 96, 0);">m&nbsp;</code></span><code style="color: rgb(0, 96, 0);">的 真因數和&nbsp;</code><span lang="EN-US"><code style="color: rgb(0, 96, 0);">n1</code><br>
-</span></span><span lang="EN-US"><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></span><span style="color: blue;"><code style="color: rgb(0, 96, 0);">for</code></span><code style="color: rgb(0, 96, 0);">&nbsp;(f=2; f*f&lt;m; f++)</code><br>
-<span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></span><span style="color: blue;"><code style="color: rgb(0, 96, 0);">if</code></span><code style="color: rgb(0, 96, 0);">&nbsp;(m % f == 0)</code><br>
-<span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></span><code style="color: rgb(0, 96, 0);">n1 += f + m/f;</code><br>
-<span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></span><span style="color: blue;"><code style="color: rgb(0, 96, 0);">if</code></span><code style="color: rgb(0, 96, 0);">&nbsp;(f*f == m)</code><br>
-<span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></span><code style="color: rgb(0, 96, 0);">n1 += f;</code><br>
-<span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></span><span style="color: blue;"><code style="color: rgb(0, 96, 0);">if</code></span><code style="color: rgb(0, 96, 0);">&nbsp;(n1 == n)</code><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></span><span style="color: green;"><code style="color: rgb(0, 96, 0);">//</code></span></span><span><code style="color: rgb(0, 96, 0);">若</code><span lang="EN-US"><code style="color: rgb(0, 96, 0);">m&nbsp;</code></span><code style="color: rgb(0, 96, 0);">的 真因數和為&nbsp;</code><span lang="EN-US"><code style="color: rgb(0, 96, 0);">n</code><br>
-</span></span><span lang="EN-US"><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></span><code style="color: rgb(0, 96, 0);">cout &lt;&lt; m &lt;&lt; endl;</code><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></span><span style="color: green;"><code style="color: rgb(0, 96, 0);">// m&nbsp;</code></span></span><span><code style="color: rgb(0, 96, 0);">即 是&nbsp;</code><span lang="EN-US"><code style="color: rgb(0, 96, 0);">n&nbsp;</code></span><code style="color: rgb(0, 96, 0);">的友好數</code><span lang="EN-US"><br>
-</span></span><span lang="EN-US"><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></span><span style="color: blue;"><code style="color: rgb(0, 96, 0);">else</code></span><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></span><span style="color: green;"><code style="color: rgb(0, 96, 0);">//</code></span></span><span><code style="color: rgb(0, 96, 0);">否則</code><span lang="EN-US"><br>
-</span></span><span lang="EN-US"><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></span><code style="color: rgb(0, 96, 0);">cout &lt;&lt;&nbsp;</code><span style="color: rgb(163, 21, 21);"><code style="color: rgb(0, 96, 0);">"0\n"</code></span><code style="color: rgb(0, 96, 0);">;</code><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></span><span style="color: green;"><code style="color: rgb(0, 96, 0);">// n&nbsp;</code></span></span><span><code style="color: rgb(0, 96, 0);">沒 有友好數</code><span lang="EN-US"><br>
-</span></span><span lang="EN-US"><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-}</code><br>
-<code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp; }</code><br>
-<code style="color: rgb(0, 96, 0);">}</code></span></font></div>
-<div><font size="2"><span lang="EN-US"><code style="color: rgb(0, 96, 0);"><br>
-</code></span></font></div>
-</span></div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; font-size: medium; background-color: rgb(255, 255, 255);">記
-得要同時把函數內的同名區域變數拿掉，否則程式會優先取用區域變數，而不是全域變數。</div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; font-size: medium; background-color: rgb(255, 255, 255);"><br>
-</div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; font-size: medium; background-color: rgb(255, 255, 255);">由
-於 int main () 和 void sof () 都會用到 n,
+sof () 的 n 卻沒有改變。</p>
+<p>要讓 int main () 和 void sof () 共用一個 n，你需要把它定義為「全域變數」，方法是把這個 n
+宣告在兩個函數的「外面」：</p>
+<script src="https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-06.cpp"></script>
+<p>記得要同時把函數內的同名區域變數拿掉，否則程式會優先取用區域變數，而不是全域變數。</p>
+<p>由於 int main () 和 void sof () 都會用到 n,
 m，所以這兩個全域變數的宣告要出現在這兩個函數之前，否則還是會出現「未宣告的識別項」的錯誤。同理，由於 int main () 中會去呼叫
-sof ()，所以 void sof() 函數也要出現在 int main () 之前。</div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; font-size: medium; background-color: rgb(255, 255, 255);"><br>
-</div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; font-size: medium; background-color: rgb(255, 255, 255);">你
-可能會好奇，既然 n, m 要宣告為全域變數，為什麼不把 n1 和 f
+sof ()，所以 void sof() 函數也要出現在 int main () 之前。</p>
+<p>你可能會好奇，既然 n, m 要宣告為全域變數，為什麼不把 n1 和 f
 也一起宣告為全域，這樣程式也比較簡短。基於易於維護的因素，除非真正必要的時候，我們通常會儘量避免全域變數的使用。由於每個函數都可以去修改全域變數
-的值，有時候甲函 數修改了某變數的值，乙函數卻不知道，這就會造成一些錯誤了。在上面的程式中，int main () 輸入了 n 的值，而
+的值，有時候甲函數修改了某變數的值，乙函數卻不知道，這就會造成一些錯誤了。在上面的程式中，int main () 輸入了 n 的值，而
 void sof () 則需要求這個 n 的真因數和，void sof () 所求得的真因數和 m 也需要在 int main ()
 中做進一步的判斷與處理，所以這兩個變數一定要宣告成全域變數，其他的變數我們就宣告為區域變數。在這個程式中，即使你把 n, m, n1, f
-都宣告為全域變數，程式仍能跑出正確的結果，但是基於培養良好的程式設計習慣，我們還是把 n1 和 f 宣告為區域變數比較好。</div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);"><font size="3"><br>
-</font></div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);"><font size="3">經過這番調整之後，這個程式終於可以正確執行了。但是我們當初寫 void sof ()
+都宣告為全域變數，程式仍能跑出正確的結果，但是基於培養良好的程式設計習慣，我們還是把 n1 和 f 宣告為區域變數比較好。</p>
+<p>
+經過這番調整之後，這個程式終於可以正確執行了。但是我們當初寫 void sof ()
 這個函數的目的就是希望可以把相同的兩段程式碼簡化成一段，當我們試圖進一步用 void sof () 來求 m
 的真因數和時，卻發現由於變數命名的關係， void sof () 只能用來求 n 的真因數和，沒有辦法用來求 m
-的真因數和。為了解決這個問題，我們把 void sof () 所使用的變數名稱修改如下：</font></div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);"><font size="3"><br>
-</font></div>
-
-<div class="sites-codeblock sites-codesnippet-block" style="border: 1px solid rgb(211, 211, 211); padding: 0.5em 0px 0.5em 1em; display: block; line-height: 1; color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(239, 239, 239);">
-<div><font size="3"><span style="font-size: small;"><span lang="EN-US"><span style="color: blue;"><code style="color: rgb(0, 96, 0);"><span style="line-height: 13px;">int p, q;<br>
-</span></code></span></span></span></font><span style="font-size: small;"><span style="color: blue;"><code style="color: rgb(0, 96, 0);"><span style="line-height: 13px;"><br>
-</span>void</code></span><code style="color: rgb(0, 96, 0);">&nbsp;</code><code style="color: rgb(0, 96, 0);">sof () {</code><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code style="color: rgb(0, 96, 0);">&nbsp;</code></span><span style="color: green;"><code style="color: rgb(0, 96, 0);">//s(um) o(f)
-f(actors)</code></span></span></div>
-<div><font size="3"><span style="font-size: small;"><span lang="EN-US"><code style="color: rgb(0, 96, 0); line-height: 13px;">&nbsp;&nbsp;&nbsp;</code><code style="color: rgb(0, 96, 0);"><span style="line-height: 13px;">&nbsp;int
-f;<br>
-</span></code></span></span></font><span style="font-size: small;"><span lang="EN-US"><span><code style="color: rgb(0, 96, 0);"><span>&nbsp;
-&nbsp; q</span></code></span><code style="color: rgb(0, 96, 0);">&nbsp;=
-1;</code><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code style="color: rgb(0, 96, 0);">&nbsp;</code></span><span style="color: green;"><code style="color: rgb(0, 96, 0);">//</code></span></span><span><code style="color: rgb(0, 96, 0);">加入因數&nbsp;</code><span lang="EN-US"><code style="color: rgb(0, 96, 0);">1</code></span></span></span></div>
-<div><font size="3"><span style="line-height: 13px; font-size: small;"><span lang="EN-US"><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;</code><code style="color: rgb(0, 96, 0);">&nbsp;</code></span><span style="color: blue;"><code style="color: rgb(0, 96, 0);">for</code></span><code style="color: rgb(0, 96, 0);">&nbsp;</code><code style="color: rgb(0, 96, 0);">(f=2; f*f&lt;p; f++)</code><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code style="color: rgb(0, 96, 0);">&nbsp;</code></span><span style="color: green;"><code style="color: rgb(0, 96, 0);">//f(actor)--</code></span></span><span><code style="color: rgb(0, 96, 0);">因數</code><span lang="EN-US"><br>
-</span></span><span lang="EN-US"><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code style="color: rgb(0, 96, 0);">&nbsp;</code></span><span style="color: blue;"><code style="color: rgb(0, 96, 0);">if</code></span><code style="color: rgb(0, 96, 0);">&nbsp;</code><code style="color: rgb(0, 96, 0);">(p % f == 0)</code><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code style="color: rgb(0, 96, 0);">&nbsp;</code></span><span style="color: green;"><code style="color: rgb(0, 96, 0);">//</code></span></span><span><code style="color: rgb(0, 96, 0);">若&nbsp;</code><span lang="EN-US"><code style="color: rgb(0, 96, 0);">f</code><code style="color: rgb(0, 96, 0);">&nbsp;</code></span><code style="color: rgb(0, 96, 0);">為&nbsp;</code><span lang="EN-US"><code style="color: rgb(0, 96, 0);">n</code><code style="color: rgb(0, 96, 0);">&nbsp;</code></span><code style="color: rgb(0, 96, 0);">的因數</code><span lang="EN-US"><br>
-</span></span><span lang="EN-US"><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code style="color: rgb(0, 96, 0);">&nbsp;q</code></span><code style="color: rgb(0, 96, 0);">&nbsp;+= f + p/f;</code><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code style="color: rgb(0, 96, 0);">&nbsp;</code></span><span style="color: green;"><code style="color: rgb(0, 96, 0);">//</code><code style="color: rgb(0, 96, 0);">&nbsp;</code></span></span><span><code style="color: rgb(0, 96, 0);">加入</code><span lang="EN-US"><code style="color: rgb(0, 96, 0);">f</code><code style="color: rgb(0, 96, 0);">&nbsp;</code></span><code style="color: rgb(0, 96, 0);">及&nbsp;</code><span lang="EN-US"><code style="color: rgb(0, 96, 0);">f/n</code><br>
-</span></span><span lang="EN-US"><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;</code><code style="color: rgb(0, 96, 0);">&nbsp;</code></span><span style="color: blue;"><code style="color: rgb(0, 96, 0);">if</code></span><code style="color: rgb(0, 96, 0);">&nbsp;</code><code style="color: rgb(0, 96, 0);">(f*f == p)</code><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code style="color: rgb(0, 96, 0);">&nbsp;</code></span><span style="color: green;"><code style="color: rgb(0, 96, 0);">//</code></span></span><span><code style="color: rgb(0, 96, 0);">若&nbsp;</code><span lang="EN-US"><code style="color: rgb(0, 96, 0);">n</code><code style="color: rgb(0, 96, 0);">&nbsp;</code></span><code style="color: rgb(0, 96, 0);">為完全平方數</code><span lang="EN-US"><br>
-</span></span><span lang="EN-US"><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code style="color: rgb(0, 96, 0);">&nbsp;q</code></span><code style="color: rgb(0, 96, 0);">&nbsp;+= f;</code><span><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code style="color: rgb(0, 96, 0);">&nbsp;</code></span><span style="color: green;"><code style="color: rgb(0, 96, 0);">//</code><code style="color: rgb(0, 96, 0);">&nbsp;</code></span></span><span><code style="color: rgb(0, 96, 0);">加入平方根</code><span lang="EN-US"><br>
-</span></span><span lang="EN-US"><code style="color: rgb(0, 96, 0);">}</code><br>
-</span></span></font></div>
-</div>
-
-<font style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);" size="3"><br>
-</font>
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);"><font size="3">也就是說，我們用 p 來取代所有的 n、用 q 來取代所有的 m。然後我們在呼叫 void sof() 之前先把 n 代入
-p，求出 p 的真因數和 q 之後，再把 q 代入 m：</font></div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);"><font size="3"><br>
-</font></div>
-
-<div class="sites-codeblock sites-codesnippet-block" style="border: 1px solid rgb(211, 211, 211); padding: 0.5em 0px 0.5em 1em; display: block; line-height: 1; color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(239, 239, 239);">
-<div><font size="3"><span style="line-height: 13px; font-size: small;"><span lang="EN-US"><span style="background-color: rgb(239, 239, 239);"><code style="color: rgb(0, 96, 0);">&nbsp; &nbsp; &nbsp; &nbsp; p = n;<span style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif;"><span lang="EN-US"><span style="background-color: rgb(239, 239, 239);"><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></span><span style="color: green; background-color: rgb(239, 239, 239);"><code style="color: rgb(0, 96, 0);">//先把 n 代入 p</code></span></span></span><br>
-</code></span><code style="color: rgb(0, 96, 0);"><span>&nbsp;&nbsp;
-&nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span>sof();</code><span style="background-color: rgb(239, 239, 239);"><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></span><span style="color: green; background-color: rgb(239, 239, 239);"><code style="color: rgb(0, 96, 0);">//求 p 的真因數和 q</code></span></span><span><span lang="EN-US"><br>
-</span></span></span></font></div>
-<span style="color: rgb(0, 96, 0); font-family: monospace; font-size: small;"><span>&nbsp;
-&nbsp;&nbsp;<span>&nbsp; &nbsp; m = q;</span></span></span><span style="font-size: small;"><span lang="EN-US"><span style="background-color: rgb(239, 239, 239);"><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></span><span style="color: green; background-color: rgb(239, 239, 239);"><code style="color: rgb(0, 96, 0);">// 再把 q 代入 m</code></span></span></span></div>
-
-<font style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);" size="3"><br>
-</font>
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);"><font size="3">雖然這樣麻煩一點，但是如此一來，我們就可以用同一個 void sof () 來求 m 的真因數和了：</font></div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);"><font size="3"><br>
-</font></div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);"><font size="3"><span style="font-size: 13px; line-height: 19px;">
-<div class="sites-codeblock sites-codesnippet-block" style="border: 1px solid rgb(211, 211, 211); padding: 0.5em 0px 0.5em 1em; display: block; line-height: 1; background-color: rgb(239, 239, 239);">
-<div><font size="3"><span style="line-height: 13px; font-size: small;"><span lang="EN-US"><span style="background-color: rgb(239, 239, 239);"><code style="color: rgb(0, 96, 0);"><span>&nbsp;&nbsp; &nbsp;</span>&nbsp;
-&nbsp; &nbsp; &nbsp; p = m;<span style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif;"><span lang="EN-US"><span style="background-color: rgb(239, 239, 239);"><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></span><span style="color: green; background-color: rgb(239, 239, 239);"><code style="color: rgb(0, 96, 0);">//先把 m 代入 p</code></span></span></span><br>
-</code></span><code style="color: rgb(0, 96, 0);"><span><span>&nbsp;&nbsp;
-&nbsp;</span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span>sof();</code><span style="background-color: rgb(239, 239, 239);"><code style="color: rgb(0, 96, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></span><span style="color: green; background-color: rgb(239, 239, 239);"><code style="color: rgb(0, 96, 0);">//求 p 的真因數和 q</code></span></span><span><span lang="EN-US"><br>
-</span></span></span></font></div>
-<span style="color: rgb(0, 96, 0); font-family: monospace; font-size: small;"><span><span>&nbsp;&nbsp;
-&nbsp;</span>&nbsp; &nbsp;&nbsp;<span>&nbsp; &nbsp; n1 = q;</span></span></span><span style="font-size: small;"><span lang="EN-US"><span style="background-color: rgb(239, 239, 239);"><code style="color: rgb(0, 96, 0);">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</code></span><span style="color: green; background-color: rgb(239, 239, 239);"><code style="color: rgb(0, 96, 0);">//再把 q 代入 n1</code></span></span></span></div>
-<div><span style="font-size: small;"><span lang="EN-US"><span style="color: green; background-color: rgb(239, 239, 239);"><code style="color: rgb(0, 96, 0);"><br>
-</code></span></span></span></div>
-</span></font></div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);"><font size="3"><span style="line-height: 24px;">完整程式碼如下：</span></font></div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);"><font size="3"><span style="line-height: 24px;"><br>
-</span></font></div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);"><font size="3">
-<div class="sites-codeblock sites-codesnippet-block" style="border: 1px solid rgb(211, 211, 211); padding: 0.5em 0px 0.5em 1em; display: block; line-height: 1; background-color: rgb(239, 239, 239);">
-<div><font color="#006000" face="monospace"><span style="line-height: 13px;">
-<div>//2007jfB. 友好數 by Snail</div>
-<div>#include &lt;iostream&gt;</div>
-<div>using namespace std;</div>
-<div><br>
-</div>
-<div>int p, q;</div>
-<div><br>
-</div>
-<div>void sof () { &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-//s(um) o(f) f(actors)</div>
-<div>&nbsp; &nbsp; int f;</div>
-<div>&nbsp; &nbsp; q = 1; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp;//加入因數 1</div>
-<div>&nbsp; &nbsp; for (f=2; f*f&lt;p; f++) &nbsp; &nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; //f(actor)--因數</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; if (p % f == 0) &nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; //若 f 為
-n 的因數</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; q += f + p/f; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-// 加入 f 及 f/n</div>
-<div>&nbsp; &nbsp; if (f*f == p) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-//若 n 為完全平方數</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; q += f; &nbsp; &nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; // 加入平方根</div>
-<div>}</div>
-<div><br>
-</div>
-<div>int main () {</div>
-<div><span>&nbsp; &nbsp;&nbsp;</span>int n, n1, m, f;<br>
-<span>&nbsp; &nbsp;&nbsp;</span>while (cin &gt;&gt; n, n) {</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; p = n; &nbsp; &nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp;//先把 n 代入 p</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; sof(); &nbsp; &nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp;//求 p 的真因數和 q</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; m = q; &nbsp; &nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp;//再把 q 代入 m</div>
-<div><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span>if
-(m == n)&nbsp;<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp;
-&nbsp;<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp;
-&nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span></span></span></span></span></span>//
-若 n 的友好數為自身</div>
-<div><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp;
-&nbsp;</span></span></span>cout &lt;&lt; '=' &lt;&lt; m &lt;&lt; endl;
-&nbsp;&nbsp;<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span>//
-加一個「=」</div>
-<div><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span>else
-{</div>
-<div><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp;
-&nbsp;</span></span></span>p = m; &nbsp;<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp;
-&nbsp;<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp;
-&nbsp;<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span></span></span></span></span></span>//
-先把 m 代入 p</div>
-<div><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp;
-&nbsp;</span></span></span>sof(); &nbsp;<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp;
-&nbsp;<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp;
-&nbsp;<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span></span></span></span></span></span>//
-求 p 的真因數和 q</div>
-<div><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp;
-&nbsp;</span></span></span>n1 = q;&nbsp;<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp;
-&nbsp;<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp;
-&nbsp;<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span></span></span></span></span></span>//
-再把 q 代入 n1</div>
-<div><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp;
-&nbsp;</span></span></span>if (n1 == n)<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp;
-&nbsp;<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp;
-&nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span></span></span></span></span>//
-若 m 的真因數和為 n</div>
-<div><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp;
-&nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span></span></span>cout
-&lt;&lt; m &lt;&lt; endl; &nbsp;<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp;
-&nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span></span>// m 即是 n 的友好數</div>
-<div><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp;
-&nbsp;</span></span></span>else<span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp;
-&nbsp;&nbsp;<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp;
-&nbsp;<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp;
-&nbsp;</span></span></span></span></span></span></span>// 否則</div>
-<div><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp;
-&nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span></span></span>cout
-&lt;&lt; "0\n"; &nbsp;<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp;
-&nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span></span></span>// n 沒有友好數</div>
-<div><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span>}</div>
-<div><span>&nbsp;&nbsp; &nbsp;</span>}</div>
-<div>}</div>
-</span></font></div>
-</div>
-</font></div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);"><font size="3"><br>
-</font></div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);"><font size="3"><br>
-</font></div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);"><font size="3"><br>
-</font></div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);"><span><font size="3">d255.&nbsp;<a href="http://zerojudge.tw/ShowProblem?problemid=d255" rel="nofollow" style="color: rgb(0, 0, 204); text-decoration: none;">11417 - GCD</a></font></span></div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);"><font size="3"><br>
-</font></div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);"><font size="3">這一題，它把題目的要求都寫成程式給你了，你只要複製題目中的程式，再加上變數的宣告、0
-尾版的迴圈、及結果的輸出，答案就出來了。</font></div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);"><font size="3"><br>
-</font></div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);"><font face="'courier new', monospace" size="2"><span style="color: green;" lang="EN-US">//11417 - GCD (by Snail)<br>
-</span><span style="color: blue;" lang="EN-US">#include</span><span lang="EN-US"><span class="Apple-converted-space">&nbsp;</span><span style="color: rgb(163, 21, 21);">&lt;iostream&gt;<br>
-</span><span style="color: blue;">using</span><span class="Apple-converted-space">&nbsp;</span><span style="color: blue;">namespace</span><span class="Apple-converted-space">&nbsp;</span>std;<br>
-<br>
-<span style="color: blue;">int</span><span class="Apple-converted-space">&nbsp;</span>main
-() {<br>
-<span>&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: blue;">int</span><span class="Apple-converted-space">&nbsp;</span>G,
-N, i, j;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: green;">//</span></span><span style="color: green;">變數的宣告<span lang="EN-US"><br>
-</span></span><span lang="EN-US"><span>&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: blue;">while</span><span class="Apple-converted-space">&nbsp;</span>(cin
-&gt;&gt; N, N) {<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: green;">//0<span class="Apple-converted-space">&nbsp;</span></span></span><span style="color: green;">尾 版的迴圈<span lang="EN-US"><br>
-</span></span><span lang="EN-US"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span>G=0;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: green;">//</span></span><span style="color: green;">複製題目中
-的程式<span lang="EN-US"><br>
-</span></span><span lang="EN-US"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: blue;">for</span>(i=1;i&lt;N;i++)<br>
-<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: blue;">for</span>(j=i+1;j&lt;=N;j++)<br>
-<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span>{<br>
-<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span>G+=GCD(i,j);<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><br>
-<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span>}<br>
-<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span>cout &lt;&lt; G
-&lt;&lt; endl;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: green;">//</span></span><span style="color: green;">結果的輸出<span lang="EN-US"><br>
-</span></span><span lang="EN-US">&nbsp;&nbsp;&nbsp; }<br>
-}</span></font></div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);"><font size="3"><br>
-</font></div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);"><font size="3">但是再仔細看一下程式，其中用了一個</font><span style="line-height: 24px; font-size: medium;">&nbsp;GCD&nbsp;</span><span style="line-height: 24px; font-size: medium;">函數是 C++
-中沒有的。這時候你就得自己為它定義一個 GCD 函數來求最大公因數了。</span></div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);"><font size="3"><br>
-</font></div>
-
-<h2 style="background: rgb(255, 255, 255) url(https://ssl.gstatic.com/sites/p/e57d46/system/app/themes/crystalpanel/h2-border.gif) repeat-x scroll 0% 100%; font-family: 'Trebuchet MS',arial,sans-serif; color: rgb(165, 164, 165); font-size: 2em; letter-spacing: 0.1em; font-weight: normal; font-style: normal; font-variant: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;"><a name="TOC-8.2-" style="color: rgb(69, 22, 112);"></a><font size="3"><span style="line-height: 24px;">8.2 特殊條件排序</span></font></h2>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);"><span style="line-height: 24px; font-size: medium;">上一章中我們用
-&lt;algorithm&gt; 中的 sort 函數來排序。但是它只能依數值由小到大排序。可是如果遇到特殊條件的排序，Sort
-就不知道要如何去排了。</span></div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);"><font size="3"><br>
-</font></div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);"><span><font size="3">d750.&nbsp;<a href="http://zerojudge.tw/ShowProblem?problemid=d750" rel="nofollow" style="color: rgb(0, 0, 204); text-decoration: none;">11321 - Sort!
-Sort!! and Sort!!!</a></font></span></div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);"><font size="3"><br>
-</font></div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);"><font size="3">這題的排序條件很詭異。</font></div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);"><font size="3"><br>
-</font></div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);"><span style="font-family: 'courier new',monospace; color: rgb(0, 128, 0); font-size: small;">//11321
-- Sort! Sort!! and Sort!!! (by Snail)</span></div>
-
-<font style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);" size="2"><font face="'courier new', monospace"><span style="color: blue;" lang="EN-US">#include</span><span lang="EN-US"><span class="Apple-converted-space">&nbsp;</span><span style="color: rgb(163, 21, 21);">&lt;iostream&gt;<br>
-</span><span style="color: blue;">#include</span><span class="Apple-converted-space">&nbsp;</span><span style="color: rgb(163, 21, 21);">&lt;algorithm&gt;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: green;">//for sort<br>
-</span><span style="color: blue;">using</span><span class="Apple-converted-space">&nbsp;</span><span style="color: blue;">namespace</span><span class="Apple-converted-space">&nbsp;</span>std;<br>
-<br>
-<span style="color: blue;">int</span><span class="Apple-converted-space">&nbsp;</span>m;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: green;">//cmp<span class="Apple-converted-space">&nbsp;</span></span></span><span style="color: green;">中 要用到<span lang="EN-US">m<br>
-</span></span><span lang="EN-US"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: green;">//</span></span><span style="color: green;">故宣告為全
-域<span lang="EN-US"><br>
-</span></span><span style="color: blue;" lang="EN-US">bool</span><span lang="EN-US"><span class="Apple-converted-space">&nbsp;</span>cmp (<span style="color: blue;">int</span><span class="Apple-converted-space">&nbsp;</span>a,<span class="Apple-converted-space">&nbsp;</span><span style="color: blue;">int</span><span class="Apple-converted-space">&nbsp;</span>b) {<br>
-<span>&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: blue;">if</span><span class="Apple-converted-space">&nbsp;</span>(a%m
-!= b%m)<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: green;">//</span></span><span style="color: green;">若餘數不等<span lang="EN-US"><br>
-</span></span><span lang="EN-US"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: blue;">return</span><span class="Apple-converted-space">&nbsp;</span>a%m
-&lt; b%m;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: green;">//<span class="Apple-converted-space">&nbsp;</span></span></span><span style="color: green;">按 餘數排序<span lang="EN-US"><br>
-</span></span><span lang="EN-US"><span>&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: blue;">if</span><span class="Apple-converted-space">&nbsp;</span>((a+b)%2)<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: green;">//</span></span><span style="color: green;">若一奇一偶<span lang="EN-US"><br>
-</span></span><span lang="EN-US"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: blue;">return</span><span class="Apple-converted-space">&nbsp;</span>(a&amp;1)
-&gt; (b&amp;1);<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span>&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: green;">//<span class="Apple-converted-space">&nbsp;</span></span></span><span style="color: green;">奇 數在前<span lang="EN-US"><br>
-</span></span><span lang="EN-US"><span>&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: blue;">if</span><span class="Apple-converted-space">&nbsp;</span>(a%2)<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: green;">//</span></span><span style="color: green;">同為奇數<span lang="EN-US"><br>
-</span></span><span lang="EN-US"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: blue;">return</span><span class="Apple-converted-space">&nbsp;</span>a
-&gt; b;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: green;">//<span class="Apple-converted-space">&nbsp;</span></span></span><span style="color: green;">大 在前<span lang="EN-US"><br>
-</span></span><span lang="EN-US"><span>&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: blue;">return</span><span class="Apple-converted-space">&nbsp;</span>a
-&lt; b;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span></span><span style="color: green;">//</span></span><span style="color: green;">否則小在前<span lang="EN-US"><br>
-</span></span><span lang="EN-US">}<br>
-<br>
-<span style="color: blue;">int</span><span class="Apple-converted-space">&nbsp;</span>main
-() {<br>
-&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span><span style="color: blue;">int</span><span class="Apple-converted-space">&nbsp;</span>i,
-n, a[10000];<br>
-&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span><span style="color: blue;">while</span><span class="Apple-converted-space">&nbsp;</span>(cin
-&gt;&gt; n &gt;&gt; m, n) {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span><span style="color: blue;">for</span><span class="Apple-converted-space">&nbsp;</span>(i=0; i&lt;n; i++)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cin
-&gt;&gt; a[i];<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sort (a, a+n, cmp);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; n &lt;&lt;<span class="Apple-converted-space">&nbsp;</span><span style="color: rgb(163, 21, 21);">' '</span><span class="Apple-converted-space">&nbsp;</span>&lt;&lt; m &lt;&lt; endl;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Apple-converted-space">&nbsp;</span><span style="color: blue;">for</span><span class="Apple-converted-space">&nbsp;</span>(i=0; i&lt;n; i++)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout
-&lt;&lt; a[i] &lt;&lt; endl;<br>
-&nbsp;&nbsp;&nbsp; }<br>
-&nbsp;&nbsp;&nbsp; cout &lt;&lt;<span class="Apple-converted-space">&nbsp;</span><span style="color: rgb(163, 21, 21);">"0 0\n"</span>;<br>
-}</span></font><br>
-</font><span style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; display: inline ! important; float: none; background-color: rgb(255, 255, 255);"></span>
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);"><font size="3"><br>
-</font></div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);"><font size="3"><span>d731.&nbsp;</span><span style="color: rgb(0, 0, 204);"><a href="http://zerojudge.tw/ShowProblem?problemid=d731" rel="nofollow" style="text-decoration: none;">11039 - Building designing</a></span></font></div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);"><font size="3"><br>
-</font></div>
-
-<h3 style="background: rgb(255, 255, 255) url(https://ssl.gstatic.com/sites/p/e57d46/system/app/themes/crystalpanel/h3-border.gif) repeat-x scroll 0% 100%; font-family: 'Trebuchet MS',arial,sans-serif; color: rgb(98, 61, 132); font-size: 1.4em; font-weight: normal; padding-bottom: 5px; font-style: normal; font-variant: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;"><a name="TOC--" style="color: rgb(69, 22, 112);"></a><font style="color: black;" size="3">遞迴</font></h3>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);"><font size="3"><span style="color: rgb(102, 102, 102); font-family: 微軟正黑體,'Microsoft JhengHei',Tahoma,arial,PMingLiU,新細明體,微軟雅黑體,sans-serif; font-size: 16px; line-height: normal;">b250.&nbsp;<a href="http://zerojudge.tw/ShowProblem?problemid=b250" rel="nofollow" style="color: rgb(0, 0, 204); font-size: 1em; text-decoration: none;">F.
-風鈴</a></span></font></div>
-
-<h3 style="background: rgb(255, 255, 255) url(https://ssl.gstatic.com/sites/p/e57d46/system/app/themes/crystalpanel/h3-border.gif) repeat-x scroll 0% 100%; font-family: 'Trebuchet MS',arial,sans-serif; color: rgb(98, 61, 132); font-size: 1.4em; font-weight: normal; padding-bottom: 5px; font-style: normal; font-variant: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;"><a name="TOC-DFS" style="color: rgb(69, 22, 112);"></a><font style="color: black;" size="3">DFS</font></h3>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);"><font color="#666666" face="微軟正黑體, 'Microsoft JhengHei', Tahoma, arial, PMingLiU, 新細明體, 微軟雅黑體, sans-serif" size="3"><span style="line-height: normal;"><span style="font-size: 16px;">c129.&nbsp;<a href="http://zerojudge.tw/ShowProblem?problemid=c129" rel="nofollow" style="color: rgb(0, 0, 204); font-size: 1em; text-decoration: none;">Oil
-Deposits</a><br>
-本題重點在於,要用整張地圖遞迴下去<br>
-但若每次遞迴都建</span></span></font></div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);"><font color="#666666" face="微軟正黑體, 'Microsoft JhengHei', Tahoma, arial, PMingLiU, 新細明體, 微軟雅黑體, sans-serif" size="3"><span style="line-height: normal;"><span style="font-size: 16px;">一 張地圖絕對會吃re的</span></span></font></div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);"><font color="#666666" face="微軟正黑體, 'Microsoft JhengHei', Tahoma, arial, PMingLiU, 新細明體, 微軟雅黑體, sans-serif" size="3"><span style="line-height: normal;"><span style="font-size: 16px;"><br>
-這題的大概做法是:</span></span></font></div>
-
-<div style="color: rgb(86, 85, 85); font-family: 'Lucida Grande','Lucida Sans Unicode',Arial,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 20px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);">先
-從第一個開始搜，一搜到"@"，就往下遞回直到沒有，答案加一，然後記得每找到ㄧ個"@"，都把它換成其他字元(建議不用"#"，因為DEBUG時比較好
-找到 錯誤。</div>
-
+的真因數和。為了解決這個問題，我們把 void sof () 所使用的變數名稱修改如下：</p>
+<script src="https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-07.cpp"></script>
+<p>也就是說，我們用 p 來取代所有的 n、用 q 來取代所有的 m。然後我們在呼叫 void sof() 之前先把 n 代入 p，求出 p
+的真因數和 q 之後，再把 q 代入 m：</p>
+<script src="https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-08.cpp"></script>
+<p>雖然這樣麻煩一點，但是如此一來，我們就可以用同一個 void sof () 來求 m 的真因數和了：</p>
+<script src="https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-09.cpp"></script>
+<p>完整程式碼如下：</p>
+<script src="https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-10.cpp"></script>
+<li><a href="https://zerojudge.tw/ShowProblem?problemid=d225">d255. 11417 - GCD</a></li>
+<p>這一題，它把題目的要求都寫成程式給你了，你只要複製題目中的程式，再加上變數的宣告、0 尾版的迴圈、及結果的輸出，答案就出來了。</p>
+<script src="https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-11.cpp"></script>
+<p>但是再仔細看一下程式，其中用了一個 GCD 函數是 C++ 中沒有的。這時候你就得自己為它定義一個 GCD 函數來求最大公因數了。</p>
+<h2>8.2 其他</h2>
+<h3>特殊條件排序</h3>
+<p>上一章中我們用 &lt;algorithm&gt; 中的 sort
+函數來排序。但是它只能依數值由小到大排序。可是如果遇到特殊條件的排序，Sort 就不知道要如何去排了。</p>
+<li><a href="https://zerojudge.tw/ShowProblem?problemid=d750">d750. 11321 - Sort! Sort!! and Sort!!!</a></li>
+<p>這題的排序條件很詭異。</p>
+<script src="https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-12.cpp"></script>
+<li><a href="https://zerojudge.tw/ShowProblem?problemid=d731">d731. 11039 - Building designing</a></li>
+<h3>遞迴</h3>
+<li><a href="http://contest.cc.ntu.edu.tw/npsc2009/finalContest/junior_final.pdf">2009 NPSC 國中組決賽 F. 風鈴</a></li>
+<h3>DFS</h3>
+<li><a href="https://zerojudge.tw/ShowProblem?problemid=c129">c129. Oil Deposits</a></li>
+<p>本題重點在於,要用整張地圖遞迴下去，但若每次遞迴都建一張地圖絕對會吃re的</p>
+<p>這題的大概做法是:</p>
+<p>先從第一個開始搜，一搜到"@"，就往下遞回直到沒有，答案加一，然後記得每找到ㄧ個"@"，都把它換成其他字元(建議不用"#"，因為DEBUG時比較
+好找到錯誤。</p>
+<br><br>
 </body></html>

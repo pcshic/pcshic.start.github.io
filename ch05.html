@@ -324,33 +324,23 @@ int 的上限，所以用來計算總和的那個變數要改用 long long。</p
 
 <p>(補充:如果學過副程式，你也可以自己寫，寫法如下:</p>
 <script src="https://gist.github.com/allem40306/cce2e54df7a528532ba68e2174e8e112.js?file=ch05-14.cpp"></script>
-
+<li><a href="http://contest.cc.ntu.edu.tw/npsc2008/2008jun_final.pdf">2008 NPSC 國中組決賽 F. 優惠方案Ⅱ</a></li>
 <h2>5.3 cmath 數學函數</h2>
-
 <h3>用c++進行開根號及平方</h3>
-
 <p>再一些程式語言中(ex.Visual
 Basic)，如果要求一些數的二次方或三次方，可以直接用上引號(ex.2^2=4)表示，但很可惜的是c++中並沒有這種功能，</p>
-
 <p>這種時候，如果我們要對一個數二次方或三次方，除了使用n*n*n之外，還可以用cmath標頭檔裡的pow函數，格式如下:</p>
-
 <p>22的5次方=22^5=pow(22,5)</p>
 <p>22的0.5次方=22^0.5=pow(22,0.5)=sqrt(22)</p>
-
 <li><a href="https://zerojudge.tw/ShowProblem?problemid=a006">a006. 一元二次方程式</a></li>
 <script src="https://gist.github.com/allem40306/cce2e54df7a528532ba68e2174e8e112.js?file=ch05-15.cpp"></script>
-
 <p>另外，如果我們要對一個數平方，可以使用sqrt(x)來解決，但要注意的是，x必須是浮點數，若x不是浮點數，則必須將x強制型別轉換才可，否則會出現
 警告標示:「'sqrt' : 模稜兩可的呼叫多載函式」</p>
 <script src="https://gist.github.com/allem40306/cce2e54df7a528532ba68e2174e8e112.js?file=ch05-16.cpp"></script>
-
 <li><a href="https://zerojudge.tw/ShowProblem?problemid=b004">b004: 繩子上吃草的牛</a></li>
 <script src="https://gist.github.com/allem40306/cce2e54df7a528532ba68e2174e8e112.js?file=ch05-17.cpp"></script>
-
-
 <p>附註:橢圓形面積==PI*半長軸*半短軸==PI*a*b</p>
 <img style="width: 569px; height:307px;" alt src ="picture/ch05-01.PNG">
-
 <p>(圖片來源:http://tw.knowledge.yahoo.com/question/question?qid=
 1509062705725)</p>
 
