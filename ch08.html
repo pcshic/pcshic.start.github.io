@@ -1,14 +1,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html><head>
   <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-  <title>第八章 函數</title>
+  <title>第八章 自定義函數與資料型別</title>
 <style>
 table, th, td {
     border: 1px solid black;
 }  
 </style>
 </head><body style="background-image: url(picture/background.png);">
-<h1>1第八章 函數</h1>
+<h1>第八章 自定義函數與資料型別</h1>
 <h2>8.1 使用者自定義函數</h2>
 <li><a href="http://contest.cc.ntu.edu.tw/npsc2007/doc/2007junfinal.doc">2007 NPSC 國中組決賽 B. 友好數</a></li>
 <p>n 的真因數：除了 n 本身以外的所有因數，包含 1。
@@ -73,21 +73,42 @@ void sof () 則需要求這個 n 的真因數和，void sof () 所求得的真�
 <p>這一題，它把題目的要求都寫成程式給你了，你只要複製題目中的程式，再加上變數的宣告、0 尾版的迴圈、及結果的輸出，答案就出來了。</p>
 <script src="https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-11.cpp"></script>
 <p>但是再仔細看一下程式，其中用了一個 GCD 函數是 C++ 中沒有的。這時候你就得自己為它定義一個 GCD 函數來求最大公因數了。</p>
-<h2>8.2 其他</h2>
-<h3>特殊條件排序</h3>
-<p>上一章中我們用 &lt;algorithm&gt; 中的 sort
-函數來排序。但是它只能依數值由小到大排序。可是如果遇到特殊條件的排序，Sort 就不知道要如何去排了。</p>
-<li><a href="https://zerojudge.tw/ShowProblem?problemid=d750">d750. 11321 - Sort! Sort!! and Sort!!!</a></li>
-<p>這題的排序條件很詭異。</p>
+<h2>8.2 #define</h2>
+<p>#define則可以自行定義常數</p> 
+<p>如以下程式:</p>
 <script src="https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-12.cpp"></script>
-<li><a href="https://zerojudge.tw/ShowProblem?problemid=d731">d731. 11039 - Building designing</a></li>
-<h3>遞迴</h3>
-<li><a href="http://contest.cc.ntu.edu.tw/npsc2009/finalContest/junior_final.pdf">2009 NPSC 國中組決賽 F. 風鈴</a></li>
-<h3>DFS</h3>
-<li><a href="https://zerojudge.tw/ShowProblem?problemid=c129">c129. Oil Deposits</a></li>
-<p>本題重點在於,要用整張地圖遞迴下去，但若每次遞迴都建一張地圖絕對會吃re的</p>
-<p>這題的大概做法是:</p>
-<p>先從第一個開始搜，一搜到"@"，就往下遞回直到沒有，答案加一，然後記得每找到ㄧ個"@"，都把它換成其他字元(建議不用"#"，因為DEBUG時比較
-好找到錯誤。</p>
+<p>裡面的1000出現很多次，我們用#define簡化</p>
+<script src="https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-13.cpp"></script>
+<p>用#define的好處不只是可以少打字，重要的是在修改時只要改變常數就好了，節省修改時間，亦不會漏改</p>
+<p>也有人用 const int</p>
+<script src="https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-14.cpp"></script>
+<p>#define 也可以誰一些簡單函數</p>
+<script src="https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-15.cpp"></script>
+<h2>8.3 自定義資料型別</h2>
+<p>假如今天給你A星的座標，給你其他星的座標，要你判斷之間距離，得出了以下變數</p>
+<p>(1)A星的座標(x,y)(2)其他星的座標(x,y)</p>
+<p>--> int ax, ay, ox[100], oy[100];</p>
+<p>但今天你覺得不太雅觀或可讀性低，你可以自己定義一個結構</p>
+<script src="https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-16.cpp"></script>
+<ol>
+	<li>star 自定義資料型別名稱</li>
+	<li>int x,y; 自定義資料型別內的內容</li>
+	<li>可以在}和;(如(a))之間命名一個變數，也可以如(b)一樣另外新增變數。<br><strong>(注意!&nbsp;&nbsp;}後的;不可刪除)</strong></li>
+</ol>
+<p>這樣程式可讀性變高了!!!</p>
+<h3>struct&amp;class的比較</h3>
+<p>除了struct，class也可以用來當自定義資料型別，但它們有什麼不同?
+其實只有一個，就是當它們未說明裡面的內容是 public(所有區域都可以用)、private(只有在此區域內才可被使用/更改)</p>
+<p>struct內都是 public，class內都是private
+要讓兩者相同，如下:</p>
+<script src="https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-17.cpp"></script>
+<script src="https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-18.cpp"></script>
+<p>我們的變數通常為全域變數，所以接下來都用struct的呈現程式碼</p>
+<p></p>
+<h3>struct裡的函式</h3>
+<p>在struct裡，我們也可以放入函式，如下</p>
+<script src="https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-19.cpp"></script>
+<p>首先有一個函式和結構式同名，這個叫建構器，來建立一個相同的資料型別，再來是plus和minus，他會依據資料型別類的資料執行結果，如本題c裡的a=5，b=6，執行plus的11，執行minus的-1。</p>
+<p>struct的用途在於可以把資料一組組存起來，易存取，在排序時也可以一起移動，詳情請見下章</p>
 <br><br>
 </body></html>

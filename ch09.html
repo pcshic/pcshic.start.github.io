@@ -1,117 +1,20 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-<head>
-
-
-
-
-
-  
-  
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
   <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-
-
-  
-  
-  <meta charset="UTF-8">
-
-
-  
-  
-  <meta id="_moz_html_fragment">
-  <title>第九章 Struct&amp;Class</title>
-</head>
-
-<body>
-
-<span style="color: rgb(0, 0, 0); font-family: Arial; font-size: 32px; font-style: normal; font-variant: normal; font-weight: bold; letter-spacing: normal; line-height: normal; text-align: start; text-indent: 0px; text-transform: none; widows: 1; word-spacing: 0px; display: inline ! important; float: none; background-color: rgb(255, 255, 255);">第
-九章</span><span style="color: rgb(0, 0, 0); font-family: Arial; font-size: 32px; font-style: normal; font-variant: normal; font-weight: bold; letter-spacing: normal; line-height: normal; text-align: start; text-indent: 0px; text-transform: none; widows: 1; word-spacing: 0px; display: inline ! important; float: none; background-color: rgb(255, 255, 255);"> struct&amp;class<br>
-
-</span>
-<h2 style="background: transparent url(https://ssl.gstatic.com/sites/p/e57d46/system/app/themes/crystalpanel/h2-border.gif) repeat-x scroll 0% 100%; font-style: normal; font-variant: normal; line-height: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; font-family: 'Trebuchet MS',arial,sans-serif; color: rgb(165, 164, 165); font-size: 2em; letter-spacing: 0.1em; font-weight: normal; -moz-background-clip: initial; -moz-background-origin: initial; -moz-background-inline-policy: initial;" dir="ltr"><span style="font-size: 18pt; font-family: Arial; color: rgb(0, 0, 0); font-weight: bold; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; background-color: transparent;">9.1
-自定義資料型別</span></h2>
-
-
-<span style="color: rgb(0, 0, 0); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; text-align: start; text-indent: 0px; text-transform: none; widows: 1; word-spacing: 0px; font-size: 11pt; font-family: Arial; text-decoration: none; vertical-align: baseline; background-color: transparent;">假
-如今天給你A星的座標，給你其他星的座標，要你判斷之間距離，得出了以下變數<br>
-
-(1)A星的座標(x,y)(2)</span><span style="color: rgb(0, 0, 0); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; text-align: start; text-indent: 0px; text-transform: none; widows: 1; word-spacing: 0px; font-size: 11pt; font-family: Arial; text-decoration: none; vertical-align: baseline; background-color: transparent;">其
-他星的座標(x,y)<br>
-
-<span style="color: rgb(0, 0, 204);"><span style="color: black;">--&gt;</span>
-int</span> ax, ay, ox[100],
-oy[100];<br>
-
-<br>
-
-但今天你覺得不太雅觀或可讀性低，你可以自己定義一個結構<br>
-
-<img style="width: 257px; height: 205px;" alt="" src="picture/ch09-01.PNG"><br>
-
-<br style="color: rgb(204, 0, 0);">
-
-<span style="color: rgb(204, 0, 0);">(1)<span style="color: rgb(51, 153, 153);">star<span style="color: black;"> 自定義資料型別名稱<br>
-
-</span></span></span></span><span style="color: rgb(0, 0, 0); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; text-align: start; text-indent: 0px; text-transform: none; widows: 1; word-spacing: 0px; font-size: 11pt; font-family: Arial; text-decoration: none; vertical-align: baseline; background-color: transparent;"><span style="color: rgb(204, 0, 0);">(2)<span style="color: rgb(51, 153, 153);"> <span style="color: black;"><span style="color: rgb(0, 0, 204);">int</span> x,y; 自定義資料型別內的內容<br>
-
-</span></span></span></span><span style="color: rgb(0, 0, 0); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; text-align: start; text-indent: 0px; text-transform: none; widows: 1; word-spacing: 0px; font-size: 11pt; font-family: Arial; text-decoration: none; vertical-align: baseline; background-color: transparent;"><span style="color: rgb(204, 0, 0);">(3)<span style="color: rgb(51, 153, 153);"><span style="color: black;"> };&nbsp; }和<span style="font-weight: bold;">;</span>之間命名一個變數，也可以如</span></span></span></span><span style="color: rgb(0, 0, 0); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; text-align: start; text-indent: 0px; text-transform: none; widows: 1; word-spacing: 0px; font-size: 11pt; font-family: Arial; text-decoration: none; vertical-align: baseline; background-color: transparent;"><span style="color: rgb(204, 0, 0);">(4)<span style="color: black;">一樣另外新增變數。<br>
-
-(<span style="font-weight: bold;">注意!</span> </span></span></span><span style="color: rgb(0, 0, 0); font-style: normal; font-variant: normal; font-weight: bold; letter-spacing: normal; line-height: normal; text-align: start; text-indent: 0px; text-transform: none; widows: 1; word-spacing: 0px; font-size: 11pt; font-family: Arial; text-decoration: none; vertical-align: baseline; background-color: transparent;"><span style="color: rgb(204, 0, 0);"><span style="color: rgb(51, 153, 153);"><span style="color: black;">}後的;不可刪除</span></span></span></span><span style="color: rgb(0, 0, 0); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; text-align: start; text-indent: 0px; text-transform: none; widows: 1; word-spacing: 0px; font-size: 11pt; font-family: Arial; text-decoration: none; vertical-align: baseline; background-color: transparent;"><span style="color: rgb(204, 0, 0);"><span style="color: black;">)<br>
-
-這樣程式可讀性變高了!!!<br>
-
-<br>
-
-</span></span></span>
-<h2 style="background: transparent url(https://ssl.gstatic.com/sites/p/e57d46/system/app/themes/crystalpanel/h2-border.gif) repeat-x scroll 0% 100%; font-style: normal; font-variant: normal; line-height: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; font-family: 'Trebuchet MS',arial,sans-serif; color: rgb(165, 164, 165); font-size: 2em; letter-spacing: 0.1em; font-weight: normal; -moz-background-clip: initial; -moz-background-origin: initial; -moz-background-inline-policy: initial;" dir="ltr"><span style="font-size: 18pt; font-family: Arial; color: rgb(0, 0, 0); font-weight: bold; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; background-color: transparent;">9.2 struct&amp;class的比較<br>
-
-</span></h2>
-
-除了struct，class也可以用來當自定義資料型別，但它們有什麼不同?<br>
-
-其實只有一個，就是當它們未說明裡面的內容是 <span style="color: rgb(0, 0, 204);">public</span>(所有區域都可以用)、<span style="color: rgb(0, 0, 204);">private<span style="color: black;">(只有在此區域內才可被使用/更改)<br>
-
-struct內都是</span></span> <span style="color: rgb(0, 0, 204);">public<span style="color: black;">，class</span></span>內都是<span style="color: rgb(0, 0, 204);">private<br>
-
-<span style="color: black;">要讓兩者相同，如圖:<br>
-
-</span></span><span style="color: rgb(0, 0, 0); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; text-align: start; text-indent: 0px; text-transform: none; widows: 1; word-spacing: 0px; font-size: 11pt; font-family: Arial; text-decoration: none; vertical-align: baseline; background-color: transparent;"><span style="color: rgb(204, 0, 0);"><span style="color: black;"></span></span></span><span style="color: rgb(0, 0, 0); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; text-align: start; text-indent: 0px; text-transform: none; widows: 1; word-spacing: 0px; font-size: 11pt; font-family: Arial; text-decoration: none; vertical-align: baseline; background-color: transparent;"><br>
-
-<img style="width: 157px; height: 155px;" alt="" src="picture/ch09-02.PNG"><img style="width: 165px; height: 163px;" alt="" src="picture/ch09-03.PNG"><br>
-
-本章的內容為了方便，都用struct來說明<br>
-
-</span>
-<h2 style="background: transparent url(https://ssl.gstatic.com/sites/p/e57d46/system/app/themes/crystalpanel/h2-border.gif) repeat-x scroll 0% 100%; font-style: normal; font-variant: normal; line-height: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; font-family: 'Trebuchet MS',arial,sans-serif; color: rgb(165, 164, 165); font-size: 2em; letter-spacing: 0.1em; font-weight: normal; -moz-background-clip: initial; -moz-background-origin: initial; -moz-background-inline-policy: initial;" dir="ltr"><span style="font-size: 18pt; font-family: Arial; color: rgb(0, 0, 0); font-weight: bold; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; background-color: transparent;">9.3 建構器</span></h2>
-
-struct的功用不只上述說明，它還有可以做建構器<br>
-
-<img style="width: 275px; height: 78px;" alt="" src="picture/ch09-04.PNG"><br>
-
-建構器裡的變數一起出現(輸入、輸出、做判斷)，<br>
-
-<br>
-
-<h2 style="background: transparent url(https://ssl.gstatic.com/sites/p/e57d46/system/app/themes/crystalpanel/h2-border.gif) repeat-x scroll 0% 100%; font-style: normal; font-variant: normal; line-height: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; font-family: 'Trebuchet MS',arial,sans-serif; color: rgb(165, 164, 165); font-size: 2em; letter-spacing: 0.1em; font-weight: normal; -moz-background-clip: initial; -moz-background-origin: initial; -moz-background-inline-policy: initial;" dir="ltr"><span style="font-size: 18pt; font-family: Arial; color: rgb(0, 0, 0); font-weight: bold; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; background-color: transparent;">9.4 大數和更精浮點數</span></h2>
-
-struct也可以用來存很大很大的數和很小很小的浮點數<img style="width: 44px; height: 72px; float: right;" alt="" src="picture/ch09-05.PNG"><br>
-這裡不提供程式，但提供想法(以大數為例):<br>
-右邊是小學加法直式，我們把各位數看成一個由各位數串起來的陣列，個位數加起來超過十要進位<br>
-1.大數要用陣列存<br>
-2.+-*/等等運算子就是各陣列在運算，要進位<br>
-3.輸出時要補零，如{111111,2222}一個陣列存6位數，輸出應為111111002222，但若不補0，會輸出1111112222<br>
-程式<span style="color: rgb(0, 0, 204);">:&lt;iomanip&gt;裡的 setifll <span style="color: rgb(0, 0, 0);">setf</span></span>ill('0');<br>
-<br>
-<br>
-<br>
-
-<br>
-
-
-
-
-<br>
-
-
-</body>
-</html>
+  <title>第九章 排序及動態規劃</title>
+<style>
+table, th, td {
+    border: 1px solid black;
+}  
+</style>
+</head><body style="background-image: url(picture/background.png);">
+<h1>第九章 排序及動態規劃</h1>
+<h2>9.1 排序</h2>
+<h3>特殊條件</h3>
+<p>第七章中我們用 &lt;algorithm&gt; 中的 sort
+函數來排序。但是它只能依數值由小到大排序。可是如果遇到特殊條件的排序，Sort 就不知道要如何去排了。</p>
+<li><a href="https://zerojudge.tw/ShowProblem?problemid=d750">d750. 11321 - Sort! Sort!! and Sort!!!</a></li>
+<p>這題的排序條件很詭異。</p>
+<script src="https://gist.github.com/allem40306/63bb96df79dde4a3efce7e27bb0fd16c.js?file=09-01.cpp"></script>
+<li><a href="https://zerojudge.tw/ShowProblem?problemid=d731">d731. 11039 - Building designing</a></li>
+</body></html>
