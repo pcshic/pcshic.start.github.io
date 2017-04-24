@@ -1,143 +1,214 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html><head>
-  
+<!DOCTYPE html>
+<html></html>
+<head> 
+  <meta charset="UTF-8">
   <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="style.css" rel="stylesheet" type="text/css">
   <title>第六章 字元與字串</title>
-
-  
-</head><body style="background-image: url(picture/background.png);">
-<h1>第六章 字元與字串</h1>
-<h2>6.1 字元型別</h2>
-<li><a href="http://contest.cc.ntu.edu.tw/npsc2008/2008jun_final.pdf">2008 NPSC 國中組決賽 A. 犯人的編號</a></li>
-<p>題目大意：這題就是我們常玩的 xAxB 猜數字遊戲。答案及猜測均是不重覆的四位數字，若兩者含有相同的數字且位置相同者為
-A，含有相同的數字但位置不同者為 B，判斷所給的每個猜測為幾 A 幾 B。</p>
-<p>要算出幾 A 幾 B，我們必須將這個四位數字拆開來，再一一地去比對每一位數是否相同。我們可以用數字的方式輸入，再以 % 10
-的運算一位數一位數地取出來。然後依題意算出幾 A 幾 B。</p>
-<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-01.cpp""></script>
-<h2>字元型別 (char)</h2>
-<p>基本上，char 也是一個整數型態，它的長度只有一個 byte，範圍則是從 -128 到 127。它和其它整數型態 (int, short,
-long long 等) 不同的是，它在輸入或輸出時會以字元的型式來進行。</p>
-<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-02.cpp""></script>
-<p>從上面的程式碼片段中我們可以看得出來，char
-的變數的確可以當作整數來使用，只是它的範圍比較小，要小心溢位。但是在輸出的時候，它就不是輸出整數值了哦！以上面的程式來說，變數 ch 的值是
-65，但是輸出時會輸出 ASCII 碼為 65 的字元，也就是 A。</p>
-<p>char 在輸入時也有別於其他整數，它會一次輸入一個字元，並儲存該字元的 ASCII 碼。</p>
-<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-03.cpp""></script>
-<p>這段程式碼可以輸入一個字元，並輸出它的 ASCII 碼。由於字元變數在輸入時，一次只輸入一個字元，我們就可以把「犯人的編號」程式改寫如下：<p>
-<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-04.cpp""></script>
-<p>在這個版本中，a1 只會輸入一個字元，也就是千位數，剩下的百位、十位、個位數則分別輸入到 a2, a3, 及 a4 了。不像 int
-會輸入整個整數，之後還得把它拆開來，輸入字元時，每個字元都會分開存在不同的變數裡，不需要再去拆了。</p>
-<h3>取得白空白</h3>
-<li><a href="https://zerojudge.tw/ShowProblem?problemid=c007">c007. TeX Quotes</a></li>
-<p>題意：照樣輸出所輸入的每個字元，但是第奇數個雙引號「"」要改成兩個左單引號「``」，而第偶數個雙引號要改成兩個右單引號「''」。</p>
-<p>如果我們只是要把輸入的內容一模一樣地輸出，我們可以試試下面的小程式：<p>
-<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-05-1.cpp""></script>
-<p>執行上面的程式，輸入題目所給的範例測資：</p>
-<p>"To be or not to be," quoth the Bard, "that<br>is the question".<br>The programming contestant replied: "I must disagree.<br>To `C' or not to `C', that is The Question!"</p>
-<p>你卻得到以下的結果：<p>
-<p>"Tobeornottobe,"quoththeBard,"thatisthequestion".Theprogrammingcontestantreplied:"Imustdisagree.To`C'orno<br>tto`C',thatisTheQuestion!"</p>
-<p>也就是所有的「白空白」，包括空白與換行，統統不見了！當我們用 &gt;&gt;
-運算子來作輸入時，它會自動跳過白空白，以致於我們無法取得輸入的白空白。如果程式中要取得輸入的白空白，我們就必須用 cin 的成員函數
-get()。</p>
-<p>要用 get() 來輸入一個字元到字元變數 ch 中有兩種用法：</p>
-<p>ch = cin.get() 或 cin.get(ch)</p>
-<p>cin.get() 的括號中若沒有任何參數，那麼它會回傳它所讀到的字元，我們再用指定運算子「=」把回傳的值設定給 ch。</p>
-<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-05-2.cpp""></script>
-<li><a href="https://zerojudge.tw/ShowProblem?problemid=d103">d103. NOIP 2008 1.ISBN號碼</a></li>
-<p>題目大意：判斷所輸入的 ISBN 號碼是否正確。</p>
-<p>因為輸入進來的"數字"其實c1,c2......存的是代表該"數字"的ASCII碼，例如c1=字元「0」， c1 存的其實是 48 ，
-所以要做計算的時候必須先減掉48(0的ASCII碼) !</p>
-<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-06.cpp""></script>
-<li><a href="https://zerojudge.tw/ShowProblem?problemid=a065">a065. 提款卡密碼</a></li>
-<li><a href="https://zerojudge.tw/ShowProblem?problemid=a001">a001. 哈囉</a></li>
-<h1>6.2 字串</h1>
-<li><a href="https://view.officeapps.live.com/op/view.aspx?src=http://contest.cc.ntu.edu.tw/npsc2007/2007jun.doc">2007 NPSC 國中組初賽 B. 黑澀會美眉</a></li>
-<li><a href="https://zerojudge.tw/ShowProblem?problemid=d095">d095. 579 - ClockHands</a></li>
-<li><a href="https://view.officeapps.live.com/op/view.aspx?src=http://contest.cc.ntu.edu.tw/npsc2007/2007jun.doc">2007 NPSC 國中組初賽 D. 打不倒的空氣人</a></li>
-<p>題目大意：給定 n 個英文單字，m 個整數。將 n 個英文單字全部接在一起成為一個字串，然後依 m 個整數所指定的位置取出 m 個字母輸出即可。</p>
-<p>說明：</p>
-<p>如果要把兩個字串變數接在一起，可以直接用「+」運算子來連接它們。例如下列的程式便會輸出「ABCDEF」。</p>
-<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-07.cpp""></script>
-<p>下面的程式碼可以用來輸入 n 個字串，並把它們接在一起。</p>
-<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-08.cpp""></script>
-<li><a href="https://zerojudge.tw/ShowProblem?problemid=a022">a022: 迴文</a></li>
-<p>要判斷一個字串是否為迴文，依序比對第一個字元和最後一個字元、第二個字元和倒數第二個字元、......是否一樣，如果比到中間還是一樣，那麼這個字串</p>
-<p>幾個有關迴文的觀念:</p>
-<p>(1)迴文左右對稱所以由左而右讀及由右而左讀都會是一樣的</p>
-<p>(2)同種文字出現的個數中,只有一種會出現奇數次<br>>如:<br>aaabbccddeeee</p>
-<p>a共3個 , b共2個 , c共2個 , d共2個 , e共4個<br>將多出來的a擺中間即可排成左右對稱的<br>b a c e d e a e d e c a b</p>
-<p>可想而知若其中有兩種以上的文字出現個數為奇數個<br>則多出的文字沒地方可以擺而排不出合法的字串</p>
-<p>(3)若題目只問排列的方法數,因為其左右對稱的特性<br>左半邊若被決定了,右半邊就一定只能是相對應的<br>所以只要排出半邊的方法數就好,可以節省時間<p>
-<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-09.cpp""></script>
-<h3>reverse用法</h3>
-<p>&nbsp;需#include &lt;algorithm&gt;<br>&nbsp;設字串 a;<br>reverse( 從字串中第s個記憶體位置 , 到字串中第d個記憶體位置&nbsp; )<br>則 從 a[s] 至 a[d]會倒過來排</p>
-<li><a href="https://zerojudge.tw/ShowProblem?problemid=d086">d086:&nbsp; 態度之重要的證明</a></li>
-<p>題目大意：輸入一個字串，將其中字母所代表的數字加總輸出，A 或 a 代表 1、B 或 b 代表
-2、.....，如果字串中有任何非字母的字元，請輸出 "Fail"。</p>
-<p>說明：</p>
-<p>雖然這題看起來是「0尾版」，但是我們是用字串來輸入那個 0，所以「!= "0"」不可以省略，因為 "0" 不是真的 0。你也不可以把 s !=
-"0" 寫成 s != '0'，因為後者是拿一個字串來和字元相比，這是不允許的。</p>
-<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-10.cpp""></script>
-<p>要判斷一個字元是不是字母，我們可以從它的編碼去處理，如果它不是介於 'A' 和 'Z' 之間，也不是介於 'a' 和 'z'
-之間，那麼它就不是字母。如果它不是字母，你就讓它立刻 break
-跳出迴圈，如果程式沒有跳出去，就代表這個字元是個字母。這時候，我們還得判斷它是大寫還是小寫字母，因為要減的數字不同。程式如下：</p>
-<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-11.cpp""></script>
-<p>
-當迴圈結束後，我們可以用 i 的值來判斷剛才的迴圈是否遇到了非字母字元。如果迴圈結束後的 i ==
-s.size()，那就代表迴圈是「壽終正寢」地掃瞄完了整個字串，如果 i &lt;
-s.size()，就代表迴圈是在字串還沒完全掃瞄完畢整個字串就遇到了非字母字元而 break
-出來了。我們可以據此判斷字串中是否含有非字母字元以作出適當的輸出。</p>
-<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-12.cpp""></script>
-<p>在 &lt;cctype&gt; 標頭檔中，定義了一些字元的函數，我們可以用它們來簡化我們的程式。其中 isalpha(ch) 便可以幫你判斷
-ch 是不是字母，如果是字母，它會回傳一個非 0 的字，如果 ch 是字母，那麼它就會回傳 0。</p>
-<p>另外還有一個函數 toupper(ch)，如果 ch 是小寫字母，它會回傳 ch 的大寫字母。如果 ch 不是小寫字母，它就直接回傳
-ch。簡化之後的程式如下：</p>
-<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-13.cpp""></script>
-<p>&lt;cctype&gt; 中常用的函數表列於附錄 G &lt;cctype&gt;中。即然這些函數是定義在 &lt;cctype&gt;
-中，理論上用到這些函數時要先 include &lt;cctype&gt;，但實測發現，不管是 Visual C++ 或是
-Zerojudge，不用 include &lt;cctype&gt; 也一樣能編譯成功。可以是其他的標頭檔把它 include 進來了。</p>
-<li><a href="http://contest.cc.ntu.edu.tw/npsc2008/2008jun_final.pdf">2008 NPSC 國中組決賽 B. 外星人的訊息</a></li>
-<h3>etline(cin,s)</h3>
-<li><a href="https://zerojudge.tw/ShowProblem?problemid=c054">c054. WERTYU</a></li>
-<p>題目大意：輸入一行文字，將其中每個非空白的字元以鍵盤上在它左邊的字元取代並輸出。例如 S 以 A 取代，[ 以 P 取代....。</p>
-<p>說明：</p>
-<p>這題以一行為一筆測資，且其中含有空白，所以不能用 cin &gt;&gt; s 來輸入，因為用 &gt;&gt;
-輸入時，遇到白空白就會停下來。例如以下程式：</p>
-<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-14.cpp""></script>
-<p>如果你輸入「This is a book.」，你不會得到：</p>
-<p>[This is a book.]</p>
-<p>而是得到：</p>
-[This]<br>[is]<br>[a]<br>[book.]</p>
-<p>如果你要一次輸入一整行，不管有沒有空白在裡面，那麼就需要用到 getline() 函數了。常見的用法如下：</p>
-<p>&nbsp;&nbsp;&nbsp; getline(cin,s)</p>
-<p>這個函數和 cin &gt;&gt; s 一樣，會從 cin 輸入一個字串到 s 變數之中。它的回傳值也是 cin，所以同樣可以直接放在
-while 迴圈的小括號中來讀取 EOF 版的測資。</p>
-<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-15.cpp""></script>
-<p>如果你要的話，這題也可以用 43 個 if 硬暴：</p>
-<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-16.cpp""></script>
-<p>但這樣一來程式就變得很冗長，即使 '2' 到 '9' 等 8 個數字可以合併成一個 if 陳述式，</p>
-<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-17.cpp""></script>
-<p>這樣也還有 36 個 if 陳述式。有沒有比較簡潔的方法呢？</p>
-<p>我們可以把題目中鍵盤的配置儲存在一個字串 k 中：</p>
-<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-18.cpp""></script>
-<p>要提醒您注意的是，字串中的倒斜線「\」必須用逸出字元「\\」來表示。然後我們就可以在字串 k 中尋找 s 字串中所出現的字元
-s[i]，然後再以它在字串 k 中左邊的字元輸出。</p>
-<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-19.cpp""></script>
-<p>要注意的是字串 k 的最前面我們擺了兩個空白字元，然後 j 是從 1 而不是從 0 開始找，如此一來，如果 s[i]
-是空白的話，它會找到右邊的那個空白，然後輸出左邊的那個空白。</p>
-<h3>string.find()</h3>
-<p>其實在 string 類別中本來就定義了一個在字串中尋找某個字元的成員函數 find()。例如，我們要在字串 s 中尋找字元 ch
-出現的位置的話，可以寫成 s.find(ch)。找到時，它會回傳 ch 在 s 中第一次出現的位置，如果找不到，它會回傳
-string::npos，也就是 -1。你也可以在 find() 函數中提供第二個參數以指定開始尋找的位置，例如以下的程式就可以找到並輸出字串
-s 中所有 ch 的位置並輸出：</p>
-<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-20.cpp""></script>
-<p>有了這個函數以後，剛剛那題在 k 中找 s[i] 的 for 迴圈就可以改成用 find() 來做了。</p>
-<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-21.cpp""></script>
-<p>甚至可以直接把第一行的 find() 代入第二行的 j，如下：</p>
-<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-22.cpp""></script>
-<p>整個程式就變成了：</p>
-<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-23.cpp""></script>
-<p>相當簡潔，不是嗎？</p>
-<script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-24.cpp""></script>
-<br><br><br>
-</body></html>
+</head>
+<body>
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header"><a class="navbar-brand" href="#">板中資訊社</a></div>
+      <div>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">C++</a></li>
+          <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">語法<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="ch01.html">第一章 立刻動手</a></li>
+              <li><a href="ch02.html">第二章 變數與指定運算子「=」</a></li>
+              <li><a href="ch03.html">第三章 比較運算子與 if 陳述式</a></li>
+              <li><a href="ch04.html">第四章 迴圈</a></li>
+              <li><a href="ch05.html">第五章 基礎資料型別</a></li>
+              <li><a href="ch06.html">第六章 字元與字串</a></li>
+              <li><a href="ch07.html">第七章 陣列</a></li>
+              <li><a href="ch08.html">第八章 自定義函數與資料型別</a></li>
+              <li><a href="ch09.html">第九章 排序</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <h1>第六章 字元與字串</h1>
+  <h2>6.1 字元型別</h2>
+  <li><a href="http://contest.cc.ntu.edu.tw/npsc2008/2008jun_final.pdf">2008 NPSC 國中組決賽 A. 犯人的編號</a></li>
+  <p>
+    題目大意：這題就是我們常玩的 xAxB 猜數字遊戲。答案及猜測均是不重覆的四位數字，若兩者含有相同的數字且位置相同者為
+    A，含有相同的數字但位置不同者為 B，判斷所給的每個猜測為幾 A 幾 B。
+  </p>
+  <p>
+    要算出幾 A 幾 B，我們必須將這個四位數字拆開來，再一一地去比對每一位數是否相同。我們可以用數字的方式輸入，再以 % 10
+    的運算一位數一位數地取出來。然後依題意算出幾 A 幾 B。
+  </p>
+  <script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-01.cpp"></script>
+  <h2>字元型別 (char)</h2>
+  <p>
+    基本上，char 也是一個整數型態，它的長度只有一個 byte，範圍則是從 -128 到 127。它和其它整數型態 (int, short,
+    long long 等) 不同的是，它在輸入或輸出時會以字元的型式來進行。
+  </p>
+  <script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-02.cpp"></script>
+  <p>
+    從上面的程式碼片段中我們可以看得出來，char
+    的變數的確可以當作整數來使用，只是它的範圍比較小，要小心溢位。但是在輸出的時候，它就不是輸出整數值了哦！以上面的程式來說，變數 ch 的值是
+    65，但是輸出時會輸出 ASCII 碼為 65 的字元，也就是 A。
+  </p>
+  <p>char 在輸入時也有別於其他整數，它會一次輸入一個字元，並儲存該字元的 ASCII 碼。</p>
+  <script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-03.cpp"></script>
+  <p>這段程式碼可以輸入一個字元，並輸出它的 ASCII 碼。由於字元變數在輸入時，一次只輸入一個字元，我們就可以把「犯人的編號」程式改寫如下：</p>
+  <p>
+    <script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-04.cpp"></script>
+  </p>
+  <p>
+    在這個版本中，a1 只會輸入一個字元，也就是千位數，剩下的百位、十位、個位數則分別輸入到 a2, a3, 及 a4 了。不像 int
+    會輸入整個整數，之後還得把它拆開來，輸入字元時，每個字元都會分開存在不同的變數裡，不需要再去拆了。
+  </p>
+  <h3>取得白空白</h3>
+  <li><a href="https://zerojudge.tw/ShowProblem?problemid=c007">c007. TeX Quotes</a></li>
+  <p>題意：照樣輸出所輸入的每個字元，但是第奇數個雙引號「"」要改成兩個左單引號「``」，而第偶數個雙引號要改成兩個右單引號「''」。</p>
+  <p>如果我們只是要把輸入的內容一模一樣地輸出，我們可以試試下面的小程式：</p>
+  <p>
+    <script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-05-1.cpp"></script>
+  </p>
+  <p>執行上面的程式，輸入題目所給的範例測資：</p>
+  <p>"To be or not to be," quoth the Bard, "that<br>is the question".<br>The programming contestant replied: "I must disagree.<br>To `C' or not to `C', that is The Question!"</p>
+  <p>你卻得到以下的結果：</p>
+  <p></p>
+  <p>"Tobeornottobe,"quoththeBard,"thatisthequestion".Theprogrammingcontestantreplied:"Imustdisagree.To`C'orno<br>tto`C',thatisTheQuestion!"</p>
+  <p>
+    也就是所有的「白空白」，包括空白與換行，統統不見了！當我們用 >>
+    運算子來作輸入時，它會自動跳過白空白，以致於我們無法取得輸入的白空白。如果程式中要取得輸入的白空白，我們就必須用 cin 的成員函數
+    get()。
+  </p>
+  <p>要用 get() 來輸入一個字元到字元變數 ch 中有兩種用法：</p>
+  <p>ch = cin.get() 或 cin.get(ch)</p>
+  <p>cin.get() 的括號中若沒有任何參數，那麼它會回傳它所讀到的字元，我們再用指定運算子「=」把回傳的值設定給 ch。</p>
+  <script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-05-2.cpp"></script>
+  <li><a href="https://zerojudge.tw/ShowProblem?problemid=d103">d103. NOIP 2008 1.ISBN號碼</a></li>
+  <p>題目大意：判斷所輸入的 ISBN 號碼是否正確。</p>
+  <p>
+    因為輸入進來的"數字"其實c1,c2......存的是代表該"數字"的ASCII碼，例如c1=字元「0」， c1 存的其實是 48 ，
+    所以要做計算的時候必須先減掉48(0的ASCII碼) !
+  </p>
+  <script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-06.cpp"></script>
+  <li><a href="https://zerojudge.tw/ShowProblem?problemid=a065">a065. 提款卡密碼</a></li>
+  <li><a href="https://zerojudge.tw/ShowProblem?problemid=a001">a001. 哈囉</a></li>
+  <h1>6.2 字串</h1>
+  <li><a href="https://view.officeapps.live.com/op/view.aspx?src=http://contest.cc.ntu.edu.tw/npsc2007/2007jun.doc">2007 NPSC 國中組初賽 B. 黑澀會美眉</a></li>
+  <li><a href="https://zerojudge.tw/ShowProblem?problemid=d095">d095. 579 - ClockHands</a></li>
+  <li><a href="https://view.officeapps.live.com/op/view.aspx?src=http://contest.cc.ntu.edu.tw/npsc2007/2007jun.doc">2007 NPSC 國中組初賽 D. 打不倒的空氣人</a></li>
+  <p>題目大意：給定 n 個英文單字，m 個整數。將 n 個英文單字全部接在一起成為一個字串，然後依 m 個整數所指定的位置取出 m 個字母輸出即可。</p>
+  <p>說明：</p>
+  <p>如果要把兩個字串變數接在一起，可以直接用「+」運算子來連接它們。例如下列的程式便會輸出「ABCDEF」。</p>
+  <script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-07.cpp"></script>
+  <p>下面的程式碼可以用來輸入 n 個字串，並把它們接在一起。</p>
+  <script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-08.cpp"></script>
+  <li><a href="https://zerojudge.tw/ShowProblem?problemid=a022">a022: 迴文</a></li>
+  <p>要判斷一個字串是否為迴文，依序比對第一個字元和最後一個字元、第二個字元和倒數第二個字元、......是否一樣，如果比到中間還是一樣，那麼這個字串</p>
+  <p>幾個有關迴文的觀念:</p>
+  <p>(1)迴文左右對稱所以由左而右讀及由右而左讀都會是一樣的</p>
+  <p>(2)同種文字出現的個數中,只有一種會出現奇數次<br>>如:<br>aaabbccddeeee</p>
+  <p>a共3個 , b共2個 , c共2個 , d共2個 , e共4個<br>將多出來的a擺中間即可排成左右對稱的<br>b a c e d e a e d e c a b</p>
+  <p>可想而知若其中有兩種以上的文字出現個數為奇數個<br>則多出的文字沒地方可以擺而排不出合法的字串</p>
+  <p>(3)若題目只問排列的方法數,因為其左右對稱的特性<br>左半邊若被決定了,右半邊就一定只能是相對應的<br>所以只要排出半邊的方法數就好,可以節省時間</p>
+  <p>
+    <script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-09.cpp"></script>
+  </p>
+  <h3>reverse用法</h3>
+  <p>需#include <algorithm><br> 設字串 a;<br>reverse( 從字串中第s個記憶體位置 , 到字串中第d個記憶體位置  )<br>則 從 a[s] 至 a[d]會倒過來排</p>
+  <li><a href="https://zerojudge.tw/ShowProblem?problemid=d086">d086:  態度之重要的證明</a></li>
+  <p>
+    題目大意：輸入一個字串，將其中字母所代表的數字加總輸出，A 或 a 代表 1、B 或 b 代表
+    2、.....，如果字串中有任何非字母的字元，請輸出 "Fail"。
+  </p>
+  <p>說明：</p>
+  <p>
+    雖然這題看起來是「0尾版」，但是我們是用字串來輸入那個 0，所以「!= "0"」不可以省略，因為 "0" 不是真的 0。你也不可以把 s !=
+    "0" 寫成 s != '0'，因為後者是拿一個字串來和字元相比，這是不允許的。
+  </p>
+  <script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-10.cpp"></script>
+  <p>
+    要判斷一個字元是不是字母，我們可以從它的編碼去處理，如果它不是介於 'A' 和 'Z' 之間，也不是介於 'a' 和 'z'
+    之間，那麼它就不是字母。如果它不是字母，你就讓它立刻 break
+    跳出迴圈，如果程式沒有跳出去，就代表這個字元是個字母。這時候，我們還得判斷它是大寫還是小寫字母，因為要減的數字不同。程式如下：
+  </p>
+  <script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-11.cpp"></script>
+  <p>
+    當迴圈結束後，我們可以用 i 的值來判斷剛才的迴圈是否遇到了非字母字元。如果迴圈結束後的 i ==
+    s.size()，那就代表迴圈是「壽終正寢」地掃瞄完了整個字串，如果 i <
+    s.size()，就代表迴圈是在字串還沒完全掃瞄完畢整個字串就遇到了非字母字元而 break
+    出來了。我們可以據此判斷字串中是否含有非字母字元以作出適當的輸出。
+  </p>
+  <script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-12.cpp"></script>
+  <p>
+    在 <cctype> 標頭檔中，定義了一些字元的函數，我們可以用它們來簡化我們的程式。其中 isalpha(ch) 便可以幫你判斷
+    ch 是不是字母，如果是字母，它會回傳一個非 0 的字，如果 ch 是字母，那麼它就會回傳 0。
+  </p>
+  <p>
+    另外還有一個函數 toupper(ch)，如果 ch 是小寫字母，它會回傳 ch 的大寫字母。如果 ch 不是小寫字母，它就直接回傳
+    ch。簡化之後的程式如下：
+  </p>
+  <script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-13.cpp"></script>
+  <p>
+    <cctype> 中常用的函數表列於附錄 G <cctype>中。即然這些函數是定義在 <cctype>
+    中，理論上用到這些函數時要先 include <cctype>，但實測發現，不管是 Visual C++ 或是
+    Zerojudge，不用 include <cctype> 也一樣能編譯成功。可以是其他的標頭檔把它 include 進來了。
+  </p>
+  <li><a href="http://contest.cc.ntu.edu.tw/npsc2008/2008jun_final.pdf">2008 NPSC 國中組決賽 B. 外星人的訊息</a></li>
+  <h3>etline(cin,s)</h3>
+  <li><a href="https://zerojudge.tw/ShowProblem?problemid=c054">c054. WERTYU</a></li>
+  <p>題目大意：輸入一行文字，將其中每個非空白的字元以鍵盤上在它左邊的字元取代並輸出。例如 S 以 A 取代，[ 以 P 取代....。</p>
+  <p>說明：</p>
+  <p>
+    這題以一行為一筆測資，且其中含有空白，所以不能用 cin >> s 來輸入，因為用 >>
+    輸入時，遇到白空白就會停下來。例如以下程式：
+  </p>
+  <script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-14.cpp"></script>
+  <p>如果你輸入「This is a book.」，你不會得到：</p>
+  <p>[This is a book.]</p>
+  <p>而是得到：</p>[This]<br>[is]<br>[a]<br>[book.]
+  <p></p>
+  <p>如果你要一次輸入一整行，不管有沒有空白在裡面，那麼就需要用到 getline() 函數了。常見的用法如下：</p>
+  <p>    getline(cin,s)</p>
+  <p>
+    這個函數和 cin >> s 一樣，會從 cin 輸入一個字串到 s 變數之中。它的回傳值也是 cin，所以同樣可以直接放在
+    while 迴圈的小括號中來讀取 EOF 版的測資。
+  </p>
+  <script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-15.cpp"></script>
+  <p>如果你要的話，這題也可以用 43 個 if 硬暴：</p>
+  <script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-16.cpp"></script>
+  <p>但這樣一來程式就變得很冗長，即使 '2' 到 '9' 等 8 個數字可以合併成一個 if 陳述式，</p>
+  <script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-17.cpp"></script>
+  <p>這樣也還有 36 個 if 陳述式。有沒有比較簡潔的方法呢？</p>
+  <p>我們可以把題目中鍵盤的配置儲存在一個字串 k 中：</p>
+  <script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-18.cpp"></script>
+  <p>
+    要提醒您注意的是，字串中的倒斜線「\」必須用逸出字元「\\」來表示。然後我們就可以在字串 k 中尋找 s 字串中所出現的字元
+    s[i]，然後再以它在字串 k 中左邊的字元輸出。
+  </p>
+  <script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-19.cpp"></script>
+  <p>
+    要注意的是字串 k 的最前面我們擺了兩個空白字元，然後 j 是從 1 而不是從 0 開始找，如此一來，如果 s[i]
+    是空白的話，它會找到右邊的那個空白，然後輸出左邊的那個空白。
+  </p>
+  <h3>string.find()</h3>
+  <p>
+    其實在 string 類別中本來就定義了一個在字串中尋找某個字元的成員函數 find()。例如，我們要在字串 s 中尋找字元 ch
+    出現的位置的話，可以寫成 s.find(ch)。找到時，它會回傳 ch 在 s 中第一次出現的位置，如果找不到，它會回傳
+    string::npos，也就是 -1。你也可以在 find() 函數中提供第二個參數以指定開始尋找的位置，例如以下的程式就可以找到並輸出字串
+    s 中所有 ch 的位置並輸出：
+  </p>
+  <script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-20.cpp"></script>
+  <p>有了這個函數以後，剛剛那題在 k 中找 s[i] 的 for 迴圈就可以改成用 find() 來做了。</p>
+  <script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-21.cpp"></script>
+  <p>甚至可以直接把第一行的 find() 代入第二行的 j，如下：</p>
+  <script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-22.cpp"></script>
+  <p>整個程式就變成了：</p>
+  <script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-23.cpp"></script>
+  <p>相當簡潔，不是嗎？</p>
+  <script src="https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-24.cpp"></script><br><br><br>
+</body>

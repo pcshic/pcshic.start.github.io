@@ -1,3 +1,6 @@
+html {
+	margin: 20pt 20pt 20pt 20pt;
+}
 body {
 	background-image:url(picture/background.png);
 	background-color: #00FFFF;
