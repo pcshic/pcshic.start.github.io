@@ -1,10 +1,10 @@
 doctype html
 html
 head  
-    include head.pug
+    include template/head.pug
     title 第六章 字元與字串
 body
-    include nav.pug
+    include template/nav.pug
     h1 第六章 字元與字串
     h2 6.1 字元型別
     li
@@ -118,7 +118,7 @@ body
       script(src='https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-09.cpp')
     h3 reverse用法
     p
-      | 需#include <algorithm>
+      | 需#include template/<algorithm>
       br
       |  設字串 a;
       br
@@ -155,8 +155,8 @@ body
     script(src='https://gist.github.com/allem40306/dafa7bdcb7373cfe7f256bfdf6673100.js?file=ch06-13.cpp')
     p
       | <cctype> 中常用的函數表列於附錄 G <cctype>中。即然這些函數是定義在 <cctype>
-      | 中，理論上用到這些函數時要先 include <cctype>，但實測發現，不管是 Visual C++ 或是
-      | Zerojudge，不用 include <cctype> 也一樣能編譯成功。可以是其他的標頭檔把它 include 進來了。
+      | 中，理論上用到這些函數時要先 include template/<cctype>，但實測發現，不管是 Visual C++ 或是
+      | Zerojudge，不用 include template/<cctype> 也一樣能編譯成功。可以是其他的標頭檔把它 include template/進來了。
     li
       a(href='http://contest.cc.ntu.edu.tw/npsc2008/2008jun_final.pdf') 2008 NPSC 國中組決賽 B. 外星人的訊息
     h3 etline(cin,s)

@@ -1,10 +1,10 @@
 doctype html
 html
 head
-    include head.pug   
+    include template/head.pug   
     title 第五章 基礎資料型別
 body
-    include nav.pug
+    include template/nav.pug
     h1 第五章 基礎資料型別
     h2 5.1 整數型態
     h3 5.1.1 無號整數
@@ -337,7 +337,7 @@ body
     p 但是在 <cmath> 這個標頭檔中，包含了三個 abs() 的重載：
     p (待補)
     p x 的絕對值：abs(x) 
-    p #include <cmath>
+    p #include template/<cmath>
     p (現在已改成#include<stdlib>)
     p (補充:如果學過副程式，你也可以自己寫，寫法如下:
     script(src='https://gist.github.com/allem40306/cce2e54df7a528532ba68e2174e8e112.js?file=ch05-14.cpp')
