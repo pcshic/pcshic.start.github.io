@@ -8,3 +8,9 @@ body {
 table, th, td {
 	border: 1px solid black;
 }
+button {
+	height: 25pt;
+	width: 150pt;
+	border-radius: 15pt 30pt 15pt 30pt;
+	background-color: #F0F000;
+}
