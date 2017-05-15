@@ -19,4 +19,12 @@ $(document).ready(function(){
 	  $(".para").hide();
 	  $("#para5").show();
 	});
+	$("#button6").click(function(){
+	  $(".para").hide();
+	  $("#para6").show();
+	});
+	$("#button7").click(function(){
+	  $(".para").hide();
+	  $("#para7").show();
+	});
 });
