@@ -6,133 +6,139 @@ head
 body
     include template/nav.pug
     h1 第八章 自定義函數與資料型別
-    h2 8.1 使用者自定義函數
-    li
-      a(href='http://contest.cc.ntu.edu.tw/npsc2007/doc/2007junfinal.doc') 2007 NPSC 國中組決賽 B. 友好數
-    p
-      | n 的真因數：除了 n 本身以外的所有因數，包含 1。友好數：如果 n 真因數和為 m，m 的真因數和為 n，則 n、m 互為「友好數」。題目：給定 n，求 n 的友好數。若 n 的友好數為 n 本身，請輸出「=n」，若 n 沒有友好數，請輸出「0」。
-    p 這題可以用以下的程式碼來 AC。
-    script(src='https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-01.cpp')
-    p
-      | 從上面的程式中，我們先求 n 的真因數和 m，再求 m 的真因數和n1，求真因數和的動作做了兩次，相同的程式碼也寫了兩次。這樣的寫法除了浪費記憶體外，在軟體工程上也有它的問題，因為它會造成維護上的困擾。將來如果求真因數和的程式需要修改，那麼我們得修改兩處，萬一其中一處遺漏了，就會造成程式的錯誤。
-    p 因此，像這樣重覆使用的程式碼，應讓有一個機制讓它只寫一次就好，這個機制叫作「函數」。我們把上面的程式碼用「函數」改寫如下：
-    script(src='https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-02.cpp')
-    p
-      | 在這個程式裡，一共有兩個「函數」(funtcion)：int main () 及 void sof ()。void所代表的意義我們待會再討論。int main ()
-      | 是程式的「入口」，程式執行時，會先執行這個「函數」。至於其他的函數，只有在被「呼叫」(call)時才會執行。如果你寫了一個函數卻不去呼叫它，那麼它就不會被執行，等於是白寫。因此，在 int main () 中有一個呼叫 sof ()
-      | 函數的陳述式：
-    script(src='https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-03.cpp')
-    p 執行到這行時，程式就會先跳到 void sof () 函數去，等 void sof () 裡的程式執行完後再跳回 int main ()。
-    p 不過，上面這個程式在編譯時得到以下的錯誤訊息：
-    p
-      | 1>d:\cpps\cpps\2007jfb. 友好數a.cpp(6) : error C2065: 'm' : 未宣告的識別項
-      br
-      | 1>d:\cpps\cpps\2007jfb. 友好數a.cpp(7) : error C2065: 'f' : 未宣告的識別項
-      br
-      | 1>d:\cpps\cpps\2007jfb. 友好數a.cpp(7) : error C2065: 'n' : 未宣告的識別項
-    p 在 int main () 的裡面我們定義了 4 個變數。
-    script(src='https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-04.cpp')
-    p
-      | 這種定義在函數內部的變數我們稱之為「區域變數」，它的有效範圍僅限於該函數的內部。所以這 4 個變數是 int main ()
-      | 自己的變數，void sof () 是存取不到的。因此當 void sof () 中使用到 n, m, f
-      | 等變數時，便會產生「未宣告的識別項」的錯誤。
-    p 你當然也可以在 void sof () 中自己定義這些變數：
-    script(src='https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-05.cpp')
-    p 這樣程式雖然通過編譯並執行，但是卻產生的下列的「警告」：
-    p
-      | 1>d:\cpps\cpps\2007jfb. 友好數a.cpp(8) : warning C4700: 使用了未初始化的區域變數 'n'
-      br
-      | 1>d:\cpps\cpps\2007jfb. 友好數a.cpp(19) : warning C4700: 使用了未初始化的區域變數
-      | 'm'
-    p
-      | 根據程式的邏輯，在 void sof () 所使用的 n 應該是在 int main () 所輸入的 n。我們另行在 void sof ()
-      | 所宣告的 n 卻是另一個 n，儘管兩個變數名稱都是 n，但是它們卻是不同的個體。你在 int main () 輸入了 n，但是 void
-      | sof () 的 n 卻沒有改變。
-    p
-      | 要讓 int main () 和 void sof () 共用一個 n，你需要把它定義為「全域變數」，方法是把這個 n
-      | 宣告在兩個函數的「外面」：
-    script(src='https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-06.cpp')
-    p 記得要同時把函數內的同名區域變數拿掉，否則程式會優先取用區域變數，而不是全域變數。
-    p
-      | 由於 int main () 和 void sof () 都會用到 n,
-      | m，所以這兩個全域變數的宣告要出現在這兩個函數之前，否則還是會出現「未宣告的識別項」的錯誤。同理，由於 int main () 中會去呼叫
-      | sof ()，所以 void sof() 函數也要出現在 int main () 之前。
-    p
-      | 你可能會好奇，既然 n, m 要宣告為全域變數，為什麼不把 n1 和 f
-      | 也一起宣告為全域，這樣程式也比較簡短。基於易於維護的因素，除非真正必要的時候，我們通常會儘量避免全域變數的使用。由於每個函數都可以去修改全域變數
-      | 的值，有時候甲函數修改了某變數的值，乙函數卻不知道，這就會造成一些錯誤了。在上面的程式中，int main () 輸入了 n 的值，而
-      | void sof () 則需要求這個 n 的真因數和，void sof () 所求得的真因數和 m 也需要在 int main ()
-      | 中做進一步的判斷與處理，所以這兩個變數一定要宣告成全域變數，其他的變數我們就宣告為區域變數。在這個程式中，即使你把 n, m, n1, f
-      | 都宣告為全域變數，程式仍能跑出正確的結果，但是基於培養良好的程式設計習慣，我們還是把 n1 和 f 宣告為區域變數比較好。
-    p
-      | 經過這番調整之後，這個程式終於可以正確執行了。但是我們當初寫 void sof ()
-      | 這個函數的目的就是希望可以把相同的兩段程式碼簡化成一段，當我們試圖進一步用 void sof () 來求 m
-      | 的真因數和時，卻發現由於變數命名的關係， void sof () 只能用來求 n 的真因數和，沒有辦法用來求 m
-      | 的真因數和。為了解決這個問題，我們把 void sof () 所使用的變數名稱修改如下：
-    script(src='https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-07.cpp')
-    p
-      | 也就是說，我們用 p 來取代所有的 n、用 q 來取代所有的 m。然後我們在呼叫 void sof() 之前先把 n 代入 p，求出 p
-      | 的真因數和 q 之後，再把 q 代入 m：
-    script(src='https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-08.cpp')
-    p 雖然這樣麻煩一點，但是如此一來，我們就可以用同一個 void sof () 來求 m 的真因數和了：
-    script(src='https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-09.cpp')
-    p 完整程式碼如下：
-    script(src='https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-10.cpp')
-    li
-      a(href='https://zerojudge.tw/ShowProblem?problemid=d225') d255. 11417 - GCD
-    p 這一題，它把題目的要求都寫成程式給你了，你只要複製題目中的程式，再加上變數的宣告、0 尾版的迴圈、及結果的輸出，答案就出來了。
-    script(src='https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-11.cpp')
-    p 但是再仔細看一下程式，其中用了一個 GCD 函數是 C++ 中沒有的。這時候你就得自己為它定義一個 GCD 函數來求最大公因數了。
-    h2 8.2 #define
-    p #define則可以自行定義常數
-    |  
-    p 如以下程式:
-    script(src='https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-12.cpp')
-    p 裡面的1000出現很多次，我們用#define簡化
-    script(src='https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-13.cpp')
-    p 用#define的好處不只是可以少打字，重要的是在修改時只要改變常數就好了，節省修改時間，亦不會漏改
-    p 也有人用 const int
-    script(src='https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-14.cpp')
-    p #define 也可以誰一些簡單函數
-    script(src='https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-15.cpp')
-    h2 8.3 自定義資料型別
-    p 假如今天給你A星的座標，給你其他星的座標，要你判斷之間距離，得出了以下變數
-    p (1)A星的座標(x,y)(2)其他星的座標(x,y)
-    p --> int ax, ay, ox[100], oy[100];
-    p 但今天你覺得不太雅觀或可讀性低，你可以自己定義一個結構
-    script(src='https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-16.cpp')
-    ol
-      li star 自定義資料型別名稱
-      | 	
-      li int x,y; 自定義資料型別內的內容
-      | 	
-      li
-        | 可以在}和;(如(a))之間命名一個變數，也可以如(b)一樣另外新增變數。
+    button#button1 使用者自定義函數
+    button#button2 #define
+    button#button3 自定義資料型別
+    div(class='para' id='para1' style='display:none')
+        h2 8.1 使用者自定義函數
+        li
+          a(href='http://contest.cc.ntu.edu.tw/npsc2007/doc/2007junfinal.doc') 2007 NPSC 國中組決賽 B. 友好數
+        p
+          | n 的真因數：除了 n 本身以外的所有因數，包含 1。友好數：如果 n 真因數和為 m，m 的真因數和為 n，則 n、m 互為「友好數」。題目：給定 n，求 n 的友好數。若 n 的友好數為 n 本身，請輸出「=n」，若 n 沒有友好數，請輸出「0」。
+        p 這題可以用以下的程式碼來 AC。
+        script(src='https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-01.cpp')
+        p
+          | 從上面的程式中，我們先求 n 的真因數和 m，再求 m 的真因數和n1，求真因數和的動作做了兩次，相同的程式碼也寫了兩次。這樣的寫法除了浪費記憶體外，在軟體工程上也有它的問題，因為它會造成維護上的困擾。將來如果求真因數和的程式需要修改，那麼我們得修改兩處，萬一其中一處遺漏了，就會造成程式的錯誤。
+        p 因此，像這樣重覆使用的程式碼，應讓有一個機制讓它只寫一次就好，這個機制叫作「函數」。我們把上面的程式碼用「函數」改寫如下：
+        script(src='https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-02.cpp')
+        p
+          | 在這個程式裡，一共有兩個「函數」(funtcion)：int main () 及 void sof ()。void所代表的意義我們待會再討論。int main ()
+          | 是程式的「入口」，程式執行時，會先執行這個「函數」。至於其他的函數，只有在被「呼叫」(call)時才會執行。如果你寫了一個函數卻不去呼叫它，那麼它就不會被執行，等於是白寫。因此，在 int main () 中有一個呼叫 sof ()
+          | 函數的陳述式：
+        script(src='https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-03.cpp')
+        p 執行到這行時，程式就會先跳到 void sof () 函數去，等 void sof () 裡的程式執行完後再跳回 int main ()。
+        p 不過，上面這個程式在編譯時得到以下的錯誤訊息：
+        p
+          | 1>d:\cpps\cpps\2007jfb. 友好數a.cpp(6) : error C2065: 'm' : 未宣告的識別項
+          br
+          | 1>d:\cpps\cpps\2007jfb. 友好數a.cpp(7) : error C2065: 'f' : 未宣告的識別項
+          br
+          | 1>d:\cpps\cpps\2007jfb. 友好數a.cpp(7) : error C2065: 'n' : 未宣告的識別項
+        p 在 int main () 的裡面我們定義了 4 個變數。
+        script(src='https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-04.cpp')
+        p
+          | 這種定義在函數內部的變數我們稱之為「區域變數」，它的有效範圍僅限於該函數的內部。所以這 4 個變數是 int main ()
+          | 自己的變數，void sof () 是存取不到的。因此當 void sof () 中使用到 n, m, f
+          | 等變數時，便會產生「未宣告的識別項」的錯誤。
+        p 你當然也可以在 void sof () 中自己定義這些變數：
+        script(src='https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-05.cpp')
+        p 這樣程式雖然通過編譯並執行，但是卻產生的下列的「警告」：
+        p
+          | 1>d:\cpps\cpps\2007jfb. 友好數a.cpp(8) : warning C4700: 使用了未初始化的區域變數 'n'
+          br
+          | 1>d:\cpps\cpps\2007jfb. 友好數a.cpp(19) : warning C4700: 使用了未初始化的區域變數
+          | 'm'
+        p
+          | 根據程式的邏輯，在 void sof () 所使用的 n 應該是在 int main () 所輸入的 n。我們另行在 void sof ()
+          | 所宣告的 n 卻是另一個 n，儘管兩個變數名稱都是 n，但是它們卻是不同的個體。你在 int main () 輸入了 n，但是 void
+          | sof () 的 n 卻沒有改變。
+        p
+          | 要讓 int main () 和 void sof () 共用一個 n，你需要把它定義為「全域變數」，方法是把這個 n
+          | 宣告在兩個函數的「外面」：
+        script(src='https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-06.cpp')
+        p 記得要同時把函數內的同名區域變數拿掉，否則程式會優先取用區域變數，而不是全域變數。
+        p
+          | 由於 int main () 和 void sof () 都會用到 n,
+          | m，所以這兩個全域變數的宣告要出現在這兩個函數之前，否則還是會出現「未宣告的識別項」的錯誤。同理，由於 int main () 中會去呼叫
+          | sof ()，所以 void sof() 函數也要出現在 int main () 之前。
+        p
+          | 你可能會好奇，既然 n, m 要宣告為全域變數，為什麼不把 n1 和 f
+          | 也一起宣告為全域，這樣程式也比較簡短。基於易於維護的因素，除非真正必要的時候，我們通常會儘量避免全域變數的使用。由於每個函數都可以去修改全域變數
+          | 的值，有時候甲函數修改了某變數的值，乙函數卻不知道，這就會造成一些錯誤了。在上面的程式中，int main () 輸入了 n 的值，而
+          | void sof () 則需要求這個 n 的真因數和，void sof () 所求得的真因數和 m 也需要在 int main ()
+          | 中做進一步的判斷與處理，所以這兩個變數一定要宣告成全域變數，其他的變數我們就宣告為區域變數。在這個程式中，即使你把 n, m, n1, f
+          | 都宣告為全域變數，程式仍能跑出正確的結果，但是基於培養良好的程式設計習慣，我們還是把 n1 和 f 宣告為區域變數比較好。
+        p
+          | 經過這番調整之後，這個程式終於可以正確執行了。但是我們當初寫 void sof ()
+          | 這個函數的目的就是希望可以把相同的兩段程式碼簡化成一段，當我們試圖進一步用 void sof () 來求 m
+          | 的真因數和時，卻發現由於變數命名的關係， void sof () 只能用來求 n 的真因數和，沒有辦法用來求 m
+          | 的真因數和。為了解決這個問題，我們把 void sof () 所使用的變數名稱修改如下：
+        script(src='https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-07.cpp')
+        p
+          | 也就是說，我們用 p 來取代所有的 n、用 q 來取代所有的 m。然後我們在呼叫 void sof() 之前先把 n 代入 p，求出 p
+          | 的真因數和 q 之後，再把 q 代入 m：
+        script(src='https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-08.cpp')
+        p 雖然這樣麻煩一點，但是如此一來，我們就可以用同一個 void sof () 來求 m 的真因數和了：
+        script(src='https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-09.cpp')
+        p 完整程式碼如下：
+        script(src='https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-10.cpp')
+        li
+          a(href='https://zerojudge.tw/ShowProblem?problemid=d225') d255. 11417 - GCD
+        p 這一題，它把題目的要求都寫成程式給你了，你只要複製題目中的程式，再加上變數的宣告、0 尾版的迴圈、及結果的輸出，答案就出來了。
+        script(src='https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-11.cpp')
+        p 但是再仔細看一下程式，其中用了一個 GCD 函數是 C++ 中沒有的。這時候你就得自己為它定義一個 GCD 函數來求最大公因數了。
+    div(class='para' id='para2' style='display:none')
+        h2 8.2 #define
+        p #define則可以自行定義常數
+        |  
+        p 如以下程式:
+        script(src='https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-12.cpp')
+        p 裡面的1000出現很多次，我們用#define簡化
+        script(src='https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-13.cpp')
+        p 用#define的好處不只是可以少打字，重要的是在修改時只要改變常數就好了，節省修改時間，亦不會漏改
+        p 也有人用 const int
+        script(src='https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-14.cpp')
+        p #define 也可以誰一些簡單函數
+        script(src='https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-15.cpp')
+    div(class='para' id='para3' style='display:none')
+        h2 8.3 自定義資料型別
+        p 假如今天給你A星的座標，給你其他星的座標，要你判斷之間距離，得出了以下變數
+        p (1)A星的座標(x,y)(2)其他星的座標(x,y)
+        p --> int ax, ay, ox[100], oy[100];
+        p 但今天你覺得不太雅觀或可讀性低，你可以自己定義一個結構
+        script(src='https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-16.cpp')
+        ol
+          li star 自定義資料型別名稱
+          |     
+          li int x,y; 自定義資料型別內的內容
+          |     
+          li
+            | 可以在}和;(如(a))之間命名一個變數，也可以如(b)一樣另外新增變數。
+            br
+            strong (注意!  }後的;不可刪除)
+        p 這樣程式可讀性變高了!!!
+        h3 struct&class的比較
+        p
+          | 除了struct，class也可以用來當自定義資料型別，但它們有什麼不同?
+          | 其實只有一個，就是當它們未說明裡面的內容是 public(所有區域都可以用)、private(只有在此區域內才可被使用/更改)
+        p
+          | struct內都是 public，class內都是private
+          | 要讓兩者相同，如下:
+        script(src='https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-17.cpp')
+        script(src='https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-18.cpp')
+        p 我們的變數通常為全域變數，所以接下來都用struct的呈現程式碼
+        p
+        h3 struct裡的函式
+        p 在struct裡，我們也可以放入函式，如下
+        script(src='https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-19.cpp')
+        p
+          | 首先有一個函式和結構式同名，這個叫建構器，來建立一個相同的資料型別，再來是plus和minus，他會依據資料型別類的資料執行結果，如本題c裡的a=5，b=6，執行plus的11，執行minus的-1。struct還可以建立解構子、運算子等，考慮各位的理解度差異，會把詳細的用法放在附錄裡(待補)
+        p struct的用途在於可以把資料一組組存起來，易存取，在排序時也可以一起移動，詳情請見下章
+        h3 應用(大數/浮點數)
+        p 我們知道c++最大的整數為2^64-1，但有些題目所需求的數字比這個大，這時可以利用struct來解決
+        p
+          | 請參考
+          a(href='http://www.csie.ntnu.edu.tw/~u91029/Number.html#4') 演算法筆記:Big Number
+        p 記得浮點數誤差嗎，利用struct來提高精準度吧!
         br
-        strong (注意!  }後的;不可刪除)
-    p 這樣程式可讀性變高了!!!
-    h3 struct&class的比較
-    p
-      | 除了struct，class也可以用來當自定義資料型別，但它們有什麼不同?
-      | 其實只有一個，就是當它們未說明裡面的內容是 public(所有區域都可以用)、private(只有在此區域內才可被使用/更改)
-    p
-      | struct內都是 public，class內都是private
-      | 要讓兩者相同，如下:
-    script(src='https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-17.cpp')
-    script(src='https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-18.cpp')
-    p 我們的變數通常為全域變數，所以接下來都用struct的呈現程式碼
-    p
-    h3 struct裡的函式
-    p 在struct裡，我們也可以放入函式，如下
-    script(src='https://gist.github.com/allem40306/02d0372881daf3ae849bba528bc424f4.js?file=ch08-19.cpp')
-    p
-      | 首先有一個函式和結構式同名，這個叫建構器，來建立一個相同的資料型別，再來是plus和minus，他會依據資料型別類的資料執行結果，如本題c裡的a=5，b=6，執行plus的11，執行minus的-1。struct還可以建立解構子、運算子等，考慮各位的理解度差異，會把詳細的用法放在附錄裡(待補)
-    p struct的用途在於可以把資料一組組存起來，易存取，在排序時也可以一起移動，詳情請見下章
-    h3 應用(大數/浮點數)
-    p 我們知道c++最大的整數為2^64-1，但有些題目所需求的數字比這個大，這時可以利用struct來解決
-    p
-      | 請參考
-      a(href='http://www.csie.ntnu.edu.tw/~u91029/Number.html#4') 演算法筆記:Big Number
-    p 記得浮點數誤差嗎，利用struct來提高精準度吧!
-    br
-    br
+        br

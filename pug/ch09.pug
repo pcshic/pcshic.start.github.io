@@ -6,64 +6,70 @@ head
 body
     include template/nav.pug
     h1 第九章 排序
-    h2 9.1特殊條件排序
-    p
-      | 第七章中我們用 <algorithm> 中的 sort
-      | 函數來排序。但是它只能依數值由小到大排序。可是如果遇到特殊條件的排序，Sort 就不知道要如何去排了。
-    li
-      a(href='https://zerojudge.tw/ShowProblem?problemid=d750') d750. 11321 - Sort! Sort!! and Sort!!!
-    p 這題的排序條件很詭異。
-    script(src='https://gist.github.com/allem40306/63bb96df79dde4a3efce7e27bb0fd16c.js?file=ch09-01.cpp')
-    li
-      a(href='https://zerojudge.tw/ShowProblem?problemid=d731') d731. 11039 - Building designing
-    li
-      a(href='https://zerojudge.tw/ShowProblem?problemid=d305') d385: 10905 - Children's Game
-    li
-      a(href='http://contest.cc.ntu.edu.tw/npsc2005/problem/2005jFinal.doc') 2005 NPSC 國中組決賽 E. 誰先晚餐(高中組決賽pE)
-    h2 9.2字典序
-    li
-      a(href='https://zerojudge.tw/ShowProblem?problemid=d829') d829. 146 - ID Codes
-    p 給你一串陣列，，要你找出下一個排列
-    p 規則
-    ol
-      li 找出最右邊一組a[x]小於a[x+1]
-      li 找不到時已經到最大排列，停止搜尋
-      li 否則找出在a[x]右邊大裕a[x]，的最小值a[y]
-      li 交換a[x]和a[y]
-      li 翻轉a[x]的序列
-      li 所得排列即得所求
-    p 以下是範例程式碼
-    script(src='https://gist.github.com/allem40306/63bb96df79dde4a3efce7e27bb0fd16c.js?file=ch09-02.cpp')
-    h3 next_permutation
-    p
-      | c++裡已有內建字典序排列，是在
-      algorithm 的next_permutation
-    p 範例如下
-    script(src='https://gist.github.com/allem40306/63bb96df79dde4a3efce7e27bb0fd16c.js?file=ch09-03.cpp')
-    p 是不是簡潔許多?
-    h2 9.3排序演算法
-    p
-      | 在第七章使用"algorithm"裡的sort解題目時，你可能遇到TLE，這時你可能會懷疑是不是自己寫出無限迴圈，但其實是sort讓你超過時間了，在
-      a(href='https://l.facebook.com/?u=https%3A%2F%2Fzh.wikipedia.org%2Fwiki%2F%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95&e=ATMU7TuXbr4Pz69i_8NZUXeuPoPy0IEa3QeCr3_CaRvR7L0VU6PoBoW5CaWcMnblh5OSxa2e-f_uYfM4KcTrQYDUryWgthVaF6oRjf19SfUuZ-n8CAt7FIpQ_fzm52nRLvxf5mE') wiki的排序演算法
-      | 內有各種演算法，例如sort是內省排序。這些演算法各有優缺點，有的省時，有的省空間，有的很好寫，以下介紹幾種
-    li 氣泡排序
-    p 氣泡排序是一種最基本的排序，是兩兩元素做比較然後交換。時間複雜度為O(n^2)，空間複雜度為O(n)。
-    p 範例程式碼
-    script(src='https://gist.github.com/allem40306/63bb96df79dde4a3efce7e27bb0fd16c.js?file=ch09-04.cpp')
-    li 合併排序
-    p 合併排序法是使用分治法的概念，先將陣列分成兩半，再將兩個小陣列進行比大小，合併成一個陣列，以此類推，時間複雜度為O(n log n)，空間複雜度為O(n)
-    p 範例程式碼
-    script(src='https://gist.github.com/allem40306/63bb96df79dde4a3efce7e27bb0fd16c.js?file=ch09-05.cpp')
-    li 計數排序
-    p
-      | 計數排序是一種線性時間排序算法，須先開一個陣列來計算各個數字的總數，再開另一個陣列，把數字由小(大)到大(小)填入，時間複雜度為O(n+k)，空間複雜度為O(n+k)，n為陣列大小，k為數字範圍。
-    p 範例程式碼
-    script(src='https://gist.github.com/allem40306/63bb96df79dde4a3efce7e27bb0fd16c.js?file=ch09-06.cpp')
-    p 補充資料
-    li
-      a(href='www.csie.ntnu.edu.tw/~u91029/SequenceManipulation.html') 演算法筆記 - Sequence Manipulation
-    li
-      a(href='https://zh.wikipedia.org/wiki/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95') wiki 排序演算法
-    br
-    br
-    br
+    button#button1 特殊條件排序
+    button#button2 字典序
+    button#button3 排序演算法
+    div(class='para' id='para1' style='display:none')
+        h2 9.1 特殊條件排序
+        p
+          | 第七章中我們用 <algorithm> 中的 sort
+          | 函數來排序。但是它只能依數值由小到大排序。可是如果遇到特殊條件的排序，Sort 就不知道要如何去排了。
+        li
+          a(href='https://zerojudge.tw/ShowProblem?problemid=d750') d750. 11321 - Sort! Sort!! and Sort!!!
+        p 這題的排序條件很詭異。
+        script(src='https://gist.github.com/allem40306/63bb96df79dde4a3efce7e27bb0fd16c.js?file=ch09-01.cpp')
+        li
+          a(href='https://zerojudge.tw/ShowProblem?problemid=d731') d731. 11039 - Building designing
+        li
+          a(href='https://zerojudge.tw/ShowProblem?problemid=d305') d385: 10905 - Children's Game
+        li
+          a(href='http://contest.cc.ntu.edu.tw/npsc2005/problem/2005jFinal.doc') 2005 NPSC 國中組決賽 E. 誰先晚餐(高中組決賽pE)
+    div(class='para' id='para2' style='display:none')
+        h2 9.2 字典序
+        li
+          a(href='https://zerojudge.tw/ShowProblem?problemid=d829') d829. 146 - ID Codes
+        p 給你一串陣列，，要你找出下一個排列
+        p 規則
+        ol
+          li 找出最右邊一組a[x]小於a[x+1]
+          li 找不到時已經到最大排列，停止搜尋
+          li 否則找出在a[x]右邊大裕a[x]，的最小值a[y]
+          li 交換a[x]和a[y]
+          li 翻轉a[x]的序列
+          li 所得排列即得所求
+        p 以下是範例程式碼
+        script(src='https://gist.github.com/allem40306/63bb96df79dde4a3efce7e27bb0fd16c.js?file=ch09-02.cpp')
+        h3 next_permutation
+        p
+          | c++裡已有內建字典序排列，是在
+          algorithm 的next_permutation
+        p 範例如下
+        script(src='https://gist.github.com/allem40306/63bb96df79dde4a3efce7e27bb0fd16c.js?file=ch09-03.cpp')
+        p 是不是簡潔許多?
+    div(class='para' id='para3' style='display:none')
+        h2 9.3 排序演算法
+        p
+          | 在第七章使用"algorithm"裡的sort解題目時，你可能遇到TLE，這時你可能會懷疑是不是自己寫出無限迴圈，但其實是sort讓你超過時間了，在
+          a(href='https://l.facebook.com/?u=https%3A%2F%2Fzh.wikipedia.org%2Fwiki%2F%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95&e=ATMU7TuXbr4Pz69i_8NZUXeuPoPy0IEa3QeCr3_CaRvR7L0VU6PoBoW5CaWcMnblh5OSxa2e-f_uYfM4KcTrQYDUryWgthVaF6oRjf19SfUuZ-n8CAt7FIpQ_fzm52nRLvxf5mE') wiki的排序演算法
+          | 內有各種演算法，例如sort是內省排序。這些演算法各有優缺點，有的省時，有的省空間，有的很好寫，以下介紹幾種
+        li 氣泡排序
+        p 氣泡排序是一種最基本的排序，是兩兩元素做比較然後交換。時間複雜度為O(n^2)，空間複雜度為O(n)。
+        p 範例程式碼
+        script(src='https://gist.github.com/allem40306/63bb96df79dde4a3efce7e27bb0fd16c.js?file=ch09-04.cpp')
+        li 合併排序
+        p 合併排序法是使用分治法的概念，先將陣列分成兩半，再將兩個小陣列進行比大小，合併成一個陣列，以此類推，時間複雜度為O(n log n)，空間複雜度為O(n)
+        p 範例程式碼
+        script(src='https://gist.github.com/allem40306/63bb96df79dde4a3efce7e27bb0fd16c.js?file=ch09-05.cpp')
+        li 計數排序
+        p
+          | 計數排序是一種線性時間排序算法，須先開一個陣列來計算各個數字的總數，再開另一個陣列，把數字由小(大)到大(小)填入，時間複雜度為O(n+k)，空間複雜度為O(n+k)，n為陣列大小，k為數字範圍。
+        p 範例程式碼
+        script(src='https://gist.github.com/allem40306/63bb96df79dde4a3efce7e27bb0fd16c.js?file=ch09-06.cpp')
+        p 補充資料
+        li
+          a(href='www.csie.ntnu.edu.tw/~u91029/SequenceManipulation.html') 演算法筆記 - Sequence Manipulation
+        li
+          a(href='https://zh.wikipedia.org/wiki/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95') wiki 排序演算法
+        br
+        br
+        br
