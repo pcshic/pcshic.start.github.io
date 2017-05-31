@@ -3,75 +3,86 @@ html
 head
     title 附錄A基礎資料型別
     include template/head.pug
+    style.
+      table, th, td {
+      height: 20pt;
+      text-align:center;
+      }
+      t1{
+      width: 600pt;
+      }
+     t2{
+      width: 150pt;
+      }
 body
 table
     tr
-        td 型態名稱
-        td 位元組
-        td 範圍
+        td.t1 型態名稱
+        td.t2 位元組
+        td.t1 範圍
     
     tr
-        td int,signed,signed int
-        td 4
-        td –2,147,483,648 to 2,147,483,647
+        td.t1 int,signed,signed int
+        td.t2 4
+        td.t1 –2,147,483,648 to 2,147,483,647
     
     tr
-        td unsigned,unsigned int
-        td 4
-        td 0 to 4,294,967,295
+        td.t1 unsigned,unsigned int
+        td.t2 4
+        td.t1 0 to 4,294,967,295
     tr
-        td short,short int, signed short int
-        td 2
-        td –32,768 to 32,767
+        td.t1 short,short int, signed short int
+        td.t2 2
+        td.t1 –32,768 to 32,767
     tr
-        td unsigned short,unsigned short int
-        td 2
-        td 0 to 65,535
+        td.t1 unsigned short,unsigned short int
+        td.t2 2
+        td.t1 0 to 65,535
     tr
-        td long long,long long int, signed long long
-        td 8
-        td –9,223,372,036,854,775,808 to 9,223,372,036,854,775,807
+        td.t1 long long,long long int, signed long long
+        td.t2 8
+        td.t1 –9,223,372,036,854,775,808 to 9,223,372,036,854,775,807
     tr
-        td unsigned long long,unsigned long long int
-        td 8
-        td 0 to 18,446,744,073,709,551,615
+        td.t1 unsigned long long,unsigned long long int
+        td.t2 8
+        td.t1 0 to 18,446,744,073,709,551,615
     tr
-        td long,long int, signed long int
-        td 4
-        td –2,147,483,648 to 2,147,483,647
+        td.t1 long,long int, signed long int
+        td.t2 4
+        td.t1 –2,147,483,648 to 2,147,483,647
     tr
-        td unsigned long,unsigned long int
-        td 4
-        td 0 to 4,294,967,295
+        td.t1 unsigned long,unsigned long int
+        td.t2 4
+        td.t1 0 to 4,294,967,295
     tr
-        td float
-        td 4
-        td 3.4E +/- 38 (7 digits)
+        td.t1 float
+        td.t2 4
+        td.t1 3.4E +/- 38 (7 digits)
     tr
-        td double
-        td 8
-        td 1.7E +/- 308 (15 digits)
+        td.t1 double
+        td.t2 8
+        td.t1 1.7E +/- 308 (15 digits)
     tr
-        td long double
-        td 8
-        td 1.7E +/- 308 (15 digits)
+        td.t1 long double
+        td.t2 8
+        td.t1 1.7E +/- 308 (15 digits)
     tr
-        td signed char
-        td 1
-        td –128 to 127
+        td.t1 signed char
+        td.t2 1
+        td.t1 –128 to 127
     tr
-        td unsigned char
-        td 1
-        td 0 to 255
+        td.t1 unsigned char
+        td.t2 1
+        td.t1 0 to 255
     tr
-        td wchar
-        td 2
-        td 0 to 65,535
+        td.t1 wchar
+        td.t2 2
+        td.t1 0 to 65,535
     tr
-        td bool
-        td 1
-        td false or true
+        td.t1 bool
+        td.t2 1
+        td.t1 false or true
     tr
-        td enum
-        td varies
-        td none
+        td.t1 enum
+        td.t2 varies
+        td.t1 none
