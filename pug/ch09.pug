@@ -17,7 +17,7 @@ body
         li
           a(href='https://zerojudge.tw/ShowProblem?problemid=d750') d750. 11321 - Sort! Sort!! and Sort!!!
         p 這題的排序條件很詭異。
-        script(src='https://gist.github.com/allem40306/63bb96df79dde4a3efce7e27bb0fd16c.js?file=ch09-01.cpp')
+        script(src='https://gist.github.com/allem40306/63bb96df79dde4a3efce7e27bb0fd16c.js?file=sort-01.cpp')
         li
           a(href='https://zerojudge.tw/ShowProblem?problemid=d731') d731. 11039 - Building designing
         li
@@ -38,13 +38,13 @@ body
           li 翻轉a[x]的序列
           li 所得排列即得所求
         p 以下是範例程式碼
-        script(src='https://gist.github.com/allem40306/63bb96df79dde4a3efce7e27bb0fd16c.js?file=ch09-02.cpp')
+        script(src='https://gist.github.com/allem40306/63bb96df79dde4a3efce7e27bb0fd16c.js?file=sort-02.cpp')
         h3 next_permutation
         p
           | c++裡已有內建字典序排列，是在
           algorithm 的next_permutation
         p 範例如下
-        script(src='https://gist.github.com/allem40306/63bb96df79dde4a3efce7e27bb0fd16c.js?file=ch09-03.cpp')
+        script(src='https://gist.github.com/allem40306/63bb96df79dde4a3efce7e27bb0fd16c.js?file=sort-03.cpp')
         p 是不是簡潔許多?
     div(class='para' id='para3' style='display:none')
         h2 9.3 排序演算法
@@ -55,16 +55,16 @@ body
         li 氣泡排序
         p 氣泡排序是一種最基本的排序，是兩兩元素做比較然後交換。時間複雜度為O(n^2)，空間複雜度為O(n)。
         p 範例程式碼
-        script(src='https://gist.github.com/allem40306/63bb96df79dde4a3efce7e27bb0fd16c.js?file=ch09-04.cpp')
+        script(src='https://gist.github.com/allem40306/63bb96df79dde4a3efce7e27bb0fd16c.js?file=sort-04.cpp')
         li 合併排序
         p 合併排序法是使用分治法的概念，先將陣列分成兩半，再將兩個小陣列進行比大小，合併成一個陣列，以此類推，時間複雜度為O(n log n)，空間複雜度為O(n)
         p 範例程式碼
-        script(src='https://gist.github.com/allem40306/63bb96df79dde4a3efce7e27bb0fd16c.js?file=ch09-05.cpp')
+        script(src='https://gist.github.com/allem40306/63bb96df79dde4a3efce7e27bb0fd16c.js?file=sort-05.cpp')
         li 計數排序
         p
           | 計數排序是一種線性時間排序算法，須先開一個陣列來計算各個數字的總數，再開另一個陣列，把數字由小(大)到大(小)填入，時間複雜度為O(n+k)，空間複雜度為O(n+k)，n為陣列大小，k為數字範圍。
         p 範例程式碼
-        script(src='https://gist.github.com/allem40306/63bb96df79dde4a3efce7e27bb0fd16c.js?file=ch09-06.cpp')
+        script(src='https://gist.github.com/allem40306/63bb96df79dde4a3efce7e27bb0fd16c.js?file=sort-06.cpp')
         p 補充資料
         li
           a(href='www.csie.ntnu.edu.tw/~u91029/SequenceManipulation.html') 演算法筆記 - Sequence Manipulation
